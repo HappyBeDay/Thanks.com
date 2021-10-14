@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-HiHi im minjeeeeeeeeeeeeeee
+HiHi im minjeeeeeeeeeeeeeee : 그는 바보입니다.
 </body>
 </html>
