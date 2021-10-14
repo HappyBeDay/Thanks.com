@@ -8,5 +8,6 @@ public class TestTwo {
 		test.setA(10);
 		
 		System.out.println(test.getA());
+		System.out.println("This is gitHub connect!!");
 	}
 }
