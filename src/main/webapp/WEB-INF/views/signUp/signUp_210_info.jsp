@@ -1,76 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<meta charset="UTF-8">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author"
-	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.84.0">
-<title>Thanks.com sign in</title>
-
-<link rel="canonical"
-	href="https://getbootstrap.com/docs/5.0/examples/signin/">
-
-<!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<style>
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-}
-
-@media ( min-width : 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
-}
-</style>
-
-<!-- Custom styles for this template -->
-<link href="signIn.css" rel="stylesheet">
+<title>Thanks.com 회원가입</title>
+<link href="signUp.css" rel="stylesheet">
 </head>
-<body class="text-center">
-	<main class="form-signin">
-	<form>
-		<img class="mb-4" src="../assets/img/Thanks.com_logo.png" alt=""
-			width="130" height="130">
-		<h1 class="h3 mb-3 fw-normal">Please Sign In</h1>
 
-		<div class="form-floating">
-			<input type="email" class="form-control" id="floatingInput"
-				placeholder="name@example.com"> <label for="floatingInput">Enter
-				ID</label>
-		</div>
-		<div class="form-floating">
-			<input type="password" class="form-control" id="floatingPassword"
-				placeholder="Password"> <label for="floatingPassword">Enter
-				Password</label>
-		</div>
-
-		<div class="checkbox mb-3">
-			<label> <input type="checkbox" value="remember-me">
-				Remember ID
-			</label>
-		</div>
-		<button class="w-100 btn btn-lg btn-primary" type="submit">Check!</button>
-
-		<div class="search-signin">
-			<a href="memberId">Search ID</a> | <a href="memberPw">Search PW</a> |
-			<a href="memberRegist">Sign Up</a>
-		</div>
-
-		<p class="mt-5 mb-3 text-muted">&copy;2021-</p>
-	</form>
-	</main>
+<body>
+<form action="doJoin" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
+	<h2>Sign Up</h2>
+	<div class="textForm">
+		<input name="loginId" type="text" class="id" placeholder="ID">
+		</input>
+	</div>
+	<div class="textForm">
+		<input name="loginPw" type="password" class="pw" placeholder="PassWord">
+	</div>
+	<div class="textForm">	
+		<input name="loginPwConfirm" type="password" class="pw" placeholder="Password Check">
+	</div>
+	<div class="textForm">
+		<input name="name" type="password" class="name" placeholder="Name">
+	</div>
+	<div class="textForm">
+		<input name="email" type="text" class="email" placeholder="you@example.com">
+	</div>
+	<div class="textForm">
+		<input name="nickname" type="text" class="birth" placeholder="ex)1994-04-01">
+	</div>
+	
+	<div class="textForm">
+		<input name="cellphoneNo" type="number" class="cellphoneNo"	placeholder="ex)010-1234-5678">
+	</div>
+	<input type="submit" class="btn" value="Thanks.com JOIN" />
+	
+</form>
 </body>
-
 </html>
