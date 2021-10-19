@@ -112,7 +112,7 @@ red: #ff3252 ;
 </head>
 <body id="page-top">
 	<!-- Navigation 1-->
-	<jsp:include page="navibar.jsp"></jsp:include>
+	<jsp:include page="../_module/navibar.jsp"></jsp:include>
 
 		<div class="h-75" style="background-color: #1c7cff;">
 			<div class="mask d-flex align-items-center h-100">
@@ -488,7 +488,7 @@ red: #ff3252 ;
 	</main>
 
 	<!-- Footer-->
-	<jsp:include page="copyright.jsp"></jsp:include>
+	<jsp:include page="../_module/copyright.jsp"></jsp:include>
 
 	<!-- Core theme JS-->
 	<script src="../js/main.js"></script>
