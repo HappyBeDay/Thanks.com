@@ -2743,6 +2743,7 @@ textarea.form-control-lg {
   z-index: 3;
 }
 
+/* adoptMain 검색창 돋보기 배경색 없애기 */
 .input-group-text {
   display: flex;
   align-items: center;
@@ -2753,7 +2754,7 @@ textarea.form-control-lg {
   color: #212529;
   text-align: center;
   white-space: nowrap;
-  background-color: #e9ecef;
+  /* background-color: #e9ecef; */
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
 }

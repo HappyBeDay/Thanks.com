@@ -20,15 +20,27 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="../css/main.css" rel="stylesheet" />
 
-<!-- Bootstrap core CSS -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
+	
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<script type="text/javascript">
+/* $(document).ready(function(){
+	  $("#heart").click(function(){
+	    if($("#heart").hasClass("liked")){
+	      $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+	      $("#heart").removeClass("liked");
+	    }else{
+	      $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+	      $("#heart").addClass("liked");
+	    }
+	  });
+	}); */
+</script>
 
-
+<!-- search bar & filter -->
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -69,43 +81,37 @@ html, body, .intro {
 	background-color: rgba(0, 0, 0, .05);
 }
 
-.btn-link:active:focus, .btn-link.active:focus {
+.btn-link:active:focus, .heart-link.active:focus {
 	background-color: rgba(0, 0, 0, .05);
 }
 
-$
-red: #ff3252 ;
 
-.like-button {
-	display: inline-block;
-	position: relative;
-	font-size: 32px;
-	cursor: pointer; 
-	
-	&::before { 
-	font-size: 3em;
-	color: #000;
-	content: '♥';
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	}
-
-	&::after {
-	font-size: 3em;
-	color: $red;
-	content: '♥';
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%) scale(0);
-	transition: transform 0.2s;
+/* #heart-link:hover {
+	background-color: rgba(0, 0, 0, .05);
 }
 
-	&.liked::after {
-	transform: translate(-50%, -50%) scale(1.1);
-	}
+#heart-link:active, #heart-link.active {
+	background-color: rgba(0, 0, 0, .05);
+}
+
+#heart-link:focus, #heart-link.focus {
+	background-color: rgba(0, 0, 0, .05);
+}
+
+#heart-link:active:focus, #heart-link.active:focus {
+	background-color: rgba(0, 0, 0, .05);
+} */
+
+/* font awesome icon */
+.fa-heart, .fa-venus-mars, .fa-map-marker {
+  color: #1c7cff;
+  font-size:15px;
+  cursor: pointer;
+}
+.fa-heart-o {
+  color: #1c7cff;
+  font-size:30px;
+  cursor: pointer;
 }
 </style>
 
@@ -127,7 +133,7 @@ red: #ff3252 ;
 											placeholder="지역, 품종, 보호상태 검색" aria-label="Search"
 											aria-describedby="basic-addon2" />
 											<span class="input-group-text border-0 px-1" id="basic-addon2">
-											<i class="fas fa-search fa-lg" style="color: #939597;"></i>
+											<i class="fa fa-search fa-lg" style="color: #939597;"></i>
 										</span>
 									</div>
 									<p class="mb-0 d-flex flex-row align-self-center"
@@ -141,7 +147,7 @@ red: #ff3252 ;
 										<div class="col-md-4 mb-3">
 											<div class="dropdown">
 												<a
-													class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle"
+													class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 													href="#" role="button" id="dropdownMenuLink"
 													data-mdb-toggle="dropdown" aria-expanded="false"> 축종 </a>
 												<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -156,7 +162,7 @@ red: #ff3252 ;
 										<div class="col-md-4 mb-3">
 											<div class="dropdown">
 												<a
-													class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle"
+													class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 													href="#" role="button" id="dropdownMenuLink1"
 													data-mdb-toggle="dropdown" aria-expanded="false"> 품종 </a>
 												<ul class="dropdown-menu"
@@ -172,7 +178,7 @@ red: #ff3252 ;
 										<div class="col-md-4 mb-3">
 											<div class="dropdown">
 												<a
-													class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle"
+													class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 													href="#" role="button" id="dropdownMenuLink2"
 													data-mdb-toggle="dropdown" aria-expanded="false"> 색 </a>
 												<ul class="dropdown-menu"
@@ -190,7 +196,7 @@ red: #ff3252 ;
 										<div class="col-md-4 mb-3">
 											<div class="dropdown">
 												<a
-													class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle"
+													class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 													href="#" role="button" id="dropdownMenuLink3"
 													data-mdb-toggle="dropdown" aria-expanded="false"> 보호소
 													위치 </a>
@@ -207,7 +213,7 @@ red: #ff3252 ;
 										<div class="col-md-4 mb-3">
 											<div class="dropdown">
 												<a
-													class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle"
+													class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 													href="#" role="button" id="dropdownMenuLink4"
 													data-mdb-toggle="dropdown" aria-expanded="false"> 성별 </a>
 												<ul class="dropdown-menu"
@@ -223,7 +229,7 @@ red: #ff3252 ;
 										<div class="col-md-4 mb-3">
 											<div class="dropdown">
 												<a
-													class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle"
+													class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 													href="#" role="button" id="dropdownMenuLink5"
 													data-mdb-toggle="dropdown" aria-expanded="false"> 공고 날짜
 												</a>
@@ -241,9 +247,9 @@ red: #ff3252 ;
 									<div
 										class="d-flex justify-content-between align-items-center mt-4">
 										<div>
-											<button type="button" class="btn btn-dark btn-rounded">검색</button>
-											<button type="button" class="btn btn-link btn-rounded"
-												style="color: #939597;" data-mdb-ripple-color="dark">
+											<button type="button" class="btn btn-dark btn-rounded ripple-surface" style="min-width:90px;">검색</button>
+											<button type="button" class="btn btn-link btn-rounded ripple-surface ripple-surface-dark"
+												style="color: rgb(147,149,151); min-width:90px;" data-mdb-ripple-color="dark">
 												삭제</button>
 										</div>
 									</div>
@@ -268,11 +274,12 @@ red: #ff3252 ;
 							<title>Placeholder</title><rect width="100%" height="100%"
 								fill="#55595c" />
 							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
 						<div class="card-body">
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
+							<p class="card-text">
+								<div><i class="fa fa-heart" aria-hidden="true" ></i>품종</div>
+								<div><i class="fa fa-venus-mars" aria-hidden="true" ></i>성별</div>
+								<div><i class="fa fa-map-marker" aria-hidden="true" ></i>위치</div>
+							</p>
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="btn-group">
 									<button type="button" class="btn btn-sm btn-outline-secondary">입양
@@ -280,7 +287,7 @@ red: #ff3252 ;
 									<button type="button" class="btn btn-sm btn-outline-secondary">양육
 										신청</button>
 								</div>
-								<button class="like-button"></button>
+								<span id=heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
 							</div>
 						</div>
 					</div>
@@ -296,9 +303,11 @@ red: #ff3252 ;
 							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
 						<div class="card-body">
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
+							<p class="card-text">
+								<div><i class="fa fa-heart" aria-hidden="true" ></i>품종</div>
+								<div><i class="fa fa-venus-mars" aria-hidden="true" ></i>성별</div>
+								<div><i class="fa fa-map-marker" aria-hidden="true" ></i>위치</div>
+							</p>
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="btn-group">
 									<button type="button" class="btn btn-sm btn-outline-secondary">입양
@@ -306,7 +315,7 @@ red: #ff3252 ;
 									<button type="button" class="btn btn-sm btn-outline-secondary">양육
 										신청</button>
 								</div>
-								<small class="text-muted">9 mins</small>
+								<span id=heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
 							</div>
 						</div>
 					</div>
@@ -322,88 +331,19 @@ red: #ff3252 ;
 							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
 						<div class="card-body">
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
+							<p class="card-text">
+								<div><i class="fa fa-heart" aria-hidden="true" ></i>품종</div>
+								<div><i class="fa fa-venus-mars" aria-hidden="true" ></i>성별</div>
+								<div><i class="fa fa-map-marker" aria-hidden="true" ></i>위치</div>
+							</p>
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">입양
+										예약</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">양육
+										신청</button>
 								</div>
-								<small class="text-muted">9 mins</small>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-								</div>
-								<small class="text-muted">9 mins</small>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-								</div>
-								<small class="text-muted">9 mins</small>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-								</div>
-								<small class="text-muted">9 mins</small>
+								<span id=heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
 							</div>
 						</div>
 					</div>
@@ -420,15 +360,19 @@ red: #ff3252 ;
 							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
 						<div class="card-body">
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
+							<p class="card-text">
+								<div><i class="fa fa-heart" aria-hidden="true" ></i>품종</div>
+								<div><i class="fa fa-venus-mars" aria-hidden="true" ></i>성별</div>
+								<div><i class="fa fa-map-marker" aria-hidden="true" ></i>위치</div>
+							</p>
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">입양
+										예약</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">양육
+										신청</button>
 								</div>
-								<small class="text-muted">9 mins</small>
+								<span id=heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
 							</div>
 						</div>
 					</div>
@@ -444,15 +388,19 @@ red: #ff3252 ;
 							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
 						<div class="card-body">
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
+							<p class="card-text">
+								<div><i class="fa fa-heart" aria-hidden="true" ></i>품종</div>
+								<div><i class="fa fa-venus-mars" aria-hidden="true" ></i>성별</div>
+								<div><i class="fa fa-map-marker" aria-hidden="true" ></i>위치</div>
+							</p>
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">입양
+										예약</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">양육
+										신청</button>
 								</div>
-								<small class="text-muted">9 mins</small>
+								<span id=heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
 							</div>
 						</div>
 					</div>
@@ -468,15 +416,104 @@ red: #ff3252 ;
 							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
 						<div class="card-body">
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
+							<p class="card-text">
+								<div><i class="fa fa-heart" aria-hidden="true" ></i>품종</div>
+								<div><i class="fa fa-venus-mars" aria-hidden="true" ></i>성별</div>
+								<div><i class="fa fa-map-marker" aria-hidden="true" ></i>위치</div>
+							</p>
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">입양
+										예약</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">양육
+										신청</button>
 								</div>
-								<small class="text-muted">9 mins</small>
+								<span id=heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%"
+							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+							aria-label="Placeholder: Thumbnail"
+							preserveAspectRatio="xMidYMid slice" focusable="false">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+						<div class="card-body">
+							<p class="card-text">
+								<div><i class="fa fa-heart" aria-hidden="true" ></i>품종</div>
+								<div><i class="fa fa-venus-mars" aria-hidden="true" ></i>성별</div>
+								<div><i class="fa fa-map-marker" aria-hidden="true" ></i>위치</div>
+							</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">입양
+										예약</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">양육
+										신청</button>
+								</div>
+								<span id=heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%"
+							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+							aria-label="Placeholder: Thumbnail"
+							preserveAspectRatio="xMidYMid slice" focusable="false">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+						<div class="card-body">
+							<p class="card-text">
+								<div><i class="fa fa-heart" aria-hidden="true" ></i>품종</div>
+								<div><i class="fa fa-venus-mars" aria-hidden="true" ></i>성별</div>
+								<div><i class="fa fa-map-marker" aria-hidden="true" ></i>위치</div>
+							</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">입양
+										예약</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">양육
+										신청</button>
+								</div>
+								<span id=heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card shadow-sm">
+						<svg class="bd-placeholder-img card-img-top" width="100%"
+							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+							aria-label="Placeholder: Thumbnail"
+							preserveAspectRatio="xMidYMid slice" focusable="false">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+						<div class="card-body">
+							<p class="card-text">
+								<div><i class="fa fa-heart" aria-hidden="true" ></i>품종</div>
+								<div><i class="fa fa-venus-mars" aria-hidden="true" ></i>성별</div>
+								<div><i class="fa fa-map-marker" aria-hidden="true" ></i>위치</div>
+							</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">입양
+										예약</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">양육
+										신청</button>
+								</div>
+								<span id=heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span>
 							</div>
 						</div>
 					</div>
@@ -493,6 +530,6 @@ red: #ff3252 ;
 	<!-- Core theme JS-->
 	<script src="../js/main.js"></script>
 
-	<script src="../js/bootstrap.bundle.min.js"></script>
+	
 </body>
 </html>

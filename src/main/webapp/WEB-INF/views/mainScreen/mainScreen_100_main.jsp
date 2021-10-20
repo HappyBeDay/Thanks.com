@@ -24,15 +24,16 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="/resources/css/main.css" rel="stylesheet" />
+<link href="../css/main.css" rel="stylesheet" />
 </head>
+
 <body id="page-top">
 	<!-- Navigation 1-->
 		<jsp:include page="../_module/navibar.jsp"></jsp:include>
 	<!-- Masthead-->
 	<header class="masthead">
 		<video autoplay muted loop id="myVideo">
-			<source src="/resources/assets/video/dogmain.mp4" type="video/mp4">
+			<source src="./../assets/video/dogmain.mp4" type="video/mp4">
 		</video>
 		<div class="container px-4 px-lg-5 h-100">
 			<div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
@@ -53,7 +54,7 @@
 			<div class="row gx-4 gx-lg-5 justify-content-center">
 				<div class="col-xl-4 col-lg-5">
 					<img class="img-fluid mb-3 mb-lg-0"
-						src="/resources/assets/img/intro.png" alt="...">
+						src="./../assets/img/intro.png" alt="...">
 				</div>
 				<div class="col-xl-8 col-lg-7">
 					<h1 class="text-gray mt-0">Thanks.com</h1>
