@@ -27,6 +27,9 @@
 	
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- Core theme JS-->
+<script src="../js/main.js"></script>
+
 <script type="text/javascript">
 /* $(document).ready(function(){
 	  $("#heart").click(function(){
@@ -528,9 +531,5 @@ html, body, .intro {
 	<!-- Footer-->
 	<jsp:include page="../_module/copyright.jsp"></jsp:include>
 
-	<!-- Core theme JS-->
-	<c:url value="/resources/js/main.js"/>
-
-	
 </body>
 </html>
