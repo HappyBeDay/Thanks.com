@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="<c:url value="/css/signUp_200_agreement.css"/>" rel="stylesheet"/>
 <title>Insert title here</title>
 </head>
 <body>
@@ -56,11 +58,9 @@
 		<ul class="footBtwrap clearfix">
 			<li><button class="fpmgBt1">비동의</button></li>
 			<li><button class="fpmgBt2">동의</button></li>
-		</ul>
+		</ul> 
 	</form>
 
-
-	출처: https://ddorang-d.tistory.com/9 [도라미도라미]
 </body>
 </html>
 

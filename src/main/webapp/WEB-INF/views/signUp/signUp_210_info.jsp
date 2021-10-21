@@ -1,11 +1,13 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%> --%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<meta charset="UTF-8">
 <html>
 <head>
-
-<link href="signUp_210.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/signin/">
+<link href="<c:url value="/css/signUp_210.css"/>" rel="stylesheet"/>
+<link href="<c:url value="/css/bootstrap"/>" rel="stylesheet"/>
 <title>Thanks.com 회원가입</title>
 </head>
 <body>
@@ -37,8 +39,7 @@
 		</div>
 
 		<div class="textForm">
-			<input name="cellphoneNo" type="number" class="cellphoneNo"
-				placeholder="ex)010-1234-5678">
+			<input name="cellphoneNo" type="number" class="cellphoneNo" placeholder="ex)010-1234-5678">
 		</div>
 		<input type="submit" class="btn" value="Thanks.com JOIN" />
 

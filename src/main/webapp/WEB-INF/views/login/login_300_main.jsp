@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,12 +11,11 @@
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.84.0">
 <title>Thanks.com sign in</title>
-
-<link rel="canonical"
-	href="https://getbootstrap.com/docs/5.0/examples/signin/">
-
+<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/signin/">
 <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet"/>
+<link href="<c:url value="/css/login_300.css"/>" rel="stylesheet"/>
 
 <style>
 .bd-placeholder-img {
@@ -32,7 +34,8 @@
 </style>
 
 <!-- Custom styles for this template -->
-<link href="signIn.css" rel="stylesheet">
+
+
 </head>
 <body class="text-center">
 	<main class="form-signin">
