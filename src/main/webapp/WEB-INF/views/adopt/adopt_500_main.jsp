@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,7 @@
 	rel="stylesheet" type="text/css" />
 
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="../css/main.css" rel="stylesheet" />
+<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
 
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
@@ -528,7 +529,7 @@ html, body, .intro {
 	<jsp:include page="../_module/copyright.jsp"></jsp:include>
 
 	<!-- Core theme JS-->
-	<script src="../js/main.js"></script>
+	<c:url value="/resources/js/main.js"/>
 
 	
 </body>
