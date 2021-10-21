@@ -515,354 +515,218 @@ CREATE UNIQUE INDEX PK_Reply ON Reply ( replyCode ASC );
 /* contraint : PK_Reply */
 ALTER TABLE Reply ADD CONSTRAINT PK_Reply PRIMARY KEY ( replyCode );
 --------------------------------------------------------------------------------
-/* 19. 권한 테이블 */
-create table authorize (
+/* 19. 권한 */
+create table Authorize (
     authorizeCode NUMBER(1) default 1 not null,
     authorizeName NVARCHAR2(10) not null
 )
-진행중...
-
+/* No need for sequence */
+comment on table Authorize is '권한 종류 테이블';
+comment on column Authorize.authorizeCode is '권한 코드, 클수록 강하다, guest = 0';
+comment on column Authorize.authorizeName is '권한 이름';
+/* index of {tableName.columnName} : ASC */
+CREATE UNIQUE INDEX PK_Authorize ON Authorize ( authorizeCode ASC );
+/* contraint : PK_Authorize */
+ALTER TABLE Authorize ADD CONSTRAINT PK_Authorize PRIMARY KEY ( authorizeCode );
+--------------------------------------------------------------------------------
 /* 20. 채팅메세지 */
 CREATE TABLE ChatMessage (
-   chatMsgCode NVARCHAR2(100) NOT NULL, /* 채팅메시지 코드 */
-   memberCode NUMBER(7), /* 회원코드 */
-   chatRmCode NVARCHAR2(10), /* 채팅룸 코드 */
-   content NVARCHAR2(100) NOT NULL, /* 내용 */
-   time TIMESTAMP NOT NULL /* 시간 */
+    chatMessageCode NUMBER(7) NOT NULL, /* 채팅메시지 코드 */
+    ChatRoomCode NUMBER(7) NOT NULL, /* 채팅룸 코드 */
+    content LONG /* 내용 */
 );
-
+/* sequence for chatMessageCode is ChatMessage pk : */
+create sequence ChatMessage_seq
+    increment by 1
+    start with 1
+    maxValue 9999999 
+    cycle;
+/* 주석 */
 COMMENT ON TABLE ChatMessage IS '채팅메세지';
-
-COMMENT ON COLUMN ChatMessage.chatMsgCode IS '채팅메시지 코드';
-
-COMMENT ON COLUMN ChatMessage.memberCode IS '보낸 이';
-
-COMMENT ON COLUMN ChatMessage.chatRmCode IS '받는 이(들)';
-
-COMMENT ON COLUMN ChatMessage.content IS '내용';
-
-COMMENT ON COLUMN ChatMessage.time IS '시간';
-
-CREATE UNIQUE INDEX PK_ChatMessage
-   ON ChatMessage (
-      chatMsgCode ASC
-   );
-
-ALTER TABLE ChatMessage
-   ADD
-      CONSTRAINT PK_ChatMessage
-      PRIMARY KEY (
-         chatMsgCode
-      );
-
-/* 채팅룸 */
+COMMENT ON COLUMN ChatMessage.chatMessageCode IS '채팅메시지 코드';
+COMMENT ON COLUMN ChatMessage.ChatRoomCode IS '채팅룸 코드';
+COMMENT ON COLUMN ChatMessage.content IS 
+    'timestamp + member.name + message 개행문자로 구분지어 채팅내용이 문자열로 저장';
+/* index of {tableName.columnName} : ASC */
+CREATE UNIQUE INDEX PK_ChatMessage ON ChatMessage ( chatMessageCode ASC );
+/* contraint : pk_{tableName} */
+ALTER TABLE ChatMessage ADD CONSTRAINT PK_ChatMessage PRIMARY KEY ( chatMessageCode );
+--------------------------------------------------------------------------------
+/* 21. 채팅룸 */
 CREATE TABLE ChatRoom (
-   chatRmCode NVARCHAR2(10) NOT NULL, /* 채팅룸 코드 */
-   chatRmName NVARCHAR2(10) /* 채팅방 이름 */
+    ChatRoomCode NUMBER(7) NOT NULL, /* 채팅룸 코드 */
+    chatRoomName NVARCHAR2(20) not null, /* 채팅룸 이름 */
+    chatRoomMemberCode NUMBER(7) not null, /* 채팅룸 인원 코드 */
+    ChatRoomTotalCnt NUMBER(3) not null /* 채팅룸 총 인원 */
 );
-
+/* sequence for ChatRoomCode is ChatRoom pk : */
+create sequence ChatRoom_seq
+    increment by 1
+    start with 1
+    maxValue 9999999 
+    cycle;
+/* 주석 */
 COMMENT ON TABLE ChatRoom IS '채팅룸';
-
-COMMENT ON COLUMN ChatRoom.chatRmCode IS '가능하면 영어, 숫자조합';
-
-COMMENT ON COLUMN ChatRoom.chatRmName IS '1대1 채팅시 아이디 표기';
-
-CREATE UNIQUE INDEX PK_ChatRoom
-   ON ChatRoom (
-      chatRmCode ASC
-   );
-
-ALTER TABLE ChatRoom
-   ADD
-      CONSTRAINT PK_ChatRoom
-      PRIMARY KEY (
-         chatRmCode
-      );
-
-/* 회원정보 수정 */
-CREATE TABLE TABLE10 (
-   memberCode NUMBER(7) NOT NULL /* 회원코드 */
+COMMENT ON COLUMN ChatRoom.ChatRoomCode IS '채팅룸 코드';
+COMMENT ON COLUMN ChatRoom.chatRoomName IS '채팅룸 이름, 1대1 채팅시 아이디 표기';
+COMMENT ON COLUMN ChatRoom.chatRoomMemberCode IS '채팅룸 인원 코드';
+COMMENT ON COLUMN ChatRoom.chatRoomMemberCode IS '채팅룸 총 인원, max 99';
+/* index of ChatRoom.ChatRoomCode : ASC */
+CREATE UNIQUE INDEX PK_ChatRoom ON ChatRoom ( ChatRoomCode ASC );
+/* contraint : PK_ChatRoom */
+ALTER TABLE ChatRoom ADD CONSTRAINT PK_ChatRoom PRIMARY KEY ( ChatRoomCode );
+-------------------------------------------------------------------------------- 
+/* 22. 채팅룸인원 */
+CREATE TABLE ChatRoomMember (
+    chatRoomMemberCode NUMBER(7) NOT NULL, /* 인원 코드 */
+    ChatRoomCode NUMBER(7), /* 채팅룸 코드 */
+    memberCode NUMBER(7) /* 회원코드 */
 );
-
-COMMENT ON TABLE TABLE10 IS '회원정보 수정';
-
-COMMENT ON COLUMN TABLE10.memberCode IS '회원코드';
-
-CREATE UNIQUE INDEX PK_TABLE10
-   ON TABLE10 (
-      memberCode ASC
-   );
-
-ALTER TABLE TABLE10
-   ADD
-      CONSTRAINT PK_TABLE10
-      PRIMARY KEY (
-         memberCode
-      );
-
-/* 탈퇴 */
-CREATE TABLE TABLE11 (
-   memberCode NUMBER(7) NOT NULL /* 회원코드 */
-);
-
-COMMENT ON TABLE TABLE11 IS '탈퇴';
-
-COMMENT ON COLUMN TABLE11.memberCode IS '회원코드';
-
-CREATE UNIQUE INDEX PK_TABLE11
-   ON TABLE11 (
-      memberCode ASC
-   );
-
-ALTER TABLE TABLE11
-   ADD
-      CONSTRAINT PK_TABLE11
-      PRIMARY KEY (
-         memberCode
-      );
-
-/* 댓글 목록 */
-CREATE TABLE TABLE12 (
-   replyCode NUMBER(6) NOT NULL /* 댓글 코드 */
-);
-
-COMMENT ON TABLE TABLE12 IS '댓글 목록';
-
-COMMENT ON COLUMN TABLE12.replyCode IS '댓글 코드';
-
-CREATE UNIQUE INDEX PK_TABLE12
-   ON TABLE12 (
-      replyCode ASC
-   );
-
-ALTER TABLE TABLE12
-   ADD
-      CONSTRAINT PK_TABLE12
-      PRIMARY KEY (
-         replyCode
-      );
-
-/* 관리자페 */
-CREATE TABLE TABLE13 (
-   memberCode NUMBER(7) NOT NULL, /* 회원코드 */
-   COL2 <지정 되지 않음> NOT NULL /* 반려동물 정보 */
-);
-
-COMMENT ON TABLE TABLE13 IS '관리자페';
-
-COMMENT ON COLUMN TABLE13.memberCode IS '회원코드';
-
-COMMENT ON COLUMN TABLE13.COL2 IS '????????????????????????';
-
-CREATE UNIQUE INDEX PK_TABLE13
-   ON TABLE13 (
-      memberCode ASC
-   );
-
-ALTER TABLE TABLE13
-   ADD
-      CONSTRAINT PK_TABLE13
-      PRIMARY KEY (
-         memberCode
-      );
-
-/* 아이디 비번찾기 */
-CREATE TABLE TABLE14 (
-   memberCode NUMBER(7) NOT NULL /* 회원코드 */
-);
-
-COMMENT ON TABLE TABLE14 IS '아이디 비번찾기';
-
-COMMENT ON COLUMN TABLE14.memberCode IS '회원코드';
-
-CREATE UNIQUE INDEX PK_TABLE14
-   ON TABLE14 (
-      memberCode ASC
-   );
-
-ALTER TABLE TABLE14
-   ADD
-      CONSTRAINT PK_TABLE14
-      PRIMARY KEY (
-         memberCode
-      );
-
-/* 관리자 */
-CREATE TABLE TABLE15 (
-   shelterCode NUMBER(7) NOT NULL, /* 보호소 코드 */
-   boardCode NUMBER(7) NOT NULL, /* 게시판 코드 */
-   animalReservationCode NUMBER(7), /* 예약 코드 */
-   COL <지정 되지 않음>, /* 사이트 관리 */
-   COL2 <지정 되지 않음>, /* 배너링크 */
-   seminarCode NUMBER(7), /* 세미나 코드 */
-   COL4 <지정 되지 않음> NOT NULL /* 약관동의 */
-);
-
-COMMENT ON TABLE TABLE15 IS '관리자';
-
-COMMENT ON COLUMN TABLE15.shelterCode IS '보호소 코드';
-
-COMMENT ON COLUMN TABLE15.boardCode IS '게시판 코드';
-
-COMMENT ON COLUMN TABLE15.animalReservationCode IS '예약 코드';
-
-COMMENT ON COLUMN TABLE15.COL IS '사이트 관리';
-
-COMMENT ON COLUMN TABLE15.COL2 IS '배너링크';
-
-COMMENT ON COLUMN TABLE15.seminarCode IS '세미나 코드';
-
-COMMENT ON COLUMN TABLE15.COL4 IS '약관동의';
-
-/* 로그인, 회원정보수정, 탈퇴, 아이디비번찾기 */
-CREATE TABLE TABLE16 (
-   memberCode NUMBER(7) NOT NULL /* 회원코드 */
-);
-
-COMMENT ON TABLE TABLE16 IS '로그인, 회원정보수정, 탈퇴, 아이디비번찾기';
-
-COMMENT ON COLUMN TABLE16.memberCode IS '회원코드';
-
-CREATE UNIQUE INDEX PK_TABLE16
-   ON TABLE16 (
-      memberCode ASC
-   );
-
-ALTER TABLE TABLE16
-   ADD
-      CONSTRAINT PK_TABLE16
-      PRIMARY KEY (
-         memberCode
-      );
-
-/* 임시 테이블 */
-CREATE TABLE Temporary (
-);
-
-COMMENT ON TABLE Temporary IS '임시 테이블';
-
-
-/* 품종코드2 */
-CREATE TABLE TABLE18 (
-   COL2 NUMBER(6) NOT NULL, /* 품종코드 */
-   COL NUMBER(7) NOT NULL, /* 축종코드 */
-   COL3 VARCHAR2(50) /* 품종명 */
-);
-
-COMMENT ON TABLE TABLE18 IS '품종코드2';
-
-COMMENT ON COLUMN TABLE18.COL2 IS '품종코드';
-
-COMMENT ON COLUMN TABLE18.COL IS '축종코드';
-
-COMMENT ON COLUMN TABLE18.COL3 IS '품종명';
-
-CREATE UNIQUE INDEX PK_TABLE18
-   ON TABLE18 (
-      COL2 ASC
-   );
-
-ALTER TABLE TABLE18
-   ADD
-      CONSTRAINT PK_TABLE18
-      PRIMARY KEY (
-         COL2
-      );
-
-/* 품종코드3 */
-CREATE TABLE TABLE19 (
-   COL2 NUMBER(6) NOT NULL, /* 품종코드 */
-   COL NUMBER(7) NOT NULL, /* 축종코드 */
-   COL3 VARCHAR2(50) /* 품종명 */
-);
-
-COMMENT ON TABLE TABLE19 IS '품종코드3';
-
-COMMENT ON COLUMN TABLE19.COL2 IS '품종코드';
-
-COMMENT ON COLUMN TABLE19.COL IS '축종코드';
-
-COMMENT ON COLUMN TABLE19.COL3 IS '품종명';
-
-CREATE UNIQUE INDEX PK_TABLE19
-   ON TABLE19 (
-      COL2 ASC
-   );
-
-ALTER TABLE TABLE19
-   ADD
-      CONSTRAINT PK_TABLE19
-      PRIMARY KEY (
-         COL2
-      );
-
-/* 시군구 */
+/* sequence for chatRoomMemberCode is ChatRoomMember pk : */
+create sequence ChatRoomMember
+    increment by 1
+    start with 1
+    maxValue 9999999 
+    cycle;
+/* 주석 */
+COMMENT ON TABLE ChatRoomMember IS '채팅룸 인원';
+COMMENT ON COLUMN ChatRoomMember.chatRoomMemberCode IS '채팅원 인원 코드';
+COMMENT ON COLUMN ChatRoomMember.memberCode IS '채팅룸 인원의 회원 코드';
+COMMENT ON COLUMN ChatRoomMember.ChatRoomCode IS '채팅룸 코드';
+/* index of ChatRoomMember.chatRoomMemberCode : ASC */
+CREATE UNIQUE INDEX PK_ChatRoomMember ON ChatRoomMember ( chatRoomMemberCode ASC );
+/* contraint : PK_ChatRoomMember */
+ALTER TABLE ChatRoomMember ADD CONSTRAINT PK_ChatRoomMember PRIMARY KEY ( chatRoomMemberCode );
+--------------------------------------------------------------------------------
+/* 23. 시군구 */
 CREATE TABLE Sigungu (
    sigunguCode NUMBER(7) NOT NULL, /* 시군구 코드 */
    sigunguCodeName NVARCHAR2(50) NOT NULL, /* 코드 명 */
    sidoCode NUMBER(7) NOT NULL /* 시도 코드 */
 );
-
-COMMENT ON TABLE Sigungu IS '시군구';
-
+/* No need for sequence */
+COMMENT ON TABLE Sigungu IS '시군구, 공공데이터 기반';
 COMMENT ON COLUMN Sigungu.sigunguCode IS '시군구 코드';
-
 COMMENT ON COLUMN Sigungu.sigunguCodeName IS '시군구 이름';
-
 COMMENT ON COLUMN Sigungu.sidoCode IS '시도 코드';
-
-CREATE UNIQUE INDEX PK_Sigungu
-   ON Sigungu (
-      sigunguCode ASC
-   );
-
-ALTER TABLE Sigungu
-   ADD
-      CONSTRAINT PK_Sigungu
-      PRIMARY KEY (
-         sigunguCode
-      );
-
-/* 동물보호소 */
-CREATE TABLE TABLE21 (
-   COL NUMBER(7) NOT NULL, /* 보호소 코드 */
-   COL2 NVARCHAR2(30) NOT NULL, /* 코드 명 */
-   COL4 NUMBER(12) NOT NULL, /* 전화번호 */
-   COL3 NVARCHAR2(50), /* 관할기관 */
-   COL5 NVARCHAR2(10), /* 담당자 */
-   COL6 NUMBER(12), /* 담당자 연락처 */
-   roadNameCode NUMBER(7) /* 도로명 주소 코드 */
+/* index of Sigungu.sigunguCode : ASC */
+CREATE UNIQUE INDEX PK_Sigungu ON Sigungu ( sigunguCode ASC );
+/* contraint : Sigungu.sigunguCode */
+ALTER TABLE Sigungu ADD CONSTRAINT PK_Sigungu PRIMARY KEY ( sigunguCode );
+--------------------------------------------------------------------------------
+/* 24. 반려동물 */
+CREATE TABLE Pet (
+   petCode NUMBER(7) NOT NULL, /* 반려동물 코드 */
+   memberCode NUMBER(7) NOT NULL,
+   petName NVARCHAR2(10), /* 이름 */
+   BreedCode NUMBER(7), /* 품종코드 */
+   sexCode NUMBER(1) DEFAULT 0 /* 성별 코드 */
+);
+/* sequence for petCode is Pet pk : */
+create sequence Pet
+    increment by 1
+    start with 1
+    maxValue 9999999 
+    cycle;
+/* 주석 */
+COMMENT ON TABLE Pet IS '반려동물';
+COMMENT ON COLUMN Pet.petCode IS '반려동물 코드';
+COMMENT ON COLUMN Pet.petName IS '이름';
+COMMENT ON COLUMN Pet.BreedCode IS '품종코드, +축종 코드';
+COMMENT ON COLUMN Pet.sexCode IS '성별 코드, +중성화 코드';
+/* index of Pet.petCode : ASC */
+CREATE UNIQUE INDEX PK_Pet ON Pet ( petCode ASC );
+/* contraint : PK_Pet */
+ALTER TABLE Pet ADD CONSTRAINT PK_Pet PRIMARY KEY ( petCode );
+--------------------------------------------------------------------------------
+/* 25. 회원정보 삭제유보 */
+CREATE TABLE TABLE (
+   memberCode NUMBER(7) NOT NULL, /* 회원코드 */
+   DelDate TIMESTAMP, /* 삭제신청일 */
+   COL2 TIMESTAMP /* 삭제예정일 */
 );
 
-COMMENT ON TABLE TABLE21 IS '동물보호소';
+COMMENT ON TABLE TABLE IS '회원정보 삭제유보';
+COMMENT ON COLUMN TABLE.memberCode IS '회원코드';
+COMMENT ON COLUMN TABLE.DelDate IS '삭제신청일';
+COMMENT ON COLUMN TABLE.COL2 IS '삭제예정일';
 
-COMMENT ON COLUMN TABLE21.COL IS '보호소 번호';
-
-COMMENT ON COLUMN TABLE21.COL2 IS '보호소 명';
-
-COMMENT ON COLUMN TABLE21.COL4 IS '보호소 전화번호 (숫자포맷으로 정형화 필요)';
-
-COMMENT ON COLUMN TABLE21.COL3 IS '관리기관명 (주소랑 데이터 비교해서 정형화 필요)';
-
-COMMENT ON COLUMN TABLE21.COL5 IS '필요한가?';
-
-COMMENT ON COLUMN TABLE21.COL6 IS '필요한가? (숫자포맷으로 정형화 필요)';
-
-COMMENT ON COLUMN TABLE21.roadNameCode IS '도로명 주소 코드';
-
-CREATE UNIQUE INDEX PK_TABLE21
-   ON TABLE21 (
-      COL ASC
+CREATE UNIQUE INDEX PK_TABLE
+   ON TABLE (
+      memberCode ASC
    );
 
-ALTER TABLE TABLE21
+ALTER TABLE TABLE
    ADD
-      CONSTRAINT PK_TABLE21
+      CONSTRAINT PK_TABLE
       PRIMARY KEY (
-         COL
+         memberCode
       );
+      
+--------------------------------------------------------------------------------
+/* 26. 강사 */
+CREATE TABLE Lecturer (
+   lecturerCode NUMBER(7) NOT NULL, /* 강사코드 */
+   lecturerHist NVARCHAR2(300), /* 강사연혁 */
+   memberCode NUMBER(7) /* 회원코드 */
+);
 
-/* 도로명주소 */
+COMMENT ON TABLE Lecturer IS '강사';
+COMMENT ON COLUMN Lecturer.lecturerCode IS '강사코드';
+COMMENT ON COLUMN Lecturer.lecturerHist IS '강사연혁';
+COMMENT ON COLUMN Lecturer.memberCode IS '회원코드';
+
+CREATE UNIQUE INDEX PK_Lecturer
+   ON Lecturer (
+      lecturerCode ASC
+   );
+
+ALTER TABLE Lecturer
+   ADD
+      CONSTRAINT PK_Lecturer
+      PRIMARY KEY (
+         lecturerCode
+      );
+--------------------------------------------------------------------------------
+/* 27. 양육 서비스  */
+CREATE TABLE ParentingService (
+   ParentingCode NUMBER NOT NULL, /* 양육 코드 */
+   GalleryNum NUMBER(3) NOT NULL, /* 글 번호 */
+   GalleryList NVARCHAR2(10) NOT NULL, /* 목록 */
+   GalleryLike NUMBER(4), /* 좋아요 수 */
+   GalleryHit NUMBER(4) NOT NULL, /* 조회수 */
+   GalleryDate DATE NOT NULL, /* 작성날짜 */
+   GalleryPic UriType, /* 사진 */
+   GalleryContent NVARCHAR2(100) NOT NULL, /* 내용 */
+   bGalleryTitle NVARCHAR2(20) NOT NULL, /* 제목 */
+   abAnimalCode NUMBER(20) /* 유기번호 코드 */
+);
+
+COMMENT ON TABLE ParentingService IS '양육 서비스 ';
+COMMENT ON COLUMN ParentingService.ParentingCode IS '양육 코드';
+COMMENT ON COLUMN ParentingService.GalleryNum IS '글 번호';
+COMMENT ON COLUMN ParentingService.GalleryList IS '목록';
+COMMENT ON COLUMN ParentingService.GalleryLike IS '좋아요 수';
+COMMENT ON COLUMN ParentingService.GalleryHit IS '조회수';
+COMMENT ON COLUMN ParentingService.GalleryDate IS '작성날짜';
+COMMENT ON COLUMN ParentingService.GalleryPic IS '사진';
+COMMENT ON COLUMN ParentingService.GalleryContent IS '내용';
+COMMENT ON COLUMN ParentingService.bGalleryTitle IS '제목';
+COMMENT ON COLUMN ParentingService.abAnimalCode IS '유기번호 코드';
+
+CREATE UNIQUE INDEX PK_ParentingService
+   ON ParentingService (
+      ParentingCode ASC
+   );
+
+ALTER TABLE ParentingService
+   ADD
+      CONSTRAINT PK_ParentingService
+      PRIMARY KEY (
+         ParentingCode
+      );
+--------------------------------------------------------------------------------
+/* 28. 도로명주소 */
 CREATE TABLE RoadAddress (
    roadNameCode NUMBER(7) NOT NULL, /* 도로명 주소 코드 */
    roadAddr String NOT NULL, /* 전체 도로명 주소 */
@@ -888,292 +752,47 @@ CREATE TABLE RoadAddress (
 );
 
 COMMENT ON TABLE RoadAddress IS '도로명주소';
-
 COMMENT ON COLUMN RoadAddress.roadNameCode IS '도로명 주소 코드';
-
 COMMENT ON COLUMN RoadAddress.roadAddr IS 'Y';
-
 COMMENT ON COLUMN RoadAddress.roadAddrPt1 IS 'Y';
-
 COMMENT ON COLUMN RoadAddress.roadAddrPt2 IS 'N';
-
 COMMENT ON COLUMN RoadAddress.jibunAddr IS 'Y';
-
 COMMENT ON COLUMN RoadAddress.engAddr IS 'Y';
-
 COMMENT ON COLUMN RoadAddress.zipNum IS 'Y';
-
 COMMENT ON COLUMN RoadAddress.admDivCode IS 'Y';
-
 COMMENT ON COLUMN RoadAddress.roadMgmtCode IS 'Y';
-
 COMMENT ON COLUMN RoadAddress.bldgMgmtNum IS 'Y';
-
 COMMENT ON COLUMN RoadAddress.detailBldgNumList IS 'N';
-
 COMMENT ON COLUMN RoadAddress.bldgNum IS 'N';
-
 COMMENT ON COLUMN RoadAddress.aptYesNo IS 'Y (1:공동주택, 0: 비공동주택)';
-
 COMMENT ON COLUMN RoadAddress.sidoName IS 'Y';
-
 COMMENT ON COLUMN RoadAddress.sigunguName IS 'N';
-
 COMMENT ON COLUMN RoadAddress.eupmyundongdName IS 'Y';
-
 COMMENT ON COLUMN RoadAddress.liName IS 'N';
-
 COMMENT ON COLUMN RoadAddress.roadName IS 'Y';
-
 COMMENT ON COLUMN RoadAddress.undergroundYesNo IS 'Y (0:지상, 1:지하)';
-
 COMMENT ON COLUMN RoadAddress.bldgMainNum IS 'Y';
-
 COMMENT ON COLUMN RoadAddress.buldSubNum IS 'Y (부번이 없는 경우 0)';
 
-CREATE UNIQUE INDEX PK_RoadAddress
-   ON RoadAddress (
-      roadNameCode ASC
-   );
+CREATE UNIQUE INDEX PK_RoadAddress ON RoadAddress ( roadNameCode ASC );
 
-ALTER TABLE RoadAddress
-   ADD
-      CONSTRAINT PK_RoadAddress
-      PRIMARY KEY (
-         roadNameCode
-      );
-
-/* 주소 */
+ALTER TABLE RoadAddress ADD CONSTRAINT PK_RoadAddress PRIMARY KEY ( roadNameCode );
+--------------------------------------------------------------------------------
+/* 29. 주소 <- 시군구 코드랑 도로명 주소를 연결해주는 테이블... */
 CREATE TABLE Address (
    roadNameCode NUMBER(7) NOT NULL, /* 도로명 주소 코드 */
    sigunguCode NUMBER(7) /* 시군구 코드 */
 );
 
 COMMENT ON TABLE Address IS '주소';
-
 COMMENT ON COLUMN Address.roadNameCode IS '도로명 주소 코드';
-
 COMMENT ON COLUMN Address.sigunguCode IS '시군구 코드';
 
-CREATE UNIQUE INDEX PK_Address
-   ON Address (
-      roadNameCode ASC
-   );
+CREATE UNIQUE INDEX PK_Address ON Address ( roadNameCode ASC );
 
-ALTER TABLE Address
-   ADD
-      CONSTRAINT PK_Address
-      PRIMARY KEY (
-         roadNameCode
-      );
+ALTER TABLE Address ADD CONSTRAINT PK_Address PRIMARY KEY ( roadNameCode );
 
-/* 강사 */
-CREATE TABLE Lecturer (
-   lecturerCode NUMBER(7) NOT NULL, /* 강사코드 */
-   lecturerHist NVARCHAR2(300), /* 강사연혁 */
-   memberCode NUMBER(7) /* 회원코드 */
-);
-
-COMMENT ON TABLE Lecturer IS '강사';
-
-COMMENT ON COLUMN Lecturer.lecturerCode IS '강사코드';
-
-COMMENT ON COLUMN Lecturer.lecturerHist IS '강사연혁';
-
-COMMENT ON COLUMN Lecturer.memberCode IS '회원코드';
-
-CREATE UNIQUE INDEX PK_Lecturer
-   ON Lecturer (
-      lecturerCode ASC
-   );
-
-ALTER TABLE Lecturer
-   ADD
-      CONSTRAINT PK_Lecturer
-      PRIMARY KEY (
-         lecturerCode
-      );
-
-/* 채팅룸인원 */
-CREATE TABLE ChatPersonCount (
-   personCntCode NVARCHAR2(10) NOT NULL, /* 인원 코드 */
-   memberCode NUMBER(7), /* 회원코드 */
-   chatRmCode NVARCHAR2(10) /* 채팅룸 코드 */
-);
-
-COMMENT ON TABLE ChatPersonCount IS '채팅룸인원';
-
-COMMENT ON COLUMN ChatPersonCount.personCntCode IS '인원 코드';
-
-COMMENT ON COLUMN ChatPersonCount.memberCode IS '회원코드';
-
-COMMENT ON COLUMN ChatPersonCount.chatRmCode IS '채팅룸 코드';
-
-CREATE UNIQUE INDEX PK_ChatPersonCount
-   ON ChatPersonCount (
-      personCntCode ASC
-   );
-
-ALTER TABLE ChatPersonCount
-   ADD
-      CONSTRAINT PK_ChatPersonCount
-      PRIMARY KEY (
-         personCntCode
-      );
-
-/* 반려동물 */
-CREATE TABLE Pet (
-   petCode NUMBER(7) NOT NULL, /* 반려동물 코드 */
-   petName NVARCHAR2(10), /* 이름 */
-   BreedCode NUMBER(7), /* 품종코드 */
-   sexCode NUMBER(1) DEFAULT 0, /* 성별 코드 */
-   neuterCode NUMBER(1) DEFAULT 0 /* 중성화 코드 */
-);
-
-COMMENT ON TABLE Pet IS '반려동물';
-
-COMMENT ON COLUMN Pet.petCode IS '반려동물 코드';
-
-COMMENT ON COLUMN Pet.petName IS '이름';
-
-COMMENT ON COLUMN Pet.BreedCode IS '품종코드';
-
-COMMENT ON COLUMN Pet.sexCode IS '성별 코드';
-
-COMMENT ON COLUMN Pet.neuterCode IS '중성화 코드';
-
-CREATE UNIQUE INDEX PK_Pet
-   ON Pet (
-      petCode ASC
-   );
-
-ALTER TABLE Pet
-   ADD
-      CONSTRAINT PK_Pet
-      PRIMARY KEY (
-         petCode
-      );
-
-/* 회원정보 삭제유보 */
-CREATE TABLE TABLE (
-   memberCode NUMBER(7) NOT NULL, /* 회원코드 */
-   DelDate TIMESTAMP, /* 삭제신청일 */
-   COL2 TIMESTAMP /* 삭제예정일 */
-);
-
-COMMENT ON TABLE TABLE IS '회원정보 삭제유보';
-
-COMMENT ON COLUMN TABLE.memberCode IS '회원코드';
-
-COMMENT ON COLUMN TABLE.DelDate IS '삭제신청일';
-
-COMMENT ON COLUMN TABLE.COL2 IS '삭제예정일';
-
-CREATE UNIQUE INDEX PK_TABLE
-   ON TABLE (
-      memberCode ASC
-   );
-
-ALTER TABLE TABLE
-   ADD
-      CONSTRAINT PK_TABLE
-      PRIMARY KEY (
-         memberCode
-      );
-
-/* 양육 서비스  */
-CREATE TABLE ParentingService (
-   ParentingCode NUMBER NOT NULL, /* 양육 코드 */
-   GalleryNum NUMBER(3) NOT NULL, /* 글 번호 */
-   GalleryList NVARCHAR2(10) NOT NULL, /* 목록 */
-   GalleryLike NUMBER(4), /* 좋아요 수 */
-   GalleryHit NUMBER(4) NOT NULL, /* 조회수 */
-   GalleryDate DATE NOT NULL, /* 작성날짜 */
-   GalleryPic UriType, /* 사진 */
-   GalleryContent NVARCHAR2(100) NOT NULL, /* 내용 */
-   bGalleryTitle NVARCHAR2(20) NOT NULL, /* 제목 */
-   abAnimalCode NUMBER(20) /* 유기번호 코드 */
-);
-
-COMMENT ON TABLE ParentingService IS '양육 서비스 ';
-
-COMMENT ON COLUMN ParentingService.ParentingCode IS '양육 코드';
-
-COMMENT ON COLUMN ParentingService.GalleryNum IS '글 번호';
-
-COMMENT ON COLUMN ParentingService.GalleryList IS '목록';
-
-COMMENT ON COLUMN ParentingService.GalleryLike IS '좋아요 수';
-
-COMMENT ON COLUMN ParentingService.GalleryHit IS '조회수';
-
-COMMENT ON COLUMN ParentingService.GalleryDate IS '작성날짜';
-
-COMMENT ON COLUMN ParentingService.GalleryPic IS '사진';
-
-COMMENT ON COLUMN ParentingService.GalleryContent IS '내용';
-
-COMMENT ON COLUMN ParentingService.bGalleryTitle IS '제목';
-
-COMMENT ON COLUMN ParentingService.abAnimalCode IS '유기번호 코드';
-
-CREATE UNIQUE INDEX PK_ParentingService
-   ON ParentingService (
-      ParentingCode ASC
-   );
-
-ALTER TABLE ParentingService
-   ADD
-      CONSTRAINT PK_ParentingService
-      PRIMARY KEY (
-         ParentingCode
-      );
-
-/* 양육 서비스 결재 */
-CREATE TABLE TABLE3 (
-);
-
-COMMENT ON TABLE TABLE3 IS '양육 서비스 결재';
-
-/* 마이페이지 */
-CREATE TABLE TABLE2 (
-   memberCode NUMBER(7) NOT NULL, /* 회원코드 */
-   animalReservationCode NUMBER(7), /* 예약 코드 */
-   ParentingCode NUMBER, /* 양육 코드 */
-   boardCode NUMBER(7), /* 게시판 코드 */
-   목격 코드 NUMBER(7), /* 목격 & 실종 코드 */
-   personCntCode NVARCHAR2(10), /* 인원 코드 */
-   seminarCode NUMBER(7) /* 세미나 코드 */
-);
-
-COMMENT ON TABLE TABLE2 IS '마이페이지';
-
-COMMENT ON COLUMN TABLE2.memberCode IS '회원코드';
-
-COMMENT ON COLUMN TABLE2.animalReservationCode IS '예약 코드';
-
-COMMENT ON COLUMN TABLE2.ParentingCode IS '양육 코드';
-
-COMMENT ON COLUMN TABLE2.boardCode IS '게시판 코드';
-
-COMMENT ON COLUMN TABLE2.목격 코드 IS '목격 & 실종 코드';
-
-COMMENT ON COLUMN TABLE2.personCntCode IS '인원 코드';
-
-COMMENT ON COLUMN TABLE2.seminarCode IS '세미나 코드';
-
-CREATE UNIQUE INDEX PK_TABLE2
-   ON TABLE2 (
-      memberCode ASC
-   );
-
-ALTER TABLE TABLE2
-   ADD
-      CONSTRAINT PK_TABLE2
-      PRIMARY KEY (
-         memberCode
-      );
-
+--------------------------------------------------------------------------------
 ALTER TABLE AbandonedAnimal
    ADD
       CONSTRAINT FK_품종_TO_AbandonedAnimal
@@ -1212,16 +831,6 @@ ALTER TABLE AbandonedAnimal
       )
       REFERENCES BreedCode (
          BreedCode
-      );
-
-ALTER TABLE AbandonedAnimal
-   ADD
-      CONSTRAINT FK_TABLE21_TO_AbandonedAnimal
-      FOREIGN KEY (
-         shelterCode
-      )
-      REFERENCES TABLE21 (
-         COL
       );
 
 ALTER TABLE AbandonedAnimal
@@ -1424,16 +1033,6 @@ ALTER TABLE Board
          memberCode
       );
 
-ALTER TABLE TABLE6
-   ADD
-      CONSTRAINT FK_Board_TO_TABLE6
-      FOREIGN KEY (
-         boardCode
-      )
-      REFERENCES Board (
-         boardCode
-      );
-
 ALTER TABLE Reply
    ADD
       CONSTRAINT FK_Reply_TO_Reply
@@ -1458,115 +1057,15 @@ ALTER TABLE ChatMessage
    ADD
       CONSTRAINT FK_ChatRoom_TO_ChatMessage
       FOREIGN KEY (
-         chatRmCode
+         ChatRoomCode
       )
       REFERENCES ChatRoom (
-         chatRmCode
+         ChatRoomCode
       );
 
 ALTER TABLE ChatMessage
    ADD
       CONSTRAINT FK_MemberInfo_TO_ChatMessage
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE TABLE10
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_TABLE10
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE TABLE11
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_TABLE11
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE TABLE12
-   ADD
-      CONSTRAINT FK_Reply_TO_TABLE12
-      FOREIGN KEY (
-         replyCode
-      )
-      REFERENCES Reply (
-         replyCode
-      );
-
-ALTER TABLE TABLE13
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_TABLE13
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE TABLE14
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_TABLE14
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE TABLE15
-   ADD
-      CONSTRAINT FK_AbandonedAnimalReservation_TO_TABLE15
-      FOREIGN KEY (
-         animalReservationCode
-      )
-      REFERENCES AbandonedAnimalReservation (
-         animalReservationCode
-      );
-
-ALTER TABLE TABLE15
-   ADD
-      CONSTRAINT FK_Board_TO_TABLE15
-      FOREIGN KEY (
-         boardCode
-      )
-      REFERENCES Board (
-         boardCode
-      );
-
-ALTER TABLE TABLE15
-   ADD
-      CONSTRAINT FK_Shelter_TO_TABLE15
-      FOREIGN KEY (
-         shelterCode
-      )
-      REFERENCES Shelter (
-         shelterCode
-      );
-
-ALTER TABLE TABLE15
-   ADD
-      CONSTRAINT FK_Seminar_TO_TABLE15
-      FOREIGN KEY (
-         seminarCode
-      )
-      REFERENCES Seminar (
-         seminarCode
-      );
-
-ALTER TABLE TABLE16
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_TABLE16
       FOREIGN KEY (
          memberCode
       )
@@ -1592,16 +1091,6 @@ ALTER TABLE Sigungu
       )
       REFERENCES Sido (
          sidoCode
-      );
-
-ALTER TABLE TABLE21
-   ADD
-      CONSTRAINT FK_Address_TO_TABLE21
-      FOREIGN KEY (
-         roadNameCode
-      )
-      REFERENCES Address (
-         roadNameCode
       );
 
 ALTER TABLE Address
@@ -1634,9 +1123,9 @@ ALTER TABLE Lecturer
          memberCode
       );
 
-ALTER TABLE ChatPersonCount
+ALTER TABLE ChatRoomMember
    ADD
-      CONSTRAINT FK_MemberInfo_TO_ChatPersonCount
+      CONSTRAINT FK_MemberInfo_TO_ChatRoomMember
       FOREIGN KEY (
          memberCode
       )
@@ -1644,14 +1133,14 @@ ALTER TABLE ChatPersonCount
          memberCode
       );
 
-ALTER TABLE ChatPersonCount
+ALTER TABLE ChatRoomMember
    ADD
-      CONSTRAINT FK_ChatRoom_TO_ChatPersonCount
+      CONSTRAINT FK_ChatRoom_TO_ChatRoomMember
       FOREIGN KEY (
-         chatRmCode
+         ChatRoomCode
       )
       REFERENCES ChatRoom (
-         chatRmCode
+         ChatRoomCode
       );
 
 ALTER TABLE Pet
@@ -1703,60 +1192,3 @@ ALTER TABLE ParentingService
       REFERENCES AbandonedAnimal (
          abAnimalCode
       );
-
-ALTER TABLE TABLE2
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_TABLE2
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE TABLE2
-   ADD
-      CONSTRAINT FK_AbandonedAnimalReservation_TO_TABLE2
-      FOREIGN KEY (
-         animalReservationCode
-      )
-      REFERENCES AbandonedAnimalReservation (
-         animalReservationCode
-      );
-
-ALTER TABLE TABLE2
-   ADD
-      CONSTRAINT FK_ParentingService_TO_TABLE2
-      FOREIGN KEY (
-         ParentingCode
-      )
-      REFERENCES ParentingService (
-         ParentingCode
-      );
-
-ALTER TABLE TABLE2
-   ADD
-      CONSTRAINT FK_Board_TO_TABLE2
-      FOREIGN KEY (
-         boardCode
-      )
-      REFERENCES Board (
-         boardCode
-      );
-
-ALTER TABLE TABLE2
-   ADD
-      CONSTRAINT FK_Witness_TO_TABLE2
-      FOREIGN KEY (
-         목격 코드
-      )
-      REFERENCES Witness (
-         목격 코드
-      );
-
-ALTER TABLE TABLE2
-    ADD CONSTRAINT FK_ChatPersonCount_TO_TABLE2
-        FOREIGN KEY ( personCntCode ) REFERENCES ChatPersonCount ( personCntCode );
-
-ALTER TABLE TABLE2 ADD CONSTRAINT FK_Seminar_TO_TABLE2
-    FOREIGN KEY ( seminarCode ) REFERENCES Seminar ( seminarCode );
