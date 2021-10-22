@@ -10,6 +10,10 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Insert title here</title>
+
+<link rel="canonical"
+	href="https://getbootstrap.com/docs/5.1/examples/features/">
+
 <!-- Google fonts-->
 <link
 	href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
@@ -26,111 +30,147 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 
+<!-- Custom styles for this template -->
+<link href="../css/features.css" rel="stylesheet">
+
 <!-- Core theme JS-->
 <script src="../js/main.js"></script>
 
-<style>
-</style>
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body id="page-top">
 	<!-- Navigation 1-->
 	<jsp:include page="../_module/navibar.jsp"></jsp:include>
 
-	<div class="list">
-		<img src="../assets/img/logo.png" class="container-image"
-			alt="image">
+	<div class="list" style="display: flex; align-items: center;">
+		<div style="margin: 30px;"></div>
 
-		<div class="pet-detail-page__info__pet">
-			<div class="pet-detail-page__info__pet__group-one">
-				<div class="pet-detail-page__info__pet__age">
-					<p class="blue-tag">축종</p>
-					<p>강아지</p>
+		<div style="margin: 50px;">
+			<img src="../assets/img/sampleimg.jpg" class="container-image"
+				alt="image" style="width: 300px;">
+		</div>
+
+		<div class="container px-4 py-5" id="icon-grid" style="margin: 50px;">
+			<h2 class="pb-2 border-bottom">상세 정보</h2>
+			<div
+				class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">축종</h4>
+						<p>강아지</p>
+					</div>
 				</div>
-				<div class="pet-detail-page__info__pet__gender">
-					<p class="blue-tag">품종</p>
-					<p>요크셔테리어</p>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">품종</h4>
+						<p>요크셔테리어</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">나이</h4>
+						<p>3살</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">성별</h4>
+						<p>여자</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">색</h4>
+						<p>흰색</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">체중</h4>
+						<p>2.5 kg</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">발견 날짜</h4>
+						<p>2021년 10월 22일</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">발견 장소</h4>
+						<p>강남구</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">보호센터명</h4>
+						<p>댕스닷컴</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">보호소 주소</h4>
+						<p>강남역</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">보호 상태</h4>
+						<p>매우 건강</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">특징</h4>
+						<p>애교 많고 눈이 큼</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">특이사항</h4>
+						<p>매우 좋음</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">공고 시작일</h4>
+						<p>2021년 10월 22일</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h4 class="fw-bold mb-0">공고 종료일</h4>
+						<p>2021년 12월 22일</p>
+					</div>
 				</div>
 			</div>
-			<div class="pet-detail-page__info__pet__group-one">
-				<div class="pet-detail-page__info__pet__age">
-					<p class="blue-tag">나이</p>
-					<p>3살</p>
+			<div class="d-flex justify-content-around" style="display: flex;">
+				<div>
+					<a class="btn btn-secondary" href="#"
+						target="_blank" style="width: 170px;">양육서비스 신청</a>
 				</div>
-				<div class="pet-detail-page__info__pet__gender">
-					<p class="blue-tag">성별</p>
-					<p>여자</p>
+				<div>
+					<a class="btn btn-secondary" href="#"
+						target="_blank" style="width: 170px;">입양 예약</a>
 				</div>
-				<div class="pet-detail-page__info__pet__color">
-					<p class="blue-tag">색</p>
-					<p>흰색</p>
-				</div>
-				<div class="pet-detail-page__info__pet__color">
-					<p class="blue-tag">체중</p>
-					<p>2.5 kg</p>
-				</div>
-			</div>
-			<div class="pet-detail-page__info__pet__group-one">
-				<div class="pet-detail-page__info__pet__age">
-					<p class="blue-tag">발견 날짜</p>
-					<p>2021년 10월 22일</p>
-				</div>
-				<div class="pet-detail-page__info__pet__gender">
-					<p class="blue-tag">발견 장소</p>
-					<p>강남구</p>
-				</div>
-			</div>
-			<div class="pet-detail-page__info__pet__group-two">
-				<div class="pet-detail-page__info__pet__size">
-					<p class="blue-tag">보호센터명</p>
-					<p>댕스닷컴</p>
-				</div>
-				<div class="pet-detail-page__info__pet__id">
-					<p class="blue-tag">보호소 주소</p>
-					<p>강남역</p>
-				</div>
-			</div>
-			<div class="pet-detail-page__info__pet__group-two">
-				<div class="pet-detail-page__info__pet__size">
-					<p class="blue-tag">보호 상태</p>
-					<p>매우 좋음</p>
-				</div>
-				<div class="pet-detail-page__info__pet__id">
-					<p class="blue-tag">특징</p>
-					<p>꼬리가 길다</p>
-				</div>
-			</div>
-			<div class="pet-detail-page__info__pet__group-two">
-				<div class="pet-detail-page__info__pet__size">
-					<p class="blue-tag">특이사항</p>
-					<p>매우 좋음</p>
-				</div>
-			</div>
-			<div class="pet-detail-page__info__pet__group-two">
-				<div class="pet-detail-page__info__pet__size">
-					<p class="blue-tag">공고 시작일</p>
-					<p>2021년 10월 22일</p>
-				</div>
-				<div class="pet-detail-page__info__pet__id">
-					<p class="blue-tag">공고 종료일</p>
-					<p>2021년 12월 22일</p>
-				</div>
-			</div>
-			<div class="pet-detail-page__info__pet__cta">
-				<a class="btn btn-secondary btn__cta__link peacock-blue"
-					href="mailto:adopt@azdawgz.org" target="_blank">양육서비스 신청</a>
 			</div>
 		</div>
+		<div style="margin: 30px;"></div>
 	</div>
-			<!-- Footer-->
-			<jsp:include page="../_module/copyright.jsp"></jsp:include>
 
-			<!-- Bootstrap core JS-->
-			<script
-				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 
-			<!-- SimpleLightbox plugin JS-->
-			<script
-				src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+	<!-- Footer-->
+	<jsp:include page="../_module/copyright.jsp"></jsp:include>
+
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- SimpleLightbox plugin JS-->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 </body>
 </html>
