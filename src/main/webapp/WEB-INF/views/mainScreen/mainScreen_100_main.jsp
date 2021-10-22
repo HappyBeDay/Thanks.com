@@ -27,9 +27,8 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
+
 <!-- Core theme JS-->
-<!-- <link href="/Thanks.com/resources/js/main.js" rel="stylesheet"/> -->
-<link href="<c:url value="/resources/js/main.js"/>" rel="stylesheet"/>
 <script src="../js/main.js"></script>
 
 </head>

@@ -12,3 +12,7 @@ JSTL 필요없음 :
 	3. /Thanks.com/resources/js/{fileName}
 
 예시는 css폴더에 readme.txt 참조...
+
+
+메뉴바 JS:
+	<script src="../js/main.js"></script>
