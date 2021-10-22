@@ -10,32 +10,15 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.84.0">
+
 <title>Thanks.com sign in</title>
 <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/signin/">
-<!-- Bootstrap core CSS -->
 
+<!-- Bootstrap core CSS -->
 <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet"/>
 <link href="<c:url value="/css/login_300.css"/>" rel="stylesheet"/>
 
-<style>
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-}
-
-@media ( min-width : 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
-}
-</style>
-
 <!-- Custom styles for this template -->
-
-
 </head>
 <body class="text-center">
 	<main class="form-signin">
@@ -46,13 +29,11 @@
 
 		<div class="form-floating">
 			<input type="email" class="form-control" id="floatingInput"
-				placeholder="name@example.com"> <label for="floatingInput">Enter
-				ID</label>
+				placeholder="name@example.com"> <label for="floatingInput">Enter ID</label>
 		</div>
 		<div class="form-floating">
 			<input type="password" class="form-control" id="floatingPassword"
-				placeholder="Password"> <label for="floatingPassword">Enter
-				Password</label>
+				placeholder="Password"> <label for="floatingPassword">Enter Password</label>
 		</div>
 
 		<div class="checkbox mb-3">
@@ -69,8 +50,6 @@
 
 		<p class="mt-5 mb-3 text-muted">&copy;2021-</p>
 	</form>
-
 	</main>
-
 </body>
 </html>

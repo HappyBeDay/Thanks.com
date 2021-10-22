@@ -9,10 +9,14 @@ body {
   padding-bottom: 40px;
   background-color: #f5f5f5;
 }
-.search-signin{
-        text-align: center;
-        margin-bottom: 10px;
-    }
+
+.form-bottom{
+	padding-bottom: 5px;
+}
+
+.form-top{
+	padding-top:5px;
+}
     
 .form-signin {
   width: 100%;
@@ -40,3 +44,20 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+/* 메인에 있던건데 어디서 사용되는지 모르겠음 */
+/*  <style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+</style> */
