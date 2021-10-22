@@ -16,6 +16,7 @@
 	<resources location="/resources/" mapping="/resources/**" />
 	
 	<!-- resources/underfolder -->
+	<resources location="/resources/_module/" mapping="/_module/**" />
 	<resources location="/resources/assets/" mapping="/assets/**" />
 	<resources location="/resources/css/" mapping="/css/**" />
 	<resources location="/resources/img/" mapping="/img/**" />
