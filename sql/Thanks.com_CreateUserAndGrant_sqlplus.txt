@@ -1,0 +1,11 @@
+<DB 계정 추가>
+1. cmd run!
+2. sqlPlus
+3. system/admin
+4. create user c##thanksdotcom identified by 1234; 
+5. grant connect, resource, dba to c##thanksdotcom;
+
+-----
+<확인>
+connect c##thanksdotcom / 1234
+show user
