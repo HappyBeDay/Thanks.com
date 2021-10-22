@@ -85,6 +85,18 @@ CREATE UNIQUE INDEX PK_MemberInfo ON MemberInfo ( memberCode ASC );
 ALTER TABLE MemberInfo ADD CONSTRAINT PK_MemberInfo PRIMARY KEY (memberCode);
 --------------------------------------------------------------------------------
 /* ③ 세미나 */
+CREATE TABLE Seminar (
+    seminarCode NUMBER(7) NOT NULL, 
+    lectName NVARCHAR2(20) NOT NULL, 
+    lectLoc NVARCHAR2(10), 
+    lectSeatCnt NUMBER NOT NULL, 
+    lecturerCode NUMBER(7),
+    lectDate DATE NOT NULL, 
+    lectStartTime TIMESTAMP,
+    lectEndTime TIMESTAMP,
+    lectPic UriType,
+    lectContent NVARCHAR2(100)
+);
 /* sequence for 'seminarCode' is Seminar pk :  */
 create sequence Seminar_seq
     increment by 1
@@ -121,7 +133,15 @@ CREATE TABLE Stats (
 /* 주석 */
 COMMENT ON TABLE Stats IS '통계';
 COMMENT ON COLUMN Stats.dayDate IS '일별 날짜';
-2ALTER TABLE Stats ADD CONSTRAINT PK_Stats PRIMARY KEY ( dayDate );
+COMMENT ON COLUMN Stats.joinShelterCnt IS '입소 개체수';
+COMMENT ON COLUMN Stats.returnHomeCnt IS '귀가 개체수';
+COMMENT ON COLUMN Stats.returnHomeCnt IS '입양된 개체수';
+COMMENT ON COLUMN Stats.euthDeathCnt IS '안락사 개체수';
+COMMENT ON COLUMN Stats.naturalDeathCnt IS '자연사 개체수';
+/* index of Stats.sidoCode : ASC */
+CREATE UNIQUE INDEX PK_Stats ON Stats ( dayDate ASC );
+/* contraint PK_Stats of Stats */
+ALTER TABLE Stats ADD CONSTRAINT PK_Stats PRIMARY KEY ( dayDate );
 --------------------------------------------------------------------------------
 /* ⑤ 시도 */
 CREATE TABLE Sido (
@@ -166,7 +186,7 @@ CREATE TABLE Shelter (
     addressCode NUMBER(7) /* 주소 코드 */
 );
 /* sequence for 'Seminar' is Seminar pk :  */
-create sequence Seminar_seq
+create sequence Shelter_seq
     increment by 1
     start with 1
     maxValue 9999999 
@@ -207,7 +227,7 @@ create table AnimalGroup (
     animalGroupCode NUMBER(7) not null, /* 외래키 to Shelter.shelterCode */
     shelterCode NUMBER(7) not null,
     animalTypeCode NUMBER(7) not null
-)
+);
 /* sequence for animalGroupCode is animalGroup pk : */
 create sequence AnimalGroup_seq
     increment by 1
@@ -221,7 +241,7 @@ COMMENT ON COLUMN AnimalGroup.animalTypeCode IS '축종 코드 외래키';
 /* index of animalGroup.animalGroupCode : ASC */
 CREATE UNIQUE INDEX PK_AnimalGroup ON AnimalGroup ( animalGroupCode ASC );
 /* contraint : PK_Sido */
-ALTER TABLE AnimalGroup ADD CONSTRAINT PK_AnimalGroup PRIMARY KEY ( PK_AnimalGroup );
+ALTER TABLE AnimalGroup ADD CONSTRAINT PK_AnimalGroup PRIMARY KEY ( animalGroupCode );
 --------------------------------------------------------------------------------
 /* ⑧ 축종 */
 CREATE TABLE AnimalType (
@@ -383,7 +403,7 @@ create table BoardType (
     boardTypeCode NUMBER(7) NOT NULL,
     boardTypeName NVARCHAR2(20) NOT NULL,
     boardTotalCnt NUMBER(7) NOT NULL
-)
+);
 /* sequence for boardTypeCode is BoardType pk : */
 create sequence BoardType_seq
     increment by 1
@@ -442,7 +462,7 @@ create table ReplyGroup (
     replyGroupCode NUMBER(7) not null,
     boardCode NUMBER(7) not null,
     replyCode NUMBER(7) not null
-)
+);
 /* sequence for replyGroupCode is replyGroup pk : */
 create sequence ReplyGroup_seq
     increment by 1
@@ -501,7 +521,7 @@ ALTER TABLE Reply ADD CONSTRAINT PK_Reply PRIMARY KEY ( replyCode );
 create table Authorize (
     authorizeCode NUMBER(1) default 1 not null,
     authorizeName NVARCHAR2(10) not null
-)
+);
 /* No need for sequence */
 comment on table Authorize is '권한 종류 테이블';
 comment on column Authorize.authorizeCode is '권한 코드, 클수록 강하다, guest = 0';
@@ -526,7 +546,7 @@ create sequence ChatMessage_seq
 /* 주석 */
 COMMENT ON TABLE ChatMessage IS '채팅메세지';
 COMMENT ON COLUMN ChatMessage.chatMessageCode IS '채팅메시지 코드';
-COMMENT ON COLUMN ChatMessage.ChatRoomCode IS '채팅룸 코드';
+COMMENT ON COLUMN ChatMessage.ChatRoomCode IS '채팅룸 코??';
 COMMENT ON COLUMN ChatMessage.content IS 
     'timestamp + member.name + message 개행문자로 구분지어 채팅내용이 문자열로 저장';
 /* index of {tableName.columnName} : ASC */

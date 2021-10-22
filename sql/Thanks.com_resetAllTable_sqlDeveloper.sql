@@ -22,12 +22,12 @@ drop index PK_Seminar;
 
 /* 6. 세미나 */
 drop table Shelter purge;
-drop sequence Seminar_seq;
+drop sequence Shelter_seq;
 drop index PK_Shelter;
 
 /* 7. 축종그룹 */
 drop table AnimalGroup purge;
-drop sequence Seminar_seq;
+drop sequence AnimalGroup_seq;
 drop index PK_AnimalGroup;
 
 /* 8. 축종 */
