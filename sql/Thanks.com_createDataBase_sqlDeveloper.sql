@@ -805,7 +805,7 @@ CREATE TABLE Address (
     roadNameCode NUMBER(7), /* 도로명 주소 코드 */
     sigunguCode NUMBER(7) /* 시군구 코드 */
 );
-/* sequence for {columnName} is {tableName} pk : */
+/* sequence for addressCode is Address pk : */
 create sequence Address_seq
     increment by 1
     start with 1
