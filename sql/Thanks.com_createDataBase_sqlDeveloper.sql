@@ -19,7 +19,7 @@ CREATE TABLE AbandonedAnimal (
     abAttention NUMBER, /* 관심동물 */
     abSex NUMBER(1) DEFAULT 0 NOT NULL, /* 성별 코드 */
     shelterCode NUMBER(7) NOT NULL, /* 보호소 코드 */
-    roadNameCode NUMBER(7) /* 도로명 주소 코드 */
+    addressCode NUMBER(7) /* 주소 코드 */
 );
 /* No need for sequence */
 /* comment on is '주석' */
@@ -43,7 +43,7 @@ COMMENT ON COLUMN AbandonedAnimal.abComment IS '있는 경우 없는 경우가 있음';
 COMMENT ON COLUMN AbandonedAnimal.abAttention IS '관심 동물 하트 모양 클릭';
 COMMENT ON COLUMN AbandonedAnimal.abSex IS '성별 코드';
 COMMENT ON COLUMN AbandonedAnimal.shelterCode IS '보호소 번호';
-COMMENT ON COLUMN AbandonedAnimal.roadNameCode IS '도로명 주소 코드';
+COMMENT ON COLUMN AbandonedAnimal.addressCode IS '주소 코드';
 /* index of AbandonedAnimal.abAnimalCode : ASC */
 CREATE UNIQUE INDEX PK_AbandonedAnimal ON AbandonedAnimal ( abAnimalCode ASC );
 /* contraint : pk_AbandonedAnimal */
@@ -60,7 +60,7 @@ CREATE TABLE MemberInfo (
     authorizeCode NUMBER(1) DEFAULT 0 NOT NULL,
     birth DATE, /* 생년월일 */
     petCode NUMBER(7), /* 반려동물 코드 */
-    roadNameCode NUMBER(7) /* 도로명 주소 코드 */
+    addressCode NUMBER(7) /* 주소 코드 */
 );
 /* sequence for 'memberCode' is MemberInfo pk :  */
 create sequence MemberInfo_seq
@@ -78,25 +78,13 @@ COMMENT ON COLUMN MemberInfo.tel IS '회원 전화번호';
 COMMENT ON COLUMN MemberInfo.email IS '회원 이메일';
 COMMENT ON COLUMN MemberInfo.birth IS '회원 생년월일';
 COMMENT ON COLUMN MemberInfo.petCode IS '반려동물 코드';
-COMMENT ON COLUMN MemberInfo.roadNameCode IS '도로명 주소 코드';
+COMMENT ON COLUMN MemberInfo.addressCode IS '주소 코드';
 /* index of MemberInfo.memberCode : ASC */
 CREATE UNIQUE INDEX PK_MemberInfo ON MemberInfo ( memberCode ASC );
 /* contraint : PK_MemberInfo */
 ALTER TABLE MemberInfo ADD CONSTRAINT PK_MemberInfo PRIMARY KEY (memberCode);
 --------------------------------------------------------------------------------
 /* ③ 세미나 */
-CREATE TABLE Seminar (
-    seminarCode NUMBER(7) NOT NULL, /* 세미나 코드 */
-    lectName NVARCHAR2(20) NOT NULL, /* 강의 이름 */
-    lectLoc NVARCHAR2(10), /* 장소 */
-    lectSeatCnt NUMBER NOT NULL, /* 좌석개수 */
-    lecturerCode NUMBER(7), /* 강사코드 */
-    lectDate DATE NOT NULL, /* 강의 날짜 */
-    lectStartTime TIMESTAMP, /* 강의 시작 시간 */
-    lectEndTime TIMESTAMP, /* 강의 종료 시간 */
-    lectPic UriType, /* 사진 */
-    lectContent NVARCHAR2(100) /* 설명 */
-);
 /* sequence for 'seminarCode' is Seminar pk :  */
 create sequence Seminar_seq
     increment by 1
@@ -133,15 +121,7 @@ CREATE TABLE Stats (
 /* 주석 */
 COMMENT ON TABLE Stats IS '통계';
 COMMENT ON COLUMN Stats.dayDate IS '일별 날짜';
-COMMENT ON COLUMN Stats.joinShelterCnt IS '입소 개체수';
-COMMENT ON COLUMN Stats.returnHomeCnt IS '귀가 개체수';
-COMMENT ON COLUMN Stats.adoptedCnt IS '입양된 개체수';
-COMMENT ON COLUMN Stats.euthDeathCnt IS '안락사 개체수';
-COMMENT ON COLUMN Stats.naturalDeathCnt IS '자연사 개체수';
-/* index of Stats.dayDate : ASC */
-CREATE UNIQUE INDEX PK_Status ON Stats ( dayDate ASC );
-/* contraint : PK_Statistics */
-ALTER TABLE Stats ADD CONSTRAINT PK_Stats PRIMARY KEY ( dayDate );
+2ALTER TABLE Stats ADD CONSTRAINT PK_Stats PRIMARY KEY ( dayDate );
 --------------------------------------------------------------------------------
 /* ⑤ 시도 */
 CREATE TABLE Sido (
@@ -183,7 +163,7 @@ CREATE TABLE Shelter (
     vehicleCnt NUMBER(5), /* 구조운반용차량보유대수 */
     tel NUMBER(15) NOT NULL, /* 전화번호 */
     dataDate DATE NOT NULL, /* 데이터기준일자 */
-    roadNameCode NUMBER(7) /* 도로명 주소 코드 */
+    addressCode NUMBER(7) /* 주소 코드 */
 );
 /* sequence for 'Seminar' is Seminar pk :  */
 create sequence Seminar_seq
@@ -216,7 +196,7 @@ COMMENT ON COLUMN Shelter.foodStrgRmCnt IS '사료보관실수';
 COMMENT ON COLUMN Shelter.vehicleCnt IS '구조운반용차량보유대수';
 COMMENT ON COLUMN Shelter.tel IS '보호소 전화번호';
 COMMENT ON COLUMN Shelter.dataDate IS '데이터기준일자';
-COMMENT ON COLUMN Shelter.roadNameCode IS '도로명 주소 코드';
+COMMENT ON COLUMN Shelter.addressCode IS '주소 코드';
 /* index of Shelter.shelterCode : ASC */
 CREATE UNIQUE INDEX PK_Shelter ON Shelter ( shelterCode ASC );
 /* constraint : PK_Shelter of Shelter */
@@ -229,7 +209,7 @@ create table AnimalGroup (
     animalTypeCode NUMBER(7) not null
 )
 /* sequence for animalGroupCode is animalGroup pk : */
-create sequence Seminar_seq
+create sequence AnimalGroup_seq
     increment by 1
     start with 1
     maxValue 9999999 
@@ -274,9 +254,9 @@ CREATE UNIQUE INDEX PK_BreedCode ON BreedCode ( BreedCode ASC );
 /* contraint : PK_BreedCode */
 ALTER TABLE BreedCode ADD CONSTRAINT PK_BreedCode PRIMARY KEY ( BreedCode );
 --------------------------------------------------------------------------------
-/* ⑩ 목격 & 실종 */
+/* ⑩ 목격 - 실종 */
 CREATE TABLE Witness (
-    witnessCode NUMBER(7) NOT NULL, /* 목격 & 실종 코드 */
+    witnessCode NUMBER(7) NOT NULL, /* 목격 - 실종 코드 */
     sexCode NUMBER(1) DEFAULT 0 NOT NULL, /* 성별 코드 */
     animalTypeCode NVARCHAR2(10), /* 축종코드 */
     BreedCode NUMBER(7), /* 품종코드 */
@@ -288,7 +268,7 @@ CREATE TABLE Witness (
     witMisLoc NVARCHAR2(100), /* 발견/실종 장소 */
     witMisFeat NVARCHAR2(100), /* 특징 */
     witMisComment NVARCHAR2(100), /* 특징사항 */
-    roadNameCode NUMBER(7) /* 도로명 주소 코드 */
+    addressCode NUMBER(7) /* 주소 코드 */
 );  
 /* sequence for {columnName} is {tableName} pk : */
 create sequence Witness_seq
@@ -297,8 +277,8 @@ create sequence Witness_seq
     maxValue 9999999 
     cycle;
 /* 주석 */
-COMMENT ON TABLE Witness IS '목격 & 실종';
-COMMENT ON COLUMN Witness.witnessCode IS '목격 & 실종 코드';
+COMMENT ON TABLE Witness IS '목격 - 실종';
+COMMENT ON COLUMN Witness.witnessCode IS '목격 - 실종 코드';
 COMMENT ON COLUMN Witness.sexCode IS '성별 코드 0, 1, 2';
 COMMENT ON COLUMN Witness.animalTypeCode IS '축종코드';
 COMMENT ON COLUMN Witness.BreedCode IS '품종코드';
@@ -310,7 +290,7 @@ COMMENT ON COLUMN Witness.witMisDate IS '발견/실종 날짜';
 COMMENT ON COLUMN Witness.witMisLoc IS '발견/실종 장소';
 COMMENT ON COLUMN Witness.witMisFeat IS '특징';
 COMMENT ON COLUMN Witness.witMisComment IS '특징사항';
-COMMENT ON COLUMN Witness.roadNameCode IS '도로명 주소 코드';
+COMMENT ON COLUMN Witness.addressCode IS '주소 코드';
 /* index of Witness.witnessCode : ASC */
 CREATE UNIQUE INDEX PK_Witness ON Witness ( witnessCode ASC );
 /* contraint : PK_Witness */
@@ -401,7 +381,8 @@ ALTER TABLE SeminarReservation ADD
 /* ⑮ 게시판 (게시글 종류) */
 create table BoardType (
     boardTypeCode NUMBER(7) NOT NULL,
-    boardTypeName NVARCHAR2(20) NOT NULL
+    boardTypeName NVARCHAR2(20) NOT NULL,
+    boardTotalCnt NUMBER(7) NOT NULL
 )
 /* sequence for boardTypeCode is BoardType pk : */
 create sequence BoardType_seq
@@ -409,18 +390,19 @@ create sequence BoardType_seq
     start with 1
     maxValue 9999999 
     cycle;
-/* 주석 */
+/* 주석 */ 
 comment on table BoardType is '게시판, 게시글 종류';
 comment on column BoardType.boardTypeCode is '게시판 코드';
 comment on column BoardType.boardTypeCode is '게시판 이름';
+comment on column BoardType.boardTotalCnt is '게시글 총 개수';
 /* index of BoardType.boardTypeCode : ASC */
 CREATE UNIQUE INDEX PK_BoardType ON BoardType ( boardTypeCode ASC );
 /* contraint : PK_BoardType */
 ALTER TABLE BoardType ADD CONSTRAINT PK_BoardType PRIMARY KEY ( boardTypeCode );
 --------------------------------------------------------------------------------
-/* 16. 게시판 */
+/* 16. 게시글 */
 CREATE TABLE Board (
-    boardCode NUMBER(7) NOT NULL, /* 게시판 코드 */
+    boardCode NUMBER(7) NOT NULL, /* 게시글 코드 */
     memberCode NUMBER(7) NOT NULL, /* 회원코드 - 작성자 */
     boardTitle NVARCHAR2(20) NOT NULL, /* 제목 */
     boardContent NVARCHAR2(100) NOT NULL, /* 내용 */
@@ -428,7 +410,7 @@ CREATE TABLE Board (
     boardDate DATE NOT NULL, /* 작성날짜 */
     boardHit NUMBER(7) DEFAULT 0 NOT NULL, /* 조회수 */
     boardLike NUMBER(7) DEFAULT 0 NOT NULL, /* 좋아요 수 */
-    boardTypeCode NUMBER(7) NOT NULL, /* 게시판 코드 */
+    boardTypeCode NUMBER(7) NOT NULL, /* 게시글 코드 */
     boardNum NUMBER(7) NOT NULL, /* 글 번호 */
     replyGroupCode NUMBER(7) /* 댓글 코드 */
 );
@@ -439,8 +421,8 @@ create sequence Board_seq
     maxValue 9999999 
     cycle;
 /* 주석 */
-COMMENT ON TABLE Board IS '게시판';
-COMMENT ON COLUMN Board.boardCode IS '게시판 코드';
+COMMENT ON TABLE Board IS '게시글';
+COMMENT ON COLUMN Board.boardCode IS '게시글 코드';
 COMMENT ON COLUMN Board.memberCode IS '회원코드 - 작성자';
 COMMENT ON COLUMN Board.boardTitle IS '제목';
 COMMENT ON COLUMN Board.boardContent IS '내용';
@@ -462,7 +444,7 @@ create table ReplyGroup (
     replyCode NUMBER(7) not null
 )
 /* sequence for replyGroupCode is replyGroup pk : */
-create sequence ReplyGroup
+create sequence ReplyGroup_seq
     increment by 1
     start with 1
     maxValue 9999999 
@@ -583,7 +565,7 @@ CREATE TABLE ChatRoomMember (
     memberCode NUMBER(7) /* 회원코드 */
 );
 /* sequence for chatRoomMemberCode is ChatRoomMember pk : */
-create sequence ChatRoomMember
+create sequence ChatRoomMember_seq
     increment by 1
     start with 1
     maxValue 9999999 
@@ -623,7 +605,7 @@ CREATE TABLE Pet (
    sexCode NUMBER(1) DEFAULT 0 /* 성별 코드 */
 );
 /* sequence for petCode is Pet pk : */
-create sequence Pet
+create sequence Pet_seq
     increment by 1
     start with 1
     maxValue 9999999 
@@ -640,555 +622,182 @@ CREATE UNIQUE INDEX PK_Pet ON Pet ( petCode ASC );
 ALTER TABLE Pet ADD CONSTRAINT PK_Pet PRIMARY KEY ( petCode );
 --------------------------------------------------------------------------------
 /* 25. 회원정보 삭제유보 */
-CREATE TABLE TABLE (
+CREATE TABLE DelMemInfoRet (
    memberCode NUMBER(7) NOT NULL, /* 회원코드 */
-   DelDate TIMESTAMP, /* 삭제신청일 */
-   COL2 TIMESTAMP /* 삭제예정일 */
+   delRequestDate TIMESTAMP not null, /* 삭제신청일 */
+   delDate TIMESTAMP not null /* 삭제예정일 */
 );
-
-COMMENT ON TABLE TABLE IS '회원정보 삭제유보';
-COMMENT ON COLUMN TABLE.memberCode IS '회원코드';
-COMMENT ON COLUMN TABLE.DelDate IS '삭제신청일';
-COMMENT ON COLUMN TABLE.COL2 IS '삭제예정일';
-
-CREATE UNIQUE INDEX PK_TABLE
-   ON TABLE (
-      memberCode ASC
-   );
-
-ALTER TABLE TABLE
-   ADD
-      CONSTRAINT PK_TABLE
-      PRIMARY KEY (
-         memberCode
-      );
-      
+/* No need for sequence */
+COMMENT ON TABLE DelMemInfoRet IS '회원정보 삭제유보';
+COMMENT ON COLUMN DelMemInfoRet.memberCode IS '회원코드';
+COMMENT ON COLUMN DelMemInfoRet.DelDate IS '삭제신청일';
+COMMENT ON COLUMN DelMemInfoRet.delDate IS '삭제예정일';
+/* index of DelMemInfoRet.memberCode : ASC */
+CREATE UNIQUE INDEX PK_DelMemInfoRet ON DelMemInfoRet ( memberCode ASC );
+/* contraint : PK_DelMemInfoRet */
+ALTER TABLE DelMemInfoRet ADD CONSTRAINT PK_DelMemInfoRet PRIMARY KEY ( memberCode );
 --------------------------------------------------------------------------------
 /* 26. 강사 */
 CREATE TABLE Lecturer (
    lecturerCode NUMBER(7) NOT NULL, /* 강사코드 */
+   lecturerName NVARCHAR2(10) not null,
    lecturerHist NVARCHAR2(300), /* 강사연혁 */
    memberCode NUMBER(7) /* 회원코드 */
 );
-
+/* sequence for {columnName} is {tableName} pk : */
+create sequence Lecturer_seq
+    increment by 1
+    start with 1
+    maxValue 9999999 
+    cycle;
+/* 주석 */
 COMMENT ON TABLE Lecturer IS '강사';
 COMMENT ON COLUMN Lecturer.lecturerCode IS '강사코드';
 COMMENT ON COLUMN Lecturer.lecturerHist IS '강사연혁';
 COMMENT ON COLUMN Lecturer.memberCode IS '회원코드';
-
-CREATE UNIQUE INDEX PK_Lecturer
-   ON Lecturer (
-      lecturerCode ASC
-   );
-
-ALTER TABLE Lecturer
-   ADD
-      CONSTRAINT PK_Lecturer
-      PRIMARY KEY (
-         lecturerCode
-      );
+/* index of {tableName.columnName} : ASC */
+CREATE UNIQUE INDEX PK_Lecturer ON Lecturer ( lecturerCode ASC );
+/* contraint : pk_{tableName} */
+ALTER TABLE Lecturer ADD CONSTRAINT PK_Lecturer PRIMARY KEY ( lecturerCode );
 --------------------------------------------------------------------------------
-/* 27. 양육 서비스  */
+/* 27. 양육 서비스 */
 CREATE TABLE ParentingService (
-   ParentingCode NUMBER NOT NULL, /* 양육 코드 */
-   GalleryNum NUMBER(3) NOT NULL, /* 글 번호 */
-   GalleryList NVARCHAR2(10) NOT NULL, /* 목록 */
-   GalleryLike NUMBER(4), /* 좋아요 수 */
-   GalleryHit NUMBER(4) NOT NULL, /* 조회수 */
-   GalleryDate DATE NOT NULL, /* 작성날짜 */
-   GalleryPic UriType, /* 사진 */
-   GalleryContent NVARCHAR2(100) NOT NULL, /* 내용 */
-   bGalleryTitle NVARCHAR2(20) NOT NULL, /* 제목 */
-   abAnimalCode NUMBER(20) /* 유기번호 코드 */
+    ParentingServiceCode NUMBER(7) NOT NULL, /* 양육 코드 */
+    memberCode NUMBER(7) not null, /* 회원 코드 */
+    paydate date, /* 최근 결제일 */
+    GalleryCode NVARCHAR2(10) NOT NULL, /* 갤러리 코드 */
+    abAnimalCode NUMBER(20), /* 유기번호 코드 */
+    GalleryTotalCnt NUMBER(7) not null
 );
-
+/* sequence for ParentingServiceCode is ParentingService pk : */
+create sequence ParentingService_seq
+    increment by 1
+    start with 1
+    maxValue 9999999 
+    cycle;
+/* 주석 */
 COMMENT ON TABLE ParentingService IS '양육 서비스 ';
-COMMENT ON COLUMN ParentingService.ParentingCode IS '양육 코드';
-COMMENT ON COLUMN ParentingService.GalleryNum IS '글 번호';
-COMMENT ON COLUMN ParentingService.GalleryList IS '목록';
-COMMENT ON COLUMN ParentingService.GalleryLike IS '좋아요 수';
-COMMENT ON COLUMN ParentingService.GalleryHit IS '조회수';
-COMMENT ON COLUMN ParentingService.GalleryDate IS '작성날짜';
-COMMENT ON COLUMN ParentingService.GalleryPic IS '사진';
-COMMENT ON COLUMN ParentingService.GalleryContent IS '내용';
-COMMENT ON COLUMN ParentingService.bGalleryTitle IS '제목';
+COMMENT ON COLUMN ParentingService.ParentingServiceCode IS '양육 코드';
+COMMENT ON COLUMN ParentingService.memberCode IS '회원 코드';
+COMMENT ON COLUMN ParentingService.paydate IS '결제 일';
+COMMENT ON COLUMN ParentingService.GalleryCode IS '갤러리 코드';
 COMMENT ON COLUMN ParentingService.abAnimalCode IS '유기번호 코드';
-
-CREATE UNIQUE INDEX PK_ParentingService
-   ON ParentingService (
-      ParentingCode ASC
-   );
-
-ALTER TABLE ParentingService
-   ADD
-      CONSTRAINT PK_ParentingService
-      PRIMARY KEY (
-         ParentingCode
-      );
---------------------------------------------------------------------------------
-/* 28. 도로명주소 */
-CREATE TABLE RoadAddress (
-   roadNameCode NUMBER(7) NOT NULL, /* 도로명 주소 코드 */
-   roadAddr String NOT NULL, /* 전체 도로명 주소 */
-   roadAddrPt1 String, /* 도로명주소(참고항목 제외) */
-   roadAddrPt2 String, /* 도로명주소 참고항목 */
-   jibunAddr String, /* 지번 정보 */
-   engAddr String, /* 도로명주소(영문) */
-   zipNum NUMBER , /* 우편번호 */
-   admDivCode NUMBER, /* 행정구역코드 */
-   roadMgmtCode NUMBER, /* 도로명코드 */
-   bldgMgmtNum NUMBER, /* 건물관리번호 */
-   detailBldgNumList String, /* 상세건물명 */
-   bldgNum String, /* 건물명 */
-   aptYesNo String, /* 공동주택여부  */
-   sidoName String, /* 시도명 */
-   sigunguName String, /* 시군구명 */
-   eupmyundongdName String, /* 읍면동명 */
-   liName String, /* 법정리명 */
-   roadName String, /* 도로명 */
-   undergroundYesNo String, /* 지하여부 */
-   bldgMainNum NUMBER, /* 건물본번 */
-   buldSubNum NUMBER /* 건물부번 */
+COMMENT ON COLUMN ParentingService.GalleryTotalCnt IS '갤러리 총 갯수';
+/* index of ParentingService.ParentingServiceCode : ASC */
+CREATE UNIQUE INDEX PK_ParentingService ON ParentingService ( ParentingServiceCode ASC );
+/* contraint : PK_ParentingService */
+ALTER TABLE ParentingService ADD 
+    CONSTRAINT PK_ParentingService PRIMARY KEY ( ParentingServiceCode );
+--------------------------------------------------------------------------------      
+/* 28. Gallery */
+create table Gallery (
+    GalleryCode NUMBER(7) not null, 
+    ParentingServiceCode NUMBER(7) not null, /* 양육 서비스 코드 */
+    GalleryWriter NUMBER(7) not null, /* 작성자 (본인 혹은 관리자) */
+    GalleryTitle NVARCHAR2(20), /* 제목 (생략 가능) */
+    GalleryContent NVARCHAR2(100), /* 내용 */
+    GalleryPic UriType, /* 사진 */
+    GalleryDate DATE NOT NULL, /* 작성날짜 */
+    GalleryHit NUMBER(7) NOT NULL, /* 조회수 */
+    GalleryLike NUMBER(7) /* 좋아요 수 */
 );
-
-COMMENT ON TABLE RoadAddress IS '도로명주소';
+/* sequence for Gallery is GalleryCode pk : */
+create sequence Gallery_seq
+    increment by 1
+    start with 1
+    maxValue 9999999 
+    cycle;
+/* 주석 */
+COMMENT ON TABLE Gallery IS '양육의 갤러리 ';
+COMMENT ON COLUMN Gallery.GalleryCode IS '갤러리 코드';
+COMMENT ON COLUMN Gallery.ParentingServiceCode IS '양육 서비스 코드';
+COMMENT ON COLUMN Gallery.GalleryWriter IS '갤러리 작성자, 본인 혹은 관리자';
+COMMENT ON COLUMN Gallery.GalleryTitle IS '갤러리 제목';
+COMMENT ON COLUMN Gallery.GalleryContent IS '갤러리 내용';
+COMMENT ON COLUMN Gallery.GalleryPic IS '갤러리 사진';
+COMMENT ON COLUMN Gallery.GalleryDate IS '갤러리 작성 날짜';
+COMMENT ON COLUMN Gallery.GalleryHit IS '갤러리 조회수';
+COMMENT ON COLUMN Gallery.GalleryLike IS '갤러리 좋아요 수';
+/* index of Gallery.GalleryCode : ASC */
+CREATE UNIQUE INDEX PK_Gallery ON Gallery ( GalleryCode ASC );
+/* contraint : PK_ParentingService */
+ALTER TABLE Gallery ADD 
+    CONSTRAINT PK_Gallery PRIMARY KEY ( GalleryCode );
+--------------------------------------------------------------------------------
+/* 29. 도로명주소 */
+CREATE TABLE RoadAddress (
+   roadNameCode NUMBER(12) NOT NULL, /* 도로명 주소 코드 */
+   addressCode NUMBER(7) not null, /* 주소 코드 */
+   roadAddr VARCHAR2(80) NOT NULL, /* 전체 도로명 주소 */
+   roadAddrPt1 VARCHAR2(40), /* 도로명주소(참고항목 제외) */
+   roadAddrPt2 VARCHAR2(40), /* 도로명주소 참고항목 */
+   jibunAddr NUMBER(7), /* 지번 정보 */
+   engAddr VARCHAR2(40), /* 도로명주소(영문) */
+   zipNum NUMBER(7) , /* 우편번호 */
+   admDivCode NUMBER(10), /* 행정구역코드 */
+   roadMgmtCode NUMBER(7), /* 도로명코드 */
+   bldgMgmtNum VARCHAR2(40), /* 건물관리번호 (API PK) */
+   detailBldgNumList VARCHAR2(100), /* 상세건물명 */
+   bldgNum VARCHAR2(40), /* 건물명 */
+   aptYesNo VARCHAR2(5), /* 공동주택여부  */
+   sidoName VARCHAR2(40), /* 시도명 */
+   sigunguName VARCHAR2(40), /* 시군구명 */
+   eupmyundongdName VARCHAR2(40), /* 법정읍면동명 */
+   liName VARCHAR2(40), /* 법정리명 */
+   roadName VARCHAR2(40), /* 도로명 */
+   undergroundYesNo VARCHAR2(5), /* 지하여부 */
+   bldgMainNum NUMBER(7), /* 건물본번 */
+   buldSubNum NUMBER(7) /* 건물부번 */
+);
+/* No need for sequence */
+/* 주소 */
+COMMENT ON TABLE RoadAddress IS '도로명주소 (시군구 5 + 도로명번호 7)';
 COMMENT ON COLUMN RoadAddress.roadNameCode IS '도로명 주소 코드';
-COMMENT ON COLUMN RoadAddress.roadAddr IS 'Y';
-COMMENT ON COLUMN RoadAddress.roadAddrPt1 IS 'Y';
-COMMENT ON COLUMN RoadAddress.roadAddrPt2 IS 'N';
-COMMENT ON COLUMN RoadAddress.jibunAddr IS 'Y';
-COMMENT ON COLUMN RoadAddress.engAddr IS 'Y';
-COMMENT ON COLUMN RoadAddress.zipNum IS 'Y';
-COMMENT ON COLUMN RoadAddress.admDivCode IS 'Y';
-COMMENT ON COLUMN RoadAddress.roadMgmtCode IS 'Y';
-COMMENT ON COLUMN RoadAddress.bldgMgmtNum IS 'Y';
-COMMENT ON COLUMN RoadAddress.detailBldgNumList IS 'N';
-COMMENT ON COLUMN RoadAddress.bldgNum IS 'N';
-COMMENT ON COLUMN RoadAddress.aptYesNo IS 'Y (1:공동주택, 0: 비공동주택)';
-COMMENT ON COLUMN RoadAddress.sidoName IS 'Y';
-COMMENT ON COLUMN RoadAddress.sigunguName IS 'N';
-COMMENT ON COLUMN RoadAddress.eupmyundongdName IS 'Y';
-COMMENT ON COLUMN RoadAddress.liName IS 'N';
-COMMENT ON COLUMN RoadAddress.roadName IS 'Y';
-COMMENT ON COLUMN RoadAddress.undergroundYesNo IS 'Y (0:지상, 1:지하)';
-COMMENT ON COLUMN RoadAddress.bldgMainNum IS 'Y';
-COMMENT ON COLUMN RoadAddress.buldSubNum IS 'Y (부번이 없는 경우 0)';
-
+COMMENT ON COLUMN RoadAddress.addressCode IS '주소 코드';
+COMMENT ON COLUMN RoadAddress.roadAddr IS '전체 도로명 주소';
+COMMENT ON COLUMN RoadAddress.roadAddrPt1 IS '도로명주소(참고항목 제외)';
+COMMENT ON COLUMN RoadAddress.roadAddrPt2 IS '도로명주소 참고항목';
+COMMENT ON COLUMN RoadAddress.jibunAddr IS '지번 정보';
+COMMENT ON COLUMN RoadAddress.engAddr IS '도로명주소(영문)';
+COMMENT ON COLUMN RoadAddress.zipNum IS '우편번호';
+COMMENT ON COLUMN RoadAddress.admDivCode IS '행정구역코드';
+COMMENT ON COLUMN RoadAddress.roadMgmtCode IS '도로명코드';
+COMMENT ON COLUMN RoadAddress.bldgMgmtNum IS '건물관리번호';
+COMMENT ON COLUMN RoadAddress.detailBldgNumList IS '상세건물명';
+COMMENT ON COLUMN RoadAddress.bldgNum IS '건물명';
+COMMENT ON COLUMN RoadAddress.aptYesNo IS '공동주택여부 (1:공동주택, 0: 비공동주택)';
+COMMENT ON COLUMN RoadAddress.sidoName IS '시도명';
+COMMENT ON COLUMN RoadAddress.sigunguName IS '시군구명';
+COMMENT ON COLUMN RoadAddress.eupmyundongdName IS '법정읍면동명';
+COMMENT ON COLUMN RoadAddress.liName IS '법정리명';
+COMMENT ON COLUMN RoadAddress.roadName IS '도로명';
+COMMENT ON COLUMN RoadAddress.undergroundYesNo IS '지하여부 (0:지상, 1:지하)';
+COMMENT ON COLUMN RoadAddress.bldgMainNum IS '건물본번';
+COMMENT ON COLUMN RoadAddress.buldSubNum IS '건물부번 (부번이 없는 경우 0)';
+/* index of RoadAddress.roadNameCode : ASC */
 CREATE UNIQUE INDEX PK_RoadAddress ON RoadAddress ( roadNameCode ASC );
-
+/* contraint : PK_RoadAddress */
 ALTER TABLE RoadAddress ADD CONSTRAINT PK_RoadAddress PRIMARY KEY ( roadNameCode );
 --------------------------------------------------------------------------------
-/* 29. 주소 <- 시군구 코드랑 도로명 주소를 연결해주는 테이블... */
+/* 30. 주소 <- 시군구 코드랑 도로명 주소를 연결해주는 테이블... */
 CREATE TABLE Address (
-   roadNameCode NUMBER(7) NOT NULL, /* 도로명 주소 코드 */
-   sigunguCode NUMBER(7) /* 시군구 코드 */
+    addressCode NUMBER(7) NOT NULL,
+    roadNameCode NUMBER(7), /* 도로명 주소 코드 */
+    sigunguCode NUMBER(7) /* 시군구 코드 */
 );
-
-COMMENT ON TABLE Address IS '주소';
+/* sequence for {columnName} is {tableName} pk : */
+create sequence Address_seq
+    increment by 1
+    start with 1
+    maxValue 9999999 
+    cycle;
+/* 주석 */
+COMMENT ON TABLE Address IS '주소, 시군구 + 도로명';
+COMMENT ON COLUMN Address.addressCode IS '주소 코드';
 COMMENT ON COLUMN Address.roadNameCode IS '도로명 주소 코드';
 COMMENT ON COLUMN Address.sigunguCode IS '시군구 코드';
-
-CREATE UNIQUE INDEX PK_Address ON Address ( roadNameCode ASC );
-
-ALTER TABLE Address ADD CONSTRAINT PK_Address PRIMARY KEY ( roadNameCode );
-
+/* index of Address.roadNameCode : ASC */
+CREATE UNIQUE INDEX PK_Address ON Address ( addressCode ASC );
+/* contraint : PK_Address */
+ALTER TABLE Address ADD CONSTRAINT PK_Address PRIMARY KEY ( addressCode );
 --------------------------------------------------------------------------------
-ALTER TABLE AbandonedAnimal
-   ADD
-      CONSTRAINT FK_품종_TO_AbandonedAnimal
-      FOREIGN KEY (
-         BreedCode
-      )
-      REFERENCES 품종 (
-         품종코드
-      );
-
-ALTER TABLE AbandonedAnimal
-   ADD
-      CONSTRAINT FK_Shelter_TO_AbandonedAnimal
-      FOREIGN KEY (
-         shelterCode
-      )
-      REFERENCES Shelter (
-         shelterCode
-      );
-
-ALTER TABLE AbandonedAnimal
-   ADD
-      CONSTRAINT FK_Sex_TO_AbandonedAnimal
-      FOREIGN KEY (
-         abSex
-      )
-      REFERENCES Sex (
-         sexCode
-      );
-
-ALTER TABLE AbandonedAnimal
-   ADD
-      CONSTRAINT FK_BreedCode_TO_AbandonedAnimal
-      FOREIGN KEY (
-         BreedCode
-      )
-      REFERENCES BreedCode (
-         BreedCode
-      );
-
-ALTER TABLE AbandonedAnimal
-   ADD
-      CONSTRAINT FK_Address_TO_AbandonedAnimal
-      FOREIGN KEY (
-         roadNameCode
-      )
-      REFERENCES Address (
-         roadNameCode
-      );
-
-ALTER TABLE MemberInfo
-   ADD
-      CONSTRAINT FK_Pet_TO_MemberInfo
-      FOREIGN KEY (
-         petCode
-      )
-      REFERENCES Pet (
-         petCode
-      );
-
-ALTER TABLE MemberInfo
-   ADD
-      CONSTRAINT FK_Address_TO_MemberInfo
-      FOREIGN KEY (
-         roadNameCode
-      )
-      REFERENCES Address (
-         roadNameCode
-      );
-
-ALTER TABLE Seminar
-   ADD
-      CONSTRAINT FK_Lecturer_TO_Seminar
-      FOREIGN KEY (
-         lecturerCode
-      )
-      REFERENCES Lecturer (
-         lecturerCode
-      );
-
-ALTER TABLE Shelter
-   ADD
-      CONSTRAINT FK_Address_TO_Shelter
-      FOREIGN KEY (
-         roadNameCode
-      )
-      REFERENCES Address (
-         roadNameCode
-      );
-
-ALTER TABLE Shelter
-   ADD
-      CONSTRAINT FK_AnimalType_TO_Shelter
-      FOREIGN KEY (
-         animalTypeCode
-      )
-      REFERENCES AnimalType (
-         animalTypeCode
-      );
-
-ALTER TABLE 실종 
-   ADD
-      CONSTRAINT FK_AbandonedAnimal_TO_실종 
-      FOREIGN KEY (
-         abAnimalCode
-      )
-      REFERENCES AbandonedAnimal (
-         abAnimalCode
-      );
-
-ALTER TABLE 실종 
-   ADD
-      CONSTRAINT FK_Sigungu_TO_실종 
-      FOREIGN KEY (
-         sigunguCode
-      )
-      REFERENCES Sigungu (
-         sigunguCode
-      );
-
-ALTER TABLE Witness
-   ADD
-      CONSTRAINT FK_BreedCode_TO_Witness
-      FOREIGN KEY (
-         BreedCode
-      )
-      REFERENCES BreedCode (
-         BreedCode
-      );
-
-ALTER TABLE Witness
-   ADD
-      CONSTRAINT FK_AnimalType_TO_Witness
-      FOREIGN KEY (
-         animalTypeCode
-      )
-      REFERENCES AnimalType (
-         animalTypeCode
-      );
-
-ALTER TABLE Witness
-   ADD
-      CONSTRAINT FK_Sex_TO_Witness
-      FOREIGN KEY (
-         sexCode
-      )
-      REFERENCES Sex (
-         sexCode
-      );
-
-ALTER TABLE Witness
-   ADD
-      CONSTRAINT FK_Address_TO_Witness
-      FOREIGN KEY (
-         roadNameCode
-      )
-      REFERENCES Address (
-         roadNameCode
-      );
-
-ALTER TABLE Sex
-   ADD
-      CONSTRAINT FK_Neuter_TO_Sex
-      FOREIGN KEY (
-         neuterCode
-      )
-      REFERENCES Neuter (
-         neuterCode
-      );
-
-ALTER TABLE AbandonedAnimalReservation
-   ADD
-      CONSTRAINT FK_AbandonedAnimal_TO_AbandonedAnimalReservation
-      FOREIGN KEY (
-         abAnimalCode
-      )
-      REFERENCES AbandonedAnimal (
-         abAnimalCode
-      );
-
-ALTER TABLE AbandonedAnimalReservation
-   ADD
-      CONSTRAINT FK_Shelter_TO_AbandonedAnimalReservation
-      FOREIGN KEY (
-         shelterCode
-      )
-      REFERENCES Shelter (
-         shelterCode
-      );
-
-ALTER TABLE AbandonedAnimalReservation
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_AbandonedAnimalReservation
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE SeminarReservation
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_SeminarReservation
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE SeminarReservation
-   ADD
-      CONSTRAINT FK_Seminar_TO_SeminarReservation
-      FOREIGN KEY (
-         seminarCode
-      )
-      REFERENCES Seminar (
-         seminarCode
-      );
-
-ALTER TABLE Board
-   ADD
-      CONSTRAINT FK_Reply_TO_Board
-      FOREIGN KEY (
-         replyCode
-      )
-      REFERENCES Reply (
-         replyCode
-      );
-
-ALTER TABLE Board
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_Board
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE Reply
-   ADD
-      CONSTRAINT FK_Reply_TO_Reply
-      FOREIGN KEY (
-         replyCodeHigh
-      )
-      REFERENCES Reply (
-         replyCode
-      );
-
-ALTER TABLE Reply
-   ADD
-      CONSTRAINT FK_Reply_TO_Reply2
-      FOREIGN KEY (
-         replyCodeLow
-      )
-      REFERENCES Reply (
-         replyCode
-      );
-
-ALTER TABLE ChatMessage
-   ADD
-      CONSTRAINT FK_ChatRoom_TO_ChatMessage
-      FOREIGN KEY (
-         ChatRoomCode
-      )
-      REFERENCES ChatRoom (
-         ChatRoomCode
-      );
-
-ALTER TABLE ChatMessage
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_ChatMessage
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE BreedCode
-   ADD
-      CONSTRAINT FK_AnimalType_TO_BreedCode
-      FOREIGN KEY (
-         animalTypeCode
-      )
-      REFERENCES AnimalType (
-         animalTypeCode
-      );
-
-ALTER TABLE Sigungu
-   ADD
-      CONSTRAINT FK_Sido_TO_Sigungu
-      FOREIGN KEY (
-         sidoCode
-      )
-      REFERENCES Sido (
-         sidoCode
-      );
-
-ALTER TABLE Address
-   ADD
-      CONSTRAINT FK_Sigungu_TO_Address
-      FOREIGN KEY (
-         sigunguCode
-      )
-      REFERENCES Sigungu (
-         sigunguCode
-      );
-
-ALTER TABLE Address
-   ADD
-      CONSTRAINT FK_RoadAddress_TO_Address
-      FOREIGN KEY (
-         roadNameCode
-      )
-      REFERENCES RoadAddress (
-         roadNameCode
-      );
-
-ALTER TABLE Lecturer
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_Lecturer
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE ChatRoomMember
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_ChatRoomMember
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE ChatRoomMember
-   ADD
-      CONSTRAINT FK_ChatRoom_TO_ChatRoomMember
-      FOREIGN KEY (
-         ChatRoomCode
-      )
-      REFERENCES ChatRoom (
-         ChatRoomCode
-      );
-
-ALTER TABLE Pet
-   ADD
-      CONSTRAINT FK_Sex_TO_Pet
-      FOREIGN KEY (
-         sexCode
-      )
-      REFERENCES Sex (
-         sexCode
-      );
-
-ALTER TABLE Pet
-   ADD
-      CONSTRAINT FK_BreedCode_TO_Pet
-      FOREIGN KEY (
-         BreedCode
-      )
-      REFERENCES BreedCode (
-         BreedCode
-      );
-
-ALTER TABLE Pet
-   ADD
-      CONSTRAINT FK_Neuter_TO_Pet
-      FOREIGN KEY (
-         neuterCode
-      )
-      REFERENCES Neuter (
-         neuterCode
-      );
-
-ALTER TABLE TABLE
-   ADD
-      CONSTRAINT FK_MemberInfo_TO_TABLE
-      FOREIGN KEY (
-         memberCode
-      )
-      REFERENCES MemberInfo (
-         memberCode
-      );
-
-ALTER TABLE ParentingService
-   ADD
-      CONSTRAINT FK_AbandonedAnimal_TO_ParentingService
-      FOREIGN KEY (
-         abAnimalCode
-      )
-      REFERENCES AbandonedAnimal (
-         abAnimalCode
-      );
