@@ -11,16 +11,16 @@
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.84.0">
 
-<title>Thanks.com sign in</title>
 <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/signin/">
-
 <!-- Bootstrap core CSS -->
-<link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet" />
+<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" />
 <link href="<c:url value="/css/login_300.css"/>" rel="stylesheet" />
 
-<!-- Custom styles for this template -->
+<script src="../js/main.js"></script>
+<title>Thanks.com sign in</title>
 </head>
 <body class="text-center">
+	<jsp:include page="../_module/navibar.jsp"></jsp:include>
 	<div class="form-signin ">
 		<form>
 			<img class="mb-4" src="../assets/img/Thanks.com_logo.png" alt="" width="130" height="130">
