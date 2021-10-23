@@ -1,11 +1,259 @@
-/* ① 유기동물 : AbandonedAnimal */
+-- <1> 관계삭제
+-- 1. 유기동물 : AbandonedAnimal 
+ALTER TABLE AbandonedAnimal DROP CONSTRAINT FK_Breed_TO_AbandonedAnimal;
+ALTER TABLE AbandonedAnimal DROP CONSTRAINT FK_AnimalType_TO_AbandonedAnimal;
+ALTER TABLE AbandonedAnimal DROP CONSTRAINT FK_Shelter_TO_AbandonedAnimal;
+ALTER TABLE AbandonedAnimal DROP CONSTRAINT FK_Sex_TO_AbandonedAnimal;
+ALTER TABLE AbandonedAnimal DROP CONSTRAINT FK_Address_TO_AbandonedAnimal;
+
+-- 2. 회원 : MemberInfo
+ALTER TABLE MemberInfo DROP CONSTRAINT FK_Authorize_TO_MemberInfo;
+ALTER TABLE MemberInfo DROP CONSTRAINT FK_Pet_TO_MemberInfo;
+ALTER TABLE MemberInfo DROP CONSTRAINT FK_Address_TO_MemberInfo;
+
+-- 3. 세미나 : Seminar
+ALTER TABLE Seminar DROP CONSTRAINT FK_Lecturer_TO_Seminar;
+
+-- 4. 통계 : Stats
+
+-- 5. 시도 : Sido
+
+-- 6. 보호소 : Shelter
+ALTER TABLE Shelter DROP CONSTRAINT FK_Address_TO_Shelter;
+
+-- 7. 축종그룹 : AnimalGroup
+ALTER TABLE AnimalGroup DROP CONSTRAINT FK_Shelter_TO_AnimalGroup;
+ALTER TABLE AnimalGroup DROP CONSTRAINT FK_AnimalType_TO_AnimalGroup;
+
+-- 8. 축종 : AnimailType
+
+-- 9. 품종 : Breed
+ALTER TABLE Breed DROP CONSTRAINT FK_AnimalType_TO_BreedCode;
+
+-- 10. 목격-실종 : Witness
+ALTER TABLE Witness DROP CONSTRAINT FK_Sex_TO_Witness;
+ALTER TABLE Witness DROP CONSTRAINT FK_AnimalType_TO_Witness;
+ALTER TABLE Witness DROP CONSTRAINT FK_Breed_TO_Witness;
+ALTER TABLE Witness DROP CONSTRAINT FK_Address_TO_Witness;
+
+-- 11. 성별 : Sex
+ALTER TABLE Sex DROP CONSTRAINT FK_Neuter_TO_Sex;
+
+-- 12. 중성화 : Neuter
+
+-- 13. 유기 동물 예약 : AbandonedAnimalReservation
+ALTER TABLE AbandonedAnimalReservation DROP CONSTRAINT FK_AbandonedAnimal_TO_AbandonedAnimalReservation;
+ALTER TABLE AbandonedAnimalReservation DROP CONSTRAINT FK_Shelter_TO_AbandonedAnimalReservation;
+ALTER TABLE AbandonedAnimalReservation DROP CONSTRAINT FK_MemberInfo_TO_AbandonedAnimalReservation;
+
+-- 14. 세미나 예약 : SeminarReservation
+ALTER TABLE SeminarReservation DROP CONSTRAINT FK_MemberInfo_TO_SeminarReservation;
+ALTER TABLE SeminarReservation DROP CONSTRAINT FK_Seminar_TO_SeminarReservation;
+
+-- 15. 게시판 : BoardType
+
+-- 16. 게시글 : Board
+ALTER TABLE Board DROP CONSTRAINT FK_MemberInfo_TO_Board;
+ALTER TABLE Board DROP CONSTRAINT FK_BoardType_TO_Board;
+ALTER TABLE Board DROP CONSTRAINT FK_Reply_TO_Board;
+
+-- 17.댓글그룹 : ReplyGroup
+ALTER TABLE ReplyGroup DROP CONSTRAINT FK_Board_TO_ReplyGroup;
+ALTER TABLE ReplyGroup DROP CONSTRAINT FK_Reply_TO_ReplyGroup;
+
+-- 18. 댓글 : Reply
+
+-- 19. 권한 : Authorize
+
+-- 20. 채팅메세지 : ChatMessage
+ALTER TABLE ChatMessage DROP CONSTRAINT FK_ChatRoom_TO_ChatMessage;
+
+-- 21. 채팅룸 : ChatRoom
+ALTER TABLE ChatRoom DROP CONSTRAINT FK_ChatRoom_TO_ChatRoom;
+ALTER TABLE ChatRoom DROP CONSTRAINT FK_ChatMessage_TO_ChatRoom;
+
+-- 22. 채팅룸인원 : ChatRoomMember
+ALTER TABLE ChatRoomMember DROP CONSTRAINT FK_MemberInfo_TO_ChatRoomMember;
+ALTER TABLE ChatRoomMember DROP CONSTRAINT FK_ChatRoom_TO_ChatRoomMember;
+
+-- 23. 시군구 : Sigungu
+ALTER TABLE Sigungu DROP CONSTRAINT FK_Sido_TO_Sigungu;
+
+-- 24. 반려동물 : Pet
+ALTER TABLE Pet DROP CONSTRAINT FK_MemberInfo_TO_Pet;
+ALTER TABLE Pet DROP CONSTRAINT FK_Sex_TO_Pet;
+ALTER TABLE Pet DROP CONSTRAINT FK_Breed_TO_Pet;
+
+-- 25. 회원정보 삭제유보 : DelMemberInfoRet
+ALTER TABLE DelMemInfoRet DROP CONSTRAINT FK_MemberInfo_TO_DelMemInfoRet;
+
+-- 26. 강사 : Lecturer
+ALTER TABLE Lecturer DROP CONSTRAINT FK_MemberInfo_TO_Lecturer;
+
+-- 27. 양육 : ParentingService
+ALTER TABLE ParentingService DROP CONSTRAINT FK_MemberInfo_TO_ParentingService;
+ALTER TABLE ParentingService DROP CONSTRAINT FK_Gallery_TO_ParentingService;
+ALTER TABLE ParentingService DROP CONSTRAINT FK_AbandonedAnimal_TO_ParentingService;
+
+-- 28. 갤러리 : Gallery
+ALTER TABLE Gallery DROP CONSTRAINT FK_ParentingService_TO_Gallery;
+
+-- 29. 도로명주소 : RoadAddress
+
+-- 30. 주소 : Address
+ALTER TABLE Address DROP CONSTRAINT FK_Sigungu_TO_Address;
+ALTER TABLE Address DROP CONSTRAINT FK_Sigungu_TO_Address;
+
+-- <2> 테이블 삭제
+/* 1. 유기동물 */
+drop table AbandonedAnimal purge;
+drop index PK_AbandonedAnimal;
+
+/* 2. 회원 */
+drop table MemberInfo purge;
+drop sequence MemberInfo_seq;
+drop index PK_MemberInfo;
+
+/* 3. 세미나 */
+drop table Seminar purge;
+drop sequence Seminar_seq;
+drop index PK_Seminar;
+
+/* 4. 통계 */
+drop table Stats purge;
+drop index PK_Status;
+
+/* 5. 시도 */
+drop table Sido purge;
+drop index PK_Seminar;
+
+/* 6. 세미나 */
+drop table Shelter purge;
+drop sequence Shelter_seq;
+drop index PK_Shelter;
+
+/* 7. 축종그룹 */
+drop table AnimalGroup purge;
+drop sequence AnimalGroup_seq;
+drop index PK_AnimalGroup;
+
+/* 8. 축종 */
+drop table AnimalType purge;
+drop index PK_AnimalType;
+
+/* 9. 품종 */
+drop table Breed purge;
+drop index PK_BreedCode;
+
+/* 10. 목격 & 실종 */
+drop table Witness purge;
+drop sequence Witness_seq;
+drop index PK_Witness;
+
+/* 11. 성별 */
+drop table Sex purge;
+drop index PK_Sex;
+
+/* 12. 중성화 */
+drop table Neuter purge;
+drop index PK_Neuter;
+
+/* 13. 유기동물 예약 */
+drop table AbandonedAnimalReservation purge;
+drop sequence AbandonedAnimalReservation_seq;
+drop index PK_AbandonedAnimalReservation;
+
+/* 14. 세미나 예약 */
+drop table SeminarReservation purge;
+drop sequence SeminarReservation_seq;
+drop index PK_SeminarReservation;
+
+/* 15. 게시판 (게시글 종류) */
+drop table BoardType purge;
+drop sequence BoardType_seq;
+drop index PK_BoardType;
+
+/* 16. 게시글 */
+drop table Board purge;
+drop sequence Board_seq;
+drop index PK_Board;
+
+/* 17. 세미나 */
+drop table ReplyGroup purge;
+drop sequence ReplyGroup_seq;
+drop index PK_ReplyGroup;
+
+/* 18. 댓글 */
+drop table Reply purge;
+drop sequence Reply_seq;
+drop index PK_Reply;
+
+/* 19. 권한 */
+drop table Authorize purge;
+drop index PK_Authorize;
+
+/* 20. 세미나 */
+drop table ChatMessage purge;
+drop sequence ChatMessage_seq;
+drop index PK_ChatMessage;
+
+/* 21. 채팅룸 */
+drop table ChatRoom purge;
+drop sequence ChatRoom_seq;
+drop index PK_ChatRoom;
+
+/* 22. 채팅룸인원 */
+drop table ChatRoomMember purge;
+drop sequence ChatRoomMember_seq;
+drop index PK_ChatRoomMember;
+
+/* 23. 시군구 */
+drop table Sigungu purge;
+drop index PK_Sigungu;
+
+/* 24. 반려동물 */
+drop table Pet purge;
+drop sequence Pet_seq;
+drop index PK_Pet;
+
+/* 25. 회원정보 삭제유보 */
+drop table DelMemInfoRet purge;
+drop index PK_DelMemInfoRet;
+
+/* 26. 강사 */
+drop table Lecturer purge;
+drop sequence Lecturer_seq;
+drop index PK_Lecturer;
+
+/* 27. 양육 서비스 */
+drop table ParentingService purge;
+drop sequence ParentingService_seq;
+drop index PK_ParentingService;
+
+/* 28. Gallery */
+drop table Gallery purge;
+drop sequence Gallery_seq;
+drop index PK_Gallery;
+
+/* 29. 도로명주소 */
+drop table RoadAddress purge;
+drop sequence RoadAddress_seq;
+drop index PK_RoadAddress;
+
+/* 30. 주소 */
+drop table Address purge;
+drop sequence Address_seq;
+drop index PK_Address;
+
+-- <3> 테이블 생성
+/* 1. 유기동물 : AbandonedAnimal */
 CREATE TABLE AbandonedAnimal (
     abAnimalCode NUMBER(20) NOT NULL, /* 유기번호 코드 */
     abThumbPic UriType NOT NULL, /* 썸네일 사진 */
     findDate DATE NOT NULL, /* 발견 날짜 */
     findLoc NVARCHAR2(100) NOT NULL, /* 발견 장소 */
-    BreedCode NUMBER(7) NOT NULL, /* 품종코드 */
-    abType NVARCHAR2(10) NOT NULL, /* 축종코드 */
+    breedCode NUMBER(7) NOT NULL, /* 품종코드 */
+    animalTypeCode NUMBER(7) NOT NULL, /* 축종코드 */
     abColor NVARCHAR2(10) NOT NULL, /* 색상 */
     abAge NUMBER(7,2) NOT NULL, /* 나이 */
     abWeight NUMBER(7,2) NOT NULL, /* 체중 */
@@ -17,7 +265,7 @@ CREATE TABLE AbandonedAnimal (
     abFeat NVARCHAR2(100), /* 특징 */
     abComment NVARCHAR2(100), /* 특이사항 */
     abAttention NUMBER, /* 관심동물 */
-    abSex NUMBER(1) DEFAULT 0 NOT NULL, /* 성별 코드 */
+    sexCode NUMBER(1) DEFAULT 0 NOT NULL, /* 성별 코드 */
     shelterCode NUMBER(7) NOT NULL, /* 보호소 코드 */
     addressCode NUMBER(7) /* 주소 코드 */
 );
@@ -29,7 +277,7 @@ COMMENT ON COLUMN AbandonedAnimal.abThumbPic IS '썸네일 사진';
 COMMENT ON COLUMN AbandonedAnimal.findDate IS '접수일';
 COMMENT ON COLUMN AbandonedAnimal.findLoc IS '발견 장소';
 COMMENT ON COLUMN AbandonedAnimal.BreedCode IS '품종코드';
-COMMENT ON COLUMN AbandonedAnimal.abType IS '축종코드';
+COMMENT ON COLUMN AbandonedAnimal.animalTypeCode IS '축종코드';
 COMMENT ON COLUMN AbandonedAnimal.abColor IS '색상';
 COMMENT ON COLUMN AbandonedAnimal.abAge IS '나이';
 COMMENT ON COLUMN AbandonedAnimal.abWeight IS '몸무게';
@@ -41,7 +289,7 @@ COMMENT ON COLUMN AbandonedAnimal.abState IS '보호중, 종료(안락사, 자�
 COMMENT ON COLUMN AbandonedAnimal.abFeat IS '특징';
 COMMENT ON COLUMN AbandonedAnimal.abComment IS '있는 경우 없는 경우가 있음';
 COMMENT ON COLUMN AbandonedAnimal.abAttention IS '관심 동물 하트 모양 클릭';
-COMMENT ON COLUMN AbandonedAnimal.abSex IS '성별 코드';
+COMMENT ON COLUMN AbandonedAnimal.SexCode IS '성별 코드';
 COMMENT ON COLUMN AbandonedAnimal.shelterCode IS '보호소 번호';
 COMMENT ON COLUMN AbandonedAnimal.addressCode IS '주소 코드';
 /* index of AbandonedAnimal.abAnimalCode : ASC */
@@ -49,7 +297,7 @@ CREATE UNIQUE INDEX PK_AbandonedAnimal ON AbandonedAnimal ( abAnimalCode ASC );
 /* contraint : pk_AbandonedAnimal */
 ALTER TABLE AbandonedAnimal ADD CONSTRAINT PK_AbandonedAnimal PRIMARY KEY ( abAnimalCode );
 --------------------------------------------------------------------------------
-/* ② 회원 */
+/* 2. 회원 */
 CREATE TABLE MemberInfo (
     memberCode NUMBER(7) NOT NULL, /* 회원코드 */
     id NVARCHAR2(20) NOT NULL, /* 아이디 */
@@ -84,7 +332,7 @@ CREATE UNIQUE INDEX PK_MemberInfo ON MemberInfo ( memberCode ASC );
 /* contraint : PK_MemberInfo */
 ALTER TABLE MemberInfo ADD CONSTRAINT PK_MemberInfo PRIMARY KEY (memberCode);
 --------------------------------------------------------------------------------
-/* ③ 세미나 */
+/* 3. 세미나 */
 CREATE TABLE Seminar (
     seminarCode NUMBER(7) NOT NULL, 
     lectName NVARCHAR2(20) NOT NULL, 
@@ -120,7 +368,7 @@ CREATE UNIQUE INDEX PK_Seminar ON Seminar ( seminarCode ASC );
 /* contraint : pk_Seminar */
 ALTER TABLE Seminar ADD CONSTRAINT PK_Seminar PRIMARY KEY ( seminarCode );
 --------------------------------------------------------------------------------
-/* ④ 통계 */ 
+/* 4. 통계 */ 
 CREATE TABLE Stats (
     dayDate TIMESTAMP NOT NULL, /* 일별 날짜 */
     joinShelterCnt NUMBER(5) NOT NULL, /* 입소 개체수 */
@@ -143,7 +391,7 @@ CREATE UNIQUE INDEX PK_Stats ON Stats ( dayDate ASC );
 /* contraint PK_Stats of Stats */
 ALTER TABLE Stats ADD CONSTRAINT PK_Stats PRIMARY KEY ( dayDate );
 --------------------------------------------------------------------------------
-/* ⑤ 시도 */
+/* 5. 시도 */
 CREATE TABLE Sido (
    sidoCode NUMBER(7) NOT NULL, /* 시도 코드 */
    sidoCodeName NVARCHAR2(50) NOT NULL /* 코드 명 */
@@ -158,11 +406,11 @@ CREATE UNIQUE INDEX PK_Sido ON Sido ( sidoCode ASC );
 /* contraint PK_Sido of Sido */
 ALTER TABLE Sido ADD CONSTRAINT PK_Sido PRIMARY KEY ( sidoCode );
 --------------------------------------------------------------------------------
-/* ⑥ 보호소 */
+/* 6. 보호소 */
 CREATE TABLE Shelter (
     shelterCode NUMBER(7) NOT NULL, /* 보호소 코드, 공공데이터 포털에 없다. */
     shelterName NVARCHAR2(50) NOT NULL, /* 동물보호센터명 */
-    MgmtAgencyName NVARCHAR2(20) NOT NULL, /* 관리기관명 */
+    mgmtAgencyName NVARCHAR2(20) NOT NULL, /* 관리기관명 */
     shelterType NVARCHAR2(10) NOT NULL, /* 동물보호센터유형 */
     shelterDesigDate DATE NOT NULL, /* 동물보호센터지정일자 */
     weekdayStartTime TIMESTAMP NOT NULL, /* 평일운영시작시각 */
@@ -195,7 +443,7 @@ create sequence Shelter_seq
 COMMENT ON TABLE Shelter IS '보호소';
 COMMENT ON COLUMN Shelter.shelterCode IS '보호소 코드 - 211020(306)';
 COMMENT ON COLUMN Shelter.shelterName IS '보호소 명';
-COMMENT ON COLUMN Shelter.MgmtAgencyName IS '관리기관명';
+COMMENT ON COLUMN Shelter.mgmtAgencyName IS '관리기관명';
 COMMENT ON COLUMN Shelter.shelterType IS '동물보호센터유형';
 COMMENT ON COLUMN Shelter.shelterDesigDate IS '동물보호센터지정일자';
 COMMENT ON COLUMN Shelter.weekdayStartTime IS 'HH:MM 평일운영시작시각';
@@ -222,7 +470,7 @@ CREATE UNIQUE INDEX PK_Shelter ON Shelter ( shelterCode ASC );
 /* constraint : PK_Shelter of Shelter */
 ALTER TABLE Shelter ADD CONSTRAINT PK_Shelter PRIMARY KEY ( shelterCode );
 --------------------------------------------------------------------------------
-/* ⑦ 축종그룹 */
+/* 7. 축종그룹 */
 create table AnimalGroup (
     animalGroupCode NUMBER(7) not null, /* 외래키 to Shelter.shelterCode */
     shelterCode NUMBER(7) not null,
@@ -243,9 +491,9 @@ CREATE UNIQUE INDEX PK_AnimalGroup ON AnimalGroup ( animalGroupCode ASC );
 /* contraint : PK_Sido */
 ALTER TABLE AnimalGroup ADD CONSTRAINT PK_AnimalGroup PRIMARY KEY ( animalGroupCode );
 --------------------------------------------------------------------------------
-/* ⑧ 축종 */
+/* 8. 축종 */
 CREATE TABLE AnimalType (
-   animalTypeCode NVARCHAR2(7) NOT NULL, /* 축종코드 */
+   animalTypeCode NUMBER(7) NOT NULL, /* 축종코드 */
    animalTypeName NVARCHAR2(20) NOT NULL /* 축종명 */
 );
 /* No need for sequence */
@@ -258,27 +506,27 @@ CREATE UNIQUE INDEX PK_AnimalType ON AnimalType ( animalTypeCode ASC );
 /* contraint : pk_{tableName} */
 ALTER TABLE AnimalType ADD CONSTRAINT PK_AnimalType PRIMARY KEY ( animalTypeCode );
 --------------------------------------------------------------------------------
-/* ⑨ 품종 */
-CREATE TABLE BreedCode (
+/* 9. 품종 */
+CREATE TABLE Breed (
    BreedCode NUMBER(7) NOT NULL, /* 품종코드 */
    breedName NVARCHAR2(20) NOT NULL, /* 품종명 */
-   animalTypeCode NVARCHAR2(10) NOT NULL /* 축종코드 */
+   animalTypeCode NUMBER(7) NOT NULL /* 축종코드 */
 );
 /* No need for sequence */
-COMMENT ON TABLE BreedCode IS '품종코드';
-COMMENT ON COLUMN BreedCode.BreedCode IS '품종코드';
-COMMENT ON COLUMN BreedCode.breedName IS '품종명';
-COMMENT ON COLUMN BreedCode.animalTypeCode IS '축종 외래키';
+COMMENT ON TABLE Breed IS '품종코드';
+COMMENT ON COLUMN Breed.BreedCode IS '품종코드';
+COMMENT ON COLUMN Breed.breedName IS '품종명';
+COMMENT ON COLUMN Breed.animalTypeCode IS '축종 외래키';
 /* index of BreedCode.BreedCode : ASC */
-CREATE UNIQUE INDEX PK_BreedCode ON BreedCode ( BreedCode ASC );
+CREATE UNIQUE INDEX PK_BreedCode ON Breed ( BreedCode ASC );
 /* contraint : PK_BreedCode */
-ALTER TABLE BreedCode ADD CONSTRAINT PK_BreedCode PRIMARY KEY ( BreedCode );
+ALTER TABLE Breed ADD CONSTRAINT PK_BreedCode PRIMARY KEY ( BreedCode );
 --------------------------------------------------------------------------------
-/* ⑩ 목격 - 실종 */
+/* 10. 목격 - 실종 */
 CREATE TABLE Witness (
     witnessCode NUMBER(7) NOT NULL, /* 목격 - 실종 코드 */
     sexCode NUMBER(1) DEFAULT 0 NOT NULL, /* 성별 코드 */
-    animalTypeCode NVARCHAR2(10), /* 축종코드 */
+    animalTypeCode NUMBER(7), /* 축종코드 */
     BreedCode NUMBER(7), /* 품종코드 */
     witMisPic UriType, /* 사진 */
     witMisColor NVARCHAR2(10), /* 색상 */
@@ -316,10 +564,10 @@ CREATE UNIQUE INDEX PK_Witness ON Witness ( witnessCode ASC );
 /* contraint : PK_Witness */
 ALTER TABLE Witness ADD CONSTRAINT PK_Witness PRIMARY KEY ( witnessCode );
 --------------------------------------------------------------------------------
-/* ⑪ 성별 */
+/* 11. 성별 */
 CREATE TABLE Sex (
     sexCode NUMBER(1) DEFAULT 0 NOT NULL, /* 성별 코드 */
-    sexName NVARCHAR2(10) DEFAULT 0 NOT NULL, /* 성별명 */
+    sexName NVARCHAR2(20) DEFAULT 0 NOT NULL, /* 성별명 */
     neuterCode NUMBER(1) DEFAULT 0 /* 중성화 코드 */
 );
 /* No need for sequence */
@@ -332,7 +580,7 @@ CREATE UNIQUE INDEX PK_Sex ON Sex ( sexCode ASC );
 /* contraint : PK_Sex */
 ALTER TABLE Sex ADD CONSTRAINT PK_Sex PRIMARY KEY ( sexCode );
 --------------------------------------------------------------------------------
-/* ⑫ 중성화 */
+/* 12. 중성화 */
 CREATE TABLE Neuter (
     neuterCode NUMBER(1) DEFAULT 0 NOT NULL, /* 중성화 코드 */
     neuterName NVARCHAR2(20) DEFAULT 'False' NOT NULL /* 코드 명 */
@@ -346,7 +594,7 @@ CREATE UNIQUE INDEX PK_Neuter ON Neuter ( neuterCode ASC );
 /* contraint : PK_Neuter */
 ALTER TABLE Neuter ADD CONSTRAINT PK_Neuter PRIMARY KEY ( neuterCode );
 --------------------------------------------------------------------------------
-/* ⑬ 유기동물 예약 */
+/* 13. 유기동물 예약 */
 CREATE TABLE AbandonedAnimalReservation (
    animalReservationCode NUMBER(7) NOT NULL, /* 예약 코드 */
    abAnimalCode NUMBER(20) NOT NULL, /* 유기번호 코드 */
@@ -374,7 +622,7 @@ CREATE UNIQUE INDEX PK_AbandonedAnimalReservation
 ALTER TABLE AbandonedAnimalReservation ADD 
     CONSTRAINT PK_AbandonedAnimalReservation PRIMARY KEY ( animalReservationCode );
 --------------------------------------------------------------------------------
-/* ⑭ 세미나 예약 */
+/* 14. 세미나 예약 */
 CREATE TABLE SeminarReservation (
    seminarReservationCode NUMBER(7) NOT NULL, /* 예약 코드 */
    seminarCode NUMBER(7) NOT NULL, /* 세미나 코드 */
@@ -398,7 +646,7 @@ CREATE UNIQUE INDEX PK_SeminarReservation
 ALTER TABLE SeminarReservation ADD
     CONSTRAINT PK_SeminarReservation PRIMARY KEY ( seminarReservationCode );
 --------------------------------------------------------------------------------
-/* ⑮ 게시판 (게시글 종류) */
+/* 15. 게시판 (게시글 종류) */
 create table BoardType (
     boardTypeCode NUMBER(7) NOT NULL,
     boardTypeName NVARCHAR2(20) NOT NULL,
@@ -430,7 +678,7 @@ CREATE TABLE Board (
     boardDate DATE NOT NULL, /* 작성날짜 */
     boardHit NUMBER(7) DEFAULT 0 NOT NULL, /* 조회수 */
     boardLike NUMBER(7) DEFAULT 0 NOT NULL, /* 좋아요 수 */
-    boardTypeCode NUMBER(7) NOT NULL, /* 게시글 코드 */
+    boardTypeCode NUMBER(7) NOT NULL, /* 게시판 코드 */
     boardNum NUMBER(7) NOT NULL, /* 글 번호 */
     replyGroupCode NUMBER(7) /* 댓글 코드 */
 );
@@ -558,6 +806,7 @@ ALTER TABLE ChatMessage ADD CONSTRAINT PK_ChatMessage PRIMARY KEY ( chatMessageC
 CREATE TABLE ChatRoom (
     ChatRoomCode NUMBER(7) NOT NULL, /* 채팅룸 코드 */
     chatRoomName NVARCHAR2(20) not null, /* 채팅룸 이름 */
+    chatMessageCode NUMBER(7) not null,
     chatRoomMemberCode NUMBER(7) not null, /* 채팅룸 인원 코드 */
     ChatRoomTotalCnt NUMBER(3) not null /* 채팅룸 총 인원 */
 );
@@ -685,7 +934,7 @@ CREATE TABLE ParentingService (
     ParentingServiceCode NUMBER(7) NOT NULL, /* 양육 코드 */
     memberCode NUMBER(7) not null, /* 회원 코드 */
     paydate date, /* 최근 결제일 */
-    GalleryCode NVARCHAR2(10) NOT NULL, /* 갤러리 코드 */
+    GalleryCode NUMBER(7) NOT NULL, /* 갤러리 코드 */
     abAnimalCode NUMBER(20), /* 유기번호 코드 */
     GalleryTotalCnt NUMBER(7) not null
 );
@@ -747,7 +996,6 @@ ALTER TABLE Gallery ADD
 /* 29. 도로명주소 */
 CREATE TABLE RoadAddress (
    roadNameCode NUMBER(12) NOT NULL, /* 도로명 주소 코드 */
-   addressCode NUMBER(7) not null, /* 주소 코드 */
    roadAddr VARCHAR2(80) NOT NULL, /* 전체 도로명 주소 */
    roadAddrPt1 VARCHAR2(40), /* 도로명주소(참고항목 제외) */
    roadAddrPt2 VARCHAR2(40), /* 도로명주소 참고항목 */
@@ -773,7 +1021,6 @@ CREATE TABLE RoadAddress (
 /* 주소 */
 COMMENT ON TABLE RoadAddress IS '도로명주소 (시군구 5 + 도로명번호 7)';
 COMMENT ON COLUMN RoadAddress.roadNameCode IS '도로명 주소 코드';
-COMMENT ON COLUMN RoadAddress.addressCode IS '주소 코드';
 COMMENT ON COLUMN RoadAddress.roadAddr IS '전체 도로명 주소';
 COMMENT ON COLUMN RoadAddress.roadAddrPt1 IS '도로명주소(참고항목 제외)';
 COMMENT ON COLUMN RoadAddress.roadAddrPt2 IS '도로명주소 참고항목';
@@ -820,4 +1067,268 @@ COMMENT ON COLUMN Address.sigunguCode IS '시군구 코드';
 CREATE UNIQUE INDEX PK_Address ON Address ( addressCode ASC );
 /* contraint : PK_Address */
 ALTER TABLE Address ADD CONSTRAINT PK_Address PRIMARY KEY ( addressCode );
+--------------------------------------------------------------------------------
+
+-- <4> 관계 설정
+-- 1. 유기동물 : AbandonedAnimal 
+/* 1-1 품종코드 */
+ALTER TABLE AbandonedAnimal 
+    ADD CONSTRAINT FK_Breed_TO_AbandonedAnimal
+    FOREIGN KEY ( BreedCode ) REFERENCES Breed ( BreedCode );
+    
+/* 1-2 축종코드 */
+ALTER TABLE AbandonedAnimal
+    ADD CONSTRAINT FK_AnimalType_TO_AbandonedAnimal
+    FOREIGN KEY ( animalTypeCode ) REFERENCES AnimalType ( animalTypeCode );
+        
+/* 1-4 보호소코드 */
+ALTER TABLE AbandonedAnimal
+    ADD CONSTRAINT FK_Shelter_TO_AbandonedAnimal
+    FOREIGN KEY ( shelterCode ) REFERENCES Shelter ( shelterCode );
+
+/* 1-3 성별코드 */
+ALTER TABLE AbandonedAnimal
+    ADD CONSTRAINT FK_Sex_TO_AbandonedAnimal
+    FOREIGN KEY ( sexCode ) REFERENCES Sex ( sexCode );
+
+/* 1-5 주소코드 */
+ALTER TABLE AbandonedAnimal
+    ADD CONSTRAINT FK_Address_TO_AbandonedAnimal 
+    FOREIGN KEY ( addressCode ) REFERENCES Address ( addressCode );
+--------------------------------------------------------------------------------
+-- 2. 회원 : MemberInfo
+/* 2-1 권한코드 */
+ALTER TABLE MemberInfo
+    ADD CONSTRAINT FK_Authorize_TO_MemberInfo
+    FOREIGN KEY ( authorizeCode ) REFERENCES Authorize ( authorizeCode );
+
+/* 2-2 반려동물코드 */
+ALTER TABLE MemberInfo
+    ADD CONSTRAINT FK_Pet_TO_MemberInfo
+    FOREIGN KEY ( petCode ) REFERENCES Pet ( petCode );
+
+/* 2-3 주소코드 */
+ALTER TABLE MemberInfo
+    ADD CONSTRAINT FK_Address_TO_MemberInfo
+    FOREIGN KEY ( addressCode ) REFERENCES Address ( addressCode );
+--------------------------------------------------------------------------------
+-- 3. 세미나 : Seminar
+/* 3-1 강사코드 */
+ALTER TABLE Seminar
+    ADD CONSTRAINT FK_Lecturer_TO_Seminar
+    FOREIGN KEY ( lecturerCode ) REFERENCES Lecturer ( lecturerCode );
+--------------------------------------------------------------------------------
+-- 4. 통계 : Stats
+--------------------------------------------------------------------------------
+-- 5. 시도 : Sido
+--------------------------------------------------------------------------------
+-- 6. 보호소 : Shelter
+/* 6-1 주소코드*/
+ALTER TABLE Shelter
+    ADD CONSTRAINT FK_Address_TO_Shelter
+    FOREIGN KEY ( addressCode ) REFERENCES Address ( addressCode );
+--------------------------------------------------------------------------------
+-- 7. 축종그룹 : AnimalGroup
+/* 7-1 보호소코드 */
+ALTER TABLE AnimalGroup
+    ADD CONSTRAINT FK_Shelter_TO_AnimalGroup
+    FOREIGN KEY ( shelterCode ) REFERENCES Shelter ( shelterCode );
+
+/* 7-2 축종코드 */
+ALTER TABLE AnimalGroup
+    ADD CONSTRAINT FK_AnimalType_TO_AnimalGroup
+    FOREIGN KEY ( animalTypeCode ) REFERENCES AnimalType ( animalTypeCode );
+--------------------------------------------------------------------------------
+-- 8. 축종 : AnimailType
+--------------------------------------------------------------------------------
+-- 9. 품종 : Breed
+ALTER TABLE Breed 
+    ADD CONSTRAINT FK_AnimalType_TO_BreedCode 
+    FOREIGN KEY ( animalTypeCode ) REFERENCES AnimalType ( animalTypeCode );
+--------------------------------------------------------------------------------
+-- 10. 목격-실종 : Witness
+/* 10-1 성별코드 */
+ALTER TABLE Witness
+    ADD CONSTRAINT FK_Sex_TO_Witness
+    FOREIGN KEY ( sexCode ) REFERENCES Sex ( sexCode );
+
+/* 10-2 축종코드 */
+ALTER TABLE Witness
+    ADD CONSTRAINT FK_AnimalType_TO_Witness 
+    FOREIGN KEY ( animalTypeCode ) REFERENCES AnimalType ( animalTypeCode );
+
+/* 10-3 품종코드 */
+ALTER TABLE Witness
+    ADD CONSTRAINT FK_Breed_TO_Witness
+    FOREIGN KEY ( BreedCode ) REFERENCES Breed ( BreedCode );
+
+/* 10-4 주소코드 */
+ALTER TABLE Witness
+    ADD CONSTRAINT FK_Address_TO_Witness 
+    FOREIGN KEY ( addressCode ) REFERENCES Address ( addressCode );
+--------------------------------------------------------------------------------
+-- 11. 성별 : Sex
+ALTER TABLE Sex
+    ADD CONSTRAINT FK_Neuter_TO_Sex
+    FOREIGN KEY ( neuterCode ) REFERENCES Neuter ( neuterCode );
+--------------------------------------------------------------------------------
+-- 12. 중성화 : Neuter
+--------------------------------------------------------------------------------
+-- 13. 유기 동물 예약 : AbandonedAnimalReservation
+/* 13-1 유기동물코드 */
+ALTER TABLE AbandonedAnimalReservation
+    ADD CONSTRAINT FK_AbandonedAnimal_TO_AbandonedAnimalReservation
+    FOREIGN KEY ( abAnimalCode ) REFERENCES AbandonedAnimal ( abAnimalCode );
+
+/* 13-2 보호소코드 */
+ALTER TABLE AbandonedAnimalReservation
+    ADD CONSTRAINT FK_Shelter_TO_AbandonedAnimalReservation
+    FOREIGN KEY ( shelterCode ) REFERENCES Shelter ( shelterCode );
+
+/* 13-3 회원코드 */
+ALTER TABLE AbandonedAnimalReservation
+    ADD CONSTRAINT FK_MemberInfo_TO_AbandonedAnimalReservation
+    FOREIGN KEY ( memberCode ) REFERENCES MemberInfo ( memberCode );
+
+--------------------------------------------------------------------------------
+-- 14. 세미나 예약 : SeminarReservation
+/* 14-2 회원코드 */
+ALTER TABLE SeminarReservation
+    ADD CONSTRAINT FK_MemberInfo_TO_SeminarReservation
+    FOREIGN KEY ( memberCode ) REFERENCES MemberInfo ( memberCode );
+
+/* 14-1 세마나코드 */
+ALTER TABLE SeminarReservation
+    ADD CONSTRAINT FK_Seminar_TO_SeminarReservation
+    FOREIGN KEY ( seminarCode ) REFERENCES Seminar ( seminarCode );
+    
+--------------------------------------------------------------------------------
+-- 15. 게시판 : BoardType
+--------------------------------------------------------------------------------
+-- 16. 게시글 : Board
+/* 16-1 회원코드 */   
+ALTER TABLE Board
+    ADD CONSTRAINT FK_MemberInfo_TO_Board
+    FOREIGN KEY ( memberCode ) REFERENCES MemberInfo ( memberCode );
+    
+/* 16-2 게시판코드 */
+ALTER TABLE Board
+    ADD CONSTRAINT FK_BoardType_TO_Board
+    FOREIGN KEY ( boardTypeCode ) REFERENCES BoardType ( boardTypeCode );
+    
+/* 16-3 댓글코드 */
+ALTER TABLE Board
+    ADD CONSTRAINT FK_Reply_TO_Board
+    FOREIGN KEY ( replyGroupCode ) REFERENCES ReplyGroup ( replyGroupCode );   
+--------------------------------------------------------------------------------
+-- 17.댓글그룹 : ReplyGroup
+/* 17-1 게시판코드 */
+ALTER TABLE ReplyGroup
+    ADD CONSTRAINT FK_Board_TO_ReplyGroup
+    FOREIGN KEY ( boardCode ) REFERENCES Board ( boardCode );
+/* 17-2 댓글코드 */
+ALTER TABLE ReplyGroup
+    ADD CONSTRAINT FK_Reply_TO_ReplyGroup
+    FOREIGN KEY ( replyCode ) REFERENCES Reply ( replyCode );
+--------------------------------------------------------------------------------
+-- 18. 댓글 : Reply
+--------------------------------------------------------------------------------
+-- 19. 권한 : Authorize
+--------------------------------------------------------------------------------
+-- 20. 채팅메세지 : ChatMessage
+/* 20-1 채팅룸코드 */
+ALTER TABLE ChatMessage
+    ADD CONSTRAINT FK_ChatRoom_TO_ChatMessage
+    FOREIGN KEY ( ChatRoomCode ) REFERENCES ChatRoom ( ChatRoomCode );
+--------------------------------------------------------------------------------
+-- 21. 채팅룸 : ChatRoom
+/* 21-1 채팅메시지코드 */
+ALTER TABLE ChatRoom
+    ADD CONSTRAINT FK_ChatRoom_TO_ChatRoom
+    FOREIGN KEY ( ChatRoomCode ) REFERENCES ChatRoom ( ChatRoomCode );
+    
+/* 21-2 채팅룸인원코드 */
+ALTER TABLE ChatRoom
+    ADD CONSTRAINT FK_ChatMessage_TO_ChatRoom
+    FOREIGN KEY ( chatMessageCode ) REFERENCES ChatMessage ( chatMessageCode );
+--------------------------------------------------------------------------------
+-- 22. 채팅룸인원 : ChatRoomMember
+/* 22-1 멤버코드 */
+ALTER TABLE ChatRoomMember
+    ADD CONSTRAINT FK_MemberInfo_TO_ChatRoomMember
+    FOREIGN KEY ( memberCode ) REFERENCES MemberInfo ( memberCode );
+
+/* 22-2 채팅룸코드 */
+ALTER TABLE ChatRoomMember
+    ADD CONSTRAINT FK_ChatRoom_TO_ChatRoomMember
+    FOREIGN KEY ( ChatRoomCode ) REFERENCES ChatRoom ( ChatRoomCode );
+--------------------------------------------------------------------------------
+-- 23. 시군구 : Sigungu
+/* 23-1 시도코드 */
+ALTER TABLE Sigungu
+    ADD CONSTRAINT FK_Sido_TO_Sigungu
+    FOREIGN KEY ( sidoCode ) REFERENCES Sido ( sidoCode );
+--------------------------------------------------------------------------------
+-- 24. 반려동물 : Pet
+/* 24-1 회원코드 */
+ALTER TABLE Pet
+    ADD CONSTRAINT FK_MemberInfo_TO_Pet 
+    FOREIGN KEY ( memberCode ) REFERENCES MemberInfo ( memberCode );
+    
+/* 24-2 성별코드 */
+ALTER TABLE Pet
+    ADD CONSTRAINT FK_Sex_TO_Pet
+    FOREIGN KEY ( sexCode ) REFERENCES Sex ( sexCode );
+
+/* 24-3 품종코드 */
+ALTER TABLE Pet
+    ADD CONSTRAINT FK_Breed_TO_Pet
+    FOREIGN KEY ( BreedCode ) REFERENCES Breed ( BreedCode );
+--------------------------------------------------------------------------------
+-- 25. 회원정보 삭제유보 : DelMemberInfoRet
+/* 25-1 */
+ALTER TABLE DelMemInfoRet
+    ADD CONSTRAINT FK_MemberInfo_TO_DelMemInfoRet
+    FOREIGN KEY ( memberCode ) REFERENCES MemberInfo ( memberCode );
+--------------------------------------------------------------------------------
+-- 26. 강사 : Lecturer
+/* 26-1 회원코드 */
+ALTER TABLE Lecturer
+    ADD CONSTRAINT FK_MemberInfo_TO_Lecturer
+    FOREIGN KEY ( memberCode ) REFERENCES MemberInfo ( memberCode );
+--------------------------------------------------------------------------------
+-- 27. 양육 : ParentingService
+/* 27-1 회원코드 */
+ALTER TABLE ParentingService
+    ADD CONSTRAINT FK_MemberInfo_TO_ParentingService
+    FOREIGN KEY ( memberCode ) REFERENCES MemberInfo ( memberCode );
+    
+/* 27-1 갤러리코드 */
+ALTER TABLE ParentingService
+    ADD CONSTRAINT FK_Gallery_TO_ParentingService
+    FOREIGN KEY ( GalleryCode ) REFERENCES Gallery ( GalleryCode );
+    
+/* 27-1 유기동물코드 */
+ALTER TABLE ParentingService
+    ADD CONSTRAINT FK_AbandonedAnimal_TO_ParentingService
+    FOREIGN KEY ( abAnimalCode ) REFERENCES AbandonedAnimal ( abAnimalCode );
+--------------------------------------------------------------------------------
+-- 28. 갤러리 : Gallery
+/* 28-1 양육서비스코드 */
+ALTER TABLE Gallery
+    ADD CONSTRAINT FK_ParentingService_TO_Gallery
+    FOREIGN KEY ( ParentingServiceCode ) REFERENCES ParentingService ( ParentingServiceCode );
+--------------------------------------------------------------------------------
+-- 29. 도로명주소 : RoadAddress
+--------------------------------------------------------------------------------
+-- 30. 주소 : Address
+/* 30-1 도로명주소코드 */
+ALTER TABLE Address
+    ADD CONSTRAINT FK_Sigungu_TO_Address
+    FOREIGN KEY ( sigunguCode ) REFERENCES Sigungu ( sigunguCode );
+
+/* 30-2 시군구코드 */
+ALTER TABLE Address
+    ADD CONSTRAINT FK_RoadAddress_TO_Address
+    FOREIGN KEY ( roadNameCode ) REFERENCES RoadAddress ( roadNameCode );
 --------------------------------------------------------------------------------

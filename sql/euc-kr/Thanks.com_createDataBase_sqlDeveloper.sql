@@ -1,11 +1,11 @@
-/* ① 유기동물 : AbandonedAnimal */
+/* 1. 유기동물 : AbandonedAnimal */
 CREATE TABLE AbandonedAnimal (
     abAnimalCode NUMBER(20) NOT NULL, /* 유기번호 코드 */
     abThumbPic UriType NOT NULL, /* 썸네일 사진 */
     findDate DATE NOT NULL, /* 발견 날짜 */
     findLoc NVARCHAR2(100) NOT NULL, /* 발견 장소 */
-    BreedCode NUMBER(7) NOT NULL, /* 품종코드 */
-    abType NVARCHAR2(10) NOT NULL, /* 축종코드 */
+    breedCode NUMBER(7) NOT NULL, /* 품종코드 */
+    animalTypeCode NUMBER(7) NOT NULL, /* 축종코드 */
     abColor NVARCHAR2(10) NOT NULL, /* 색상 */
     abAge NUMBER(7,2) NOT NULL, /* 나이 */
     abWeight NUMBER(7,2) NOT NULL, /* 체중 */
@@ -17,7 +17,7 @@ CREATE TABLE AbandonedAnimal (
     abFeat NVARCHAR2(100), /* 특징 */
     abComment NVARCHAR2(100), /* 특이사항 */
     abAttention NUMBER, /* 관심동물 */
-    abSex NUMBER(1) DEFAULT 0 NOT NULL, /* 성별 코드 */
+    sexCode NUMBER(1) DEFAULT 0 NOT NULL, /* 성별 코드 */
     shelterCode NUMBER(7) NOT NULL, /* 보호소 코드 */
     addressCode NUMBER(7) /* 주소 코드 */
 );
@@ -29,7 +29,7 @@ COMMENT ON COLUMN AbandonedAnimal.abThumbPic IS '썸네일 사진';
 COMMENT ON COLUMN AbandonedAnimal.findDate IS '접수일';
 COMMENT ON COLUMN AbandonedAnimal.findLoc IS '발견 장소';
 COMMENT ON COLUMN AbandonedAnimal.BreedCode IS '품종코드';
-COMMENT ON COLUMN AbandonedAnimal.abType IS '축종코드';
+COMMENT ON COLUMN AbandonedAnimal.animalTypeCode IS '축종코드';
 COMMENT ON COLUMN AbandonedAnimal.abColor IS '색상';
 COMMENT ON COLUMN AbandonedAnimal.abAge IS '나이';
 COMMENT ON COLUMN AbandonedAnimal.abWeight IS '몸무게';
@@ -41,7 +41,7 @@ COMMENT ON COLUMN AbandonedAnimal.abState IS '보호중, 종료(안락사, 자연사, 반환)
 COMMENT ON COLUMN AbandonedAnimal.abFeat IS '특징';
 COMMENT ON COLUMN AbandonedAnimal.abComment IS '있는 경우 없는 경우가 있음';
 COMMENT ON COLUMN AbandonedAnimal.abAttention IS '관심 동물 하트 모양 클릭';
-COMMENT ON COLUMN AbandonedAnimal.abSex IS '성별 코드';
+COMMENT ON COLUMN AbandonedAnimal.SexCode IS '성별 코드';
 COMMENT ON COLUMN AbandonedAnimal.shelterCode IS '보호소 번호';
 COMMENT ON COLUMN AbandonedAnimal.addressCode IS '주소 코드';
 /* index of AbandonedAnimal.abAnimalCode : ASC */
@@ -49,7 +49,7 @@ CREATE UNIQUE INDEX PK_AbandonedAnimal ON AbandonedAnimal ( abAnimalCode ASC );
 /* contraint : pk_AbandonedAnimal */
 ALTER TABLE AbandonedAnimal ADD CONSTRAINT PK_AbandonedAnimal PRIMARY KEY ( abAnimalCode );
 --------------------------------------------------------------------------------
-/* ② 회원 */
+/* 2. 회원 */
 CREATE TABLE MemberInfo (
     memberCode NUMBER(7) NOT NULL, /* 회원코드 */
     id NVARCHAR2(20) NOT NULL, /* 아이디 */
@@ -84,7 +84,7 @@ CREATE UNIQUE INDEX PK_MemberInfo ON MemberInfo ( memberCode ASC );
 /* contraint : PK_MemberInfo */
 ALTER TABLE MemberInfo ADD CONSTRAINT PK_MemberInfo PRIMARY KEY (memberCode);
 --------------------------------------------------------------------------------
-/* ③ 세미나 */
+/* 3. 세미나 */
 CREATE TABLE Seminar (
     seminarCode NUMBER(7) NOT NULL, 
     lectName NVARCHAR2(20) NOT NULL, 
@@ -120,7 +120,7 @@ CREATE UNIQUE INDEX PK_Seminar ON Seminar ( seminarCode ASC );
 /* contraint : pk_Seminar */
 ALTER TABLE Seminar ADD CONSTRAINT PK_Seminar PRIMARY KEY ( seminarCode );
 --------------------------------------------------------------------------------
-/* ④ 통계 */ 
+/* 4. 통계 */ 
 CREATE TABLE Stats (
     dayDate TIMESTAMP NOT NULL, /* 일별 날짜 */
     joinShelterCnt NUMBER(5) NOT NULL, /* 입소 개체수 */
@@ -143,7 +143,7 @@ CREATE UNIQUE INDEX PK_Stats ON Stats ( dayDate ASC );
 /* contraint PK_Stats of Stats */
 ALTER TABLE Stats ADD CONSTRAINT PK_Stats PRIMARY KEY ( dayDate );
 --------------------------------------------------------------------------------
-/* ⑤ 시도 */
+/* 5. 시도 */
 CREATE TABLE Sido (
    sidoCode NUMBER(7) NOT NULL, /* 시도 코드 */
    sidoCodeName NVARCHAR2(50) NOT NULL /* 코드 명 */
@@ -158,11 +158,11 @@ CREATE UNIQUE INDEX PK_Sido ON Sido ( sidoCode ASC );
 /* contraint PK_Sido of Sido */
 ALTER TABLE Sido ADD CONSTRAINT PK_Sido PRIMARY KEY ( sidoCode );
 --------------------------------------------------------------------------------
-/* ⑥ 보호소 */
+/* 6. 보호소 */
 CREATE TABLE Shelter (
     shelterCode NUMBER(7) NOT NULL, /* 보호소 코드, 공공데이터 포털에 없다. */
     shelterName NVARCHAR2(50) NOT NULL, /* 동물보호센터명 */
-    MgmtAgencyName NVARCHAR2(20) NOT NULL, /* 관리기관명 */
+    mgmtAgencyName NVARCHAR2(20) NOT NULL, /* 관리기관명 */
     shelterType NVARCHAR2(10) NOT NULL, /* 동물보호센터유형 */
     shelterDesigDate DATE NOT NULL, /* 동물보호센터지정일자 */
     weekdayStartTime TIMESTAMP NOT NULL, /* 평일운영시작시각 */
@@ -195,7 +195,7 @@ create sequence Shelter_seq
 COMMENT ON TABLE Shelter IS '보호소';
 COMMENT ON COLUMN Shelter.shelterCode IS '보호소 코드 - 211020(306)';
 COMMENT ON COLUMN Shelter.shelterName IS '보호소 명';
-COMMENT ON COLUMN Shelter.MgmtAgencyName IS '관리기관명';
+COMMENT ON COLUMN Shelter.mgmtAgencyName IS '관리기관명';
 COMMENT ON COLUMN Shelter.shelterType IS '동물보호센터유형';
 COMMENT ON COLUMN Shelter.shelterDesigDate IS '동물보호센터지정일자';
 COMMENT ON COLUMN Shelter.weekdayStartTime IS 'HH:MM 평일운영시작시각';
@@ -222,7 +222,7 @@ CREATE UNIQUE INDEX PK_Shelter ON Shelter ( shelterCode ASC );
 /* constraint : PK_Shelter of Shelter */
 ALTER TABLE Shelter ADD CONSTRAINT PK_Shelter PRIMARY KEY ( shelterCode );
 --------------------------------------------------------------------------------
-/* ⑦ 축종그룹 */
+/* 7. 축종그룹 */
 create table AnimalGroup (
     animalGroupCode NUMBER(7) not null, /* 외래키 to Shelter.shelterCode */
     shelterCode NUMBER(7) not null,
@@ -243,9 +243,9 @@ CREATE UNIQUE INDEX PK_AnimalGroup ON AnimalGroup ( animalGroupCode ASC );
 /* contraint : PK_Sido */
 ALTER TABLE AnimalGroup ADD CONSTRAINT PK_AnimalGroup PRIMARY KEY ( animalGroupCode );
 --------------------------------------------------------------------------------
-/* ⑧ 축종 */
+/* 8. 축종 */
 CREATE TABLE AnimalType (
-   animalTypeCode NVARCHAR2(7) NOT NULL, /* 축종코드 */
+   animalTypeCode NUMBER(7) NOT NULL, /* 축종코드 */
    animalTypeName NVARCHAR2(20) NOT NULL /* 축종명 */
 );
 /* No need for sequence */
@@ -258,27 +258,27 @@ CREATE UNIQUE INDEX PK_AnimalType ON AnimalType ( animalTypeCode ASC );
 /* contraint : pk_{tableName} */
 ALTER TABLE AnimalType ADD CONSTRAINT PK_AnimalType PRIMARY KEY ( animalTypeCode );
 --------------------------------------------------------------------------------
-/* ⑨ 품종 */
-CREATE TABLE BreedCode (
+/* 9. 품종 */
+CREATE TABLE Breed (
    BreedCode NUMBER(7) NOT NULL, /* 품종코드 */
    breedName NVARCHAR2(20) NOT NULL, /* 품종명 */
-   animalTypeCode NVARCHAR2(10) NOT NULL /* 축종코드 */
+   animalTypeCode NUMBER(7) NOT NULL /* 축종코드 */
 );
 /* No need for sequence */
-COMMENT ON TABLE BreedCode IS '품종코드';
-COMMENT ON COLUMN BreedCode.BreedCode IS '품종코드';
-COMMENT ON COLUMN BreedCode.breedName IS '품종명';
-COMMENT ON COLUMN BreedCode.animalTypeCode IS '축종 외래키';
+COMMENT ON TABLE Breed IS '품종코드';
+COMMENT ON COLUMN Breed.BreedCode IS '품종코드';
+COMMENT ON COLUMN Breed.breedName IS '품종명';
+COMMENT ON COLUMN Breed.animalTypeCode IS '축종 외래키';
 /* index of BreedCode.BreedCode : ASC */
-CREATE UNIQUE INDEX PK_BreedCode ON BreedCode ( BreedCode ASC );
+CREATE UNIQUE INDEX PK_BreedCode ON Breed ( BreedCode ASC );
 /* contraint : PK_BreedCode */
-ALTER TABLE BreedCode ADD CONSTRAINT PK_BreedCode PRIMARY KEY ( BreedCode );
+ALTER TABLE Breed ADD CONSTRAINT PK_BreedCode PRIMARY KEY ( BreedCode );
 --------------------------------------------------------------------------------
-/* ⑩ 목격 - 실종 */
+/* 10. 목격 - 실종 */
 CREATE TABLE Witness (
     witnessCode NUMBER(7) NOT NULL, /* 목격 - 실종 코드 */
     sexCode NUMBER(1) DEFAULT 0 NOT NULL, /* 성별 코드 */
-    animalTypeCode NVARCHAR2(10), /* 축종코드 */
+    animalTypeCode NUMBER(7), /* 축종코드 */
     BreedCode NUMBER(7), /* 품종코드 */
     witMisPic UriType, /* 사진 */
     witMisColor NVARCHAR2(10), /* 색상 */
@@ -316,10 +316,10 @@ CREATE UNIQUE INDEX PK_Witness ON Witness ( witnessCode ASC );
 /* contraint : PK_Witness */
 ALTER TABLE Witness ADD CONSTRAINT PK_Witness PRIMARY KEY ( witnessCode );
 --------------------------------------------------------------------------------
-/* ⑪ 성별 */
+/* 11. 성별 */
 CREATE TABLE Sex (
     sexCode NUMBER(1) DEFAULT 0 NOT NULL, /* 성별 코드 */
-    sexName NVARCHAR2(10) DEFAULT 0 NOT NULL, /* 성별명 */
+    sexName NVARCHAR2(20) DEFAULT 0 NOT NULL, /* 성별명 */
     neuterCode NUMBER(1) DEFAULT 0 /* 중성화 코드 */
 );
 /* No need for sequence */
@@ -332,7 +332,7 @@ CREATE UNIQUE INDEX PK_Sex ON Sex ( sexCode ASC );
 /* contraint : PK_Sex */
 ALTER TABLE Sex ADD CONSTRAINT PK_Sex PRIMARY KEY ( sexCode );
 --------------------------------------------------------------------------------
-/* ⑫ 중성화 */
+/* 12. 중성화 */
 CREATE TABLE Neuter (
     neuterCode NUMBER(1) DEFAULT 0 NOT NULL, /* 중성화 코드 */
     neuterName NVARCHAR2(20) DEFAULT 'False' NOT NULL /* 코드 명 */
@@ -346,7 +346,7 @@ CREATE UNIQUE INDEX PK_Neuter ON Neuter ( neuterCode ASC );
 /* contraint : PK_Neuter */
 ALTER TABLE Neuter ADD CONSTRAINT PK_Neuter PRIMARY KEY ( neuterCode );
 --------------------------------------------------------------------------------
-/* ⑬ 유기동물 예약 */
+/* 13. 유기동물 예약 */
 CREATE TABLE AbandonedAnimalReservation (
    animalReservationCode NUMBER(7) NOT NULL, /* 예약 코드 */
    abAnimalCode NUMBER(20) NOT NULL, /* 유기번호 코드 */
@@ -374,7 +374,7 @@ CREATE UNIQUE INDEX PK_AbandonedAnimalReservation
 ALTER TABLE AbandonedAnimalReservation ADD 
     CONSTRAINT PK_AbandonedAnimalReservation PRIMARY KEY ( animalReservationCode );
 --------------------------------------------------------------------------------
-/* ⑭ 세미나 예약 */
+/* 14. 세미나 예약 */
 CREATE TABLE SeminarReservation (
    seminarReservationCode NUMBER(7) NOT NULL, /* 예약 코드 */
    seminarCode NUMBER(7) NOT NULL, /* 세미나 코드 */
@@ -398,7 +398,7 @@ CREATE UNIQUE INDEX PK_SeminarReservation
 ALTER TABLE SeminarReservation ADD
     CONSTRAINT PK_SeminarReservation PRIMARY KEY ( seminarReservationCode );
 --------------------------------------------------------------------------------
-/* ⑮ 게시판 (게시글 종류) */
+/* 15. 게시판 (게시글 종류) */
 create table BoardType (
     boardTypeCode NUMBER(7) NOT NULL,
     boardTypeName NVARCHAR2(20) NOT NULL,
@@ -430,7 +430,7 @@ CREATE TABLE Board (
     boardDate DATE NOT NULL, /* 작성날짜 */
     boardHit NUMBER(7) DEFAULT 0 NOT NULL, /* 조회수 */
     boardLike NUMBER(7) DEFAULT 0 NOT NULL, /* 좋아요 수 */
-    boardTypeCode NUMBER(7) NOT NULL, /* 게시글 코드 */
+    boardTypeCode NUMBER(7) NOT NULL, /* 게시판 코드 */
     boardNum NUMBER(7) NOT NULL, /* 글 번호 */
     replyGroupCode NUMBER(7) /* 댓글 코드 */
 );
@@ -558,6 +558,7 @@ ALTER TABLE ChatMessage ADD CONSTRAINT PK_ChatMessage PRIMARY KEY ( chatMessageC
 CREATE TABLE ChatRoom (
     ChatRoomCode NUMBER(7) NOT NULL, /* 채팅룸 코드 */
     chatRoomName NVARCHAR2(20) not null, /* 채팅룸 이름 */
+    chatMessageCode NUMBER(7) not null,
     chatRoomMemberCode NUMBER(7) not null, /* 채팅룸 인원 코드 */
     ChatRoomTotalCnt NUMBER(3) not null /* 채팅룸 총 인원 */
 );
@@ -685,7 +686,7 @@ CREATE TABLE ParentingService (
     ParentingServiceCode NUMBER(7) NOT NULL, /* 양육 코드 */
     memberCode NUMBER(7) not null, /* 회원 코드 */
     paydate date, /* 최근 결제일 */
-    GalleryCode NVARCHAR2(10) NOT NULL, /* 갤러리 코드 */
+    GalleryCode NUMBER(7) NOT NULL, /* 갤러리 코드 */
     abAnimalCode NUMBER(20), /* 유기번호 코드 */
     GalleryTotalCnt NUMBER(7) not null
 );
@@ -747,7 +748,6 @@ ALTER TABLE Gallery ADD
 /* 29. 도로명주소 */
 CREATE TABLE RoadAddress (
    roadNameCode NUMBER(12) NOT NULL, /* 도로명 주소 코드 */
-   addressCode NUMBER(7) not null, /* 주소 코드 */
    roadAddr VARCHAR2(80) NOT NULL, /* 전체 도로명 주소 */
    roadAddrPt1 VARCHAR2(40), /* 도로명주소(참고항목 제외) */
    roadAddrPt2 VARCHAR2(40), /* 도로명주소 참고항목 */
@@ -773,7 +773,6 @@ CREATE TABLE RoadAddress (
 /* 주소 */
 COMMENT ON TABLE RoadAddress IS '도로명주소 (시군구 5 + 도로명번호 7)';
 COMMENT ON COLUMN RoadAddress.roadNameCode IS '도로명 주소 코드';
-COMMENT ON COLUMN RoadAddress.addressCode IS '주소 코드';
 COMMENT ON COLUMN RoadAddress.roadAddr IS '전체 도로명 주소';
 COMMENT ON COLUMN RoadAddress.roadAddrPt1 IS '도로명주소(참고항목 제외)';
 COMMENT ON COLUMN RoadAddress.roadAddrPt2 IS '도로명주소 참고항목';

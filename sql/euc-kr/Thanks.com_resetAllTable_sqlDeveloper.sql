@@ -1,124 +1,124 @@
-/* 1. ìœ ê¸°ë™ë¬¼ */
+/* 1. À¯±âµ¿¹° */
 drop table AbandonedAnimal purge;
 drop index PK_AbandonedAnimal;
 
-/* 2. íšŒì› */
+/* 2. È¸¿ø */
 drop table MemberInfo purge;
 drop sequence MemberInfo_seq;
 drop index PK_MemberInfo;
 
-/* 3. ì„¸ë¯¸ë‚˜ */
+/* 3. ¼¼¹Ì³ª */
 drop table Seminar purge;
 drop sequence Seminar_seq;
 drop index PK_Seminar;
 
-/* 4. í†µê³„ */
+/* 4. Åë°è */
 drop table Stats purge;
 drop index PK_Status;
 
-/* 5. ì‹œë„ */
+/* 5. ½Ãµµ */
 drop table Sido purge;
 drop index PK_Seminar;
 
-/* 6. ì„¸ë¯¸ë‚˜ */
+/* 6. ¼¼¹Ì³ª */
 drop table Shelter purge;
 drop sequence Shelter_seq;
 drop index PK_Shelter;
 
-/* 7. ì¶•ì¢…ê·¸ë£¹ */
+/* 7. ÃàÁ¾±×·ì */
 drop table AnimalGroup purge;
 drop sequence AnimalGroup_seq;
 drop index PK_AnimalGroup;
 
-/* 8. ì¶•ì¢… */
+/* 8. ÃàÁ¾ */
 drop table AnimalType purge;
 drop index PK_AnimalType;
 
-/* 9. í’ˆì¢… */
-drop table BreedCode purge;
+/* 9. Ç°Á¾ */
+drop table Breed purge;
 drop index PK_BreedCode;
 
-/* 10. ëª©ê²© & ì‹¤ì¢… */
+/* 10. ¸ñ°İ & ½ÇÁ¾ */
 drop table Witness purge;
 drop sequence Witness_seq;
 drop index PK_Witness;
 
-/* 11. ì„±ë³„ */
+/* 11. ¼ºº° */
 drop table Sex purge;
 drop index PK_Sex;
 
-/* 12. ì¤‘ì„±í™” */
+/* 12. Áß¼ºÈ­ */
 drop table Neuter purge;
 drop index PK_Neuter;
 
-/* 13. ìœ ê¸°ë™ë¬¼ ì˜ˆì•½ */
+/* 13. À¯±âµ¿¹° ¿¹¾à */
 drop table AbandonedAnimalReservation purge;
 drop sequence AbandonedAnimalReservation_seq;
 drop index PK_AbandonedAnimalReservation;
 
-/* 14. ì„¸ë¯¸ë‚˜ ì˜ˆì•½ */
+/* 14. ¼¼¹Ì³ª ¿¹¾à */
 drop table SeminarReservation purge;
 drop sequence SeminarReservation_seq;
 drop index PK_SeminarReservation;
 
-/* 15. ê²Œì‹œíŒ (ê²Œì‹œê¸€ ì¢…ë¥˜) */
+/* 15. °Ô½ÃÆÇ (°Ô½Ã±Û Á¾·ù) */
 drop table BoardType purge;
 drop sequence BoardType_seq;
 drop index PK_BoardType;
 
-/* 16. ê²Œì‹œê¸€ */
+/* 16. °Ô½Ã±Û */
 drop table Board purge;
 drop sequence Board_seq;
 drop index PK_Board;
 
-/* 17. ì„¸ë¯¸ë‚˜ */
+/* 17. ¼¼¹Ì³ª */
 drop table ReplyGroup purge;
 drop sequence ReplyGroup_seq;
 drop index PK_ReplyGroup;
 
-/* 18. ëŒ“ê¸€ */
+/* 18. ´ñ±Û */
 drop table Reply purge;
 drop sequence Reply_seq;
 drop index PK_Reply;
 
-/* 19. ê¶Œí•œ */
+/* 19. ±ÇÇÑ */
 drop table Authorize purge;
 drop index PK_Authorize;
 
-/* 20. ì„¸ë¯¸ë‚˜ */
+/* 20. ¼¼¹Ì³ª */
 drop table ChatMessage purge;
 drop sequence ChatMessage_seq;
 drop index PK_ChatMessage;
 
-/* 21. ì±„íŒ…ë£¸ */
+/* 21. Ã¤ÆÃ·ë */
 drop table ChatRoom purge;
 drop sequence ChatRoom_seq;
 drop index PK_ChatRoom;
 
-/* 22. ì±„íŒ…ë£¸ì¸ì› */
+/* 22. Ã¤ÆÃ·ëÀÎ¿ø */
 drop table ChatRoomMember purge;
 drop sequence ChatRoomMember_seq;
 drop index PK_ChatRoomMember;
 
-/* 23. ì‹œêµ°êµ¬ */
+/* 23. ½Ã±º±¸ */
 drop table Sigungu purge;
 drop index PK_Sigungu;
 
-/* 24. ë°˜ë ¤ë™ë¬¼ */
+/* 24. ¹İ·Áµ¿¹° */
 drop table Pet purge;
 drop sequence Pet_seq;
 drop index PK_Pet;
 
-/* 25. íšŒì›ì •ë³´ ì‚­ì œìœ ë³´ */
+/* 25. È¸¿øÁ¤º¸ »èÁ¦À¯º¸ */
 drop table DelMemInfoRet purge;
 drop index PK_DelMemInfoRet;
 
-/* 26. ê°•ì‚¬ */
+/* 26. °­»ç */
 drop table Lecturer purge;
 drop sequence Lecturer_seq;
 drop index PK_Lecturer;
 
-/* 27. ì–‘ìœ¡ ì„œë¹„ìŠ¤ */
+/* 27. ¾çÀ° ¼­ºñ½º */
 drop table ParentingService purge;
 drop sequence ParentingService_seq;
 drop index PK_ParentingService;
@@ -128,12 +128,12 @@ drop table Gallery purge;
 drop sequence Gallery_seq;
 drop index PK_Gallery;
 
-/* 29. ë„ë¡œëª…ì£¼ì†Œ */
+/* 29. µµ·Î¸íÁÖ¼Ò */
 drop table RoadAddress purge;
 drop sequence RoadAddress_seq;
 drop index PK_RoadAddress;
 
-/* 30. ì£¼ì†Œ */
+/* 30. ÁÖ¼Ò */
 drop table Address purge;
 drop sequence Address_seq;
 drop index PK_Address;
