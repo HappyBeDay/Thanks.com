@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org./dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sist.com.vo.memberInfo">
+	
+	<select id="memberInfo_one" parameterType="java.lang.String" resultType="memberInfo">
+		select * from memberInfo where id = #{id}
+	</select>
+	
+</mapper>
