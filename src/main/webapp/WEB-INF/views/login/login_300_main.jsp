@@ -31,7 +31,7 @@
 		<img class="mb-4" src="../assets/img/Thanks.com_logo.png" alt="" width="130" height="130">
 		<h1 class="h3 mb-3 fw-normal">Please Sign In</h1>
 		<div class="form-floating">
-			<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"> <label for="floatingInput">Enter ID</label>
+			<input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"> <label for="floatingInput">Enter ID</label>
 		</div>
 		<div class="form-floating">
 			<input type="password" class="form-control" id="floatingPassword"

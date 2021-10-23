@@ -28,7 +28,7 @@
 				<div class="lead">해당 <b>메일로 이동</b>하여 <b>비밀번호를 재설정</b>해주시기 바랍니다.</div>
 			<p class="lead">
 				<a href="#" class="btn btn-lg btn-primary fw-bold border-white bg-white ">확인</a>
-		</p>
+			</p>
 		</div>
 	</div>
 </body>
