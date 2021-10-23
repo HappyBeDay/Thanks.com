@@ -39,36 +39,8 @@
 <!-- Core theme JS-->
 <script src="../js/main.js"></script>
 
-<script type="text/javascript">
-	/* $(document).ready(function(){
-	 $("#heart").click(function(){
-	 if($("#heart").hasClass("liked")){
-	 $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-	 $("#heart").removeClass("liked");
-	 }else{
-	 $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-	 $("#heart").addClass("liked");
-	 }
-	 });
-	 }); */
-</script>
-
 <!-- search bar & filter -->
 <style>
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-}
-
-@media ( min-width : 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
-}
-
 html, body, .intro {
 	height: 100%;
 }
@@ -98,34 +70,10 @@ html, body, .intro {
 	background-color: rgba(0, 0, 0, .05);
 }
 
-/* #heart-link:hover {
-	background-color: rgba(0, 0, 0, .05);
-}
-
-#heart-link:active, #heart-link.active {
-	background-color: rgba(0, 0, 0, .05);
-}
-
-#heart-link:focus, #heart-link.focus {
-	background-color: rgba(0, 0, 0, .05);
-}
-
-#heart-link:active:focus, #heart-link.active:focus {
-	background-color: rgba(0, 0, 0, .05);
-} */
-
 /* font awesome icon */
-.fa-heart, .fa-venus-mars, .fa-map-marker {
-	color: #1c7cff;
-	font-size: 15px;
-	cursor: pointer;
-}
-
-.fa-heart-o {
-	color: #1c7cff;
-	font-size: 30px;
-	cursor: pointer;
-}
+.container { position: relative; }
+.container img { display: block; }
+.container .fa-download { position: absolute; bottom:0; left:0; }
 </style>
 
 </head>
@@ -133,7 +81,7 @@ html, body, .intro {
 	<!-- Navigation 1-->
 	<jsp:include page="../_module/navibar.jsp"></jsp:include>
 
-	<div class="h-40" style="background-color: #1c7cff;">
+	<div class="h-50" style="background-color: #1c7cff;">
 		<div class="mask d-flex align-items-center h-100">
 			<div class="container">
 				<div class="row">
@@ -157,326 +105,46 @@ html, body, .intro {
 			</div>
 		</div>
 	</div>
-	<main>
 
 	<div class="album py-5 bg-light">
 		<div class="container">
 			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
+				<div class="container">
+					<img src="../assets/img/sampleimg.jpg" class="container-image"
+				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
+				</div>
+				<div class="container">
+					<img src="../assets/img/sampleimg.jpg" class="container-image"
+				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
 				</div>
 				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
+					<img src="../assets/img/sampleimg.jpg" class="container-image"
+				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
 				</div>
 
 				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
+					<img src="../assets/img/sampleimg.jpg" class="container-image"
+				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
 				</div>
 				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
+					<img src="../assets/img/sampleimg.jpg" class="container-image"
+				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
 				</div>
 				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
+					<img src="../assets/img/sampleimg.jpg" class="container-image"
+				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
 				</div>
 				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
+					<img src="../assets/img/sampleimg.jpg" class="container-image"
+				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
 				</div>
 				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
+					<img src="../assets/img/sampleimg.jpg" class="container-image"
+				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
+				</div>
+				<div class="col">
+					<img src="../assets/img/sampleimg.jpg" class="container-image"
+				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
 				</div>
 			</div>
 		</div>
@@ -484,7 +152,6 @@ html, body, .intro {
 	<jsp:include page="../_module/pagination.jsp"></jsp:include>
 	</div>
 
-	</main>
 
 	<!-- Footer-->
 	<jsp:include page="../_module/copyright.jsp"></jsp:include>
