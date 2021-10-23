@@ -1,4 +1,4 @@
-package sist.com.controller;
+package sist.com.controller._module;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,7 +14,7 @@ public class WildController {
 	public String servletWildCard(HttpServletRequest request, @PathVariable String path) {
 		String uri = request.getRequestURI().trim().replace("/Thanks.com", "");
 		System.out.println("WildController");
-		System.out.println("path = " + uri);
+		System.out.println("path = " + uri + "\n");
 		//System.out.println(path);
 		return uri;
 	}

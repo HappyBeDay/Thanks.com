@@ -21,13 +21,13 @@ public class AutoController {
 
 	@RequestMapping(value = "autoLink/**")
 	public String servletAutoLink(HttpServletRequest request) {
-		System.out.println("AutoLink");
+		System.out.println("AutoLink\n");
 		
 		//요청 uri를 가지고 약속된 링크를 만든다.
 		String uri = request.getRequestURI().trim();
 		String requestURI = uri.substring(uri.lastIndexOf("/"));
 		uri = requestURI.substring(0, requestURI.indexOf("_"));
 
-		return uri + requestURI;
+		return "redirect:" + uri + requestURI;
 	}
 }

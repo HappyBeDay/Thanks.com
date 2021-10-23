@@ -1,4 +1,4 @@
-package sist.com.controller;
+package sist.com.controller._module;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -27,7 +27,7 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
-		System.out.println("Move to Main Page!");
+		System.out.println("Move to Main Page!\n");
 
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
