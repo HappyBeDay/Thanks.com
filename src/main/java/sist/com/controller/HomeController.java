@@ -1,4 +1,4 @@
-package sist.com.main;
+package sist.com.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
-	private final String redirectPath = "WEB-INF/views/"; 
+public class HomeController { 
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 

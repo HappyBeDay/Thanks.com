@@ -16,6 +16,7 @@
 		<h2>Sign Up</h2>
 		<div class="textForm">
 			<input name="loginId" type="text" class="id" placeholder="ID">
+			<input type="button">
 			</input>
 		</div>
 		<div class="textForm">

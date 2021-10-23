@@ -1,4 +1,4 @@
-package sist.com.main;
+package sist.com.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
