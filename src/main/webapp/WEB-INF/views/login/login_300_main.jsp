@@ -20,7 +20,6 @@
 <%-- <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet"/> --%>
 <link href="<c:url value="/css/login_300.css"/>" rel="stylesheet"/>
 <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
- 
 
 <script src="../js/main.js"></script>
 <title>Thanks.com sign-in main </title>
