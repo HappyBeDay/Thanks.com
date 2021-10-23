@@ -137,6 +137,8 @@
 	<!-- SimpleLightbox plugin JS-->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-
+	
+	<script src="../js/mainScreen/mainScreen_100_main.js"></script>
+	
 </body>
 </html>
