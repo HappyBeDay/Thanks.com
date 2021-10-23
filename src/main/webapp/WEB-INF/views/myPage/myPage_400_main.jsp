@@ -4,18 +4,20 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Pricing example · Bootstrap v5.0</title>
+    <title>My Page</title>
     
     <!-- Bootstrap core CSS -->
 	<link href="<c:url value="/css/myPage_400.css"/>" rel="stylesheet"/>
 	<link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
+	<script src="../js/main.js"></script>
 </head>
 
 <body>
-<div class="container py-3">
+<div class="container top-empty">
+<jsp:include page="../_module/navibar.jsp"></jsp:include>
   <header>
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-4 fw-normal">회원정보</h1>
+      <h1 class="display-4 fw-normal">MyPage</h1>
    </div>
   </header>
 
@@ -24,17 +26,17 @@
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">회원 정보</h4>
+            <h2 class="my-0 fw-normal">Member Information</h2>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
+            <h3 class="card-title pricing-card-title">Information Modify</h3>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>10 users included</li>
-              <li>2 GB of storage</li>
-              <li>Email support</li>
-              <li>Help center access</li>
+              <li>information</li>
+              <li>Password</li>
+              <li>Adress</li>
+              <li>Email</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Go to Information</button>
           </div>
         </div>
       </div>
@@ -43,17 +45,16 @@
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">채팅룸</h4>
+            <h2 class="my-0 fw-normal">Chatting Room</h2>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$15<small class="text-muted fw-light">/mo</small></h1>
+            <h2 class="card-title pricing-card-title">Chatting Information</h2>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>20 users included</li>
-              <li>10 GB of storage</li>
-              <li>Priority email support</li>
-              <li>Help center access</li>
+              <li>Chatting List</li>
+              <li>Chatting History</li>
+              <li>Send a DM</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Go to Chatting Room</button>
           </div>
         </div>
       </div>
@@ -62,17 +63,18 @@
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm border-primary">
           <div class="card-header py-3 text-white bg-primary border-primary">
-            <h4 class="my-0 fw-normal">활동이력</h4>
+            <h2 class="my-0 fw-normal">Activity History</h2>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$29<small class="text-muted fw-light">/mo</small></h1>
+            <h2 class="card-title pricing-card-title">Active Information</h2>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>30 users included</li>
-              <li>15 GB of storage</li>
-              <li>Phone and email support</li>
-              <li>Help center access</li>
+              <li>Send Like Animal</li>
+              <li>Adoption Animal List</li>
+              <li>Parenting Animal List</li>
+              <li>board List</li>
+              <li>Missing, Witness List</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Go to Active History</button>
           </div>
         </div>
       </div>
@@ -80,7 +82,7 @@
   </div>
 
   <footer class="pt-4 my-md-5 pt-md-5 border-top">
-  
+  <jsp:include page="../_module/copyright.jsp"></jsp:include>
   </footer>
 </div>
 

@@ -1,0 +1,13 @@
+.container {
+  max-width: 960px;
+}
+
+.margin-plus{
+	margin-left: 200px;
+	margin-right: 200px;
+	
+}
+
+.top-empty{
+	margin-top: 150px;
+}

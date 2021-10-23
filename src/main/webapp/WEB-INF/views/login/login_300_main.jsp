@@ -23,9 +23,9 @@
 
 <script src="../js/main.js"></script>
 <title>Thanks.com sign-in main </title>
+	<jsp:include page="../_module/navibar.jsp"></jsp:include>
 </head>
 <body class="text-center">
-	<jsp:include page="../_module/navibar.jsp"></jsp:include>
 	<div class="form-signin">
 	<form>
 		<img class="mb-4" src="../assets/img/Thanks.com_logo.png" alt="" width="130" height="130">
