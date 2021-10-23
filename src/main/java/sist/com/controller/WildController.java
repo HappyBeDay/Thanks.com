@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//@RequestMapping(value = "{name:^(?:(?!resources$).)*}")
 @Controller
 @RequestMapping(value = "{path:^(?:(?!resources|assets|css|img|js).)*$}")
 public class WildController {
@@ -14,8 +13,9 @@ public class WildController {
 	@RequestMapping(value = "/**")
 	public String servletWildCard(HttpServletRequest request, @PathVariable String path) {
 		String uri = request.getRequestURI().trim().replace("/Thanks.com", "");
-		System.out.println(uri);
-		System.out.println(path);
+		System.out.println("WildController");
+		System.out.println("path = " + uri);
+		//System.out.println(path);
 		return uri;
 	}
 	/*
