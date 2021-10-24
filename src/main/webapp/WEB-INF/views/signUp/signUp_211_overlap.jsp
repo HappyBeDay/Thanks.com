@@ -4,9 +4,9 @@
 <!doctype html>
 <html>
 <head>
-<link href="<c:url value="/css/login_300.css"/>" rel="stylesheet"/>
-<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
-<title>Thanks.com 아이디 중복확인</title>
+	<title>Thanks.com 아이디 중복확인</title>
+		<link href="<c:url value="/css/login_300.css"/>" rel="stylesheet"/>
+		<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
 </head>
 <body onresize="parent.resizeTo(500,500)" onload="parent.resizeTo(500,400) class="text-center">
 	<div class="form-signin">

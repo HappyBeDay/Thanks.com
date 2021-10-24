@@ -3,18 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<!-- Bootstrap core CSS -->
-<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/signin/">
-<link href="<c:url value="/css/signUp_210.css"/>" rel="stylesheet"/>
-<link href="<c:url value="/css/bootstrap"/>" rel="stylesheet"/>
-<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
-
-<script src="../js/main.js"></script>
-<title>Thanks.com 회원가입</title>
+	<head>
+	<title>Thanks.com 회원가입</title>
+		<link href="<c:url value="/css/signUp_210.css"/>" rel="stylesheet"/>
+		<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
+	<script src="../js/main.js"></script>
 </head>
-<body>
 	<jsp:include page="../_module/navibar.jsp"></jsp:include>
+<body>
 	<form action="doJoin" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
 		<h2>Sign Up</h2>
 		<div class="textForm">

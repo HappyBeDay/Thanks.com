@@ -10,6 +10,7 @@ body {
 
 ul>li {
 	list-style: none
+	
 }
 
 a {
@@ -53,11 +54,11 @@ ul.join_box {
 	
 }
 
-.checkBox>ul>li:nth-child(2) {/* Ã¼Å©¹Ú½º À§Ä¡   */
+.checkBox>ul>li:nth-child(2) { /*ì²´í¬ ë°•ìŠ¤  */
 	position: absolute;
 	top: 50%;
 	right: 100px; 
-	margin-top: -12px; /* µ¿ÀÇ ºñµ¿ÀÇ À§¿¡ °£°İ  */
+	margin-top: -12px; /* ì²´í¬ë°•ìŠ¤ ìœ„ì¹˜ ì˜®ê¸°ëŠ” ì†ŒìŠ¤*/
 }
 
 .checkBox textarea {

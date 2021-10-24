@@ -4,21 +4,9 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author"
-	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.84.0">
-
-<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
-
-<!-- Bootstrap core CSS -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/login_311_idVerify.css" rel="stylesheet">
-
 <title>Thanks.com email idVerify</title>
-
+		<link href="<c:url value="/css/login_311.css"/>" rel="stylesheet"/>
+		<link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 </head>
 
 <body onresize="parent.resizeTo(500,500)" onload="parent.resizeTo(500,400)" 
@@ -29,7 +17,7 @@
 			<p class="lead">이메일 인증이 완료되었습니다 .
 			<div class="lead">회원 가입을 계속 진행해 주시기 바랍니다.</div>
 			<p class="lead">
-				<a href="#" class="btn btn-lg btn-primary fw-bold border-white bg-white ">확인</a>
+				<a href="#" class="form-bottom btn btn-lg btn-primary ">확인</a>
 			</p>
 		</div>
 	</div>

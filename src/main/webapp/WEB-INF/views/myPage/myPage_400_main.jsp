@@ -2,25 +2,19 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <title>My Page</title>
-    
-    <!-- Bootstrap core CSS -->
-	<link href="<c:url value="/css/myPage_400.css"/>" rel="stylesheet"/>
-	<link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
+		<link href="<c:url value="/css/myPage_400.css"/>" rel="stylesheet"/>
+		<link href="<c:url value="/css/main.css"/>" rel="stylesheet"/>
 	<script src="../js/main.js"></script>
 </head>
-
+	<jsp:include page="../_module/navibar.jsp"></jsp:include>
 <body>
 <div class="container top-empty">
-<jsp:include page="../_module/navibar.jsp"></jsp:include>
-  <header>
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
       <h1 class="display-4 fw-normal">MyPage</h1>
    </div>
-  </header>
-
   <div>
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
       <div class="col">
@@ -40,8 +34,7 @@
           </div>
         </div>
       </div>
-      
-      
+        
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-header py-3">
@@ -58,7 +51,6 @@
           </div>
         </div>
       </div>
-      
       
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm border-primary">
@@ -80,13 +72,7 @@
       </div>
     </div>
   </div>
-
-  <footer class="pt-4 my-md-5 pt-md-5 border-top">
-  <jsp:include page="../_module/copyright.jsp"></jsp:include>
-  </footer>
-</div>
-
-
-    
+</div>    
   </body>
+  <jsp:include page="../_module/copyright.jsp"></jsp:include>
 </html>

@@ -4,18 +4,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Custom styles for this template -->
-    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
-    <link href="<c:url value="/resources/css/myPage410.css"/>" rel="stylesheet"/>
-    <script src="../js/main.js"></script>
- 
-    
-    <title>Information</title>
-<jsp:include page="../_module/navibar.jsp"></jsp:include>
-  </head>
-   
-<body class="">
-<div class="container top-empty">
+   <title>Information</title>
+
+		<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
+    	<link href="<c:url value="/resources/css/myPage410.css"/>" rel="stylesheet"/>
+    <script src="../js/main.js"></script>   
+</head>
+	<jsp:include page="../_module/navibar.jsp"></jsp:include>
+<body>
+<div class="container" style="margin-top: 100px;">
   <div>
     <div class="py-5 text-center">
    		<h3>Member Information</h3>
@@ -71,17 +68,14 @@
               </div>
             </div>
           </div>
-
           <hr class="my-4">
-          
           <button class="w-100 btn btn-primary btn-lg" type="submit">Modify</button>
         </form>
       </div>
     </div>
   </div>
-
   <footer class="text-muted text-center text-small">
      <jsp:include page="../_module/copyright.jsp"></jsp:include>
-      <li class="list-inline-item"><a href="#">회원 탈퇴</a></li>
+      <a href="#">회원 탈퇴</a>
   </footer>
 </html>

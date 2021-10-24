@@ -3,48 +3,25 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-
-<title>회원가입 약관동의</title>
-<link href="<c:url value="/css/signUp_200_agreement.css"/>" rel="stylesheet"/>
-
-<!-- Google fonts-->
-<link
-   href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
-   rel="stylesheet" /> 
-   <!-- Core theme CSS (includes Bootstrap)폰트-->
-<link
-   href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
-   rel="stylesheet" type="text/css" /> 
-
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/> 
-
-<link
-   href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
-   rel="stylesheet" />
-   
-<!-- Core theme JS-->
-<script src="../js/main.js"></script>  
-
+	<head>
+	<title>회원가입 약관동의</title>
+		<link href="<c:url value="/css/signUp_200_agreement.css"/>" rel="stylesheet"/>
+		<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/> 
+	<script src="../js/main.js"></script>  
 </head>
-<body style = "background-color: #1c7cff;" >
-<!-- Navigation 1-->
    <jsp:include page="../_module/navibar.jsp"></jsp:include>
-
+<body>
 	<form action="" id="joinForm" >
 		<ul class="join_box">
 			<li class="checkBox">
-				<ul class="clearfix">
-					<li><h3>회원가입 약관동의<h3></li>
-					<!-- <li class="checkAllBtn"></li> -->
+				<ul class="clearfix" style = "padding : 0px;">
+					<li><h2>회원가입 약관동의<h2></li>
 				</ul>
-			</li>
 			<li class="checkBox ">
-				<ul class="clearfix">
+				<ul class="clearfix" style = "padding : 0px;">
 					<li>이용약관 동의(필수)</li>
-					<li class="checkBtn"><input type="checkbox" name="chk">
+					<li class="checkBtn">
+						<input type="checkbox" name="chk">
 					</li>
 				</ul> <textarea name="" id="">제 1 장 총 칙 
 
@@ -213,11 +190,13 @@
 </textarea>
 			</li>
 			<li class="checkBox ">
-				<ul class="clearfix">
+				<ul class="clearfix" style = "padding : 0px;">
 					<li>고유식별정보 수집 및 이용안내(필수)</li>
-					<li class="checkBtn"><input type="checkbox" name="chk">
+					<li class="checkBtn">
+						<input type="checkbox" name="chk">
 					</li>
-				</ul> <textarea name="" id="">고유식별정보 수집 및 이용안내
+				</ul> 
+					<textarea name="" id="" style="padding : 0px;">고유식별정보 수집 및 이용안내
 
 1. 수집항목
 - 고유식별정보: 주민등록표에 기재된 성명 및 주민등록번호
@@ -229,11 +208,13 @@
   회원정보 보유기간은 준영구이며 탈퇴 즉시 지체없이 파기합니다.</textarea>
 			</li>
 			<li class="checkBox">
-				<ul class="clearfix">
+				<ul class="clearfix" style = "padding : 0px;">
 					<li>개인정보수집,이용동의(필수)</li>
-					<li class="checkBtn"><input type="checkbox" name="chk">
-					</li>
-				</ul> <textarea name="" id="">개인정보 수집 및 이용에 대한 동의
+						<li class="checkBtn">
+							<input type="checkbox" name="chk">
+						</li>
+				</ul> 
+					<textarea name="" id=""  style = "padding : 0px;">개인정보 수집 및 이용에 대한 동의
 
 1. 개인정보의 처리 목적
   동물보호관리시스템(APMS)은 회원가입(14세 이상 가입가능) 및 회원제 서비스 이용 및 제한적 본인절차에 따른 본인확인, 개인식별, 부정이용 방지, 비인가 이용방지, 가입의사 확인, 분쟁조정을 위한 기록보존, 불만처리 등 민원처리, 고지사항 전달, 서비스향상 및 정책평가 등을 목적으로 개인정보를 처리합니다.
@@ -252,25 +233,18 @@
 			</li>
 			<li class="checkBox ">
 				<ul class="clearfix">
-					<li class="checkBtn"><input type="checkbox" name="chk"> 모두 선택
+					<li class="checkBtn">
+					<input type="checkbox" name="chk" style = "padding : 0px;"> 모두 선택
 					</li>
 				</ul>
-
 			</li>
 		</ul>
-		<ul class="footBtwrap clearfix">
+		<ul class="footBtwrap clearfix" style="margin-right : 45px;" >
 			<li><button class="fpmgBt1">비동의</button></li>
 			<li><button class="fpmgBt2">동의</button></li>
 		</ul> 
 	</form>
-	
-   <!-- Footer-->
    <jsp:include page="../_module/copyright.jsp"></jsp:include>
-   <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-   <!-- SimpleLightbox plugin JS-->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-
 </body>
 </html>
 

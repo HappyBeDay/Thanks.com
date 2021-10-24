@@ -2,34 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author"
-	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.84.0">
-
-<link rel="canonical"
-	href="https://getbootstrap.com/docs/5.0/examples/signin/">
-
-<!-- Bootstrap core CSS -->
-<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" />
-<link href="<c:url value="/css/login_300.css"/>" rel="stylesheet" />
-
-<!-- Custom styles for this template -->
-<script src="../js/main.js"></script>
-<title>Thanks.com IdFind</title>
-
+<html>
+	<head>
+	 <title>Thanks.com IdFind</title>
+		<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" />
+		<link href="<c:url value="/css/login_300.css"/>" rel="stylesheet" />
+	<script src="../js/main.js"></script>
 </head>
+	<jsp:include page="../_module/navibar.jsp"></jsp:include>
 <body class="text-center">
-<jsp:include page="../_module/navibar.jsp"></jsp:include>
 	<div class="form-signin ">
 		<form>
 			<img class="mb-4" src="../assets/img/Thanks.com_logo.png" alt="" width="130" height="130">
 			<h1 class="h3 mb-3 fw-normal">Find ID</h1>
-
 			<div class="form-floating form-bottom">
 				<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"> 
 				<label for="floatingInput">
