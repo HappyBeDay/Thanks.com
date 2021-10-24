@@ -15,9 +15,9 @@
 		<div>
 			<img src="../assets/img/Thanks.com_logo.png">
 			<p class="lead">이메일 인증이 완료되었습니다 .
-			<div class="lead">회원 가입을 계속 진행해 주시기 바랍니다.</div>
+			<div class="lead">계속 진행해 주시기 바랍니다.</div>
 			<p class="lead">
-				<a href="#" class="form-bottom btn btn-lg btn-primary ">확인</a>
+				<input type="BUTTON" value=" 닫기" class="form-bottom btn btn-lg btn-primary" onclick="window.close('http://localhost:8080/Thanks.com/login/login_311_idVerify')">
 			</p>
 		</div>
 	</div>
