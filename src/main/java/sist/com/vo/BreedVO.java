@@ -1,7 +1,21 @@
 package sist.com.vo;
 
-public class BreedVO {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+public class BreedVO {
+		private int breedCode ;
+		private String breedName ;
+		private int animalTypeCode ;
+		private String animalTypeName;
 }
 
 /*

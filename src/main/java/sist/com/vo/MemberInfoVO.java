@@ -20,7 +20,7 @@ public class MemberInfoVO {
 	private String email;
 	private int authorizeCode;
 	private String date;
-	private int petcode;
+	private int petCode;
 	private int addressCode;
 	
 	/*
