@@ -13,9 +13,8 @@ import lombok.ToString;
 @AllArgsConstructor
 public class SigunguVO {
 	private int sigunguCode;
-	private int sigunguCodeName;
+	private String sigunguCodeName;
 	private int sidoCode;
-	
 }
 /*
   	"SIGUNGUCODE" NUMBER(7,0) NOT NULL ENABLE, 

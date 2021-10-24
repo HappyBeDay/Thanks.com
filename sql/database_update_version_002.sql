@@ -19,7 +19,7 @@ insert into AnimalType (animalTypeCode, animalTypeName) values (429900, '기타'
 /* reset - AnimalColor */
 ALTER TABLE AbandonedAnimal DROP CONSTRAINT FK_AnimalColor_TO_AbandonedAnimal;
 drop sequence AnimalColor_seq;
-drop table AnimalColor;
+drop table AnimalColor purge;
 /* create - AnimalColor */
 create table AnimalColor (
     animalColorCode NUMBER(7) not null,

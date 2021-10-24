@@ -31,7 +31,7 @@ public class ShelterVO {
 	private String holiday ;
 	private int vetCnt ;
 	private int specMgrCnt ;
-	private int drOfficent ;
+	private int drOfficeCnt ;
 	private int careEmCnt ;
 	private int quarantineRmCnt ;
 	private int foodStrgRmCnt ;
@@ -39,7 +39,6 @@ public class ShelterVO {
 	private int tel ;
 	private Date dataDate ;
 	private int addressCode ;
-	
 }
 
 /*

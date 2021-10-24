@@ -14,7 +14,6 @@ import lombok.ToString;
 public class SidoVO {
 	private int sidoCode; 
 	private String sidoCodeName;
-	
 }
 
 /*

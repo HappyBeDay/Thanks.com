@@ -12,10 +12,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BreedVO {
-		private int breedCode ;
-		private String breedName ;
-		private int animalTypeCode ;
-		private String animalTypeName;
+	private int breedCode ;
+	private String breedName ;
+	private int animalTypeCode ;
 }
 
 /*

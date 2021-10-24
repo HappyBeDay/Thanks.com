@@ -126,46 +126,48 @@ numOfRows : 페이지당 보여줄 개수
 
 
 /*
-공고종료일		noticeEdt		
-Image		popfile		
-상태			processState	
-성별			sexCd			
-중성화여부		neuterYn		
-특징			specialMark		
-보호소이름		careNm			
-보호소전화번호	careTel			
-보호장소		careAddr		
-관할기관		orgNm			
-담당자		chargeNm	
-담당자연락처	officetel
-특이사항		noticeComment	
-한 페이지결과수	numOfRows
-페이지 번호		pageNo
-전체 결과 수	totalCount	
-결과코드		resultCode
-결과메세지		resultMsg
-유기번호		desertionNo	
-Thumbnail	Image
-접수일		happenDt
-발견장소		happenPlace
-품종			kindCd
-색상			colorCd	
-나이			age
-체중			weight
-공고번호		noticeNo
-공고시작일		noticeSdt
+ * addressCode? animalTypeCode?
+ * 									
+공고종료일		noticeEdt		       	noticeEndDate
+Image		popfile		           	abPic
+상태			processState	    	abState
+성별			sexCd				sexCode		0 : 알수없음, 1 : 남성, 2 : 여성, 3 : 남성+중성화, 4 : 여성+중성화	    
+중성화여부		neuterYn		    NeuterCode	0 : 알수없음, 1 : 중성화함, 2: 중성화안함
+특징			specialMark				abFeat		    
+보호소이름		careNm				AbSelter.abSelterName			                                                       
+보호소전화번호	careTel			  	AbSelter.abSelterTel                                               
+보호장소		careAddr		    AbSelter.abSelterAddress
+관할기관		orgNm			    AbSelter.organize
+담당자		chargeNm	        AbSelter.managerName
+담당자연락처	officetel			AbSelter.managerTel
+특이사항		noticeComment	        abComment                                               
+한 페이지결과수	numOfRows               *
+페이지 번호		pageNo                  *
+전체 결과 수		totalCount	            *
+결과코드		resultCode            	*
+결과메세지		resultMsg               *
+유기번호		desertionNo	            abanimalCode                                               
+Thumbnail	Image					abThumbPic              	                                                        
+접수일		happenDt			    findDate                                                   
+발견장소		happenPlace			    findLoc                                               
+품종			kindCd					breedCode                                               
+색상			colorCd				animalColorCode				AnimalColor에 있는지 조회하고 없으면 추가, 기본적으로 AnimalColorGroup에 추가 
+나이			age						abAge					                                                   
+체중			weight					abWeight
+공고번호		noticeNo				abandonedNum
+공고시작일		noticeSdt				noticeStartDate
 */
 enum defaultData {
-	Sido("sido", "SidoVO", 
+	Sido("sido", "SidoVO", // 시도 
 			new String[] { "orgCd", "orgdownNm" }, null),
-	Sigungu("sigungu", "", 
+	Sigungu("sigungu", "", // 시군구
 			new String[] { "orgCd", "orgdownNm", "uprCd" }, new String[] { "upr_cd" }),
-	Shelter("shelter", "", 
+	Shelter("shelter", "", // 보호소
 			new String[] { "careNm", "careRegNo" }, new String[] { "upr_cd", "org_cd" }),
-	Breed("kind", "", 
+	Breed("kind", "", //
 			new String[] { "kindCd", "KNm" }, new String[] { "up_kind_cd" }),
 	abandonedAnimal("abandonmentPublic", "", 
-			new String[] { "", "", "" }, new String[] { "pageNo", "numOfRows" });
+			new String[] { "noticeEdt", "popfile", "processState", }, new String[] { "pageNo", "numOfRows" });
 
 	private final String apiName;
 	private final String tableVO;
