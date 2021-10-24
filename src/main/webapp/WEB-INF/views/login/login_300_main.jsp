@@ -27,7 +27,7 @@
 		</div>
 		<button class="w-100 btn btn-lg btn-primary" type="submit">Check!</button>
 		<div class="search-signin">
-			<a href="memberId">Search ID</a> | <a href="memberPw">Search PW</a> |
+			<a href="login_310_idFind">Search ID</a> | <a href="login_320_pwFind">Search PW</a> |
 			<a href="memberRegist">Sign Up</a>
 		</div>
 	</form>

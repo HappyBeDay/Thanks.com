@@ -30,9 +30,11 @@
 				<label for="floatingPassword">Certification Number</label>
 			</div>
 
-			<button class="w-100 btn btn-lg btn-primary" type="submit">
+			<button class="w-100 btn btn-lg btn-primary" type="submit" onclick="location.href='/Thanks.com/autoLink/mainScreen_100_main'" >
 				Certification Number Check!
 			</button>
+			<!-- <button onclick="location.href='index.html'" -->
+			<!-- onclick="window.open('http://localhost:8080/Thanks.com/login/login_311_idVerify')"  -->
 		</form>
 		<footer>
 			<jsp:include page="../_module/copyright.jsp"></jsp:include>	
