@@ -106,53 +106,6 @@ html, body, .intro {
 		</div>
 	</div>
 
-	<div class="album py-5 bg-light">
-		<div class="container">
-			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-				<div class="container">
-					<img src="../assets/img/sampleimg.jpg" class="container-image"
-				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
-				</div>
-				<div class="container">
-					<img src="../assets/img/sampleimg.jpg" class="container-image"
-				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
-				</div>
-				<div class="col">
-					<img src="../assets/img/sampleimg.jpg" class="container-image"
-				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
-				</div>
-
-				<div class="col">
-					<img src="../assets/img/sampleimg.jpg" class="container-image"
-				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
-				</div>
-				<div class="col">
-					<img src="../assets/img/sampleimg.jpg" class="container-image"
-				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
-				</div>
-				<div class="col">
-					<img src="../assets/img/sampleimg.jpg" class="container-image"
-				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
-				</div>
-				<div class="col">
-					<img src="../assets/img/sampleimg.jpg" class="container-image"
-				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
-				</div>
-				<div class="col">
-					<img src="../assets/img/sampleimg.jpg" class="container-image"
-				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
-				</div>
-				<div class="col">
-					<img src="../assets/img/sampleimg.jpg" class="container-image"
-				alt="image" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
-				</div>
-			</div>
-		</div>
-	<!-- Paging -->
-	<jsp:include page="../_module/pagination.jsp"></jsp:include>
-	</div>
-
-
 	<!-- Footer-->
 	<jsp:include page="../_module/copyright.jsp"></jsp:include>
 
