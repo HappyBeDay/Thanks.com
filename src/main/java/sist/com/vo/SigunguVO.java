@@ -1,0 +1,10 @@
+package sist.com.vo;
+
+public class SigunguVO {
+
+}
+/*
+  	"SIGUNGUCODE" NUMBER(7,0) NOT NULL ENABLE, 
+	"SIGUNGUCODENAME" NVARCHAR2(50) NOT NULL ENABLE, 
+	"SIDOCODE" NUMBER(7,0) NOT NULL ENABLE, 
+*/
