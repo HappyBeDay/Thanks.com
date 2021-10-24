@@ -135,7 +135,7 @@ html, body, .intro {
 
 	<div class="h-75" style="background-color: #1c7cff;">
 		<div class="mask d-flex align-items-center h-100">
-			<div class="container">
+			<div class="container" style="margin-top: 50px;">
 				<div class="row">
 					<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 						<div class="card mb-2">

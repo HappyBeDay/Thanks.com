@@ -105,7 +105,8 @@ html, body, .intro {
 			</div>
 		</div>
 	</div>
-
+	
+	<jsp:include page="../_module/animalResult.jsp"></jsp:include>
 	<!-- Footer-->
 	<jsp:include page="../_module/copyright.jsp"></jsp:include>
 

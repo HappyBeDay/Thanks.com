@@ -75,10 +75,10 @@
 					</tr>
 				</tbody>
 			</table>
-			<a href="write.jsp" class="btn btn-primary pull-right"
+			<a href="../_module/write" class="btn btn-primary pull-right"
 				style="width: 100px; position: relative;">글쓰기</a>
 		
-		<a href="community_9112_report.jsp" class="btn btn-primary pull-right"
+		<a href="community_9112_report" class="btn btn-primary pull-right"
 				style="width: 100px; margin-left:50px;">문의/신고</a>
 		</div>
 		
