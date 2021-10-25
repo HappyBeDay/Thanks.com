@@ -136,41 +136,15 @@
 					</div>
 				</div>
 			</div>
-			<h2 class="pb-2 border-bottom" style="padding-top: 3rem !important;">보호소
-				정보</h2>
-			<div
-				class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
-				<div class="col d-flex align-items-start">
-					<div>
-						<h5 class="fw-bold mb-0">센터명</h5>
-						<p>댕스닷컴</p>
-					</div>
-				</div>
-				<div class="col d-flex align-items-start">
-					<div>
-						<h5 class="fw-bold mb-0">전화번호</h5>
-						<p>02-1234-1234</p>
-					</div>
-				</div>
-				<div class="col d-flex align-items-start">
-					<div>
-						<h5 class="fw-bold mb-0">주소</h5>
-						<p>강남역</p>
-					</div>
-				</div>
-			</div>
-			<h2 class="pb-2 border-bottom" style="padding-top: 3rem !important;">입양 & 양육</h2>
-			<div>
-				<b> 1. 입양을 희망하시는 분은 센터에 유선 상담을 통해 입양 예약 진행해주시기 바랍니다.<br> 
-					2. "대신 돌봐드립니다"<br>
-					양육 서비스를 희망하시는 분은 아래 신청 버튼을 클릭하여 신청 진행해주시기 바랍니다.
-				</b>
-			</div>
 			<div class="d-flex justify-content-around"
-				style="display: flex; padding-top: 3rem !important;">
+				style="display: flex; padding-top: 2rem !important;">
 				<div>
 					<a class="btn btn-secondary" href="#" target="_blank"
-						style="width: 170px;">양육서비스 신청</a>
+						style="width: 170px;">입양 예약</a>
+				</div>
+				<div>
+					<a class="btn btn-secondary" href="#" target="_blank"
+						style="width: 170px;">양육 신청</a>
 				</div>
 			</div>
 		</div>

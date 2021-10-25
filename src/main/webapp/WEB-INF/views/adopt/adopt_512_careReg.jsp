@@ -131,6 +131,7 @@
 					신청하기</button>
 			</div>
 		</div>
+		</div>
 
 		<jsp:include page="../_module/copyright.jsp"></jsp:include>
 
