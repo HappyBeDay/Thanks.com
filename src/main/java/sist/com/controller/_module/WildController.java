@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "{path:^(?:(?!resources|assets|css|img|js).)*$}")
 public class WildController {
 
+	
 	@RequestMapping(value = "/**")
 	public String servletWildCard(HttpServletRequest request, @PathVariable String path) {
 		String uri = request.getRequestURI().trim().replace("/Thanks.com", "");
@@ -18,6 +19,7 @@ public class WildController {
 		//System.out.println(path);
 		return uri;
 	}
+	
 	/*
 	 * @RequestMapping("/{name:.*}") public String servletTesting(@PathVariable
 	 * String name) { System.out.println("Testing : " + name); return name; }

@@ -126,10 +126,9 @@
 	</beans:bean>
 
 	<!-- 해당 위치의 어노테이션을 읽어들여서 bean으로 등록! -->
-	<context:component-scan
-		base-package="sist.com.controller" />
-	<context:component-scan
-		base-package="sist.com.dao" />
+	<context:component-scan base-package="sist.com.controller.**" />
+	<context:component-scan base-package="sist.com.dao" />
+	
 
 	<!-- Aop -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>

@@ -115,6 +115,7 @@ insert into Sex ( sexCode, sexName, NeuterCode ) values ( 4, '여성+중성화', '1')
 /* 34. 동물색 추가했으니까 1번 유기동물에 AnimalColorCode -> ColorGroupCode 변경 */
 Alter table AbandonedAnimal drop constraint FK_ANIMALCOLOR_TO_ABANDONEDANIMAL;
 Alter table AbandonedAnimal rename column AnimalColorCode to ColorGroupCode;
+Alter table AbandonedAnimal modify ColorGroupCode NUMBER(7);
 Alter table AbandonedAnimal 
     add constraint FK_AnimalColorGroup_TO_ABANDONEDANIMAL
     Foreign Key ( ColorGroupCode ) References AnimalColorGroup ( ColorGroupCode );

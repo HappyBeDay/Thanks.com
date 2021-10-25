@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class AbShelter {
+public class AbShelterVO {
 	private int abShelterCode;
 	private int sidoCode;
 	private int sigunguCode;
