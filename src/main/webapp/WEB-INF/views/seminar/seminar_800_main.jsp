@@ -46,7 +46,7 @@
 						<td style="text-align: center;">2020-06-17</td>
 						<td style="text-align: center;">3억뷰</tds>
 						<td style="text-align: center;">
-						<input style="text-align: center;" type="button" value="신청"></td>
+						<input style="text-align: center;" type="button" class=" btn btn-primary" value="신청"></td>
 					</tr>
 				</tbody>
 				<tbody style="background-color: #eeeeee">
@@ -57,7 +57,7 @@
 						<td style="text-align: center;">2020-06-17</td>
 						<td style="text-align: center;">1억 뷰</tds>
 						<td style="text-align: center;">
-						<input style="text-align: center;" type="button" value="신청"></td>
+						<input style="text-align: center;" type="button" class=" btn btn-primary" value="신청"></td>
 					</tr>
 				</tbody>
 			</table>
