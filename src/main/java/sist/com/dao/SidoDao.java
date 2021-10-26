@@ -16,14 +16,21 @@ import org.springframework.stereotype.Repository;
 @Repository
 @EnableAspectJAutoProxy(proxyTargetClass = true) // implements ApiDao를 해결하기위한 조건...
 public class SidoDao extends SqlSessionDaoSupport implements ApiDao {
-
+	
 	@Resource(name = "sqlSessionTemplate")
 	protected void initDao(SqlSessionTemplate sessionTemplate) throws Exception {
 		System.out.println("initDao() : Sido");
 		this.setSqlSessionTemplate(sessionTemplate);
 	}
 
-	public int insertSidoData(List<Map<String, String>> list) {
+	@Override
+	public Set<Integer> selectPKColumnReturnSet() {
+		System.out.println("getSqlSession : " + this.getSqlSession());
+		return new HashSet<Integer>(this.getSqlSession().selectList("selectSido_sidoCode"));
+	}// selectPKColumnReturnSet
+
+	@Override
+	public int insertApiData(List<Map<String, String>> list) {
 		int cnt = 0;
 		SqlSession sqlSession = this.getSqlSession();
 		Set<Integer> sidoPK = selectPKColumnReturnSet();
@@ -34,13 +41,7 @@ public class SidoDao extends SqlSessionDaoSupport implements ApiDao {
 				cnt += sqlSession.insert("insertSidoFromApi", list.get(i));
 			}
 		}
-
 		return cnt;
 	}// insertSidoData
 
-	@Override
-	public Set<Integer> selectPKColumnReturnSet() {
-
-		return new HashSet<Integer>(this.getSqlSession().selectList("selectSido_sidoCode"));
-	}// selectPKColumnReturnSet
 }

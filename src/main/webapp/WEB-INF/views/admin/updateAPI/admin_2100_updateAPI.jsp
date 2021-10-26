@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>updateAPI</title>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	let result = "${result}"
+	if(result === "Fail"){
+		alert("API update fail... : Table 이름을 확인해주세요.");
+	}
+</script>
 </head>
 <body>
 

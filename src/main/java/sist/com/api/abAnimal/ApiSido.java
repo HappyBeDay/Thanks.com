@@ -6,29 +6,27 @@ import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.springframework.stereotype.Repository;
 import org.xml.sax.SAXException;
 
 import sist.com.api.apiEnum.AbAnimalEnum;
+import sist.com.dao.SidoDao;
 
+@Repository
 public class ApiSido extends AbAnimalAPI {
 	// Field
+	private AbAnimalEnum apiEnum = AbAnimalEnum.SidoVO;
+	private SidoDao sidoDao;
 	
-	private AbAnimalEnum enumSido = AbAnimalEnum.SidoVO;
-	private static ApiSido apiSido;
-
-	// Construct
-	private ApiSido() {
+	// Contstruct
+	@Inject
+	private ApiSido(SidoDao sidoDao) {
 		super();
-	}
-
-	/* SingleTone */
-	public static ApiSido getInstance() {
-		if (apiSido == null) {
-			return apiSido = new ApiSido();
-		}
-		return apiSido;
+		this.sidoDao = sidoDao;
+		//this.xmlParser = xmlParser;
 	}
 	
 	@Override
@@ -36,7 +34,7 @@ public class ApiSido extends AbAnimalAPI {
 		try {
 			// URL
 			StringBuilder sb = new StringBuilder(this.getBaseURL());
-			sb.append(enumSido.getApiName());
+			sb.append(apiEnum.getApiName());
 			// Service Key
 			sb.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + this.getServiceKey());
 			return sb.toString();
@@ -48,19 +46,20 @@ public class ApiSido extends AbAnimalAPI {
 	}
 
 	@Override
-	public List<Map<String, String>> processingDate(String data) {
-		if(data == null) return null;
+	public List<Map<String, String>> processingData(String data) {
+		if (data == null)
+			return null;
 		try {
-			return this.getXmlParser().getXmlDataFromString(data, enumSido.getTagNames(), enumSido.getDbColumns());
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			// TODO Auto-generated catch block
+			return this.getXmlParser().getXmlDataFromString(data, apiEnum.getTagNames(), apiEnum.getDbColumns());
+		} catch (IOException | ParserConfigurationException | SAXException e ) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-
+	
+	
 	@Override
-	public List<Map<String, String>> updateDataBase() {
-		return processingDate(requestURL(makeURL()));
+	public int updateDataBase() {
+		return sidoDao.insertApiData(processingData(requestURL(makeURL())));
 	}
 }

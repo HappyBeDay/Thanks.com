@@ -3,8 +3,6 @@ package sist.com.api.apiEnum;
 public enum RequiredKeyEnum {
 	//apiTagName(dbColumn, Dao)
 	upr_cd("sidoCode" ,"SidoDao"), //시도코드
-	
-	//--미완
 	org_cd("sigunguCode", "Sigungu"), //시군구
 	up_kind_cd("animalTypeCode", "AnimalType"), //축종코드
 	//pageNo
