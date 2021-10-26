@@ -10,7 +10,9 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Insert title here</title>
-<!-- Google fonts-->
+<link rel="canonical"
+	href="https://getbootstrap.com/docs/5.1/examples/dropdowns/">
+<!-- Google fonts -->
 <link
 	href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
 	rel="stylesheet" />
@@ -18,14 +20,16 @@
 	href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
 	rel="stylesheet" type="text/css" />
 
-<!-- Core theme CSS (includes Bootstrap)-->
+<!-- Core theme CSS (includes Bootstrap) -->
 <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" />
+<!-- Calendar dropdown CSS -->
+<link href="<c:url value="/resources/css/dropdowns.css"/>"
+	rel="stylesheet">
 
-<!-- SimpleLightbox plugin CSS-->
+<!-- SimpleLightbox plugin CSS -->
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
-
 <!-- font awesome icon (heart, 위치 등) -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -55,20 +59,6 @@
 
 <!-- search bar & filter -->
 <style>
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-}
-
-@media ( min-width : 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
-}
-
 html, body, .intro {
 	height: 100%;
 }
@@ -98,6 +88,15 @@ html, body, .intro {
 	background-color: rgba(0, 0, 0, .05);
 }
 
+.btn-out-secondary {
+	color: none;
+}
+
+.btn-out-secondary:hover {
+	color: #fff;
+	background-color: #1c7cff;
+	border-color: #1c7cff;
+}
 /* #heart-link:hover {
 	background-color: rgba(0, 0, 0, .05);
 }
@@ -135,7 +134,10 @@ html, body, .intro {
 
 	<div class="h-75" style="background-color: #1c7cff;">
 		<div class="mask d-flex align-items-center h-100">
-			<div class="container" style="margin-top: 50px;">
+			<div class="container" style="margin-top: 100px;">
+				<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+					<div class="display-4 fw-normal" style="font-size: 30px;">입양 대기 동물</div>
+				</div>
 				<div class="row">
 					<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 						<div class="card mb-2">
@@ -154,15 +156,16 @@ html, body, .intro {
 						</div>
 						<div class="card">
 							<div class="card-body p-4">
-								<h6 class="mt-3 mb-4" style="color: #939597;">상세 검색</h6>
+								<h6 class="mt-1 mb-2" style="color: #939597;">상세 검색</h6>
 								<div class="row">
 									<div class="col-md-4 mb-3">
 										<div class="dropdown">
 											<a
 												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
-												href="#" role="button" id="dropdownMenuLink"
-												data-mdb-toggle="dropdown" aria-expanded="false"> 축종 </a>
-											<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+												href="#" type="button" id="dropdownMenuLink"
+												data-bs-toggle="dropdown" aria-expanded="false"> 축종 </a>
+											<ul class="dropdown-menu"
+												aria-labelledby="dropdownMenuButton1">
 												<li><a class="dropdown-item" href="#">Action</a></li>
 												<li><a class="dropdown-item" href="#">Another
 														action</a></li>
@@ -176,8 +179,9 @@ html, body, .intro {
 											<a
 												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 												href="#" role="button" id="dropdownMenuLink1"
-												data-mdb-toggle="dropdown" aria-expanded="false"> 품종 </a>
-											<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+												data-bs-toggle="dropdown" aria-expanded="false"> 품종 </a>
+											<ul class="dropdown-menu"
+												aria-labelledby="dropdownMenuButton2">
 												<li><a class="dropdown-item" href="#">Action</a></li>
 												<li><a class="dropdown-item" href="#">Another
 														action</a></li>
@@ -191,8 +195,9 @@ html, body, .intro {
 											<a
 												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 												href="#" role="button" id="dropdownMenuLink2"
-												data-mdb-toggle="dropdown" aria-expanded="false"> 색 </a>
-											<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
+												data-bs-toggle="dropdown" aria-expanded="false"> 색 </a>
+											<ul class="dropdown-menu"
+												aria-labelledby="dropdownMenuButton3">
 												<li><a class="dropdown-item" href="#">Action</a></li>
 												<li><a class="dropdown-item" href="#">Another
 														action</a></li>
@@ -208,9 +213,10 @@ html, body, .intro {
 											<a
 												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 												href="#" role="button" id="dropdownMenuLink3"
-												data-mdb-toggle="dropdown" aria-expanded="false"> 보호소 위치
+												data-bs-toggle="dropdown" aria-expanded="false"> 보호소 위치
 											</a>
-											<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
+											<ul class="dropdown-menu"
+												aria-labelledby="dropdownMenuButton4">
 												<li><a class="dropdown-item" href="#">Action</a></li>
 												<li><a class="dropdown-item" href="#">Another
 														action</a></li>
@@ -224,8 +230,9 @@ html, body, .intro {
 											<a
 												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 												href="#" role="button" id="dropdownMenuLink4"
-												data-mdb-toggle="dropdown" aria-expanded="false"> 성별 </a>
-											<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink4">
+												data-bs-toggle="dropdown" aria-expanded="false"> 성별 </a>
+											<ul class="dropdown-menu"
+												aria-labelledby="dropdownMenuButton4">
 												<li><a class="dropdown-item" href="#">Action</a></li>
 												<li><a class="dropdown-item" href="#">Another
 														action</a></li>
@@ -239,20 +246,101 @@ html, body, .intro {
 											<a
 												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 												href="#" role="button" id="dropdownMenuLink5"
-												data-mdb-toggle="dropdown" aria-expanded="false"> 공고 날짜
-											</a>
-											<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
-												<li><a class="dropdown-item" href="#">Action</a></li>
-												<li><a class="dropdown-item" href="#">Another
-														action</a></li>
-												<li><a class="dropdown-item" href="#">Something
-														else here</a></li>
-											</ul>
+												data-bs-toggle="dropdown" aria-expanded="false"> 공고 날짜 </a>
+											<div class="dropdown-menu p-2 shadow rounded-3"
+												style="width: 340px" id="dropdownCalendar">
+												<div class="d-grid gap-1">
+													<div class="cal">
+														<div class="cal-month">
+															<button class="btn cal-btn" type="button">
+																<svg xmlns="http://www.w3.org/2000/svg" width="16"
+																	height="16" fill="currentColor"
+																	class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd"
+																		d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+</svg>
+															</button>
+															<strong class="cal-month-name">June</strong> <select
+																class="form-select cal-month-name d-none">
+																<option value="January">January</option>
+																<option value="February">February</option>
+																<option value="March">March</option>
+																<option value="April">April</option>
+																<option value="May">May</option>
+																<option selected value="June">June</option>
+																<option value="July">July</option>
+																<option value="August">August</option>
+																<option value="September">September</option>
+																<option value="October">October</option>
+																<option value="November">November</option>
+																<option value="December">December</option>
+															</select>
+															<button class="btn cal-btn" type="button">
+																<svg xmlns="http://www.w3.org/2000/svg" width="16"
+																	height="16" fill="currentColor"
+																	class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd"
+																		d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+</svg>
+															</button>
+														</div>
+														<div class="cal-weekdays text-muted">
+															<div class="cal-weekday">Sun</div>
+															<div class="cal-weekday">Mon</div>
+															<div class="cal-weekday">Tue</div>
+															<div class="cal-weekday">Wed</div>
+															<div class="cal-weekday">Thu</div>
+															<div class="cal-weekday">Fri</div>
+															<div class="cal-weekday">Sat</div>
+														</div>
+														<div class="cal-days">
+															<button class="btn cal-btn" disabled type="button">30</button>
+															<button class="btn cal-btn" disabled type="button">31</button>
+
+															<button class="btn cal-btn" type="button">1</button>
+															<button class="btn cal-btn" type="button">2</button>
+															<button class="btn cal-btn" type="button">3</button>
+															<button class="btn cal-btn" type="button">4</button>
+															<button class="btn cal-btn" type="button">5</button>
+															<button class="btn cal-btn" type="button">6</button>
+															<button class="btn cal-btn" type="button">7</button>
+
+															<button class="btn cal-btn" type="button">8</button>
+															<button class="btn cal-btn" type="button">9</button>
+															<button class="btn cal-btn" type="button">10</button>
+															<button class="btn cal-btn" type="button">11</button>
+															<button class="btn cal-btn" type="button">12</button>
+															<button class="btn cal-btn" type="button">13</button>
+															<button class="btn cal-btn" type="button">14</button>
+
+															<button class="btn cal-btn" type="button">15</button>
+															<button class="btn cal-btn" type="button">16</button>
+															<button class="btn cal-btn" type="button">17</button>
+															<button class="btn cal-btn" type="button">18</button>
+															<button class="btn cal-btn" type="button">19</button>
+															<button class="btn cal-btn" type="button">20</button>
+															<button class="btn cal-btn" type="button">21</button>
+
+															<button class="btn cal-btn" type="button">22</button>
+															<button class="btn cal-btn" type="button">23</button>
+															<button class="btn cal-btn" type="button">24</button>
+															<button class="btn cal-btn" type="button">25</button>
+															<button class="btn cal-btn" type="button">26</button>
+															<button class="btn cal-btn" type="button">27</button>
+															<button class="btn cal-btn" type="button">28</button>
+
+															<button class="btn cal-btn" type="button">29</button>
+															<button class="btn cal-btn" type="button">30</button>
+															<button class="btn cal-btn" type="button">31</button>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 								<div
-									class="d-flex justify-content-between align-items-center mt-4">
+									class="d-flex justify-content-between align-items-center mt-2">
 									<div>
 										<button type="button"
 											class="btn btn-dark btn-rounded ripple-surface"
@@ -270,334 +358,7 @@ html, body, .intro {
 			</div>
 		</div>
 	</div>
-	<main>
-
-	<div class="album py-5 bg-light">
-		<div class="container">
-			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%"
-							height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-							aria-label="Placeholder: Thumbnail"
-							preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						<div class="card-body">
-							<p class="card-text">
-							<div>
-								<i class="fa fa-heart" aria-hidden="true"></i>품종
-							</div>
-							<div>
-								<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
-							</div>
-							<div>
-								<i class="fa fa-map-marker" aria-hidden="true"></i>위치
-							</div>
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">입양
-										예약</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">양육
-										신청</button>
-								</div>
-								<span id=heart><i class="fa fa-heart-o"
-									aria-hidden="true"></i> </span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	<!-- Paging -->
-	<jsp:include page="../_module/pagination.jsp"></jsp:include>
-	</div>
-
-	</main>
+	<jsp:include page="../_module/animalAdoptResult.jsp"></jsp:include>
 
 	<!-- Footer-->
 	<jsp:include page="../_module/copyright.jsp"></jsp:include>
@@ -609,6 +370,10 @@ html, body, .intro {
 	<!-- SimpleLightbox plugin JS-->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+
+	<script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
 
 </body>
 </html>

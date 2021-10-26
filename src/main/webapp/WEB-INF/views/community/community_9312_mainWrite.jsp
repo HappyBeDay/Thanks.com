@@ -41,51 +41,10 @@
 	<!-- Navigation 1-->
 	<jsp:include page="../_module/navibar.jsp"></jsp:include>
 
-	<div class="container" style="margin-top: 100px;">
-		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-			<li><a href="#" class="nav-link px-2 link-secondary"><b>커뮤니티
-						게시판</b></a></li>
-			<li><a href="#" class="nav-link px-2 link-dark"><b>양육
-						커뮤니티</b></a></li>
-			<li><a href="#" class="nav-link px-2 link-dark"><b>돌폼
-						서비스 신청</b></a></li>
-		</ul>
+	<div class="list" id="board_write" style="margin: 200px;">
+		<h2>돌봄 게시글 작성</h2>
+		<jsp:include page="../_module/write.jsp"></jsp:include>
 	</div>
-
-	<div class="container" style="margin-top: 70px;">
-		<div class="row">
-			<table class="table table-striped"
-				style="border: 1px solid #dddddd; width: 100%;">
-				<thead style="background-color: #adb5bd">
-					<tr style="text-align: center;">
-						<th style="text-align: center;">번호</th>
-						<th style="text-align: center;">제목</th>
-						<th style="text-align: center;">작성자</th>
-						<th style="text-align: center;">작성일</th>
-						<th style="text-align: center;">조회수</th>
-					</tr>
-				</thead>
-				<tbody style="background-color: #eeeeee">
-					<tr>
-						<td style="text-align: center;">1</td>
-						<td style="text-align: left;">안녕하세요.</td>
-						<td style="text-align: center;">홍길동</td>
-						<td style="text-align: center;">2020-06-17</td>
-						<td style="text-align: center;">5</tds>
-					</tr>
-				</tbody>
-			</table>
-			<a href="community_9111_mainReply" class="btn btn-primary pull-right"
-				style="width: 100px; position: relative;">글쓰기</a>
-		
-		<a href="community_9112_report" class="btn btn-primary pull-right"
-				style="width: 100px; margin-left:50px;">문의/신고</a>
-		</div>
-		
-		<!-- Paging -->
-		<jsp:include page="../_module/pagination.jsp"></jsp:include>
-	</div>
-
 	<!-- Footer-->
 	<jsp:include page="../_module/copyright.jsp"></jsp:include>
 

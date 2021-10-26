@@ -42,7 +42,7 @@
 	<jsp:include page="../_module/navibar.jsp"></jsp:include>
 
 	<div class="list" id="board_write" style="margin: 200px;">
-		<h2>돌봄 게시글 작성</h2>
+		<h2>돌봄 답글 작성</h2>
 		<jsp:include page="../_module/write.jsp"></jsp:include>
 	</div>
 	<!-- Footer-->
