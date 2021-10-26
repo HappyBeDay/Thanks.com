@@ -1,76 +1,50 @@
 package sist.com.api.abAnimal;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.springframework.stereotype.Repository;
-import org.xml.sax.SAXException;
 
 import sist.com.api.apiEnum.AbAnimalEnum;
-import sist.com.dao.SidoDao;
 import sist.com.dao.SigunguDao;
+import sist.com.vo.SigunguVO;
 
 @Repository
 public class ApiSigungu extends AbAnimalAPI {
+
 	// Field
 	private AbAnimalEnum apiEnum = AbAnimalEnum.SigunguVO;
-
-	@Inject
+	private ApiSido apiSido;
 	private SigunguDao sigunguDao;
 
 	@Inject
-	private SidoDao sidoDao;
+	public ApiSigungu(ApiSido apiSido, SigunguDao sigunguDao) {
+		super();
+		this.apiSido = apiSido;
+		this.sigunguDao = sigunguDao;
+	}
 
 	@Override
 	public String makeURL() {
-		try {
-			// URL
-			StringBuilder sb = new StringBuilder(this.getBaseURL());
-			sb.append(apiEnum.getApiName());
-			// Service Key
-			sb.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + this.getServiceKey());
-			return sb.toString();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-			System.out.println("ApiSido.makeURL");
-		}
-		return null;
+		return super.makeURL(apiEnum);
 	}
 
 	@Override
 	public List<Map<String, String>> processingData(String data) {
-		if (data == null)
-			return null;
-
-		try {
-			return this.getXmlParser().getXmlDataFromString(data, apiEnum.getTagNames(), apiEnum.getDbColumns());
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	private List<Integer> getPkSet() {
-		return new ArrayList<Integer>(sidoDao.selectPKColumnReturnSet());
+		return processingData(data, apiEnum);
 	}
 
 	private List<String> requiredKey() {
 		List<String> repeat = new ArrayList<String>();
 
-		String[] items = apiEnum.getRequiredItems();
-		List<Integer> keys = getPkSet();
+		String item = apiEnum.getRequiredItems()[0];
+		List<Integer> keys = apiSido.getPkList();
 		for (int i = 0; i < keys.size(); i++) {
-			for (int j = 0; j < items.length; j++) {
-				repeat.add("&" + items[j] + "=" + keys.get(i));
-			}
+			repeat.add("&" + item + "=" + keys.get(i));
+
 		}
 		return repeat;
 		// System.out.println(items.length);
@@ -93,5 +67,10 @@ public class ApiSigungu extends AbAnimalAPI {
 		}
 
 		return cnt;
+	}
+
+	public List<SigunguVO> getRequriedList() {
+		//System.out.println("getRequriedList Method");
+		return sigunguDao.getCodeList();
 	}
 }

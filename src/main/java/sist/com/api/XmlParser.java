@@ -53,9 +53,10 @@ public class XmlParser {
 			Map<String, String> map = new HashMap<>();
 			NodeList tagItems = tagList.item(i).getChildNodes();
 			
-			for(int j = 0 ; j < tagItems.getLength(); j++) {
+			// dbCol로 변경해야되지 않을까?
+			for(int j = 0 ; j < dbCol.length; j++) {
 				String value = tagItems.item(j).getTextContent();
-				System.out.println(value);
+				//System.out.println(value);
 				map.put(dbCol[j], value);
 			}
 			list.add(map);

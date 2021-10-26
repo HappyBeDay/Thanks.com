@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org./dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sist.com.vo.abShelter">
+	<sql id="table">AbShelter</sql>
+	<sql id="pk">abShelterCode</sql>
+	
+	<sql id="columnsAPI">abShelterCode, abSelterName, sidoCode, sigunguCode</sql>
+	<sql id="insertColumnsAPI">#{abShelterCode}, #{abSelterName}, #{sidoCode}, #{sigunguCode}</sql>
+
+	<insert id="insertAbShelterFromApi" parameterType="java.util.Map">
+		insert into 
+		<include refid="table"></include>
+		(<include refid="columnsAPI" />) 
+		values 
+		(<include refid="insertColumnsAPI" />) 
+	</insert>
+
+	<select id="selectAbShelterAll" resultType="abShelter">
+		select * from
+		<include refid="table"></include>
+	</select>
+
+	<select id="selectAbShelter_PK" resultType="java.lang.Integer">
+		select
+		<include refid="pk" />
+		from
+		<include refid="table" />
+	</select>
+
+</mapper>
+<!-- 
+private int abShelterCode;           ABSHELTERCODE	NUMBER(15,0)
+private int sidoCode;                SIDOCODE	NUMBER(7,0)
+private int sigunguCode;             SIGUNGUCODE	NUMBER(7,0)
+private int abSelterTel;             ABSELTERTEL	NUMBER(15,0)
+private String abSelterAddress;      ABSELTERADDRESS	NVARCHAR2(50 CHAR)
+private String organize;             ORGANIZE	NVARCHAR2(20 CHAR)
+private String managerName;          MANAGERNAME	NVARCHAR2(10 CHAR)
+private int managerTel;              MANAGERTEL	NUMBER(15,0)
+private String abselterName;         ABSELTERNAME	NVARCHAR2(20 CHAR)
+ -->

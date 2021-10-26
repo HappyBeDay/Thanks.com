@@ -1,12 +1,10 @@
 package sist.com.api;
 
-import java.util.List;
-import java.util.Map;
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Repository;
 
+import sist.com.api.abAnimal.ApiAbShelter;
 import sist.com.api.abAnimal.ApiSido;
 import sist.com.api.abAnimal.ApiSigungu;
 import sist.com.api.apiEnum.AbAnimalIndexEnum;
@@ -15,28 +13,19 @@ import sist.com.api.apiEnum.AbAnimalIndexEnum;
 public class ApiMw {
 	// Field
 	public static ApiMw apiMw;
-	List<Map<String, String>> dataList;
-
+	
 	@Inject
 	private ApiSido apiSido;
 	
 	@Inject
 	private ApiSigungu apiSigungu;
+	
+	@Inject
+	private ApiAbShelter apiAbShelter;
 
 	// Constructor
 	private ApiMw() {
 		super();
-	}
-
-	// SingleTone
-	public static ApiMw getInstance() {
-		if (apiMw == null)
-			return apiMw = new ApiMw();
-		return apiMw;
-	}
-
-	public int getIndex(String tabName) {
-		return AbAnimalIndexEnum.valueOf(tabName).index;
 	}
 
 	public int chooseUpdateAPI_abAnimal(String tabName) {
@@ -47,7 +36,7 @@ public class ApiMw {
 		case "Sigungu":
 			return apiSigungu.updateDataBase();
 		case "AbShelter":
-
+			return apiAbShelter.updateDataBase();
 		case "Breed":
 
 		case "AbandonedAnimal":
@@ -55,5 +44,16 @@ public class ApiMw {
 		}
 
 		return -1;
+	}
+	
+	// SingleTone
+	public static ApiMw getInstance() {
+		if (apiMw == null)
+			return apiMw = new ApiMw();
+		return apiMw;
+	}
+
+	public int getIndex(String tabName) {
+		return AbAnimalIndexEnum.valueOf(tabName).index;
 	}
 }

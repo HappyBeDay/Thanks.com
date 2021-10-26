@@ -8,14 +8,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<sql id="columns">sigunguCode, sigunguCodeName, sidoCode</sql>
 	<sql id="insertColumns">#{sigunguCode}, #{sigunguCodeName}, #{sidoCode}</sql>
 
+	<!-- insert -->
 	<insert id="insertSigunguFromApi" parameterType="java.util.Map">
 		insert into 
 		<include refid="table"></include>
-		(<include refid="columns" />) 
+		(<include refid="sist.com.vo.sigungu.columns" />) 
 		values 
 		(<include refid="insertColumns" />) 
 	</insert>
 
+
+	<!-- select -->
 	<select id="selectSigunguAll" resultType="sigungu">
 		select * from
 		<include refid="table"></include>
@@ -26,6 +29,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="pk" />
 		from
 		<include refid="table" />
+	</select>
+	
+	<select id="selectSigunguCodeList" resultType="sigungu">
+		select sigunguCode, sidoCode from 
+		<include refid="table"></include>	
 	</select>
 
 </mapper>
