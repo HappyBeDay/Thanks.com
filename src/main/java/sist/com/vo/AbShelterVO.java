@@ -15,21 +15,14 @@ public class AbShelterVO {
 	private int abShelterCode;
 	private int sidoCode;
 	private int sigunguCode;
-	private int abSelterTel;
-	private String abSelterAddress;
+	private int abShelterTel;
+	private String abShelterAddress;
 	private String organize;
 	private String managerName;
 	private int managerTel;
-	private String abselterName;
+	private String abShelterName;
 }                                     
 /*
-ABSHELTERCODE	NUMBER(15,0)
-SIDOCODE		NUMBER(7,0)
-SIGUNGUCODE		NUMBER(7,0)
-ABSELTERTEL		NUMBER(15,0)
-ABSELTERADDRESS	NVARCHAR2(50 CHAR)
-ORGANIZE		NVARCHAR2(20 CHAR)
-MANAGERNAME		NVARCHAR2(10 CHAR)
-MANAGERTEL		NUMBER(15,0)
-ABSELTERNAME	NVARCHAR2(20 CHAR)
+
+
 */

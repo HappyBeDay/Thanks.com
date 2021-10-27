@@ -121,3 +121,37 @@ Alter table AbandonedAnimal
     Foreign Key ( ColorGroupCode ) References AnimalColorGroup ( ColorGroupCode );
     
 commit;
+
+--------------------------------------------------------------------------------
+
+/*
+오타 수정 21.10.27
+ABSELTERTEL
+ABSELTERADDRESS
+ABSELTERNAME
+*/
+alter table AbShelter rename column abSelterName to abShelterName;
+comment on column ABSHELTER.ABSHELTERNAME is '유기동물 보호소 이름';
+
+alter table AbShelter rename column ABSELTERADDRESS to abShelterAddress;
+alter table AbShelter rename column ABSELTERTEL to abShelterTel;
+
+--------------------------------------------------------------------------------
+
+comment on column Board.replyGroupCode is '게시글의 댓글 그룹 코드';
+comment on column BoardType.boardTypeName is '게시판의 이름';
+/*
+CHATMESSAGECODE comment update...
+CHATROOMTOTALCNT 삭제
+DELREQUESTDATE comment update
+*/
+comment on column ChatRoom.CHATMESSAGECODE is '채팅 메시지 코드';
+alter table ChatRoom drop column chatRoomTotalCnt;
+comment on column DelMemInfoRet.DELREQUESTDATE is '삭제 신청일';
+comment on column MemberInfo.AUTHORIZECODE is '권한 코드';
+comment on column Pet.MEMBERCODE is '회원 코드 (주인)';
+
+alter table SeminarReservation add reservationTime date not null;
+comment on column SeminarReservation.reservationTime is '세미나 신청시간';
+commit;
+
