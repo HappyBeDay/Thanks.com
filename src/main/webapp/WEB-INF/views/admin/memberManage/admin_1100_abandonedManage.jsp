@@ -16,9 +16,7 @@
 	rel="stylesheet" />
 <link href="<c:url value="/resources/css/admin_styles.css"/>"
 	rel="stylesheet" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-	crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="../../_module/adminNavbar.jsp"></jsp:include>
@@ -30,9 +28,6 @@
 				<h1 class="mt-4">유기동물 관리페이지</h1>
 				<div class="card mb-4"></div>
 				<div class="card mb-4">
-					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 유기동물 데이터
-					</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>
@@ -343,12 +338,9 @@
 			<jsp:include page="../../_module/copyright.jsp"></jsp:include>
 		</div>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="../../js/scripts.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 	<script src="../../js/datatables-simple-demo.js"></script>
 </body>
 </html>
