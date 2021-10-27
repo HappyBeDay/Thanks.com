@@ -44,17 +44,10 @@
 <script src="../js/main.js"></script>
 
 <script type="text/javascript">
-	/* $(document).ready(function(){
-	 $("#heart").click(function(){
-	 if($("#heart").hasClass("liked")){
-	 $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-	 $("#heart").removeClass("liked");
-	 }else{
-	 $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-	 $("#heart").addClass("liked");
-	 }
-	 });
-	 }); */
+/* heart like */
+function myFunction(x) {
+	  x.classList.toggle("fa-heart-o");
+	}
 </script>
 
 <!-- search bar & filter -->
@@ -72,58 +65,32 @@ html, body, .intro {
 	box-shadow: inset 0 0 0 1px transparent;
 }
 
-.btn-link:hover {
-	background-color: rgba(0, 0, 0, .05);
+
+/* heart like */
+.fa-heart {
+  font-size: 30px;
+  cursor: pointer;
+  user-select: none;
 }
 
-.btn-link:active, .btn-link.active {
-	background-color: rgba(0, 0, 0, .05);
+.fa-heart:hover {
+  color: #1c7cff;
 }
-
-.btn-link:focus, .btn-link.focus {
-	background-color: rgba(0, 0, 0, .05);
-}
-
-.btn-link:active:focus, .heart-link.active:focus {
-	background-color: rgba(0, 0, 0, .05);
-}
-
-.btn-out-secondary {
-	color: none;
-}
-
-.btn-out-secondary:hover {
-	color: #fff;
-	background-color: #1c7cff;
-	border-color: #1c7cff;
-}
-/* #heart-link:hover {
-	background-color: rgba(0, 0, 0, .05);
-}
-
-#heart-link:active, #heart-link.active {
-	background-color: rgba(0, 0, 0, .05);
-}
-
-#heart-link:focus, #heart-link.focus {
-	background-color: rgba(0, 0, 0, .05);
-}
-
-#heart-link:active:focus, #heart-link.active:focus {
-	background-color: rgba(0, 0, 0, .05);
-} */
 
 /* font awesome icon */
-.fa-heart, .fa-venus-mars, .fa-map-marker {
+.fa-paw, .fa-venus-mars, .fa-map-marker {
 	color: #1c7cff;
 	font-size: 15px;
 	cursor: pointer;
 }
 
 .fa-heart-o {
-	color: #1c7cff;
+	color: black;
 	font-size: 30px;
 	cursor: pointer;
+}
+.searchbar:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.6); 
 }
 </style>
 
@@ -136,12 +103,11 @@ html, body, .intro {
 		<div class="mask d-flex align-items-center h-100">
 			<div class="container" style="margin-top: 100px;">
 				<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-					<div class="display-4 fw-normal" style="font-size: 30px;">실종
-						및 목격 동물</div>
+					<div class="display-4 fw-normal" style="font-size: 30px;">실종 및 목격 동물</div>
 				</div>
 				<div class="row">
 					<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-						<div class="card mb-2">
+						<div class="searchbar card mb-2">
 							<div class="card-body d-flex justify-content-between py-2">
 								<div class="input-group input-group-lg">
 									<input type="text" class="form-control form-control-lg rounded"
@@ -214,7 +180,8 @@ html, body, .intro {
 											<a
 												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 												href="#" role="button" id="dropdownMenuLink3"
-												data-bs-toggle="dropdown" aria-expanded="false"> 지역 </a>
+												data-bs-toggle="dropdown" aria-expanded="false"> 지역
+											</a>
 											<ul class="dropdown-menu"
 												aria-labelledby="dropdownMenuButton4">
 												<li><a class="dropdown-item" href="#">Action</a></li>
