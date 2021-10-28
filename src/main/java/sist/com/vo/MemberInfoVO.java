@@ -19,7 +19,7 @@ public class MemberInfoVO {
 	private int tel;
 	private String email;
 	private int authorizeCode;
-	private String date;
+	private String signUpDate;
 	private int petCode;
 	private int addressCode;
 	

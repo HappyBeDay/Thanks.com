@@ -5,13 +5,12 @@
 <html>
 <head>
 <title>회원가입 약관동의</title>
-<link href="<c:url value="/css/signUp_200_agreement.css"/>"
-	rel="stylesheet" />
+<link href="<c:url value="/css/signUp_200_agreement.css"/>"rel="stylesheet" />
 <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" />
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/signUp/signUp_200_agreement.js"></script>
-<script src=../_module/common.js></script>
+
 </head>
 <jsp:include page="../_module/navibar.jsp"></jsp:include>
 <body>

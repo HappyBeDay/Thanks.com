@@ -3,9 +3,30 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org./dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sist.com.vo.memberInfo">
+	<sql id="table">MemberInfo</sql>
+	<sql id="signUpColumns">memberCode, id, pw, name, tel, email, authorizeCode, signUpDate, petCode, addressCode</sql>
+	<sql id="signUpData">memberInfo_seq.nextVal, #{id}, #{pw}, #{name}, #{tel}, #{email}, 1, sysdate, null, null</sql>
 	
-	<select id="memberInfo_one" parameterType="java.lang.String" resultType="memberInfo">
+	
+	<select id="memberInfo_one" parameterType="java.lang.String"
+		resultType="memberInfo">
 		select * from memberInfo where id = #{id}
 	</select>
+
+	<select id="memberInfo_duplicateID"
+		parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select id from 
+		<include refid="table"/> 
+	 	where id=#{id}
+	</select>
 	
+	<select id="insertMemberSignUp">
+		insert into 
+		<include refid="table" />
+		(<include refid="signUpColumns" />)
+		values
+		(<include refid="signUpData" />)
+	</select>
+
 </mapper>

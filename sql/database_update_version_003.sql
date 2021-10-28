@@ -153,5 +153,9 @@ comment on column Pet.MEMBERCODE is '회원 코드 (주인)';
 
 alter table SeminarReservation add reservationTime date not null;
 comment on column SeminarReservation.reservationTime is '세미나 신청시간';
-commit;
 
+/* 회원가입 날짜 추가 */
+alter table memberInfo add signUpDate date;
+comment on column memberInfo.signUpDate is '회원 가입 날짜';
+
+commit;

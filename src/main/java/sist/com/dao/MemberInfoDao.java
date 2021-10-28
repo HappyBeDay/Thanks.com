@@ -18,11 +18,22 @@ public class MemberInfoDao extends SqlSessionDaoSupport {
 	}
 
 	public boolean loginCheck(String id, String pw) {
-		System.out.println("loginCheck(id, pw)\n");
+		System.out.println("loginCheck(id, pw)");
 		MemberInfoVO vo = this.getSqlSession().selectOne("memberInfo_one", id);
 		if (vo != null && pw.equals(vo.getPw()))
 			return true;
 		return false;
 	}
 
+	public boolean IdDuplicateCheck(String id) {
+		System.out.println("Duplicate(id) : " + id);
+		String result = this.getSqlSession().selectOne("memberInfo_duplicateID", id);
+		return result == null ? true : false;
+	}
+
+	public boolean insertMemberSignUp(MemberInfoVO vo) {
+		System.out.println("insertMemberSignUp");
+		int cnt = this.getSqlSession().insert("insertMemberSignUp", vo);
+		return cnt > 0 ? true : false;
+	}
 }
