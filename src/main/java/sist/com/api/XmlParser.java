@@ -3,7 +3,10 @@ package sist.com.api;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,5 +66,97 @@ public class XmlParser {
 		}
 		
 		return list;
+	}
+	
+	
+	/* 
+	 * VO <-> Map 
+	 * Converter 사용한 예제
+	
+	List<StudentVO> list = dao.selectAllStudent();
+	JSONArray jsonArray = new JSONArray();
+
+	for (int i = 0; i < list.size(); i++) {
+		System.out.println("Vo -> Map");
+		Map<String, Object> map = convertToMap(list.get(i));
+		System.out.println(map);
+
+		//SuppressWarnings("unchecked")
+		jsonArray.add(new JSONObject(map));
+		
+		System.out.println("Map -> Vo");
+		StudentVO convertValueObject = convertToValueObject(map, StudentVO.class);
+		System.out.println(convertValueObject);
+	}
+	model.addAttribute("jsonList", jsonArray);
+	*/
+	
+	/**
+	 * @param obj
+	 * @return
+	 * VO -> Map
+	 */
+	public Map<String, Object> convertToMap(Object obj) throws IllegalArgumentException, IllegalAccessException {
+		if (obj == null)
+			return Collections.emptyMap();
+
+		Map<String, Object> convertMap = new HashMap<>();
+
+		Field[] fields = obj.getClass().getDeclaredFields();
+
+		for (Field field : fields) {
+			field.setAccessible(true);
+			convertMap.put(field.getName(), field.get(obj));
+		}
+
+		return convertMap;
+	}
+	
+	/**
+	 * 
+	 * @param map
+	 * @param clazz
+	 * @return
+	 * Map -> VO (clazz 정보로)
+	 */
+	public <T> T convertToValueObject(Map<String, Object> map, Class<T> clazz)
+			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException,
+			NoSuchMethodException, SecurityException {
+
+		if (clazz == null)
+			throw new NullPointerException("Class cannot be null in covertToValueObject Method");
+
+		T instance = clazz.getConstructor().newInstance();
+
+		if (map == null || map.isEmpty())
+			return instance;
+
+		for (Map.Entry<String, Object> entrySet : map.entrySet()) {
+			Field[] fields = clazz.getDeclaredFields();
+
+			System.out.println("--- entrySet ---");
+			System.out.println(entrySet);
+
+			for (Field field : fields) {
+				field.setAccessible(true);
+
+				String fieldName = field.getName();
+
+				try {
+					// key -> value가 Null일 경우 에러 발생!
+					boolean isSameType = entrySet.getValue().getClass().equals(field.getType());
+					boolean isSameName = entrySet.getKey().equals(fieldName);
+
+					if (isSameType && isSameName) {
+						field.set(instance, map.get(fieldName));
+					}
+				} catch (NullPointerException e) {
+					System.out.println("isSameType 값은 null입니다.");
+				} // try - catch
+
+			}
+		}
+
+		return instance;
 	}
 }
