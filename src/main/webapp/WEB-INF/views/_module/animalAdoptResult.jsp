@@ -34,7 +34,6 @@
 							</div>
 							<i onclick="myFunction(this)" class="fa fa-heart"></i>
 							<!-- <span id=heart><i class="btn btn-out-secondary fa fa-heart-o" aria-hidden="true"></i> -->
-							</span>
 						</div>
 					</div>
 				</div>

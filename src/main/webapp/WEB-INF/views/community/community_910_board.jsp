@@ -36,8 +36,17 @@
 <!-- Core theme JS-->
 <script src="../js/main.js"></script>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("tr#a").click(function(){
+		alert("hi");
+	});
+});
+</script>
 </head>
 <body id="page-top">
+
 	<!-- Navigation 1-->
 	<jsp:include page="../_module/navibar.jsp"></jsp:include>
 
@@ -58,24 +67,26 @@
 				style="border: 1px solid #dddddd; width: 100%;">
 				<thead style="background-color: #adb5bd">
 					<tr style="text-align: center;">
-						<th style="text-align: center;">번호</th>
+						<th id="a" style="text-align: center;">게시글 코드</th>
 						<th style="text-align: center;">제목</th>
 						<th style="text-align: center;">작성자</th>
 						<th style="text-align: center;">작성일</th>
 						<th style="text-align: center;">조회수</th>
 					</tr>
 				</thead>
+				<c:forEach var="i" items="${boardList}" varStatus="cnt">
 				<tbody style="background-color: #eeeeee">
-					<tr>
-						<td style="text-align: center;">1</td>
-						<td style="text-align: left;">안녕하세요.</td>
-						<td style="text-align: center;">홍길동</td>
-						<td style="text-align: center;">2020-06-17</td>
-						<td style="text-align: center;">5</tds>
+					<tr id="a">
+						<td style="text-align: center;">${i.boardcode}</td>
+						<td style="text-align: left;">${i.boardtitle}</td>
+						<td style="text-align: center;">${i.membercode}</td>
+						<td style="text-align: center;">${i.boarddate}</td>
+						<td style="text-align: center;">${i.boardhit}</td>
 					</tr>
 				</tbody>
+				</c:forEach>
 			</table>
-			<a href="../_module/write" class="btn btn-primary pull-right"
+		<a href="../_module/write" class="btn btn-primary pull-right"
 				style="width: 100px; position: relative;">글쓰기</a>
 		
 		<a href="community_9112_report" class="btn btn-primary pull-right"
