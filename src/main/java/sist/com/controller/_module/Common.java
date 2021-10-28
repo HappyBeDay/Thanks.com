@@ -40,4 +40,14 @@ public class Common {
 		session.setAttribute("id", id);
 		session.setMaxInactiveInterval(3600);
 	}
+	
+	public void logout(HttpSession session) {
+		//session.setMaxInactiveInterval(0);
+		//session.invalidate(); //세션 전체 삭제
+		session.removeAttribute("id");
+	}
+	
+	public String loginSession(HttpSession session) {
+		return (String) session.getAttribute("id");
+	}
 }
