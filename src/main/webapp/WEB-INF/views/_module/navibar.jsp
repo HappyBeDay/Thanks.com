@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <script src="../js/_module/navibar.js"></script>
   	<script src="../js/main.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src=../_module/common.js></script>
+    <script src="../js/_module/navibar.js"></script>
 	
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
 		<div id="navibar" class="container px-4 px-lg-5">
@@ -18,6 +18,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav1 ms-auto my-2 my-lg-2"> <!-- my-lg-2: text의 위 아래 길이 -->
+					<li id="welcome" class="nav-item1" style="display: none"><a id="id" class="nav-link1">${id}</a></li>
 					<!-- 여백 더 넓은거: list-unstyled list-inline my-2 -->
 					<li class="nav-item1"><a lang="login_300_main" class="nav-link1" href="#login">Login</a></li>
 					<li class="nav-item1"><a lang="signUp_200_agreement" class="nav-link1" href="#signUp">SignUp</a></li>

@@ -10,13 +10,37 @@ console.log("link to navibar.js");
 let _navibar;
 
 window.onload = function() {
+	// 변수 선언부
+	let btnList = document.querySelector("div#navibar.container.px-4.px-lg-5");
+	let id = document.getElementById("id");
+	
+	// 로그인 시 화면 변경
+	if (!isEmpty(id.innerText)) {
+		console.log("id값 확인 : " + id.value);
 
-	_navibar = document.querySelector("div#navibar.container.px-4.px-lg-5")
-			.querySelectorAll("a");
+		// 로그인 한 화면으로 변경
+		// 1. Login -> logOut
+		// 2. signUp -> AdminPage // 권한 확인 필요.
+		let login = btnList.querySelector("a[lang=login_300_main]");
+		login.lang = "logout";
+		login.innerText = "Logout"
+		let signUp = btnList.querySelector("a[lang=signUp_200_agreement]");
+		signUp.lang = "adminPage";
+		signUp.innerText = "AdminPage";
+		let welcome = btnList.querySelector("li#welcome");
+		welcome.style.display = "";
+		id.innerText += "님 반갑습니다^^*";
+	} else {
+		/* 1. MyPage hidden 속성 */
+		// document.querySelector("a[lang=myPage_400_main]").setAttribute("type",
+		// "hidden");
+		btnList.querySelector("a[lang=myPage_400_main]").remove();
+	}
+
+	// 클릭시 이벤트 부여
+	_navibar = btnList.querySelectorAll("a");
 	for (let i = 0; i < _navibar.length; i++) {
 		_navibar[i].addEventListener('click', function() {
-			// console.log(this.lang);
-			// alert("/Thanks.com/autoLink/" + this.lang);
 			location.href = "/Thanks.com/autoLink/" + this.lang;
 		});
 	}

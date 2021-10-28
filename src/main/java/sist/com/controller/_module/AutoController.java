@@ -1,11 +1,13 @@
 package sist.com.controller._module;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "autoLink")
 public class AutoController {
 
 	
@@ -19,7 +21,7 @@ public class AutoController {
 				+ "\nrequest.getPathInfo() : " + request.getPathInfo() + "\n");
 	}
 
-	@RequestMapping(value = "autoLink/**")
+	@RequestMapping(value = "/**")
 	public String servletAutoLink(HttpServletRequest request) {
 		System.out.println("AutoLink\n");
 		
@@ -29,5 +31,18 @@ public class AutoController {
 		uri = requestURI.substring(0, requestURI.indexOf("_"));
 
 		return "redirect:" + uri + requestURI;
+	}
+	
+	@RequestMapping(value = "logout")
+	public String logout(HttpSession session) {
+		System.out.println("로그아웃합니다.");
+		Common.getInstance().logout(session);
+		return "redirect:" + SiteURL.main.url;
+	}
+
+	@RequestMapping(value = "adminPage")
+	public String adminMain(HttpSession session) {
+		System.out.println("관리자 페이지로 이동");
+		return "redirect:" + SiteURL.adminMain.url;
 	}
 }

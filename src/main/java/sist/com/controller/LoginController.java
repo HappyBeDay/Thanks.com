@@ -23,15 +23,10 @@ public class LoginController {
 		System.out.println("logCheck() : " + id + ", " + pw + "\n");
 		if (dao.loginCheck(id, pw)) {
 			Common.getInstance().login(session, id);
-			return "redirect:/" + SiteURL.main.url;
+			return "redirect:" + SiteURL.main.url;
 		} else {
 			return "redirect:" + SiteURL.login.url;
 		}
 	}
 	
-	@RequestMapping(value = "logout")
-	public String logout(HttpSession session) {
-		Common.getInstance().logout(session);
-		return "redirect:" + SiteURL.main.url;
-	}
 }
