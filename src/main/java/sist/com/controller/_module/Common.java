@@ -47,7 +47,7 @@ public class Common {
 		session.removeAttribute("id");
 	}
 	
-	public String loginSession(HttpSession session) {
+	public String getID(HttpSession session) {
 		return (String) session.getAttribute("id");
 	}
 }
