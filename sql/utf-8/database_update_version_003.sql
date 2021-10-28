@@ -1,28 +1,28 @@
-/* ÁÖ¼® update */
-Comment on column AbandonedAnimal.animalColorCode is 'µ¿¹° »ö»ó ÄÚµå';
+/* ì£¼ì„ update */
+Comment on column AbandonedAnimal.animalColorCode is 'ë™ë¬¼ ìƒ‰ìƒ ì½”ë“œ';
 
-/* AbandonedAnimal¿¡ Áßº¹µÇ¾îÀÖ´Â abColor¿­À» »èÁ¦ */
+/* AbandonedAnimalì— ì¤‘ë³µë˜ì–´ìˆëŠ” abColorì—´ì„ ì‚­ì œ */
 alter table AbandonedAnimal drop column LikedAnimalCode;
 
-/* Shelter¿¡ ÀÖ´Â ¿­ ÀÌ¸§ º¯°æ drOfficent -> drOfficeCnt */
+/* Shelterì— ìˆëŠ” ì—´ ì´ë¦„ ë³€ê²½ drOfficent -> drOfficeCnt */
 alter table Shelter rename column drOfficeCnt to drOfficent;
 
-/* À¯±âµ¿¹° Å×ÀÌºí¿¡¼­ AddressCode ¿­ »èÁ¦ */
+/* ìœ ê¸°ë™ë¬¼ í…Œì´ë¸”ì—ì„œ AddressCode ì—´ ì‚­ì œ */
 alter table abandonedAnimal drop column AddressCode;
 
-/* NoticeNumÀÇ Comment º¯°æ : °ø°í¹øÈ£ */
-Comment on column abandonedAnimal.noticeNum is '°ø°í¹øÈ£';
+/* NoticeNumì˜ Comment ë³€ê²½ : ê³µê³ ë²ˆí˜¸ */
+Comment on column abandonedAnimal.noticeNum is 'ê³µê³ ë²ˆí˜¸';
 
-/* NoticeNumÀÇ ¿­ Å©±â º¯°æ */
+/* NoticeNumì˜ ì—´ í¬ê¸° ë³€ê²½ */
 alter table abandonedAnimal modify noticeNum nvarchar2(30);
 
-/* À¯±âµ¿¹° ¿¹¾à Å×ÀÌºí¿¡¼­ º¸È£¼Ò ÄÚµå ¿­ »èÁ¦ (Á¦¾àÁ¶°Ç-¿­) */
+/* ìœ ê¸°ë™ë¬¼ ì˜ˆì•½ í…Œì´ë¸”ì—ì„œ ë³´í˜¸ì†Œ ì½”ë“œ ì—´ ì‚­ì œ (ì œì•½ì¡°ê±´-ì—´) */
 alter table AbandonedAnimalReservation drop constraint FK_SHELTER_TO_ABANDONEDANIMALRESERVATION;
 alter table AbandonedAnimalReservation drop column ShelterCode;
 
 --------------------------------------------------------------------------------
 
-/* À¯±âµ¿¹° APi¿¡ Á÷Á¢¿¬°áµÇ¾î ÀÖ´Â AbShelter Å×ÀÌºí »ı¼º */
+/* ìœ ê¸°ë™ë¬¼ APiì— ì§ì ‘ì—°ê²°ë˜ì–´ ìˆëŠ” AbShelter í…Œì´ë¸” ìƒì„± */
 /* first drop! */
 ALTER TABLE AbShelter DROP CONSTRAINT FK_Sido_To_AbShelter;
 ALTER TABLE AbShelter DROP CONSTRAINT FK_Sigungu_To_AbShelter;
@@ -39,15 +39,15 @@ create table AbShelter (
     managerTel number(15)
 );
 /* comment  */
-Comment on table AbShelter is 'À¯±âµ¿¹°Api¿¡ µî·ÏµÈ º¸È£¼Ò';
-Comment on column AbShelter.abShelterCode is 'À¯±âµ¿¹° º¸È£¼Ò ÄÚµå';
-Comment on column AbShelter.sidoCode is 'À¯±âµ¿¹° º¸È£¼Ò ½Ãµµ ÄÚµå';
-Comment on column AbShelter.sigunguCode is 'À¯±âµ¿¹° º¸È£¼Ò ½Ã±º±¸ ÄÚµå';
-Comment on column AbShelter.abSelterTel is 'À¯±âµ¿¹° º¸È£¼Ò ÀüÈ­¹øÈ£';
-Comment on column AbShelter.abSelterAddress is 'À¯±âµ¿¹° º¸È£¼Ò ÁÖ¼Ò';
-Comment on column AbShelter.organize is '°üÇÒ±â°ü';
-Comment on column AbShelter.managerName is 'À¯±âµ¿¹° ´ã´çÀÚ ÀÌ¸§';
-Comment on column AbShelter.managerTel is 'À¯±âµ¿¹° ´ã´çÀÚ ÀüÈ­¹øÈ£';
+Comment on table AbShelter is 'ìœ ê¸°ë™ë¬¼Apiì— ë“±ë¡ëœ ë³´í˜¸ì†Œ';
+Comment on column AbShelter.abShelterCode is 'ìœ ê¸°ë™ë¬¼ ë³´í˜¸ì†Œ ì½”ë“œ';
+Comment on column AbShelter.sidoCode is 'ìœ ê¸°ë™ë¬¼ ë³´í˜¸ì†Œ ì‹œë„ ì½”ë“œ';
+Comment on column AbShelter.sigunguCode is 'ìœ ê¸°ë™ë¬¼ ë³´í˜¸ì†Œ ì‹œêµ°êµ¬ ì½”ë“œ';
+Comment on column AbShelter.abSelterTel is 'ìœ ê¸°ë™ë¬¼ ë³´í˜¸ì†Œ ì „í™”ë²ˆí˜¸';
+Comment on column AbShelter.abSelterAddress is 'ìœ ê¸°ë™ë¬¼ ë³´í˜¸ì†Œ ì£¼ì†Œ';
+Comment on column AbShelter.organize is 'ê´€í• ê¸°ê´€';
+Comment on column AbShelter.managerName is 'ìœ ê¸°ë™ë¬¼ ë‹´ë‹¹ì ì´ë¦„';
+Comment on column AbShelter.managerTel is 'ìœ ê¸°ë™ë¬¼ ë‹´ë‹¹ì ì „í™”ë²ˆí˜¸';
 
 /* index of AbShelter.abShelterCode : ASC */
 create unique index PK_AbShelter on AbShelter(abShelterCode ASC);
@@ -63,26 +63,26 @@ Alter table AbShelter
     Add Constraint FK_Sigungu_To_AbShelter
     Foreign Key ( sigunguCode ) References Sigungu ( sigunguCode );
     
-/* AbSelter¿¡ ¿­ Ãß°¡ AbSelterName */
+/* AbSelterì— ì—´ ì¶”ê°€ AbSelterName */
 alter table AbShelter add abSelterName nvarchar2(20);
 
 --------------------------------------------------------------------------------
-/* AnimalColorGroup Table »ı¼º!! */
+/* AnimalColorGroup Table ìƒì„±!! */
 /* First Drop! */
 ALTER TABLE AnimalColorGroup DROP CONSTRAINT FK_AnimalColor_To_AnimalColorGroup;
 ALTER TABLE AnimalColorGroup DROP CONSTRAINT FK_AbandonedAnimal_To_AnimalColorGroup;
 drop table AnimalColorGroup purge;
-/* 34. µ¿¹°»ö ±×·ì */
+/* 34. ë™ë¬¼ìƒ‰ ê·¸ë£¹ */
 create table AnimalColorGroup (
     ColorGroupCode Number(7) not null,
     AnimalColorCode Number(7) not null,
     AbAnimalCode Number(20) not null
 );
 /* Comment */
-Comment on table AnimalColorGroup is 'µ¿¹° »ö ±×·ì';
-Comment on column AnimalColorGroup.ColorGroupCode is 'µ¿¹° »ö ±×·ì ÄÚµå';
-Comment on column AnimalColorGroup.AnimalColorCode is 'µ¿¹° »ö ÄÚµå';
-Comment on column AnimalColorGroup.AbAnimalCode is 'À¯±âµ¿¹° ÄÚµå';
+Comment on table AnimalColorGroup is 'ë™ë¬¼ ìƒ‰ ê·¸ë£¹';
+Comment on column AnimalColorGroup.ColorGroupCode is 'ë™ë¬¼ ìƒ‰ ê·¸ë£¹ ì½”ë“œ';
+Comment on column AnimalColorGroup.AnimalColorCode is 'ë™ë¬¼ ìƒ‰ ì½”ë“œ';
+Comment on column AnimalColorGroup.AbAnimalCode is 'ìœ ê¸°ë™ë¬¼ ì½”ë“œ';
 /* index of AbShelter.abShelterCode : ASC */
 create unique index PK_AnimalColorGroup on AnimalColorGroup(ColorGroupCode ASC);
 /* constraint : PK_AbShelter */
@@ -99,20 +99,20 @@ Alter table AnimalColorGroup
 --------------------------------------------------------------------------------
 
 /* 12. Neuter insert data. */
-insert into Neuter ( neuterCode, neuterName ) values ( 0 , '¾Ë¼ö¾øÀ½' );
-insert into Neuter ( neuterCode, neuterName ) values ( 1 , 'Áß¼ºÈ­ÇÔ' );
-insert into Neuter ( neuterCode, neuterName ) values ( 2 , 'Áß¼ºÈ­¾ÈÇÔ' );
+insert into Neuter ( neuterCode, neuterName ) values ( 0 , 'ì•Œìˆ˜ì—†ìŒ' );
+insert into Neuter ( neuterCode, neuterName ) values ( 1 , 'ì¤‘ì„±í™”í•¨' );
+insert into Neuter ( neuterCode, neuterName ) values ( 2 , 'ì¤‘ì„±í™”ì•ˆí•¨' );
 
 /* 11. Sex insert data. */
-insert into Sex ( sexCode, sexName, NeuterCode ) values ( 0, '¾Ë¼ö¾øÀ½', '0');
-insert into Sex ( sexCode, sexName, NeuterCode ) values ( 1, '³²¼º', '2');
-insert into Sex ( sexCode, sexName, NeuterCode ) values ( 2, '¿©¼º', '2');
-insert into Sex ( sexCode, sexName, NeuterCode ) values ( 3, '³²¼º+Áß¼ºÈ­', '1');
-insert into Sex ( sexCode, sexName, NeuterCode ) values ( 4, '¿©¼º+Áß¼ºÈ­', '1');
+insert into Sex ( sexCode, sexName, NeuterCode ) values ( 0, 'ì•Œìˆ˜ì—†ìŒ', '0');
+insert into Sex ( sexCode, sexName, NeuterCode ) values ( 1, 'ë‚¨ì„±', '2');
+insert into Sex ( sexCode, sexName, NeuterCode ) values ( 2, 'ì—¬ì„±', '2');
+insert into Sex ( sexCode, sexName, NeuterCode ) values ( 3, 'ë‚¨ì„±+ì¤‘ì„±í™”', '1');
+insert into Sex ( sexCode, sexName, NeuterCode ) values ( 4, 'ì—¬ì„±+ì¤‘ì„±í™”', '1');
 
 --------------------------------------------------------------------------------
 
-/* 34. µ¿¹°»ö Ãß°¡ÇßÀ¸´Ï±î 1¹ø À¯±âµ¿¹°¿¡ AnimalColorCode -> ColorGroupCode º¯°æ */
+/* 34. ë™ë¬¼ìƒ‰ ì¶”ê°€í–ˆìœ¼ë‹ˆê¹Œ 1ë²ˆ ìœ ê¸°ë™ë¬¼ì— AnimalColorCode -> ColorGroupCode ë³€ê²½ */
 Alter table AbandonedAnimal drop constraint FK_ANIMALCOLOR_TO_ABANDONEDANIMAL;
 Alter table AbandonedAnimal rename column AnimalColorCode to ColorGroupCode;
 Alter table AbandonedAnimal modify ColorGroupCode NUMBER(7);
@@ -125,50 +125,50 @@ commit;
 --------------------------------------------------------------------------------
 
 /*
-¿ÀÅ¸ ¼öÁ¤ 21.10.27
+ì˜¤íƒ€ ìˆ˜ì • 21.10.27
 ABSELTERTEL
 ABSELTERADDRESS
 ABSELTERNAME
 */
 alter table AbShelter rename column abSelterName to abShelterName;
-comment on column ABSHELTER.ABSHELTERNAME is 'À¯±âµ¿¹° º¸È£¼Ò ÀÌ¸§';
+comment on column ABSHELTER.ABSHELTERNAME is 'ìœ ê¸°ë™ë¬¼ ë³´í˜¸ì†Œ ì´ë¦„';
 
 alter table AbShelter rename column ABSELTERADDRESS to abShelterAddress;
 alter table AbShelter rename column ABSELTERTEL to abShelterTel;
 
 --------------------------------------------------------------------------------
 
-comment on column Board.replyGroupCode is '°Ô½Ã±ÛÀÇ ´ñ±Û ±×·ì ÄÚµå';
-comment on column BoardType.boardTypeName is '°Ô½ÃÆÇÀÇ ÀÌ¸§';
+comment on column Board.replyGroupCode is 'ê²Œì‹œê¸€ì˜ ëŒ“ê¸€ ê·¸ë£¹ ì½”ë“œ';
+comment on column BoardType.boardTypeName is 'ê²Œì‹œíŒì˜ ì´ë¦„';
 /*
 CHATMESSAGECODE comment update...
-CHATROOMTOTALCNT »èÁ¦
+CHATROOMTOTALCNT ì‚­ì œ
 DELREQUESTDATE comment update
 */
-comment on column ChatRoom.CHATMESSAGECODE is 'Ã¤ÆÃ ¸Ş½ÃÁö ÄÚµå';
+comment on column ChatRoom.CHATMESSAGECODE is 'ì±„íŒ… ë©”ì‹œì§€ ì½”ë“œ';
 alter table ChatRoom drop column chatRoomTotalCnt;
-comment on column DelMemInfoRet.DELREQUESTDATE is '»èÁ¦ ½ÅÃ»ÀÏ';
-comment on column MemberInfo.AUTHORIZECODE is '±ÇÇÑ ÄÚµå';
-comment on column Pet.MEMBERCODE is 'È¸¿ø ÄÚµå (ÁÖÀÎ)';
+comment on column DelMemInfoRet.DELREQUESTDATE is 'ì‚­ì œ ì‹ ì²­ì¼';
+comment on column MemberInfo.AUTHORIZECODE is 'ê¶Œí•œ ì½”ë“œ';
+comment on column Pet.MEMBERCODE is 'íšŒì› ì½”ë“œ (ì£¼ì¸)';
 
 alter table SeminarReservation add reservationTime date not null;
-comment on column SeminarReservation.reservationTime is '¼¼¹Ì³ª ½ÅÃ»½Ã°£';
+comment on column SeminarReservation.reservationTime is 'ì„¸ë¯¸ë‚˜ ì‹ ì²­ì‹œê°„';
 
-/* È¸¿ø°¡ÀÔ ³¯Â¥ Ãß°¡ */
+/* íšŒì›ê°€ì… ë‚ ì§œ ì¶”ê°€ */
 alter table memberInfo add signUpDate date;
-comment on column memberInfo.signUpDate is 'È¸¿ø °¡ÀÔ ³¯Â¥';
+comment on column memberInfo.signUpDate is 'íšŒì› ê°€ì… ë‚ ì§œ';
 
 insert into BoardType 
     (boardTypeCode, boardTypeName, boardTotalCnt) 
     values 
-    (boardType_seq.nextVal, 'ÀÏ¹İ °Ô½ÃÆÇ', 0);
+    (boardType_seq.nextVal, 'ì¼ë°˜ ê²Œì‹œíŒ', 0);
 insert into BoardType 
     (boardTypeCode, boardTypeName, boardTotalCnt) 
     values 
-    (boardType_seq.nextVal, 'µ¹º½ °Ô½ÃÆÇ', 0);
+    (boardType_seq.nextVal, 'ëŒë´„ ê²Œì‹œíŒ', 0);
 insert into BoardType 
     (boardTypeCode, boardTypeName, boardTotalCnt) 
     values 
-    (boardType_seq.nextVal, '¹®ÀÇ °Ô½ÃÆÇ', 0);
+    (boardType_seq.nextVal, 'ë¬¸ì˜ ê²Œì‹œíŒ', 0);
 
 commit;
