@@ -16,7 +16,7 @@ window.onload = function() {
 	for (let i = 0; i < _navibar.length; i++) {
 		_navibar[i].addEventListener('click', function() {
 			// console.log(this.lang);
-			alert("/Thanks.com/autoLink/" + this.lang);
+			// alert("/Thanks.com/autoLink/" + this.lang);
 			location.href = "/Thanks.com/autoLink/" + this.lang;
 		});
 	}
