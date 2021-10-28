@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "{path:^(?:(?!resources|assets|css|img|js).)*$}")
+@RequestMapping(value = "{path:^(?:(?!resources|assets|css|img|js|_module|content).)*$}")
 public class WildController {
 
 	
