@@ -17,13 +17,14 @@ import sist.com.vo.BoardListVO;
 public class BoardListController {
 	@Autowired
 	private BoardListDao dao;
-	@RequestMapping(value = "/community/community_910_board")
+	@RequestMapping(value = "community/community_910_board")
 	public String boardListAction(Model model,HttpSession se) {
 		List<BoardListVO> list=dao.selectBoardAll();
-		model.addAttribute("boardList", dao.selectBoardAll());
 		Common c = Common.getInstance();
 		c.getID(se);
 		c.login(se, "terra");
+		System.out.println(list);
+		model.addAttribute("boardList", dao.selectBoardAll());
 		return "community/community_910_board";
 	}
 }

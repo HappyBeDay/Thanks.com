@@ -18,7 +18,6 @@ public class BoardListDao extends SqlSessionDaoSupport{
 	}
 	
 	public List selectBoardAll(){
-		System.out.println("hi");
-		 return this.getSqlSession().selectList("selectBoardList");
+		return getSqlSession().selectList("selectBoardAll");
 	}
 }
