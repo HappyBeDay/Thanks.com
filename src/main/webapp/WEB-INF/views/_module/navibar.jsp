@@ -26,7 +26,7 @@
 				<ul class="navbar-nav ms-auto my-2 my-lg-0">
 					<li class="nav-item"><a lang="adopt_500_main" class="nav-link" href="#adopt">Adopt</a></li>
 					<li class="nav-item"><a lang="witnessMissing_600_main" class="nav-link" href="#missing">Missing</a></li>
-					<li class="nav-item"><a lang="raise_700_search" class="nav-link" href="#care">Care</a></li>
+					<li class="nav-item"><a lang="raise_700_search" class="nav-link" href="#care">Raise</a></li>
 					<li class="nav-item"><a lang="seminar_800_main" class="nav-link" href="#seminar">Seminar</a></li>
 					<li class="nav-item"><a lang="community_900_mainBoard" class="nav-link" href="#community">Community</a></li>
 				</ul>

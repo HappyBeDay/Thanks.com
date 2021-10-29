@@ -7,4 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectBoardAll" resultType="boardList">
 		select * from board
 	</select>
+	<select id="selectBoardGeneral" resultType="boardList">
+		select * from board
+		where boardtypecode=1
+	</select>
+	<select id="selectBoardCare" resultType="boardList">
+		select * from board
+		where boardtypecode=2
+	</select>
 </mapper>

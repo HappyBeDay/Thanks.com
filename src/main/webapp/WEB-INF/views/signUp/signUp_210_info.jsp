@@ -17,8 +17,10 @@
 		<h2>Sign Up</h2>
 		<div class="textForm">
 			<input type="text" class="id" name="id" placeholder="ID">
+		</div>
+		<div>
 			<input type="button" id="idCheck" lang="signUp_211_overlap" class="btn" 
-			style="float: right; width: auto;" value="Duplicate ID check">
+			value="Duplicate ID check" style="margin: 0px;">
 		</div>
 		<div class="textForm">
 			<input type="password" class="pw" name="pw" placeholder="PassWord">

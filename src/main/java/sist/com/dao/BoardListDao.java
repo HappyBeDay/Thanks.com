@@ -20,4 +20,10 @@ public class BoardListDao extends SqlSessionDaoSupport{
 	public List selectBoardAll(){
 		return getSqlSession().selectList("selectBoardAll");
 	}
+	public List selectBoardGeneral(){
+		return getSqlSession().selectList("selectBoardGeneral");
+	}
+	public List selectBoardCare(){
+		return getSqlSession().selectList("selectBoardCare");
+	}
 }
