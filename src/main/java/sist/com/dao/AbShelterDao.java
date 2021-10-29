@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -21,14 +22,30 @@ public class AbShelterDao extends SqlSessionDaoSupport implements ApiDao {
 	}
 
 	@Override
-	public Set<Integer> selectPKColumnReturnSet() {
-		return new HashSet<Integer>(this.getSqlSession().selectList("selectAbShelter_PK"));
+	public HashSet<Long> selectPKColumnReturnSet() {
+		return new HashSet<Long>(this.getSqlSession().selectList("selectAbShelter_PK"));
 	}
 
 	@Override
-	public int insertApiData(List<Map<String, String>> dataList) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertApiData(List<Map<String, String>> list) {
+		// pk 받아와서 중복 체크하고 insert
+		// System.out.println(list);
+		
+		int cnt = 0; // 새로 입력된 행 갯수
+		SqlSession sqlSession = this.getSqlSession();
+		Set<Long> abShelterPK = selectPKColumnReturnSet();
+		
+		for(int i = 0 ; i < list.size(); i++) {
+			Map<String, String> map = list.get(i);
+			//System.out.println(map);
+			//System.out.println(map.get("abShelterCode"));
+			long pk = Long.parseLong((list.get(i).get("abShelterCode")));
+			if(!abShelterPK.contains(pk)) {
+				cnt += sqlSession.insert("insertAbShelterFromApi", list.get(i));
+			}
+		}
+		
+		return cnt;
 	}
 
 }

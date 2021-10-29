@@ -6,23 +6,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<sql id="table">AbShelter</sql>
 	<sql id="pk">abShelterCode</sql>
 	
-	<sql id="columnsAPI">abShelterCode, abSelterName, sidoCode, sigunguCode</sql>
-	<sql id="insertColumnsAPI">#{abShelterCode}, #{abSelterName}, #{sidoCode}, #{sigunguCode}</sql>
+	<sql id="columnsAPI">abShelterCode, abShelterName, sidoCode, sigunguCode</sql>
+	<sql id="insertColumnsAPI">#{abShelterCode}, #{abShelterName}, #{sidoCode}, #{sigunguCode}</sql>
 
+	<!-- insert -->
 	<insert id="insertAbShelterFromApi" parameterType="java.util.Map">
 		insert into 
-		<include refid="table"></include>
+		<include refid="table" />
 		(<include refid="columnsAPI" />) 
 		values 
 		(<include refid="insertColumnsAPI" />) 
 	</insert>
 
+	<!-- select -->
 	<select id="selectAbShelterAll" resultType="abShelter">
 		select * from
 		<include refid="table"></include>
 	</select>
 
-	<select id="selectAbShelter_PK" resultType="java.lang.Integer">
+	<select id="selectAbShelter_PK" resultType="java.lang.Long">
 		select
 		<include refid="pk" />
 		from

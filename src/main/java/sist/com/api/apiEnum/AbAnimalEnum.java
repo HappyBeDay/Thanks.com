@@ -13,7 +13,7 @@ public enum AbAnimalEnum {
 	AbShelterVO("shelter", // 유기동물 보호소
 			new String[] { "careNm", "careRegNo" }, 
 			new String[] { "upr_cd", "org_cd" },
-			new String[] { "abShelter, abShelterCode"} ),
+			new String[] { "abShelterName", "abShelterCode"} ),
 	BreedVO("kind", // 축종
 			new String[] { "kindCd", "KNm" }, 
 			new String[] { "up_kind_cd" },
