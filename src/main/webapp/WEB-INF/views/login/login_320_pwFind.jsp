@@ -25,6 +25,11 @@
 					Enter Email
 				</label>
 			</div>
+			
+			<button class="w-100 btn btn-lg btn-primary" type="submit">
+				Send email
+			</button>
+			
 			<div class="form-floating">
 				<input type="password" class="form-control" id="floatingPassword" placeholder="Certification Number"> 
 				<label for="floatingPassword">인증번호</label>
@@ -34,9 +39,9 @@
 				Check!
 			</button>
 		</form>
-	<div>
-		<jsp:include page="../_module/copyright.jsp"></jsp:include>	
-	</div>
 	</div>
 </body>
+<footer>
+		<jsp:include page="../_module/copyright.jsp"></jsp:include>	
+</footer>
 </html>
