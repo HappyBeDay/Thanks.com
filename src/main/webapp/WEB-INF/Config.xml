@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="sist.com.vo.SidoVO" alias="sido" />
 		<typeAlias type="sist.com.vo.SigunguVO" alias="sigungu" />
 		<typeAlias type="sist.com.vo.AbShelterVO" alias="abShelter" />
-		<typeAlias type="sist.com.vo.BoardListVO" alias="boardList" />
+		<typeAlias type="sist.com.vo.BoardVO" alias="board" />
 	</typeAliases>
 
 	<mappers>

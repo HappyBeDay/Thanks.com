@@ -15,12 +15,14 @@
 <body>
 	<form action="signUpAction" method="POST" class="joinForm">
 		<h2>Sign Up</h2>
+		<div class="form-inline">
 		<div class="textForm">
 			<input type="text" class="id" name="id" placeholder="ID">
 		</div>
 		<div>
 			<input type="button" id="idCheck" lang="signUp_211_overlap" class="btn" 
-			value="Duplicate ID check" style="margin: 0px;">
+			value="Duplicate ID check">
+		</div>
 		</div>
 		<div class="textForm">
 			<input type="password" class="pw" name="pw" placeholder="PassWord">
@@ -42,8 +44,8 @@
 		</div>
 		<input type="submit" class="btn" value="Thanks.com JOIN" />
 
-		<jsp:include page="../_module/copyright.jsp"></jsp:include>
 	</form>
+		<jsp:include page="../_module/copyright.jsp"></jsp:include>
 
 </body>
 </html>
