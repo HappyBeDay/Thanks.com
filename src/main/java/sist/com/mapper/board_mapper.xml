@@ -4,15 +4,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org./dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sist.com.vo.board">
 
-	<select id="selectBoardAll" resultType="boardList">
+	<select id="selectBoardAll" resultType="board">
 		select * from board
 	</select>
-	<select id="selectBoardGeneral" resultType="boardList">
+	<select id="selectBoardGeneral" resultType="board">
 		select * from board
 		where boardtypecode=1
 	</select>
-	<select id="selectBoardCare" resultType="boardList">
+	<select id="selectBoardCare" resultType="board">
 		select * from board
 		where boardtypecode=2
 	</select>
+	<update id="updateBoard" parameterType="board">
+		update board set 	
+		boardtitle=#{boardTitle},boardcontent=#{boardcontent},boardpic=#{boardPic}
+		where boardcode=#{boardCode}	
+	</update>
+	<delete id="deleteBoard" parameterType="int">
+		delete from board
+		where boardcode=#{boardCode}
+	</delete>
 </mapper>
