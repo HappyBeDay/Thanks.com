@@ -7,5 +7,5 @@ import java.util.Set;
 public interface ApiDao {
 	
 	public abstract Set<?> selectPKColumnReturnSet();
-	int insertApiData(List<Map<String, String>> dataList);
+	int insertApiData(List<Map<String, String>> list);
 }

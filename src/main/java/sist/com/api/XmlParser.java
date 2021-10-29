@@ -58,6 +58,7 @@ public class XmlParser {
 			
 			//System.out.println(tagItems);
 			// dbCol로 변경해야되지 않을까?
+			//System.out.println(dbCol);
 			for(int j = 0 ; j < dbCol.length; j++) {
 				//System.out.println(tagItems.item(j).getNodeName());
 				String value = tagItems.item(j).getTextContent();
@@ -67,7 +68,7 @@ public class XmlParser {
 			}
 			list.add(map);
 		}
-		System.out.println(list);
+		//System.out.println(list);
 		return list;
 	}
 	

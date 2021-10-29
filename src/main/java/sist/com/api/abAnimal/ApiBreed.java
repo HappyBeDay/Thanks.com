@@ -30,10 +30,7 @@ public class ApiBreed extends AbAnimalAPI {
 
 	@Override
 	public List<Map<String, String>> processingData(String data) {
-		// AnimalType animal = AnimalType.개;
-		
-
-		return null;
+		return super.processingData(data, apiEnum);
 	}
 
 	@Override
@@ -44,9 +41,13 @@ public class ApiBreed extends AbAnimalAPI {
 	
 		String baseUrl = makeURL();
 		for(AnimalType type : AnimalType.values()) {
-			System.out.println(baseUrl + "&" + apiEnum.getRequiredItems()[0] + "=" + type.code);
+			//System.out.println(baseUrl + "&" + apiEnum.getRequiredItems()[0] + "=" + type.code);
+			List<Map<String, String>> mapList = processingData(requestURL(baseUrl + "&" + apiEnum.getRequiredItems()[0] + "=" + type.code));
+			for(Map<String, String> map : mapList)
+				map.put("animalTypeCode", String.valueOf(type.code));
+				
+			cnt += breedDao.insertApiData(mapList);	
 		}
-		System.out.println();
 		
 		return cnt;
 	}

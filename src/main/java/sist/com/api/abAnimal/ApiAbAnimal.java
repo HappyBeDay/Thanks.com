@@ -3,11 +3,22 @@ package sist.com.api.abAnimal;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Component;
+
+import sist.com.dao.AbAnimalDao;
 
 @Component
 public class ApiAbAnimal extends AbAnimalAPI {
 
+	private AbAnimalDao abAnimalDao;
+	
+	@Inject
+	public ApiAbAnimal(AbAnimalDao abAnimalDao) {
+		this.abAnimalDao = abAnimalDao;
+	}
+	
 	@Override
 	public String makeURL() {
 		// TODO Auto-generated method stub
@@ -22,8 +33,11 @@ public class ApiAbAnimal extends AbAnimalAPI {
 
 	@Override
 	public int updateDataBase() {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("" + abAnimalDao);
+		int cnt = 0;
+		
+		
+		return cnt;
 	}
 	
 }

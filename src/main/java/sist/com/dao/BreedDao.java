@@ -1,5 +1,6 @@
 package sist.com.dao;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -11,23 +12,33 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BreedDao implements ApiDao {
 	
-	private SqlSessionTemplate sqlSessionTemplate;
+	private SqlSessionTemplate sqlSession;
 	
 	@Autowired
 	public BreedDao(SqlSessionTemplate sqlSessionTemplate) {
-		this.sqlSessionTemplate = sqlSessionTemplate;
-		System.out.println(this.sqlSessionTemplate);
+		this.sqlSession = sqlSessionTemplate;
+		System.out.println("initDao() : BreedDao");
 	}
 	
 	@Override
-	public Set<?> selectPKColumnReturnSet() {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<Integer> selectPKColumnReturnSet() {
+		return new HashSet<Integer>(sqlSession.selectList("selectBreed_PK"));
 	}
+	
 	@Override
-	public int insertApiData(List<Map<String, String>> dataList) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertApiData(List<Map<String, String>> list) {
+		//System.out.println(list);
+		int cnt = 0;
+		
+		Set<Integer> breedPK = selectPKColumnReturnSet();
+		
+		
+		for(Map<String, String> map : list) {
+			int pk = Integer.parseInt(map.get("breedCode"));
+			if(!breedPK.contains(pk))
+				cnt += sqlSession.insert("insertBreedFromApi", map);
+		}
+		return cnt;
 	}
 	
 }
