@@ -30,7 +30,8 @@
               <li>Adress</li>
               <li>Email</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Go to Information</button>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary" 
+            onClick="location.href='myPage_410_personalInfo'">Go to Information</button>
           </div>
         </div>
       </div>
@@ -47,7 +48,8 @@
               <li>Chatting History</li>
               <li>Send a DM</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary">Go to Chatting Room</button>
+            <button type="button" class="w-100 btn btn-lg btn-primary"
+            onClick="location.href='myPage_420_chat'">Go to Chatting Room</button>
           </div>
         </div>
       </div>

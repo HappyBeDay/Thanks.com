@@ -14,24 +14,24 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AbandonedAnimalVO {
-	private int abanimalcode;	
-	private String abthumbpic;		
-	private Date finddate;		
-	private String findloc;			
-	private int breedcode;		
-	private int animaltypecode;	
-	private float abage;			
-	private float abweight;		
-	private String noticenum;		
-	private Date noticestartdate;	
-	private Date noticeenddate;	
-	private String abpic;			
-	private String abstate;			
-	private String abfeat;			
-	private String abcomment;		
-	private int colorgroupcode;	
-	private int sexcode;			
-	private int sheltercode;		
+	private int abanimalCode;	
+	private String abthumbPic;		
+	private Date findDate;		
+	private String findLoc;			
+	private int breedCode;		
+	private int animalTypeCode;	
+	private float abAge;			
+	private float abWeight;		
+	private String noticeNum;		
+	private Date noticeStartDate;	
+	private Date noticeEndDate;	
+	private String abPic;			
+	private String abState;			
+	private String abFeat;			
+	private String abComment;		
+	private int colorGroupCode;	
+	private int sexCode;			
+	private int shelterCode;		
 }
 
 /*

@@ -36,8 +36,19 @@
 <!-- Core theme JS-->
 <script src="../js/main.js"></script>
 
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	/* $(function() {
+		$("tr#{glist.boardcode}").click(function() {
+			form=getform(this.${glist.boardcode},community/community_911_mainDetail);
+			$("form").submit();
+		});
+	}); */
+</script>
 </head>
 <body id="page-top">
+
 	<!-- Navigation 1-->
 	<jsp:include page="../_module/navibar.jsp"></jsp:include>
 
@@ -51,37 +62,40 @@
 						서비스 신청</b></a></li>
 		</ul>
 	</div>
-
+	
 	<div class="container" style="margin-top: 70px;">
+	<form role="form" method="post" action="">
 		<div class="row">
 			<table class="table table-striped"
 				style="border: 1px solid #dddddd; width: 100%;">
 				<thead style="background-color: #adb5bd">
 					<tr style="text-align: center;">
-						<th style="text-align: center;">번호</th>
+						<th id="a" style="text-align: center;">게시글 코드</th>
 						<th style="text-align: center;">제목</th>
 						<th style="text-align: center;">작성자</th>
 						<th style="text-align: center;">작성일</th>
 						<th style="text-align: center;">조회수</th>
 					</tr>
 				</thead>
-				<tbody style="background-color: #eeeeee">
-					<tr>
-						<td style="text-align: center;">1</td>
-						<td style="text-align: left;">안녕하세요.</td>
-						<td style="text-align: center;">홍길동</td>
-						<td style="text-align: center;">2020-06-17</td>
-						<td style="text-align: center;">5</tds>
-					</tr>
-				</tbody>
+				<c:forEach var="glist" items="${boardList}">
+					<tbody style="background-color: #eeeeee">
+						<tr id="${glist.boardCode}">
+							<td style="text-align: center;">${glist.boardCode}</td>
+							<td style="text-align: left;">${glist.boardTitle}</td>
+							<td style="text-align: center;">${glist.memberCode}</td>
+							<td style="text-align: center;">${glist.boardDate}</td>
+							<td style="text-align: center;">${glist.boardHit}</td>
+						</tr>
+					</tbody>
+				</c:forEach>
 			</table>
-			<a href="../_module/write" class="btn btn-primary pull-right"
-				style="width: 100px; position: relative;">글쓰기</a>
-		
-		<a href="community_9112_report" class="btn btn-primary pull-right"
-				style="width: 100px; margin-left:50px;">문의/신고</a>
 		</div>
-		
+		</form>
+		<a href="../_module/write" class="btn btn-primary pull-right"
+			style="width: 100px; position: relative;">글쓰기</a> <a
+			href="community_9112_report" class="btn btn-primary pull-right"
+			style="width: 100px; margin-left: 50px;">문의/신고</a>
+
 		<!-- Paging -->
 		<jsp:include page="../_module/pagination.jsp"></jsp:include>
 	</div>
