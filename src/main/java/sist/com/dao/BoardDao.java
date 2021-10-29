@@ -14,8 +14,8 @@ public class BoardDao extends SqlSessionDaoSupport {
 	@Resource(name="sqlSessionTemplate")
 	protected void initDao(SqlSessionTemplate sessionTemplate) throws Exception {
 		this.setSqlSessionTemplate(sessionTemplate);
-		
 	}
+	
 	public void insertBoard(BoardVO vo) {
 		System.out.println(this.getSqlSession());
 		System.out.println("vo : "+vo);
@@ -23,11 +23,9 @@ public class BoardDao extends SqlSessionDaoSupport {
 		System.out.println("success");
 	}
 	
-	public Integer getSequence() {
-		return this.getSqlSession().selectOne("getSequence");
-		
+	public void deleteBoard(int no) {
+		this.getSqlSession().delete("deleteBoard", no);
 	}
-	
 	
 	
 }
