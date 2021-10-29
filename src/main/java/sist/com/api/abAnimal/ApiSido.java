@@ -6,12 +6,12 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import sist.com.api.apiEnum.AbAnimalEnum;
 import sist.com.dao.SidoDao;
 
-@Repository
+@Component
 public class ApiSido extends AbAnimalAPI {
 	// Field
 	private AbAnimalEnum apiEnum = AbAnimalEnum.SidoVO;

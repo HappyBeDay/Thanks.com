@@ -6,13 +6,13 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import sist.com.api.apiEnum.AbAnimalEnum;
 import sist.com.dao.SigunguDao;
 import sist.com.vo.SigunguVO;
 
-@Repository
+@Component
 public class ApiSigungu extends AbAnimalAPI {
 
 	// Field

@@ -12,7 +12,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AbShelterVO {
-	private int abShelterCode;
+	private long abShelterCode;
+	private String abShelterName;
 	private int sidoCode;
 	private int sigunguCode;
 	private int abShelterTel;
@@ -20,7 +21,6 @@ public class AbShelterVO {
 	private String organize;
 	private String managerName;
 	private int managerTel;
-	private String abShelterName;
 }                                     
 /*
 

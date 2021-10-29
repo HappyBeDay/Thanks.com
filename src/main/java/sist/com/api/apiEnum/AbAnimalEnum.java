@@ -13,11 +13,11 @@ public enum AbAnimalEnum {
 	AbShelterVO("shelter", // 유기동물 보호소
 			new String[] { "careNm", "careRegNo" }, 
 			new String[] { "upr_cd", "org_cd" },
-			new String[] { "abShelter, abShelterCode"} ),
+			new String[] { "abShelterName", "abShelterCode"} ),
 	BreedVO("kind", // 축종
-			new String[] { "kindCd", "KNm" }, 
-			new String[] { "up_kind_cd" },
-			new String[] { "abShelterCode", "abShelterName"} ),
+			new String[] { "kindCd", "KNm" }, // code, name
+			new String[] { "up_kind_cd" },	// 축종코드
+			new String[] { "breedName", "breedCode"} ),
 	// 미완성
 	AbandonedAnimalVO("abandonmentPublic", // 유기동물
 			new String[] { "noticeEdt", "popfile", "processState" }, 

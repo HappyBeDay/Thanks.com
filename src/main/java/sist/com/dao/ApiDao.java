@@ -6,6 +6,6 @@ import java.util.Set;
 
 public interface ApiDao {
 	
-	public abstract Set<Integer> selectPKColumnReturnSet();
-	int insertApiData(List<Map<String, String>> dataList);
+	public abstract Set<?> selectPKColumnReturnSet();
+	int insertApiData(List<Map<String, String>> list);
 }

@@ -5,19 +5,23 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<!-- DB set-up(Connection) -->
 	<typeAliases>
+		<typeAlias type="sist.com.vo.BoardVO" alias="board" />
 		<typeAlias type="sist.com.vo.MemberInfoVO" alias="memberInfo" />
 		<typeAlias type="sist.com.vo.SidoVO" alias="sido" />
 		<typeAlias type="sist.com.vo.SigunguVO" alias="sigungu" />
 		<typeAlias type="sist.com.vo.AbShelterVO" alias="abShelter" />
-		<typeAlias type="sist.com.vo.BoardListVO" alias="boardList" />
+		<typeAlias type="sist.com.vo.BreedVO" alias="breed" />
+		<typeAlias type="sist.com.vo.AbandonedAnimalVO" alias="abAnimal" />
 	</typeAliases>
 
 	<mappers>
+		<mapper resource="sist/com/mapper/board_mapper.xml" />
 		<mapper resource="sist/com/mapper/memberInfo_mapper.xml" />
 		<mapper resource="sist/com/mapper/sido_mapper.xml" />
 		<mapper resource="sist/com/mapper/sigungu_mapper.xml" />
 		<mapper resource="sist/com/mapper/abShelter_mapper.xml" />
-		<mapper resource="sist/com/mapper/board_mapper.xml" />
+		<mapper resource="sist/com/mapper/breed_mapper.xml" />
+		<mapper resource="sist/com/mapper/abAnimal_mapper.xml" />
 	</mappers>
 
 </configuration>

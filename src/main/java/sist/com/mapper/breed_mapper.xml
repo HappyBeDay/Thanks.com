@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org./dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sist.com.vo.abAnimal">
+	<sql id="table">Breed</sql>
+	<sql id="pk">breedCode</sql>
+	<sql id="columnsAPI">breedCode, breedName, animalTypeCode</sql>
+	<sql id="insertColumnsAPI">#{breedCode}, #{breedName}, #{animalTypeCode}</sql>
+
+	<!-- insert -->
+	<insert id="insertBreedFromApi" parameterType="java.util.Map">
+		insert into 
+		<include refid="table" />
+		(<include refid="columnsAPI" />) 
+		values 
+		(<include refid="insertColumnsAPI" />) 
+	</insert>
+
+	<!-- select -->
+	<select id="selectBreedAll" resultType="abShelter">
+		select * from
+		<include refid="table"></include>
+	</select>
+
+	<select id="selectBreed_PK" resultType="java.lang.Long">
+		select
+		<include refid="pk" />
+		from
+		<include refid="table" />
+	</select>
+
+</mapper>

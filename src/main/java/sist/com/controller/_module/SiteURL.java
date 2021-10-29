@@ -9,8 +9,8 @@ public enum SiteURL {
 	raise("/raise/raise_700_search"),
 	seminar("/seminar/seminar_800_main"),
 	signUp("/signUp/signUp_200_agreement"),
-	witnessMissing("/witnessMissing/witnessMissing_600_main");
-	
+	witnessMissing("/witnessMissing/witnessMissing_600_main"),
+	adminMain("/admin/abandonedManage/admin_1000_main");
 	
 	public String url;
 	SiteURL(String url) {

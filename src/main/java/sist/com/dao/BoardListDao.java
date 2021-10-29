@@ -8,7 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
-import sist.com.vo.BoardListVO;
+import sist.com.vo.BoardVO;
 
 @Repository
 public class BoardListDao extends SqlSessionDaoSupport{
@@ -25,5 +25,11 @@ public class BoardListDao extends SqlSessionDaoSupport{
 	}
 	public List selectBoardCare(){
 		return getSqlSession().selectList("selectBoardCare");
+	}
+	public void updateBoard(BoardVO vo){
+		this.getSqlSession().update("updateBoard",vo);
+	}
+	public void deleteBoard(int no){
+		this.getSqlSession().delete("deleteBoard",no);
 	}
 }
