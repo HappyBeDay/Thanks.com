@@ -6,13 +6,13 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import sist.com.api.apiEnum.AbAnimalEnum;
 import sist.com.dao.AbShelterDao;
 import sist.com.vo.SigunguVO;
 
-@Repository
+@Component
 public class ApiAbShelter extends AbAnimalAPI {
 	// Field
 	private AbAnimalEnum apiEnum = AbAnimalEnum.AbShelterVO;
@@ -20,7 +20,6 @@ public class ApiAbShelter extends AbAnimalAPI {
 	private AbShelterDao abShelterDao;
 	private List<SigunguVO> sigunguList;
 
-//--
 	// Contstruct
 	@Inject
 	public ApiAbShelter(ApiSigungu apiSigungu, AbShelterDao abShelterDao) {
@@ -33,13 +32,8 @@ public class ApiAbShelter extends AbAnimalAPI {
 	public String makeURL() {
 		return super.makeURL(apiEnum);
 	}
-
-//--
-	@Override
-	public List<Map<String, String>> processingData(String data) {
-		return super.processingData(data, apiEnum);
-	}
-
+	
+	// makeURL에 합쳐도 되는 부분.
 	private List<String> requiredKey() {
 		String[] items = apiEnum.getRequiredItems();
 		List<String> repeat = new ArrayList<String>();
@@ -55,9 +49,15 @@ public class ApiAbShelter extends AbAnimalAPI {
 					+ sigungu.getSigunguCode();
 			repeat.add(required);
 		}
-
 		return repeat;
 	}
+
+	@Override
+	public List<Map<String, String>> processingData(String data) {
+		return super.processingData(data, apiEnum);
+	}
+
+	
 
 	@Override
 	public int updateDataBase() {

@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Repository;
 
 import sist.com.api.abAnimal.ApiAbShelter;
+import sist.com.api.abAnimal.ApiBreed;
 import sist.com.api.abAnimal.ApiSido;
 import sist.com.api.abAnimal.ApiSigungu;
 import sist.com.api.apiEnum.AbAnimalIndexEnum;
@@ -22,6 +23,9 @@ public class ApiMw {
 	
 	@Inject
 	private ApiAbShelter apiAbShelter;
+	
+	@Inject
+	private ApiBreed apiBreed;
 
 	// Constructor
 	private ApiMw() {
@@ -38,7 +42,7 @@ public class ApiMw {
 		case "AbShelter":
 			return apiAbShelter.updateDataBase();
 		case "Breed":
-
+			return apiBreed.updateDataBase();
 		case "AbandonedAnimal":
 
 		}

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class AbShelterDao extends SqlSessionDaoSupport implements ApiDao {
-
+	
 	@Resource(name = "sqlSessionTemplate")
 	protected void initDao(SqlSessionTemplate sessionTemplate) throws Exception {
 		System.out.println("initDao() : AbShelter");
@@ -36,7 +36,7 @@ public class AbShelterDao extends SqlSessionDaoSupport implements ApiDao {
 		Set<Long> abShelterPK = selectPKColumnReturnSet();
 		
 		for(int i = 0 ; i < list.size(); i++) {
-			Map<String, String> map = list.get(i);
+			//Map<String, String> map = list.get(i);
 			//System.out.println(map);
 			//System.out.println(map.get("abShelterCode"));
 			long pk = Long.parseLong((list.get(i).get("abShelterCode")));

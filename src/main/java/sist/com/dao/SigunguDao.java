@@ -10,13 +10,11 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Repository;
 
 import sist.com.vo.SigunguVO;
 
 @Repository
-@EnableAspectJAutoProxy(proxyTargetClass = true) // implements ApiDao를 해결하기위한 조건...
 public class SigunguDao extends SqlSessionDaoSupport implements ApiDao {
 
 	@Resource(name = "sqlSessionTemplate")
