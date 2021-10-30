@@ -39,12 +39,7 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$("tr#a").click(function() {
-			if()
-			/* $("form").submit(); */
-		});
-	}); 
+
 </script>
 </head>
 <body id="page-top">
@@ -64,7 +59,7 @@
 	</div>
 
 	<div class="container" style="margin-top: 70px;">
-		<form role="form" method="post" action="">
+		<form role="form" method="post" action="community/community_911_mainDetail">
 			<div class="row">
 				<table class="table table-striped"
 					style="border: 1px solid #dddddd; width: 100%;">
@@ -78,9 +73,10 @@
 						</tr>
 					</thead>
 					<c:forEach var="glist" items="${board}">
+					<a href="community/community_911_mainDetail?no=${i.boardCode}">
 						<tbody style="background-color: #eeeeee">
-							<tr id="a">
-								<td style="text-align: center;">${glist.boardCode}</td>
+							<tr id="${glist.boardCode}">
+								<td onclick="fnGoBoardDetail(${i.boardCode})" style="text-align: center;">${glist.boardCode}</td>
 								<td style="text-align: left;">${glist.boardTitle}</td>
 								<td style="text-align: center;">${glist.memberCode}</td>
 								<td style="text-align: center;">${glist.boardDate}</td>
