@@ -3,6 +3,14 @@
 
 <section class="article-detail table-common con row"
 	style="border: solid silver; border-width: thin; border-radius: 5px;">
+<div class="row" style="text-align: right; ">
+<a href="community_9113_mainWrite" class="btn btn-primary"
+			style="width: 100px; position: relative;">수정</a>
+<a href="community_9113_mainWrite" class="btn btn-primary"
+			style="width: 100px; position: relative;">삭제</a>
+<a href="community_9113_mainWrite" class="btn btn-primary"
+			style="width: 100px; position: relative;">답글</a>
+</div>
 	<div class="row"
 		style="margin-top: 30px; margin-right: 30px; margin-left: 30px;">
 		<span class="col-sm-6" style="font-size: 30px;"> <span><b>제목</b></span>
@@ -32,4 +40,6 @@
 				libero earum! Ducimus, ratione!</div>
 		</div>
 	</div>
+	<a href="community_9113_mainWrite" class="btn btn-primary"
+			style="width: 100px; position: relative; margin-left: 650px; margin-bottom: 50px;">좋아요</a>
 </section>

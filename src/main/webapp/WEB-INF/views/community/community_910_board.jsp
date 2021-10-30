@@ -39,7 +39,10 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-
+function fnGoBoardDetail(listseq){
+	  $('#frmSeq').val(listseq);
+	  $('#frmList').attr({action : "/board/boardDetail.do"}).submit();
+}	  
 </script>
 </head>
 <body id="page-top">
@@ -49,17 +52,17 @@
 
 	<div class="container" style="margin-top: 100px;">
 		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-			<li><a href="#" class="nav-link px-2 link-secondary"><b>커뮤니티
+			<li><a href="community_910_board" class="nav-link px-2 link-secondary"><b>커뮤니티
 						게시판</b></a></li>
-			<li><a href="#" class="nav-link px-2 link-dark"><b>양육
+			<li><a href="community_920_raise" class="nav-link px-2 link-dark"><b>양육
 						커뮤니티</b></a></li>
-			<li><a href="#" class="nav-link px-2 link-dark"><b>돌폼
+			<li><a href="community_930_care" class="nav-link px-2 link-dark"><b>돌폼
 						서비스 신청</b></a></li>
 		</ul>
 	</div>
 
 	<div class="container" style="margin-top: 70px;">
-		<form role="form" method="post" action="community/community_911_mainDetail">
+		<form role="form" method="post" action="community_911_mainDetail">
 			<div class="row">
 				<table class="table table-striped"
 					style="border: 1px solid #dddddd; width: 100%;">
@@ -73,7 +76,7 @@
 						</tr>
 					</thead>
 					<c:forEach var="glist" items="${board}">
-					<a href="community/community_911_mainDetail?no=${i.boardCode}">
+					<a href="community_911_mainDetail?no=${i.boardCode}">
 						<tbody style="background-color: #eeeeee">
 							<tr id="${glist.boardCode}">
 								<td onclick="fnGoBoardDetail(${i.boardCode})" style="text-align: center;">${glist.boardCode}</td>
@@ -87,7 +90,7 @@
 				</table>
 			</div>
 		</form>
-		<a href="../_module/write" class="btn btn-primary pull-right"
+		<a href="community_9113_mainWrite" class="btn btn-primary pull-right"
 			style="width: 100px; position: relative;">글쓰기</a> <a
 			href="community_9112_report" class="btn btn-primary pull-right"
 			style="width: 100px; margin-left: 50px;">문의/신고</a>
