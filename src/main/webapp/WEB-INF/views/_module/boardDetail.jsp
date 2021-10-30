@@ -3,7 +3,7 @@
 
 <section class="article-detail table-common con row"
 	style="border: solid silver; border-width: thin; border-radius: 5px;">
-<div class="row" style="text-align: right; ">
+<div class="row" style="text-align: right; display: inline-block; margin-top: 10px;">
 <a href="community_9113_mainWrite" class="btn btn-primary"
 			style="width: 100px; position: relative;">수정</a>
 <a href="community_9113_mainWrite" class="btn btn-primary"
@@ -12,7 +12,7 @@
 			style="width: 100px; position: relative;">답글</a>
 </div>
 	<div class="row"
-		style="margin-top: 30px; margin-right: 30px; margin-left: 30px;">
+		style="margin-top: 10px; margin-right: 30px; margin-left: 30px;">
 		<span class="col-sm-6" style="font-size: 30px;"> <span><b>제목</b></span>
 			<span>너무 귀여운 강아지!</span>
 		</span>

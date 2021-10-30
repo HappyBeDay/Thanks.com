@@ -76,10 +76,10 @@ function fnGoBoardDetail(listseq){
 						</tr>
 					</thead>
 					<c:forEach var="glist" items="${board}">
-					<a href="community_911_mainDetail?no=${i.boardCode}">
+					<a href="community_911_mainDetail?no=${glist.boardCode}">
 						<tbody style="background-color: #eeeeee">
 							<tr id="${glist.boardCode}">
-								<td onclick="fnGoBoardDetail(${i.boardCode})" style="text-align: center;">${glist.boardCode}</td>
+								<td onclick="fnGoBoardDetail(${glist.boardCode})" style="text-align: center;">${glist.boardCode}</td>
 								<td style="text-align: left;">${glist.boardTitle}</td>
 								<td style="text-align: center;">${glist.memberCode}</td>
 								<td style="text-align: center;">${glist.boardDate}</td>

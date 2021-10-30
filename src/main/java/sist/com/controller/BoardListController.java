@@ -38,7 +38,7 @@ public class BoardListController {
 		model.addAttribute("board", dao.selectBoardGeneral());
 		return "community/community_910_board";
 	}
-	@RequestMapping(value = "community/community_930_board")
+	@RequestMapping(value = "community/community_930_care")
 	public String boardListCareAction(Model model,HttpSession se) {
 		List<BoardVO> list=dao.selectBoardCare();
 		Common c = Common.getInstance();
