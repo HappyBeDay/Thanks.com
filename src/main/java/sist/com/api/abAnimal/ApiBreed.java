@@ -43,8 +43,10 @@ public class ApiBreed extends AbAnimalAPI {
 		for(BreedType type : BreedType.values()) {
 			//System.out.println(baseUrl + "&" + apiEnum.getRequiredItems()[0] + "=" + type.code);
 			List<Map<String, String>> mapList = processingData(requestURL(baseUrl + "&" + apiEnum.getRequiredItems()[0] + "=" + type.code));
-			for(Map<String, String> map : mapList)
+			for(Map<String, String> map : mapList) {
+				//System.out.println(map);
 				map.put("animalTypeCode", String.valueOf(type.code));
+			}
 				
 			cnt += breedDao.insertApiData(mapList);	
 		}

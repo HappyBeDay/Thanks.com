@@ -17,7 +17,7 @@ public enum AbAnimalEnum {
 	BreedVO("kind", // 축종
 			new String[] { "kindCd", "KNm" }, // code, name
 			new String[] { "up_kind_cd" },	// 축종코드
-			new String[] { "breedName", "breedCode"} ),
+			new String[] { "breedCode", "breedName"} ),
 	// 미완성
 	AbandonedAnimalVO("abandonmentPublic", // 유기동물
 			new String[] { 
