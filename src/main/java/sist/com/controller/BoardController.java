@@ -16,9 +16,9 @@ public class BoardController {
 	@Autowired
 	private BoardDao dao;
 	
-	@PostMapping(value = "community/community_910_board")
-	public String boardInsertAction(BoardVO bean, @RequestParam(value = "file", required = false) MultipartFile file) {
-		String location = "D:\\eclipseFile\\Spring\\webapp\\resources\\assets\\boardimg";	
+	@PostMapping(value = "/community/community_900_mainBoard")
+	public String Boardinsert(BoardVO bean, @RequestParam(value = "file", required = false) MultipartFile file) {
+		String location = "D:\\eclipseFile\\Thanks.Project\\Thanks.com.spring\\src\\main\\webapp\\resources\\assets\\boardimg\\";
 		FileOutputStream fos = null;
 		System.out.println("여기까지 돌아간다.");
 		System.out.println("bean : " + bean);
@@ -41,9 +41,17 @@ public class BoardController {
 				}
 			}
 		}
-
+		bean.setBoardCode(dao.getSequence());
+	/*	bean.getBoardTitle().equals("new");
+		bean.setBoardContent(bean.getBoardNum());
+		bean.setBoardCode(bean.getBoardNum());	*/
+		
+		System.out.println("durlsms?");
+		System.out.println(bean);
+		dao.Boardinsert(bean);
+		
 		return "redirect:/community/community_910_board";
+
 	}
-	
-	
+
 }

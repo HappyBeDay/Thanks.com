@@ -71,9 +71,24 @@ html, body, .intro {
 }
 
 /* font awesome icon */
-.container { position: relative; }
-.container img { display: block; }
-.container .fa-download { position: absolute; bottom:0; left:0; }
+.container {
+	position: relative;
+}
+
+.container img {
+	display: block;
+}
+
+.container .fa-download {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+/* search box shadow */
+.searchbar:hover {
+	box-shadow: 0 0 11px rgba(33, 33, 33, .6);
+}
 </style>
 
 </head>
@@ -84,9 +99,12 @@ html, body, .intro {
 	<div class="h-50" style="background-color: #1c7cff;">
 		<div class="mask d-flex align-items-center h-100">
 			<div class="container">
+				<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+					<div class="display-4 fw-normal" style="font-size: 30px;">양육 동물</div>
+				</div>
 				<div class="row">
 					<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-						<div class="card mb-2">
+						<div class="searchbar card mb-2">
 							<div class="card-body d-flex justify-content-between py-2">
 								<div class="input-group input-group-lg">
 									<input type="text" class="form-control form-control-lg rounded"
@@ -105,7 +123,7 @@ html, body, .intro {
 			</div>
 		</div>
 	</div>
-	
+
 	<jsp:include page="../_module/animalRaiseResult.jsp"></jsp:include>
 	<!-- Footer-->
 	<jsp:include page="../_module/copyright.jsp"></jsp:include>

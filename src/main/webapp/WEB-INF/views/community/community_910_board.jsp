@@ -39,17 +39,22 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-function fnGoBoardDetail(listseq){
+/* function fnGoBoardDetail(listseq){
 	  $('#frmSeq').val(listseq);
 	  $('#frmList').attr({action : "/board/boardDetail.do"}).submit();
-}	  
+} */	  
+$(function() {
+	$("tr#a").click(function() {
+		/* document.location.href = 'community_911_mainDetail?boardcode=${board.get(0).boardCode}'  */
+	 	alert("${board.get(0).boardCode}"); 
+	});
+});
 </script>
 </head>
 <body id="page-top">
-
+<%-- ${board.get(0).boardCode} --%>
 	<!-- Navigation 1-->
 	<jsp:include page="../_module/navibar.jsp"></jsp:include>
-
 	<div class="container" style="margin-top: 100px;">
 		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 			<li><a href="community_910_board" class="nav-link px-2 link-secondary"><b>커뮤니티
@@ -75,17 +80,19 @@ function fnGoBoardDetail(listseq){
 							<th style="text-align: center;">조회수</th>
 						</tr>
 					</thead>
-					<c:forEach var="glist" items="${board}">
-					<a href="community_911_mainDetail?no=${glist.boardCode}">
+					<c:forEach var="list" items="${board}">
+					<a href="community_911_mainDetail?no=${list.boardCode}">
 						<tbody style="background-color: #eeeeee">
-							<tr id="${glist.boardCode}">
-								<td onclick="fnGoBoardDetail(${glist.boardCode})" style="text-align: center;">${glist.boardCode}</td>
-								<td style="text-align: left;">${glist.boardTitle}</td>
-								<td style="text-align: center;">${glist.memberCode}</td>
-								<td style="text-align: center;">${glist.boardDate}</td>
-								<td style="text-align: center;">${glist.boardHit}</td>
+							<tr id="a">
+								<td <%-- onclick="fnGoBoardDetail(${list.boardCode})" --%> 
+									id="boardCode;" style="text-align: center;">${list.boardCode}</td>
+								<td style="text-align: left;">${list.boardTitle}</td>
+								<td style="text-align: center;">${list.memberCode}</td>
+								<td style="text-align: center;">${list.boardDate}</td>
+								<td style="text-align: center;">${list.boardHit}</td>
 							</tr>
 						</tbody>
+						</a>
 					</c:forEach>
 				</table>
 			</div>
@@ -93,7 +100,7 @@ function fnGoBoardDetail(listseq){
 		<a href="community_9113_mainWrite" class="btn btn-primary pull-right"
 			style="width: 100px; position: relative;">글쓰기</a> <a
 			href="community_9112_report" class="btn btn-primary pull-right"
-			style="width: 100px; margin-left: 50px;">문의/신고</a>
+			style="width: 100px; margin-left: 2px;">문의/신고</a>
 
 		<!-- Paging -->
 		<jsp:include page="../_module/pagination.jsp"></jsp:include>

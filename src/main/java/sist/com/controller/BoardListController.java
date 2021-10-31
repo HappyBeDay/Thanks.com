@@ -28,7 +28,7 @@ public class BoardListController {
 		model.addAttribute("boardList", dao.selectBoardAll());
 		return "community/community_910_board";
 	}*/
-	@RequestMapping(value = "community/community_910_board")
+	@RequestMapping(value = "community/community_900_mainBoard")
 	public String boardListGeneralAction(Model model,HttpSession se) {
 		List<BoardVO> list=dao.selectBoardGeneral();
 		Common c = Common.getInstance();
@@ -36,7 +36,7 @@ public class BoardListController {
 		c.login(se, "terra");
 		System.out.println(list);
 		model.addAttribute("board", dao.selectBoardGeneral());
-		return "community/community_910_board";
+		return "community/community_900_mainBoard";
 	}
 	@RequestMapping(value = "community/community_930_care")
 	public String boardListCareAction(Model model,HttpSession se) {

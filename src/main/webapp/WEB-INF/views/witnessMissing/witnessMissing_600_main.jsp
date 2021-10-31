@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="function"
+	uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +12,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Insert title here</title>
-<link rel="canonical"
-	href="https://getbootstrap.com/docs/5.1/examples/dropdowns/">
+
 <!-- Google fonts -->
 <link
 	href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
@@ -22,6 +23,12 @@
 
 <!-- Core theme CSS (includes Bootstrap) -->
 <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" />
+
+<!--  Dropdown Filter CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
 <!-- Calendar dropdown CSS -->
 <link href="<c:url value="/resources/css/dropdowns.css"/>"
 	rel="stylesheet">
@@ -44,9 +51,9 @@
 <script src="../js/main.js"></script>
 
 <script type="text/javascript">
-/* heart like */
-function myFunction(x) {
-	  x.classList.toggle("fa-heart-o");
+	/* heart like */
+	function myFunction(x) {
+		x.classList.toggle("fa-heart-o");
 	}
 </script>
 
@@ -65,16 +72,15 @@ html, body, .intro {
 	box-shadow: inset 0 0 0 1px transparent;
 }
 
-
 /* heart like */
 .fa-heart {
-  font-size: 30px;
-  cursor: pointer;
-  user-select: none;
+	font-size: 30px;
+	cursor: pointer;
+	user-select: none;
 }
 
 .fa-heart:hover {
-  color: #1c7cff;
+	color: #1c7cff;
 }
 
 /* font awesome icon */
@@ -89,8 +95,9 @@ html, body, .intro {
 	font-size: 30px;
 	cursor: pointer;
 }
+
 .searchbar:hover {
-  box-shadow: 0 0 11px rgba(33,33,33,.6); 
+	box-shadow: 0 0 11px rgba(33, 33, 33, .6);
 }
 </style>
 
@@ -111,7 +118,7 @@ html, body, .intro {
 							<div class="card-body d-flex justify-content-between py-2">
 								<div class="input-group input-group-lg">
 									<input type="text" class="form-control form-control-lg rounded"
-										placeholder="지역, 품종, 보호상태 검색" aria-label="Search"
+										placeholder="색, 지역, 품종, 보호상태 검색" aria-label="Search"
 										aria-describedby="basic-addon2" /> <span
 										class="input-group-text border-0 px-1" id="basic-addon2">
 										<i class="fa fa-search fa-lg" style="color: #939597;"></i>
@@ -127,12 +134,12 @@ html, body, .intro {
 								<div class="row">
 									<div class="col-md-4 mb-3">
 										<div class="dropdown">
-											<a
-												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
-												href="#" type="button" id="dropdownMenuLink"
-												data-bs-toggle="dropdown" aria-expanded="false"> 축종 </a>
-											<ul class="dropdown-menu"
-												aria-labelledby="dropdownMenuButton1">
+											<button
+												class="btn btn-rounded btn-lg btn-block dropdown-toggle "
+												href="#" type="button" id="dropdownMenu1"
+												data-bs-toggle="dropdown" aria-expanded="false">축종
+											</button>
+											<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 												<li><a class="dropdown-item" href="#">Action</a></li>
 												<li><a class="dropdown-item" href="#">Another
 														action</a></li>
@@ -144,8 +151,8 @@ html, body, .intro {
 									<div class="col-md-4 mb-3">
 										<div class="dropdown">
 											<a
-												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
-												href="#" role="button" id="dropdownMenuLink1"
+												class="btn btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
+												href="#" role="button" id="dropdownMenuButton2"
 												data-bs-toggle="dropdown" aria-expanded="false"> 품종 </a>
 											<ul class="dropdown-menu"
 												aria-labelledby="dropdownMenuButton2">
@@ -157,10 +164,10 @@ html, body, .intro {
 											</ul>
 										</div>
 									</div>
-									<div class="col-md-4 mb-3">
+									<!-- <div class="col-md-4 mb-3">
 										<div class="dropdown">
 											<a
-												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
+												class="btn btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 												href="#" role="button" id="dropdownMenuLink2"
 												data-bs-toggle="dropdown" aria-expanded="false"> 색 </a>
 											<ul class="dropdown-menu"
@@ -172,16 +179,15 @@ html, body, .intro {
 														else here</a></li>
 											</ul>
 										</div>
-									</div>
+									</div> -->
 								</div>
 								<div class="row">
 									<div class="col-md-4 mb-3">
 										<div class="dropdown">
 											<a
-												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
+												class="btn btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 												href="#" role="button" id="dropdownMenuLink3"
-												data-bs-toggle="dropdown" aria-expanded="false"> 지역
-											</a>
+												data-bs-toggle="dropdown" aria-expanded="false"> 지역 </a>
 											<ul class="dropdown-menu"
 												aria-labelledby="dropdownMenuButton4">
 												<li><a class="dropdown-item" href="#">Action</a></li>
@@ -195,7 +201,7 @@ html, body, .intro {
 									<div class="col-md-4 mb-3">
 										<div class="dropdown">
 											<a
-												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
+												class="btn btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 												href="#" role="button" id="dropdownMenuLink4"
 												data-bs-toggle="dropdown" aria-expanded="false"> 상태 </a>
 											<ul class="dropdown-menu"
@@ -211,7 +217,7 @@ html, body, .intro {
 									<div class="col-md-4 mb-3">
 										<div class="dropdown">
 											<a
-												class="btn btn-outline-dark btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
+												class="btn btn-rounded btn-lg btn-block dropdown-toggle ripple-surface"
 												href="#" role="button" id="dropdownMenuLink4"
 												data-bs-toggle="dropdown" aria-expanded="false"> 특징 </a>
 											<ul class="dropdown-menu"
@@ -259,6 +265,14 @@ html, body, .intro {
 
 	<script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+
+	<!--  Dropdown filter -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+		integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
 		crossorigin="anonymous"></script>
 
 </body>
