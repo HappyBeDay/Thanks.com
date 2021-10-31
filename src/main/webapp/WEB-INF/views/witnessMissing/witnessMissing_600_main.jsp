@@ -4,7 +4,7 @@
 <%@ taglib prefix="function"
 	uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
@@ -135,8 +135,7 @@ html, body, .intro {
 									<div class="col-md-4 mb-3">
 										<div class="dropdown">
 											<button
-												class="btn btn-rounded btn-lg btn-block dropdown-toggle "
-												href="#" type="button" id="dropdownMenu1"
+												class="btn btn-rounded btn-lg btn-block dropdown-toggle" type="button" id="dropdownMenu1"
 												data-bs-toggle="dropdown" aria-expanded="false">축종
 											</button>
 											<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -250,7 +249,7 @@ html, body, .intro {
 			</div>
 		</div>
 	</div>
-	<jsp:include page="../_module/animalAdoptResult.jsp"></jsp:include>
+	<jsp:include page="../_module/animal/animalAdoptResult.jsp"></jsp:include>
 
 	<!-- Footer-->
 	<jsp:include page="../_module/copyright.jsp"></jsp:include>

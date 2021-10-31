@@ -124,7 +124,7 @@ html, body, .intro {
 		</div>
 	</div>
 
-	<jsp:include page="../_module/animalRaiseResult.jsp"></jsp:include>
+	<jsp:include page="../_module/animal/animalRaiseResult.jsp"></jsp:include>
 	<!-- Footer-->
 	<jsp:include page="../_module/copyright.jsp"></jsp:include>
 

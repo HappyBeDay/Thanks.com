@@ -56,9 +56,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<!-- select -->
-	<select id="selectAbAnimalAll" resultType="abShelter">
-		select * from
-		<include refid="table"></include>
+	<select id="selectAbAnimalAll" resultType="abAnimal">
+		select 
+		<include refid="columnsAPI"/>
+		from
+		<include refid="table"/>
 	</select>
 
 	<select id="selectAbAnimal_PK" resultType="java.lang.Long">

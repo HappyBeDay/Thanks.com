@@ -8,6 +8,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sist.com.vo.AbandonedAnimalVO;
+
 @Component
 public class AbAnimalDao implements ApiDao {
 	
@@ -47,4 +49,7 @@ public class AbAnimalDao implements ApiDao {
 		return cnt;
 	}
 
+	public List<AbandonedAnimalVO> selectAllData(){
+		return sqlSession.selectList("selectAbAnimalAll");
+	}
 }

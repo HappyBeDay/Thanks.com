@@ -9,8 +9,10 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <meta name="description" content="" />
 <meta name="author" content="" />
+
 <title>Insert title here</title>
 
 <!-- Google fonts -->
@@ -48,8 +50,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <!-- Core theme JS-->
-<script src="../js/main.js"></script>
-
 <script type="text/javascript">
 	/* heart like */
 	function myFunction(x) {
@@ -334,8 +334,9 @@ html, body, .intro {
 			</div>
 		</div>
 	</div>
-	<jsp:include page="../_module/animalAdoptResult.jsp"></jsp:include>
-
+	<jsp:include page="../_module/animal/animalAdoptResult.jsp"></jsp:include>
+	<!-- Paging -->
+	<jsp:include page="../_module/pagination.jsp"></jsp:include>
 	<!-- Footer-->
 	<jsp:include page="../_module/copyright.jsp"></jsp:include>
 
@@ -347,7 +348,8 @@ html, body, .intro {
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 
-	<script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
+	<%-- 찾을 수 없다는 에러때문에 아래 주소로 변경하였음. (기존 주소 : docs/5.1/dist/js/bootstrap.bundle.min.js) --%>
+	<script src="https://getbootstrap.com/docs/5.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 

@@ -22,7 +22,7 @@
 					<!-- 여백 더 넓은거: list-unstyled list-inline my-2 -->
 					<li class="nav-item1"><a lang="login_300_main" class="nav-link1" href="#login">Login</a></li>
 					<li class="nav-item1"><a lang="signUp_200_agreement" class="nav-link1" href="#signUp">SignUp</a></li>
-					<li class="nav-item1"><a lang="myPage_400_main" class="nav-link1" href="#mypage">MyPage</a></li>
+					<li id="myPage" class="nav-item1" style="display: none"><a lang="myPage_400_main" class="nav-link1" href="#mypage" >MyPage</a></li>
 				</ul>
 				<ul class="navbar-nav ms-auto my-2 my-lg-0">
 					<li class="nav-item"><a lang="adopt_500_main" class="nav-link" href="#adopt">Adopt</a></li>

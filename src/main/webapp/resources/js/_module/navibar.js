@@ -16,7 +16,7 @@ window.onload = function() {
 	
 	// 로그인 시 화면 변경
 	if (!isEmpty(id.innerText)) {
-		console.log("id값 확인 : " + id.value);
+		console.log("id값 확인 : " + id.innerText);
 
 		// 로그인 한 화면으로 변경
 		// 1. Login -> logOut
@@ -30,11 +30,13 @@ window.onload = function() {
 		let welcome = btnList.querySelector("li#welcome");
 		welcome.style.display = "";
 		id.innerText += "님 반갑습니다^^*";
+		let mypage = btnList.querySelector("li#myPage");
+		mypage.style.display = "";
 	} else {
 		/* 1. MyPage hidden 속성 */
 		// document.querySelector("a[lang=myPage_400_main]").setAttribute("type",
 		// "hidden");
-		btnList.querySelector("a[lang=myPage_400_main]").remove();
+		//btnList.querySelector("a[lang=myPage_400_main]").remove();
 	}
 
 	// 클릭시 이벤트 부여

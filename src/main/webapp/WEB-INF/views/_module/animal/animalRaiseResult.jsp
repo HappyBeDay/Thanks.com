@@ -58,7 +58,5 @@
 				style="width: 100px; margin-top: 100px; margin-left: 60px;">문의/신고</a>
 		</div>
 	</div>
-	<!-- Paging -->
-	<jsp:include page="../_module/pagination.jsp"></jsp:include>
 
 </div>
