@@ -28,7 +28,7 @@
 		<div class="row">
 			<table class="table table-striped"
 				style="border: 1px solid #dddddd; width: 100%;">
-				<thead style="background-color: #adb5bd">
+				<thead style="background-color: #fff;">
 					<tr style="text-align: center;">
 						<th style="text-align: center;">번호</th>
 						<th style="text-align: center;">세미나명</th>
@@ -38,7 +38,7 @@
 						<th style="text-align: center;">신청</th>					
 					</tr>
 				</thead>
-				<tbody style="background-color: #eeeeee">
+				<tbody style="background-color: #fff;">
 					<tr>
 						<td style="text-align: center;">1</td>
 						<td style="text-align: left;">방탄은 처음이지?</td>
@@ -49,7 +49,7 @@
 						<input style="text-align: center;" type="button" class=" btn btn-primary" value="신청"></td>
 					</tr>
 				</tbody>
-				<tbody style="background-color: #eeeeee">
+				<tbody style="background-color: #fff;">
 					<tr>
 						<td style="text-align: center;">2</td>
 						<td style="text-align: left;">난 흥탄소년단~</td>

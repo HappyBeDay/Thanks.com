@@ -43,7 +43,7 @@
 
 	<div class="container" style="margin-top: 100px;">
 		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-			<li><a href="community_910_board"
+			<li><a href="community_900_mainBoard"
 				class="nav-link px-2 link-dark"><b>커뮤니티 게시판</b></a></li>
 			<li><a href="community_920_raise"
 				class="nav-link px-2 link-dark"><b>양육 커뮤니티</b></a></li>
@@ -59,7 +59,7 @@
 			<div class="row" style="margin-top: 20px;">
 				<table class="table table-striped"
 					style="border: 1px solid #dddddd; width: 100%;">
-					<thead style="background-color: #adb5bd">
+					<thead style="background-color: #fff;">
 						<tr style="text-align: center;">
 							<th style="text-align: center;">번호</th>
 							<th style="text-align: center;">제목</th>
@@ -68,18 +68,19 @@
 							<th style="text-align: center;">조회수</th>
 						</tr>
 					</thead>
-					<c:forEach var="glist" items="${board}">
-						<a href="community_931_careDetail?no=${glist.boardCode}">
-							<tbody style="background-color: #eeeeee">
-								<tr id="${glist.boardCode}">
-									<td onclick="fnGoBoardDetail(${glist.boardCode})"
-										style="text-align: center;">${glist.boardCode}</td>
-									<td style="text-align: left;">${glist.boardTitle}</td>
-									<td style="text-align: center;">${glist.memberCode}</td>
-									<td style="text-align: center;">${glist.boardDate}</td>
-									<td style="text-align: center;">${glist.boardHit}</td>
+					<c:forEach var="list" items="${board}">
+						<a href="community_931_careDetail?no=${list.boardCode}">
+							<tbody style="background-color: #fff;">
+								<tr id="${list.boardCode}">
+									<td onclick="fnGoBoardDetail(${list.boardCode})"
+										style="text-align: center;">${list.boardCode}</td>
+									<td style="text-align: left;">${list.boardTitle}</td>
+									<td style="text-align: center;">${list.memberCode}</td>
+									<td style="text-align: center;">${list.boardDate}</td>
+									<td style="text-align: center;">${list.boardHit}</td>
 								</tr>
 							</tbody>
+							</a>
 					</c:forEach>
 				</table>
 			</div>
@@ -87,7 +88,7 @@
 		<a href="community_9312_mainWrite" class="btn btn-primary pull-right"
 			style="width: 100px; position: relative;">글쓰기</a> <a
 			href="community_9112_report.jsp" class="btn btn-primary pull-right"
-			style="width: 100px; margin-left: 50px;">문의/신고</a>
+			style="width: 100px; margin-left: 2px;">문의/신고</a>
 
 		<!-- Paging -->
 		<jsp:include page="../_module/pagination.jsp"></jsp:include>

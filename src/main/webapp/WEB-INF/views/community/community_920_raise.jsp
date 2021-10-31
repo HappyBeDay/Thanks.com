@@ -30,12 +30,22 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 
+<!-- font awesome icon (heart, 위치 등) -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 <!-- Custom styles for this template -->
 <link href="../css/features.css" rel="stylesheet">
 
 <!-- Core theme JS-->
 <script src="../js/main.js"></script>
 
+<style>
+/* search box shadow */
+.searchbar:hover {
+	box-shadow: 0 0 11px rgba(33, 33, 33, .6);
+}
+</style>
 </head>
 <body id="page-top">
 	<!-- Navigation 1-->
@@ -43,11 +53,11 @@
 
 	<div class="container" style="margin-top: 100px; margin-bottom: 70px;">
 		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-			<li><a href="#" class="nav-link px-2 link-dark"><b>커뮤니티
+			<li><a href="community_900_mainBoard" class="nav-link px-2 link-dark"><b>커뮤니티
 						게시판</b></a></li>
-			<li><a href="#" class="nav-link px-2 link-secondary"><b>양육
+			<li><a href="community_920_raise" class="nav-link px-2 link-secondary"><b>양육
 						커뮤니티</b></a></li>
-			<li><a href="#" class="nav-link px-2 link-dark"><b>돌폼
+			<li><a href="community_930_care" class="nav-link px-2 link-dark"><b>돌폼
 						서비스 신청</b></a></li>
 		</ul>
 	</div>
@@ -57,7 +67,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-						<div class="card mb-2">
+						<div class="searchbar card mb-2">
 							<div class="card-body d-flex justify-content-between py-2">
 								<div class="input-group input-group-lg">
 									<input type="text" class="form-control form-control-lg rounded"
