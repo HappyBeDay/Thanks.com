@@ -51,7 +51,6 @@ $(function() {
 								<%-- </c:otherwise> --%>
 							<%-- </c:choose> --%>	</div>
 			</table>
-			
 			<div class="mb-3">
 				<input type="file" name="file" value="첨부파일" placeholder="첨부파일" />
 			</div>

@@ -8,7 +8,8 @@
 				<div class="sb-sidenav-menu-heading">Menu</div>
 				<a class="nav-link" href="index.html">
 					<div class="sb-nav-link-icon"></div> 회원관리
-				</a> <a class="nav-link" href="index.html">
+				</a> 
+				<a class="nav-link" href="index.html">
 					<div class="sb-nav-link-icon"></div> 유기동물관리
 				</a> <a class="nav-link" href="index.html">
 					<div class="sb-nav-link-icon"></div> 실종/목격 관리
@@ -33,8 +34,7 @@
 				</a> <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 					data-bs-target="#collapsePages" aria-expanded="false"
 					aria-controls="collapsePages">
-					<div class="sb-nav-link-icon">
-					</div> 양육
+					<div class="sb-nav-link-icon"></div> 양육
 					<div class="sb-sidenav-collapse-arrow">
 						<i class="fas fa-angle-down"></i>
 					</div>
@@ -46,18 +46,18 @@
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#pagesCollapseAuth" aria-expanded="false"
 							aria-controls="pagesCollapseAuth"> 결제 내역
-							<div class="sb-sidenav-collapse-arrow">
-							</div>
-						</a>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+							<div class="sb-sidenav-collapse-arrow"></div>
+						</a> <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#pagesCollapseError" aria-expanded="false"
 							aria-controls="pagesCollapseError"> 갤러리
-							<div class="sb-sidenav-collapse-arrow">
-							</div>
+							<div class="sb-sidenav-collapse-arrow"></div>
 						</a>
 					</nav>
 				</div>
-				<!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+				</a> 
+				<a class="nav-link" href="index.html">
+					<div class="sb-nav-link-icon"></div> 업데이트</a>  
+					<!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 					data-bs-target="#collapsePages" aria-expanded="false"
 					aria-controls="collapsePages">
 					<div class="sb-nav-link-icon">

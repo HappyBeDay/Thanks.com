@@ -50,7 +50,7 @@ public class BoardController {
 		System.out.println(bean);
 		dao.Boardinsert(bean);
 		
-		return "redirect:/community/community_910_board";
+		return "redirect:/community/community_900_mainBoard";
 
 	}
 
