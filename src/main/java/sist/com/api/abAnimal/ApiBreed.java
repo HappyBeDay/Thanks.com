@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Component;
 
 import sist.com.api.apiEnum.AbAnimalEnum;
-import sist.com.api.apiEnum.AnimalType;
+import sist.com.api.apiEnum.BreedType;
 import sist.com.dao.BreedDao;
 
 @Component
@@ -40,7 +40,7 @@ public class ApiBreed extends AbAnimalAPI {
 		int cnt = 0;
 	
 		String baseUrl = makeURL();
-		for(AnimalType type : AnimalType.values()) {
+		for(BreedType type : BreedType.values()) {
 			//System.out.println(baseUrl + "&" + apiEnum.getRequiredItems()[0] + "=" + type.code);
 			List<Map<String, String>> mapList = processingData(requestURL(baseUrl + "&" + apiEnum.getRequiredItems()[0] + "=" + type.code));
 			for(Map<String, String> map : mapList)

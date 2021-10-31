@@ -34,7 +34,10 @@ public class ApiController {
 			model.addAttribute("updateRows", (table + " : " + cnt + "행 삽입!"));
 			model.addAttribute("result", "Success");
 		} else {
-			model.addAttribute("result", "Fail");
+			if(cnt == -1)
+				model.addAttribute("result", "Fail : table 변수를 넣어서 요청해주세요. ");
+			if(cnt == -2)
+				model.addAttribute("result", "Fail : table 이름을 확인해주세요. ");
 		}
 		return rootPath;
 	}

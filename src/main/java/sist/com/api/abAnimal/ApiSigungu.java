@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import sist.com.api.apiEnum.AbAnimalEnum;
 import sist.com.dao.SigunguDao;
-import sist.com.vo.SigunguVO;
 
 @Component
 public class ApiSigungu extends AbAnimalAPI {
@@ -37,7 +36,7 @@ public class ApiSigungu extends AbAnimalAPI {
 		return processingData(data, apiEnum);
 	}
 
-	private List<String> requiredKey() {
+	private List<String> addKeys() {
 		List<String> repeat = new ArrayList<String>();
 
 		String item = apiEnum.getRequiredItems()[0];
@@ -60,7 +59,7 @@ public class ApiSigungu extends AbAnimalAPI {
 		int cnt = 0;
 
 		String baseURL = makeURL();
-		List<String> repeat = requiredKey();
+		List<String> repeat = addKeys();
 
 		for (int i = 0; i < repeat.size(); i++) {
 			cnt += sigunguDao.insertApiData(processingData(requestURL(baseURL + repeat.get(i))));
@@ -69,8 +68,4 @@ public class ApiSigungu extends AbAnimalAPI {
 		return cnt;
 	}
 
-	public List<SigunguVO> getRequriedList() {
-		//System.out.println("getRequriedList Method");
-		return sigunguDao.getCodeList();
-	}
 }

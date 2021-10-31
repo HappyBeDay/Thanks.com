@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="sist.com.vo.SigunguVO" alias="sigungu" />
 		<typeAlias type="sist.com.vo.AbShelterVO" alias="abShelter" />
 		<typeAlias type="sist.com.vo.BreedVO" alias="breed" />
+		<typeAlias type="sist.com.vo.AbStateVO" alias="abState" />
 		<typeAlias type="sist.com.vo.AbandonedAnimalVO" alias="abAnimal" />
 	</typeAliases>
 
@@ -22,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="sist/com/mapper/abShelter_mapper.xml" />
 		<mapper resource="sist/com/mapper/breed_mapper.xml" />
 		<mapper resource="sist/com/mapper/abAnimal_mapper.xml" />
+		<mapper resource="sist/com/mapper/abState_mapper.xml" />
 	</mappers>
 
 </configuration>

@@ -2,11 +2,49 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org./dtd/mybatis-3-mapper.dtd">
-<mapper namespace="sist.com.vo.breed">
+<mapper namespace="sist.com.vo.abAnimal">
 	<sql id="table">AbandonedAnimal</sql>
-	<sql id="pk">abanimalCode</sql>
-	<sql id="columnsAPI"></sql>
-	<sql id="insertColumnsAPI">#{}, #{}</sql>
+	<sql id="pk">ABANIMALCODE</sql>
+	<sql id="columnsAPI">
+		abAge,
+		color,
+		abanimalCode,
+		abThumbPic,
+		findDate,
+		findLoc,
+		breedCode,
+		noticeEndDate,
+		noticeNum,
+		noticeStartDate,
+		abPic,
+		stateCode,
+		neuter,
+		sex,
+		abFeat,
+		abWeight,
+		breedTypeCode,
+		abShelterCode
+	</sql>
+	<sql id="insertColumnsAPI">
+		TO_NUMBER(#{abAge, jdbcType=FLOAT}),
+		#{color, jdbcType=NUMERIC},
+		TO_NUMBER(#{abanimalCode, jdbcType=NUMERIC}),
+		#{abThumbPic},
+		#{findDate, jdbcType=DATE},
+		#{findLoc},
+		TO_NUMBER(#{breedCode, jdbcType=NUMERIC}),
+		#{noticeEndDate, jdbcType=DATE},
+		#{noticeNum},
+		#{noticeStartDate, jdbcType=DATE},
+		#{abPic},
+		TO_NUMBER(#{stateCode, jdbcType=NUMERIC}),
+		#{neuter},
+		#{sex},
+		#{abFeat},
+		TO_NUMBER(#{abWeight, jdbcType=FLOAT}),
+		TO_NUMBER(#{breedTypeCode, jdbcType=NUMERIC}),
+		TO_NUMBER(#{abShelterCode})
+	</sql>
 
 	<!-- insert -->
 	<insert id="insertAbAnimalFromApi" parameterType="java.util.Map">
@@ -28,6 +66,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="pk" />
 		from
 		<include refid="table" />
+	</select>
+
+	<select id="selectAbAnimal_PKCheck" 
+		parameterType="java.lang.Long"
+		resultType="java.lang.Long">
+		select
+		<include refid="pk"/>
+		from
+		<include refid="table"/>
+		where
+		<include refid="pk"/>
+		= #{abanimalCode, jdbcType=NUMERIC}
 	</select>
 
 </mapper>

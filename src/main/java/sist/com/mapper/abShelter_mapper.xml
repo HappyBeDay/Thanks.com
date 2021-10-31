@@ -7,7 +7,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<sql id="pk">abShelterCode</sql>
 	
 	<sql id="columnsAPI">abShelterCode, abShelterName, sidoCode, sigunguCode</sql>
-	<sql id="insertColumnsAPI">#{abShelterCode}, #{abShelterName}, #{sidoCode}, #{sigunguCode}</sql>
+	<sql id="inputColumnsAPI">#{abShelterCode}, #{abShelterName}, #{sidoCode}, #{sigunguCode}</sql>
+
+	<sql id="columnsUpdateAPI">
+		abShelterName
+		,abShelterTel                                               
+		,abShelterAddress
+		,organize
+		,managerName
+		,managerTel
+	</sql>
+	<sql id="inputColumnsUpdateAPI">
+		select 
+			#{abShelterName},
+			to_number(#{abShelterTel}), 
+			#{abShelterAddress}, 
+			#{organize}, 
+			#{managerName, jdbcType=NVARCHAR}, 
+			to_number(#{managerTel})
+			from dual
+	</sql>
 
 	<!-- insert -->
 	<insert id="insertAbShelterFromApi" parameterType="java.util.Map">
@@ -15,13 +34,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="table" />
 		(<include refid="columnsAPI" />) 
 		values 
-		(<include refid="insertColumnsAPI" />) 
+		(<include refid="inputColumnsAPI" />) 
 	</insert>
 
 	<!-- select -->
 	<select id="selectAbShelterAll" resultType="abShelter">
 		select * from
-		<include refid="table"></include>
+		<include refid="table" />
 	</select>
 
 	<select id="selectAbShelter_PK" resultType="java.lang.Long">
@@ -30,6 +49,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from
 		<include refid="table" />
 	</select>
+	
+	<select id="selectAbShelter_PKCheck" 
+	parameterType="java.lang.Long"
+	resultType="java.lang.Long">
+		select 
+		<include refid="pk"/>
+		from
+		<include refid="table"/>
+		where
+		<include refid="pk"/>
+		= TO_NUMBER(#{abShelterCode})
+	</select>
+	
+	<!-- update -->
+	<update id="updateAbShelterFromApi">
+		update 
+		<include refid="table"/> 
+		set (<include refid="columnsUpdateAPI"/>) 
+		= (<include refid="inputColumnsUpdateAPI"/>) 
+		where 
+		<include refid="pk"/>
+		= TO_NUMBER(#{<include refid="pk"/>})
+	</update>
 
 </mapper>
 <!-- 

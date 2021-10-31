@@ -6,12 +6,12 @@ package sist.com.api.apiEnum;
 429900	기타
  * 
  */
-public enum AnimalType {
+public enum BreedType {
 	개(417000), 고양이(422400), 기타(429900);
 
 	public int code;
 
-	private AnimalType(int code) {
+	private BreedType(int code) {
 		this.code = code;
 	}
 }

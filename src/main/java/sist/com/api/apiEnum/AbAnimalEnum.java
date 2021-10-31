@@ -20,9 +20,64 @@ public enum AbAnimalEnum {
 			new String[] { "breedName", "breedCode"} ),
 	// 미완성
 	AbandonedAnimalVO("abandonmentPublic", // 유기동물
-			new String[] { "noticeEdt", "popfile", "processState" }, 
-			new String[] { "pageNo", "numOfRows", "care_reg_no" },
-			new String[] { "", "", "",} );
+			new String[] { 
+					"age", 
+					/* AbShelter */
+					"careAddr", 
+					"careNm", 
+					"careTel", 
+					"chargeNm",
+					/* AbandonedAnimal */
+					"colorCd", 
+					"desertionNo", 
+					"filename", 
+					"happenDt", 
+					"happenPlace", 
+					"kindCd", 
+					"neuterYn", // noticeComment
+					/* AbandonedAnimal */
+					"noticeEdt",  
+					"noticeNo", 
+					"noticeSdt", 
+					"officetel", 
+					"orgNm", 
+					"popfile", 
+					"processState", 
+					"sexCd", 
+					"specialMark", 
+					"weight" 
+				}, // 23개
+			new String[] { /*"pageNo",*/ "numOfRows", "care_reg_no" },
+			new String[] { 
+					/* AbandoendAnimal */
+					"abAge",
+					/* AbShelter */
+					"abShelterAddress",
+					"abShelterName",
+					"abShelterTel",
+					"managerName",
+					/* AbandonedAnimal */
+					"color",
+					"abanimalCode",
+					"abThumbPic",
+					"findDate",
+					"findLoc",
+					"breedCode",
+					"neuter",
+					/* AbandonedAnimal */
+					"noticeEndDate",
+					"noticeNum",
+					"noticeStartDate",
+					"managerTel",
+					"organize",
+					"abPic",
+					"stateCode",
+					"sex",
+					"abFeat",
+					"abWeight",
+					//breedTypeCode
+				}
+	);
 
 	private final String apiName;
 	private final String[] tagNames;

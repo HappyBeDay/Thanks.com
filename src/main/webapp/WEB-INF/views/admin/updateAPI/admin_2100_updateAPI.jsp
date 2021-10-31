@@ -9,7 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	let result = "${result}"
-	if(result === "Fail"){
+	if(result != "Success"){
 		alert("API update fail... : Table 이름을 확인해주세요.");
 	}
 </script>
@@ -19,7 +19,7 @@
 	<h2>This is updateAPI Page</h2>
 	<h4>AbandonedAnimal</h4>
 	<ul>
-		<li>${updateRows}</li>
+		<li>${updateRows} : ${result}</li>
 	</ul>
 
 </body>

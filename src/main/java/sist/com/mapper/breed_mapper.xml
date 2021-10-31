@@ -2,11 +2,13 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org./dtd/mybatis-3-mapper.dtd">
-<mapper namespace="sist.com.vo.abAnimal">
+<mapper namespace="sist.com.vo.breed">
 	<sql id="table">Breed</sql>
 	<sql id="pk">breedCode</sql>
 	<sql id="columnsAPI">breedCode, breedName, animalTypeCode</sql>
 	<sql id="insertColumnsAPI">#{breedCode}, #{breedName}, #{animalTypeCode}</sql>
+	<sql id="name">breedName</sql>
+	<sql id="seq">Breed_seq.nextVal</sql>
 
 	<!-- insert -->
 	<insert id="insertBreedFromApi" parameterType="java.util.Map">
@@ -18,16 +20,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<!-- select -->
-	<select id="selectBreedAll" resultType="abShelter">
-		select * from
-		<include refid="table"></include>
-	</select>
-
-	<select id="selectBreed_PK" resultType="java.lang.Long">
+	<select id="selectBreed_PKs" resultType="java.lang.Long">
 		select
 		<include refid="pk" />
 		from
 		<include refid="table" />
+	</select>
+	
+	<select id="selectBreed_All" resultType="Breed">
+		select * from <include refid="table"/>
+	</select>
+
+	<select id="selectBreed_PkCheck" 
+		parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select 
+		<include refid="pk"/>
+		from
+		<include refid="table"/>
+		where
+		<include refid="pk"/>
+		= #{pk}
+	</select>
+	
+	<select id="selectBreed_pkFromName"
+		parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+		select
+		<include refid="pk"/>
+		from
+		<include refid="table"/>
+		where
+		<include refid="name"/>
+		= #{name}
+	</select>
+	
+	<select id="selectBreed_seq" resultType="java.lang.Integer">
+		select 
+		<include refid="seq" />
+		from dual
 	</select>
 
 </mapper>

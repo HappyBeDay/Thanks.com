@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Repository;
 
+import sist.com.api.abAnimal.ApiAbAnimal;
 import sist.com.api.abAnimal.ApiAbShelter;
 import sist.com.api.abAnimal.ApiBreed;
 import sist.com.api.abAnimal.ApiSido;
@@ -26,6 +27,9 @@ public class ApiMw {
 	
 	@Inject
 	private ApiBreed apiBreed;
+	
+	@Inject
+	private ApiAbAnimal apiAbAnimal;
 
 	// Constructor
 	private ApiMw() {
@@ -33,6 +37,8 @@ public class ApiMw {
 	}
 
 	public int chooseUpdateAPI_abAnimal(String tabName) {
+		if(tabName == null) return -1;
+		
 		switch (tabName) {
 		case "Sido":
 			//return apiSido.updateDataBase();
@@ -44,10 +50,10 @@ public class ApiMw {
 		case "Breed":
 			return apiBreed.updateDataBase();
 		case "AbandonedAnimal":
-
+			return apiAbAnimal.updateDataBase();
 		}
 
-		return -1;
+		return -2;
 	}
 	
 	// SingleTone

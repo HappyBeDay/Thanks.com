@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -59,13 +60,23 @@ public class XmlParser {
 			//System.out.println(tagItems);
 			// dbCol로 변경해야되지 않을까?
 			//System.out.println(dbCol);
-			for(int j = 0 ; j < dbCol.length; j++) {
-				//System.out.println(tagItems.item(j).getNodeName());
-				String value = tagItems.item(j).getTextContent();
+			System.out.println("---tag---");
+			System.out.println(Arrays.toString(tag));
+			//System.out.println("---dbCol---");
+			//System.out.println(Arrays.toString(dbCol));
+			for(int j = 0 ; j < tagItems.getLength(); j++) {
+				String name = tagItems.item(j).getNodeName();
+				System.out.println("name : " + name);
+				for(int k = 0 ; k < tag.length; k++) {
+					if(name.equals(tag[k])) {
+						System.out.println("value : " + tagItems.item(j).getTextContent());
+						map.put(dbCol[k], tagItems.item(j).getTextContent());
+					}
+				}
 				//System.out.println(dbCol[j]);
 				//System.out.println(value);
-				map.put(dbCol[j], value);
 			}
+			System.out.println(map);
 			list.add(map);
 		}
 		//System.out.println(list);

@@ -10,21 +10,22 @@ import org.springframework.stereotype.Component;
 
 import sist.com.api.apiEnum.AbAnimalEnum;
 import sist.com.dao.AbShelterDao;
+import sist.com.dao.SigunguDao;
 import sist.com.vo.SigunguVO;
 
 @Component
 public class ApiAbShelter extends AbAnimalAPI {
 	// Field
 	private AbAnimalEnum apiEnum = AbAnimalEnum.AbShelterVO;
-	private ApiSigungu apiSigungu;
+	private SigunguDao sigunguDao;
 	private AbShelterDao abShelterDao;
 	private List<SigunguVO> sigunguList;
 
 	// Contstruct
 	@Inject
-	public ApiAbShelter(ApiSigungu apiSigungu, AbShelterDao abShelterDao) {
+	public ApiAbShelter(SigunguDao sigunguDao, AbShelterDao abShelterDao) {
 		super();
-		this.apiSigungu = apiSigungu;
+		this.sigunguDao = sigunguDao;
 		this.abShelterDao = abShelterDao;
 	}
 
@@ -34,7 +35,7 @@ public class ApiAbShelter extends AbAnimalAPI {
 	}
 	
 	// makeURL에 합쳐도 되는 부분.
-	private List<String> requiredKey() {
+	private List<String> addKey() {
 		String[] items = apiEnum.getRequiredItems();
 		List<String> repeat = new ArrayList<String>();
 		// System.out.println("requiredKey method Dao Call!");
@@ -64,8 +65,8 @@ public class ApiAbShelter extends AbAnimalAPI {
 		System.out.println("AbShelterDao : " + abShelterDao);
 
 		String baseUrl = makeURL();
-		sigunguList = apiSigungu.getRequriedList();
-		List<String> repeat = requiredKey();
+		sigunguList = sigunguDao.getCodeList();
+		List<String> repeat = addKey();
 
 		int cnt = 0;
 
