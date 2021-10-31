@@ -37,19 +37,12 @@ $(function() {
 			<div class="mb-3">
 				<label for="content">내용</label>
 				<textarea class="form-control" rows="5" name="content" id="boardcontent" placeholder="내용을 입력해 주세요"></textarea>
-					<%-- <input type="hidden" name="id" value="${id}"> --%>
-						<%-- <c:choose> --%>
-								<%-- <c:when test="${boardTitle eq '' or boardTitle==null}">
-									<input type="hidden" value="new" name="boardtitle">
-								</c:when> --%>
-								<%-- <c:otherwise> --%>
 									<input type="hidden" value=${boardCode } name="boardcode">
 									<input type="hidden" value=${boardTitle } name="boardtitle">
 									<input type="hidden" value=${boardContent } name="boardcontent">
 									<input type="hidden" value=${boardPic } name="boardpic">
 									<input type="hidden" value=${boardDate } name="boarddate">
-								<%-- </c:otherwise> --%>
-							<%-- </c:choose> --%>	</div>
+								</div>
 			</table>
 			<div class="mb-3">
 				<input type="file" name="file" value="첨부파일" placeholder="첨부파일" />

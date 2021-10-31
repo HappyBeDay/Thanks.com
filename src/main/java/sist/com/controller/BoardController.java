@@ -16,7 +16,7 @@ public class BoardController {
 	@Autowired
 	private BoardDao dao;
 	
-	@PostMapping(value = "/community/community_900_mainBoard")
+	@PostMapping(value = "community/community_900_mainBoard")
 	public String Boardinsert(BoardVO bean, @RequestParam(value = "file", required = false) MultipartFile file) {
 		String location = "D:\\eclipseFile\\Thanks.Project\\Thanks.com.spring\\src\\main\\webapp\\resources\\assets\\boardimg\\";
 		FileOutputStream fos = null;
@@ -50,7 +50,7 @@ public class BoardController {
 		System.out.println(bean);
 		dao.Boardinsert(bean);
 		
-		return "redirect:/community/community_900_mainBoard";
+		return "redirect:community/community_900_mainBoard";
 
 	}
 
