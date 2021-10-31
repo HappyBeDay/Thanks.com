@@ -17,11 +17,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<update id="updateBoard" parameterType="board">
 		update board set 	
-		boardtitle=#{boardTitle},boardcontent=#{boardcontent},boardpic=#{boardPic}
-		where boardcode=#{boardCode}	
+		boardTitle=#{boardTitle},boardContent=#{boardContent},boardPic=#{boardPic}
+		where boardCode=#{boardCode}	
 	</update>
 	<delete id="deleteBoard" parameterType="int">
 		delete from board
-		where boardcode=#{boardCode}
+		where boardCode=#{boardCode}
 	</delete>
+	
+		<insert id="Boardinsert" parameterType="board">
+		insert into
+		board(BOARDCODE,MEMBERCODE,BOARDTITLE,BOARDCONTENT,BOARDPIC,
+		BOARDDATE,BOARDHIT,BOARDLIKE,BOARDTYPECODE,BOARDNUM,REPLYGROUPCODE)
+		values(#{boardCode},#{memberCode},#{boardTitle},#{boardContent},#{boardPic},
+		#{boardDate},#{boardHit},#{boardLike},#{boardTypeCode},#{boardNum},#{replyGroupCode})
+		</insert>
+		
+		<sql id="sql">
+		SELECT
+		BOARDCODE,MEMBERCODE,BOARDTITLE,BOARDCONTENT,BOARDPIC,
+		BOARDDATE,BOARDHIT,BOARDLIKE,BOARDTYPECODE,BOARDNUM,REPLYGROUPCODE
+		FROM BOARD
+		</sql>
 </mapper>

@@ -13,19 +13,20 @@ public class BoardDao extends SqlSessionDaoSupport {
 	
 	@Resource(name="sqlSessionTemplate")
 	protected void initDao(SqlSessionTemplate sessionTemplate) throws Exception {
+		System.out.println("initDao() : SqlSessionTemplate");
 		this.setSqlSessionTemplate(sessionTemplate);
 	}
 	
-	public void insertBoard(BoardVO vo) {
+	public void Boardinsert(BoardVO vo) {
 		System.out.println(this.getSqlSession());
-		System.out.println("vo : "+vo);
-		this.getSqlSession().insert("insertBoard",vo);
+		System.out.println("success2");
+		System.out.println("vo : "+ vo);
+		this.getSqlSession().insert("Boardinsert",vo);
 		System.out.println("success");
 	}
 	
-	public void deleteBoard(int no) {
-		this.getSqlSession().delete("deleteBoard", no);
+	public Integer getSequence() { // insert 되기전에
+		return this.getSqlSession().selectOne("getSequence");
 	}
-	
 	
 }
