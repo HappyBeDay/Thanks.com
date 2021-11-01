@@ -14,7 +14,7 @@ import sist.com.api.apiEnum.BreedType;
 import sist.com.vo.BreedVO;
 
 @Repository
-public class BreedDao implements ApiDao {
+public class BreedDao implements ApiDao, Dao {
 
 	private SqlSessionTemplate sqlSession;
 
@@ -36,7 +36,7 @@ public class BreedDao implements ApiDao {
 		// System.out.println(list);
 		int cnt = 0;
 
-		//Set<Integer> breedPK = selectPKColumnReturnSet();
+		// Set<Integer> breedPK = selectPKColumnReturnSet();
 
 		for (Map<String, String> map : list) {
 			Object pk = sqlSession.selectOne("selectBreed_PkCheck", map.get("breedCode"));
@@ -45,28 +45,16 @@ public class BreedDao implements ApiDao {
 		}
 		return cnt;
 	}
-	
-	public List<BreedVO> selectAllData() {
-		return sqlSession.selectList("selectBreed_All");
-	}
-	
+
 	public int selectCodeFromName(String name) {
 		System.out.println("name : " + name);
 		/*
-		if(name == null || name.length() < 1) {
-
-		}
-		else if(name.equals("믹스"))
-			name = "믹스견";
-		else if(name.equals("라쿤"))
-			return -1;
-		else if(name.equals("토끼"))
-			return -1;
-		else if(name.equals("햄스터"))
-			return -1;
-		else if(name.equals("금계"))
-			return -1;
-		*/
+		 * if(name == null || name.length() < 1) {
+		 * 
+		 * } else if(name.equals("믹스")) name = "믹스견"; else if(name.equals("라쿤")) return
+		 * -1; else if(name.equals("토끼")) return -1; else if(name.equals("햄스터")) return
+		 * -1; else if(name.equals("금계")) return -1;
+		 */
 		try {
 			return sqlSession.selectOne("selectBreed_pkFromName", name);
 		} catch (NullPointerException e) {
@@ -74,15 +62,21 @@ public class BreedDao implements ApiDao {
 			int key = sqlSession.selectOne("selectBreed_seq");
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			map.put("breedCode", key);
-			if(name != null && name != "")
+			if (name != null && name != "")
 				map.put("breedName", name);
 			else
 				map.put("breedName", "empty");
-			
+
 			map.put("animalTypeCode", BreedType.기타.code);
 			sqlSession.insert("insertBreedFromApi", map);
 			return key;
 		}
+	}
+	
+	// Dao interface
+	@Override
+	public List<BreedVO> selectDataAll() {
+		return sqlSession.selectList("selectBreed_All");
 	}
 
 }

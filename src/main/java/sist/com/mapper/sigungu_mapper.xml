@@ -20,8 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- select -->
 	<select id="selectSigunguAll" resultType="sigungu">
-		select * from
-		<include refid="table"></include>
+		select 
+		<include refid="columns"/>
+ 		from
+		<include refid="table" />
 	</select>
 
 	<select id="selectSigungu_PK" resultType="java.lang.Integer">

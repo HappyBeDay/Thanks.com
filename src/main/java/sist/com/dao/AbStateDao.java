@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import sist.com.vo.AbStateVO;
 
 @Repository
-public class AbStateDao implements ApiDao {
+public class AbStateDao implements ApiDao, Dao {
 
 	private SqlSessionTemplate sqlSession;
 
@@ -42,7 +42,7 @@ public class AbStateDao implements ApiDao {
 
 		System.out.println("one : ---");
 		System.out.println(one);
-		if (one!=null)
+		if (one != null)
 			return (int) one;
 
 		int code = getSequence();
@@ -53,14 +53,15 @@ public class AbStateDao implements ApiDao {
 
 	public Map<String, Integer> selectCodeName() {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		List<AbStateVO> list = selectAllData();
+		List<AbStateVO> list = selectDataAll();
 		for (AbStateVO state : list) {
 			map.put(state.getStateName(), state.getStateCode());
 		}
 		return map;
 	}
 
-	public List<AbStateVO> selectAllData() {
+	@Override
+	public List<AbStateVO> selectDataAll() {
 		return sqlSession.selectList("selectAbState_All");
 	}
 

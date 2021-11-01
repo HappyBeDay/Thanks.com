@@ -13,16 +13,19 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Repository;
 
+import sist.com.vo.SidoVO;
+
 @Repository
 @EnableAspectJAutoProxy(proxyTargetClass = true) // implements ApiDao를 해결하기위한 조건...
-public class SidoDao extends SqlSessionDaoSupport implements ApiDao {
-	
+public class SidoDao extends SqlSessionDaoSupport implements ApiDao, Dao {
+
 	@Resource(name = "sqlSessionTemplate")
 	protected void initDao(SqlSessionTemplate sessionTemplate) throws Exception {
 		System.out.println("initDao() : Sido");
 		this.setSqlSessionTemplate(sessionTemplate);
 	}
 
+	// ApiDao
 	@Override
 	public Set<Integer> selectPKColumnReturnSet() {
 		System.out.println("getSqlSession : " + this.getSqlSession());
@@ -44,4 +47,9 @@ public class SidoDao extends SqlSessionDaoSupport implements ApiDao {
 		return cnt;
 	}// insertSidoData
 
+	// Dao
+	@Override
+	public List<SidoVO> selectDataAll() {
+		return getSqlSession().selectList("selectSidoAll");
+	}
 }

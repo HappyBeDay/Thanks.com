@@ -12,10 +12,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import sist.com.vo.SidoVO;
 import sist.com.vo.SigunguVO;
 
 @Repository
-public class SigunguDao extends SqlSessionDaoSupport implements ApiDao {
+public class SigunguDao extends SqlSessionDaoSupport implements ApiDao, Dao{
 
 	@Resource(name = "sqlSessionTemplate")
 	protected void initDao(SqlSessionTemplate sessionTemplate) throws Exception {
@@ -48,5 +49,10 @@ public class SigunguDao extends SqlSessionDaoSupport implements ApiDao {
 			}
 		}
 		return cnt;
+	}
+
+	@Override
+	public List<SidoVO> selectDataAll() {
+		return this.getSqlSession().selectList("selectSidoAll");
 	}
 }

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import sist.com.vo.AbandonedAnimalVO;
 
 @Component
-public class AbAnimalDao implements ApiDao {
+public class AbAnimalDao implements ApiDao, Dao {
 	
 	private SqlSessionTemplate sqlSession;
 	
@@ -49,7 +49,9 @@ public class AbAnimalDao implements ApiDao {
 		return cnt;
 	}
 
-	public List<AbandonedAnimalVO> selectAllData(){
+
+	@Override
+	public List<AbandonedAnimalVO> selectDataAll() {
 		return sqlSession.selectList("selectAbAnimalAll");
 	}
 }

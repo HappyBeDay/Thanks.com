@@ -31,5 +31,5 @@ public class AbandonedAnimalVO {
 	private String sex;			
 	private String abFeat;			
 	private float abWeight;		
-	private long asShelterCode;
+	private long abShelterCode;
 }

@@ -13,7 +13,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 
-<title>Insert title here</title>
+<title>Adopt</title>
 
 <!-- Google fonts -->
 <link
@@ -47,7 +47,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></cript>
 
 <!-- Core theme JS-->
 <script type="text/javascript">
@@ -101,11 +101,11 @@ html, body, .intro {
 	box-shadow: 0 0 11px rgba(33, 33, 33, .6);
 }
 </style>
-
 </head>
 <body id="page-top">
 	<!-- Navigation 1-->
 	<jsp:include page="../_module/navibar.jsp"></jsp:include>
+	<script src="../js/adopt/adopt_500_main.js"></script>
 
 	<div class="h-75" style="background-color: #1c7cff;">
 		<div class="mask d-flex align-items-center h-100">
@@ -232,9 +232,9 @@ html, body, .intro {
 																<svg xmlns="http://www.w3.org/2000/svg" width="16"
 																	height="16" fill="currentColor"
 																	class="bi bi-arrow-left" viewBox="0 0 16 16">
-  <path fill-rule="evenodd"
+  																	<path fill-rule="evenodd"
 																		d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-</svg>
+																</svg>
 															</button>
 															<strong class="cal-month-name">June</strong> <select
 																class="form-select cal-month-name d-none">
@@ -255,9 +255,9 @@ html, body, .intro {
 																<svg xmlns="http://www.w3.org/2000/svg" width="16"
 																	height="16" fill="currentColor"
 																	class="bi bi-arrow-right" viewBox="0 0 16 16">
-  <path fill-rule="evenodd"
+  																	<path fill-rule="evenodd"
 																		d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-</svg>
+																</svg>
 															</button>
 														</div>
 														<div class="cal-weekdays text-muted">
@@ -348,10 +348,11 @@ html, body, .intro {
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 
-	<%-- 찾을 수 없다는 에러때문에 아래 주소로 변경하였음. (기존 주소 : docs/5.1/dist/js/bootstrap.bundle.min.js) --%>
-	<script src="https://getbootstrap.com/docs/5.1/dist/js/bootstrap.bundle.min.js"
+	<%-- 없어도 되길래 일단 없애고 진행. 있으면 404 에러.
+	<script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
+	--%>
 
 	<!--  Dropdown filter -->
 	<script
@@ -360,6 +361,5 @@ html, body, .intro {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
 		integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
 		crossorigin="anonymous"></script>
-
 </body>
 </html>
