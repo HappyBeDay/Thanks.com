@@ -1,17 +1,19 @@
 package sist.com.dao;
 
-import java.util.List;
+import java.sql.Date;
 
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import sist.com.vo.BoardVO;
 
 @Repository
-public class BoardDao extends SqlSessionDaoSupport {
+public class BoardDao2 extends SqlSessionDaoSupport {
 	
 	@Resource(name="sqlSessionTemplate")
 	protected void initDao(SqlSessionTemplate sessionTemplate) throws Exception {
@@ -30,10 +32,17 @@ public class BoardDao extends SqlSessionDaoSupport {
 	public Integer getSequence() { // insert 되기전에
 		return this.getSqlSession().selectOne("getSequence");
 	}
-
-	public List<BoardVO> selectBoardGeneral() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
+	@RequestMapping(value = "/community_900_mainBoard")
+	public String boardListAction(int boardcode, String boardtitle, int membercode, Date boarddate, int boardhit ) {
+		// dao.boardInfo(no);
+		model.addAttribute("info", dao2.selectInfoBoard(no));
+		if (job.equals("info")) {
+			// dao.updateHit(no);
+			dao.updateHit(no);
+			return "boardMVC/info";
+		} else {
+			return "boardMVC/modify";
+		}
+	}
 }

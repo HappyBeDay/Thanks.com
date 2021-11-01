@@ -4,6 +4,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org./dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sist.com.vo.board2">
 
+	<insert id="list" parameterType="sist.com.boardVO">
+		insert into
+		board(BOARDCODE,MEMBERCODE,BOARDTITLE,BOARDCONTENT,BOARDPIC,
+		BOARDDATE,BOARDHIT,BOARDLIKE,BOARDTYPECODE,REPLYGROUPCODE)
+		values(#{boardCode},#{memberCode},#{boardTitle},#{boardContent},#{boardPic},
+		#{boardDate},#{boardHit},#{boardLike},#{boardTypeCode},#{replyGroupCode})
+	</insert>
 
-	
 </mapper>

@@ -31,18 +31,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from dual
 	</select>
 	
-	<insert id="boardInsert" parameterType="board">
-		insert into
-		board(BOARDCODE,MEMBERCODE,BOARDTITLE,BOARDCONTENT,BOARDPIC,
-		BOARDDATE,BOARDHIT,BOARDLIKE,BOARDTYPECODE,REPLYGROUPCODE)
-		values(#{boardCode},#{memberCode},#{boardTitle},#{boardContent},#{boardPic},
-		#{boardDate},#{boardHit},#{boardLike},#{boardTypeCode},#{replyGroupCode})
-	</insert>
-
-	<sql id="sql">
-		SELECT
-		BOARDCODE,MEMBERCODE,BOARDTITLE,BOARDCONTENT,BOARDPIC,
-		BOARDDATE,BOARDHIT,BOARDLIKE,BOARDTYPECODE,REPLYGROUPCODE
-		FROM BOARD
-	</sql>
 </mapper>

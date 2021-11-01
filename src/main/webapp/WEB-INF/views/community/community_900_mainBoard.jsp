@@ -80,20 +80,18 @@ $(function() {
 							<th style="text-align: center;">조회수</th>
 						</tr>
 					</thead>
-					<c:forEach var="list" items="${board}">
-					<a href="community_900_mainBoard?no=${list.boardCode}">
 						<tbody style="background-color: #fff;">
-							<tr id="a">
-								<td <%-- onclick="fnGoBoardDetail(${list.boardCode})" --%> 
-									id="boardCode;" style="text-align: center;">${list.boardCode}</td>
+					<c:forEach items="${board}" var="list" >
+					 <a href="/community_900_mainBoard?no=${list.boardCode}">${list.boardTitle}</a>
+							<tr>
+								<td id="boardCode;" style="text-align: center;">${list.boardCode}</td>
 								<td style="text-align: left;">${list.boardTitle}</td>
 								<td style="text-align: center;">${list.memberCode}</td>
 								<td style="text-align: center;">${list.boardDate}</td>
 								<td style="text-align: center;">${list.boardHit}</td>
-							</tr>
-						</tbody>
-						</a>
+							</tr>			
 					</c:forEach>
+						</tbody>
 				</table>
 			</div>
 		</form>
