@@ -59,7 +59,7 @@ $(function() {
 		<h2>커뮤니티 게시글 작성</h2>
 		
 		<div id="write_area">
-		<form action="community_900_mainBoard" enctype="multipart/form-data" method="post" name="insertFrm">
+		<form action="community_9113_mainWrite" enctype="multipart/form-data" method="post" name="insertFrm">
 			
 			<table>
 			<div class="mb-3">
