@@ -16,7 +16,32 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+	
 	<dependencies>
+	<!-- oracle cloud db connection -->
+		<!-- <dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>oraclepki</artifactId>
+			<version>19.3.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/oraclepki.jar</systemPath>
+		</dependency>
+		https://mvnrepository.com/artifact/com.oracle.database.security/osdt_cert
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>osdt_cert</artifactId>
+			<version>19.3.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/osdt_cert.jar</systemPath>
+		</dependency>
+		https://mvnrepository.com/artifact/com.oracle.database.security/osdt_core
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>osdt_core</artifactId>
+			<version>19.3.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/osdt_core.jar</systemPath>
+		</dependency>  -->
 
 		<!-- Encoding Error catch : from OracleDB -->
 		<!-- Create Error Code <dependency> <groupId>com.oracle.ojdbc</groupId> 

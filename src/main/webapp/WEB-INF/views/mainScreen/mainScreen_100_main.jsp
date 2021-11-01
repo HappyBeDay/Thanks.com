@@ -36,10 +36,10 @@
 		<div class="container px-4 px-lg-5 h-100">
 			<div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
 				<div class="col-lg-8 align-self-end">
-					<h1 class="text-white font-weight-bold">동물들이 뛰어노는 세상을 꿈꿉니다.</h1>
+					<h1 class="text-black font-weight-bold" style="font-size: 50px;">동물들이 뛰어노는 세상을 꿈꿉니다.</h1>
 				</div>
 				<div class="col-lg-8 align-self-baseline">
-					<p class="text-white-75 mb-5">Thanks.com은 인간과 동물이 평화롭게 공존하는 세상을
+					<p class="text-black-75 mb-5">Thanks.com은 인간과 동물이 평화롭게 공존하는 세상을
 						만들고자 노력하고 있습니다.</p>
 					<!--  <a class="btn btn-primary btn-xl" href="#about">Find Out More</a> -->
 				</div>

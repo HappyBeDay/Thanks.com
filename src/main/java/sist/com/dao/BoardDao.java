@@ -19,21 +19,19 @@ public class BoardDao extends SqlSessionDaoSupport {
 		this.setSqlSessionTemplate(sessionTemplate);
 	}
 	
-	public void Boardinsert(BoardVO vo) {
-		System.out.println(this.getSqlSession());
-		System.out.println("success2");
-		System.out.println("vo : "+ vo);
-		this.getSqlSession().insert("Boardinsert",vo);
-		System.out.println("success");
+	public List selectBoardAll(){
+		return getSqlSession().selectList("selectBoardAll");
 	}
-	
-	public Integer getSequence() { // insert 되기전에
-		return this.getSqlSession().selectOne("getSequence");
+	public List selectBoardGeneral(){
+		return getSqlSession().selectList("selectBoardGeneral");
 	}
-
-	public List<BoardVO> selectBoardGeneral() {
-		// TODO Auto-generated method stub
-		return null;
+	public List selectBoardCare(){
+		return getSqlSession().selectList("selectBoardCare");
 	}
-	
+	public void updateBoard(BoardVO vo){
+		this.getSqlSession().update("updateBoard",vo);
+	}
+	public void deleteBoard(int no){
+		this.getSqlSession().delete("deleteBoard",no);
+	}
 }
