@@ -27,7 +27,6 @@ $(function() {
 <%-- <c:out value="${boardTitle}"></c:out>
  --%>	<div id="write_area">
 		<form action="community_900_mainBoard" enctype="multipart/form-data" method="post" name="insertFrm">
-			
 			<table>
 			<div class="mb-3">
 				<label for="title" style="padding-top: 50px;">제목</label>
