@@ -40,7 +40,14 @@ public class BoardDao extends SqlSessionDaoSupport{
 		System.out.println("success");
 	}
 	
+	
+	
 	public Integer getSequence() { // insert 되기전에
 		return this.getSqlSession().selectOne("getSequence");
 	}
+<<<<<<< HEAD
+	
+	
+=======
+>>>>>>> branch 'master' of https://github.com/HappyBeDay/Thanks.com.spring.git
 }

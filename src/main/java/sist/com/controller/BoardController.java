@@ -20,6 +20,7 @@ import sist.com.vo.BoardVO;
 
 @Controller
 public class BoardController {
+	
 	@Autowired
 	private BoardDao dao;
 	/*@RequestMapping(value = "community/community_910_board")
