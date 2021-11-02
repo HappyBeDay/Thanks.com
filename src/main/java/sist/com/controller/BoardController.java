@@ -38,7 +38,7 @@ public class BoardController {
 		List<BoardVO> list=dao.selectBoardGeneral();
 		Common c = Common.getInstance();
 		c.getID(se);
-		c.login(se, "terra");
+		/*c.login(se, "terra");*/
 		System.out.println(list);
 		model.addAttribute("board", dao.selectBoardGeneral());
 		return "community/community_900_mainBoard";
@@ -48,7 +48,7 @@ public class BoardController {
 		List<BoardVO> list=dao.selectBoardCare();
 		Common c = Common.getInstance();
 		c.getID(se);
-		c.login(se, "terra");
+		/*c.login(se, "terra");*/
 		System.out.println(list);
 		model.addAttribute("board", dao.selectBoardCare());
 		return "community/community_930_care";
