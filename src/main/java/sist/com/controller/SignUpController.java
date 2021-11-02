@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import sist.com.controller._module.Common;
+import sist.com.controller._module.SiteURL;
 import sist.com.dao.MemberInfoDao;
 import sist.com.vo.MemberInfoVO;
 
@@ -23,7 +24,7 @@ public class SignUpController {
 	@RequestMapping
 	public String signUp() {
 		System.out.println("signUp Main Page 이동");
-		return "redirect:signUp/signUp_200_agreement";
+		return "redirect:" + SiteURL.signUp.url;
 	}
 	
 	
