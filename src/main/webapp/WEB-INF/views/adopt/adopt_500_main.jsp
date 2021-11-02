@@ -13,7 +13,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 
-<title>Adopt</title>
+<title>입양을 기다리는 동물들</title>
 
 <!-- Google fonts -->
 <link

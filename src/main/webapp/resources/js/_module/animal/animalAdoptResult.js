@@ -8,12 +8,28 @@ console.log(sido, breed, animal);
 let breedMap = new Map();
 let abShelterMap = new Map();
 let _card;
+let _image;
+
+function abAnimalUpdate(no){
+	getAjax("abAnimal", function(e){
+		// 작성중...
+	})
+}
+
 window.addEventListener('load', function() {
 	_card = document.body.querySelectorAll("#_card");
 	
 	breedUpdate();
 	abShelterUpdate();
-
+	
+	//_image = document.body.querySelectorAll("img[alt=Thumbnail]");
+	_image = $("img[alt=Thumbnail]");
+	_image.click(function(){
+		let form = createForm([this.lang], "adopt_510_info");
+		form.submit();
+	});
+	
+	console.log(_image);
 	
 });
 

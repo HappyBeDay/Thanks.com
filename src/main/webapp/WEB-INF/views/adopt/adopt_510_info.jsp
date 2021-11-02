@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Insert title here</title>
+<title>동물 소개</title>
 
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/5.1/examples/features/">
@@ -40,12 +40,12 @@
 <body id="page-top">
 	<!-- Navigation 1-->
 	<jsp:include page="../_module/navibar.jsp"></jsp:include>
-
+	<script src="../js/_module/animal/adopt_510_info.js"></script>
 	<div class="list" style="display: flex; align-items: center;">
 		<div style="margin: 50px;"></div>
 
 		<div style="margin: 50px;">
-			<img src="../assets/img/sampleimg.jpg" class="container-image"
+			<img src="${list.ABPIC}" class="container-image"
 				alt="image" style="width: 300px;">
 		</div>
 
@@ -57,49 +57,55 @@
 				<div class="col d-flex align-items-start">
 					<div>
 						<h5 class="fw-bold mb-0">축종</h5>
-						<p>강아지</p>
+						<p>${list.BREEDTYPENAME}</p>
 					</div>
 				</div>
 				<div class="col d-flex align-items-start">
 					<div>
 						<h5 class="fw-bold mb-0">품종</h5>
-						<p>요크셔테리어</p>
+						<p>${list.BREEDNAME}</p>
 					</div>
 				</div>
 				<div class="col d-flex align-items-start">
 					<div>
 						<h5 class="fw-bold mb-0">나이</h5>
-						<p>3살</p>
+						<p id="age">${list.ABAGE}</p>
 					</div>
 				</div>
 				<div class="col d-flex align-items-start">
 					<div>
 						<h5 class="fw-bold mb-0">성별</h5>
-						<p>여자</p>
+						<p id="sex">${list.SEX}</p>
 					</div>
 				</div>
 				<div class="col d-flex align-items-start">
 					<div>
 						<h5 class="fw-bold mb-0">색</h5>
-						<p>흰색</p>
+						<p>${list.COLOR}</p>
 					</div>
 				</div>
 				<div class="col d-flex align-items-start">
 					<div>
 						<h5 class="fw-bold mb-0">체중</h5>
-						<p>2.5 kg</p>
+						<p>${list.ABWEIGHT}kg</p>
 					</div>
 				</div>
 				<div class="col d-flex align-items-start">
 					<div>
 						<h5 class="fw-bold mb-0">특징</h5>
-						<p>애교 많고 눈이 큼</p>
+						<p>${list.ABFEAT}</p>
 					</div>
 				</div>
 				<div class="col d-flex align-items-start">
 					<div>
-						<h5 class="fw-bold mb-0">특이사항</h5>
-						<p>매우 좋음</p>
+						<h5 class="fw-bold mb-0">보호소 이름</h5>
+						<p>${list.ABSHELTERNAME}</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div>
+						<h5 class="fw-bold mb-0">보호소 전화번호</h5>
+						<p id="tel">${list.ABSHELTERTEL}</p>
 					</div>
 				</div>
 			</div>
@@ -108,42 +114,42 @@
 				<div class="col d-flex align-items-start">
 					<div>
 						<h5 class="fw-bold mb-0">발견 날짜</h5>
-						<p>2021년 10월 22일</p>
+						<p lang="date">${list.FINDDATE}!</p>
 					</div>
 				</div>
 				<div class="col d-flex align-items-start">
 					<div>
 						<h5 class="fw-bold mb-0">발견 장소</h5>
-						<p>강남구</p>
+						<p>${list.FINDLOC}</p>
 					</div>
 				</div>
 				<div class="col d-flex align-items-start">
 					<div>
 						<h5 class="fw-bold mb-0">보호 상태</h5>
-						<p>매우 건강</p>
+						<p>${list.STATENAME}</p>
 					</div>
 				</div>
 				<div class="col d-flex align-items-start">
 					<div>
 						<h5 class="fw-bold mb-0">공고 종료일</h5>
-						<p>2021년 12월 22일</p>
+						<p lang="date">${list.NOTICEENDDATE}</p>
 					</div>
 				</div>
 				<div class="col d-flex align-items-start">
 					<div>
 						<h5 class="fw-bold mb-0">공고 시작일</h5>
-						<p>2021년 10월 22일</p>
+						<p lang="date">${list.NOTICESTARTDATE}</p>
 					</div>
 				</div>
 			</div>
 			<div class="d-flex justify-content-around"
 				style="display: flex; padding-top: 2rem !important;">
 				<div>
-					<a class="btn btn-secondary" href="#" target="_blank"
+					<a class="btn btn-secondary" lang="${no}" href="adopt_511_adoptReg" target="_blank"
 						style="width: 170px;">입양 예약</a>
 				</div>
 				<div>
-					<a class="btn btn-secondary" href="#" target="_blank"
+					<a class="btn btn-secondary" href="adopt_512_careReg" target="_blank"
 						style="width: 170px;">양육 신청</a>
 				</div>
 			</div>

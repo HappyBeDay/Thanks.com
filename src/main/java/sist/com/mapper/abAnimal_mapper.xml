@@ -56,11 +56,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<!-- select -->
-	<select id="selectAbAnimalAll" resultType="abAnimal">
+	<sql id="selectBasic">
 		select 
 		<include refid="columnsAPI"/>
 		from
 		<include refid="table"/>
+	</sql>
+	
+	<select id="selectAbAnimalAll" resultType="abAnimal">
+		<include refid="selectBasic"/>
+	</select>
+	
+	<select id="selectAbAnimalOfNO" parameterType="int" resultType="abAnimal">
+		select
+			<include refid="columnsAPI"/>
+		from
+			(
+				select
+				rownum as num, <include refid="columnsAPI"/>
+				from 
+				<include refid="table"/>
+				order by findDate desc 
+			)
+		<![CDATA[where num < #{no} and num >= #{no}-30]]>	
 	</select>
 
 	<select id="selectAbAnimal_PK" resultType="java.lang.Long">
@@ -80,6 +98,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where
 		<include refid="pk"/>
 		= #{abanimalCode, jdbcType=NUMERIC}
+	</select>
+	
+	<select id="selectAbAnimalInfo" parameterType="java.lang.Long" resultType="java.util.HashMap">
+	select 
+    abPic,
+    breedTypeName,
+    sex,
+    abFeat,
+    findDate,
+    noticeEndDate,
+    breedName,
+    color,
+    findLoc,
+    NoticeStartDate,
+    AbAge,
+    abweight,
+    stateName,
+    abShelterTel,
+    abShelterName
+from
+    AbandonedAnimal, AbState, Breed, abShelter, breedType
+where
+    abAnimalCode = #{no} 
+    and 
+    AbState.stateCode = AbandonedAnimal.stateCode
+    and
+    Breed.breedCode = AbandonedAnimal.breedCode
+    and
+    abShelter.abShelterCode = AbandonedAnimal.abShelterCode
+    and
+    breedType.breedTypeCode = AbandonedAnimal.breedTypeCode
 	</select>
 
 </mapper>

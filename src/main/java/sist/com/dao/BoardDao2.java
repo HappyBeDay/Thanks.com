@@ -1,14 +1,10 @@
 package sist.com.dao;
 
-import java.sql.Date;
-
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import sist.com.vo.BoardVO;
 
@@ -17,7 +13,7 @@ public class BoardDao2 extends SqlSessionDaoSupport {
 	
 	@Resource(name="sqlSessionTemplate")
 	protected void initDao(SqlSessionTemplate sessionTemplate) throws Exception {
-		System.out.println("initDao() : SqlSessionTemplate");
+		System.out.println("initDao() : BoardDao2");
 		this.setSqlSessionTemplate(sessionTemplate);
 	}
 	

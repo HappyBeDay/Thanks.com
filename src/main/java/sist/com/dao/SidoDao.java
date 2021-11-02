@@ -50,6 +50,6 @@ public class SidoDao extends SqlSessionDaoSupport implements ApiDao, Dao {
 	// Dao
 	@Override
 	public List<SidoVO> selectDataAll() {
-		return getSqlSession().selectList("selectSidoAll");
+		return getSqlSession().selectList("selectSidoDataAll");
 	}
 }

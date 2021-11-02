@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Insert title here</title>
+<title>입양 예약</title>
 
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/5.1/examples/features/">
@@ -105,7 +105,7 @@
 					<div class="col d-flex align-items-start">
 						<div>
 							<h5 class="fw-bold mb-0">사양관리사 인원수</h5>
-							<p>강남구</p>
+							<p>${no}</p>
 						</div>
 					</div>
 					<div class="col d-flex align-items-start">

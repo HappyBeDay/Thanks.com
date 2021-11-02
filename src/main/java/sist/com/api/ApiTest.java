@@ -3,15 +3,13 @@ package sist.com.api;
 public class ApiTest {
 
 	public static void main(String[] args) {
-		//String weight = "4.6.8.6(Kg)";
-		//String weight = "4.6(KG)";
-		String weight = "0.6,(Kg)";
-		weight = weight.substring(0, weight.indexOf("(")).trim();
-		weight = weight.replace(",", "");
-		System.out.println(weight);
-		int sep = weight.indexOf(".");
-		if (sep > 0)
-			weight = weight.substring(0, sep) + "." + weight.substring(sep).replace(".", "");
-		System.out.println(weight);
+		System.out.println("API TEST START");
+		String word = "http://localhost:8080/Thanks.com/adopt/abShelter?no=200";
+		
+		word = word.substring(0, word.lastIndexOf("?"));
+		System.out.println(word);
+		word += "?no=" + 1;
+		System.out.println(word);
 	}
+	
 }

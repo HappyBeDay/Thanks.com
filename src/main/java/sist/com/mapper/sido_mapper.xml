@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values ( #{sidoCode}, #{sidoCodeName})
 	</insert>
 	
-	<select id="selectSidoAll" resultType="sido">
+	<select id="selectSidoDataAll" resultType="sido">
 		select 
 		<include refid="columns"/>
 		from 

@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectBreed_All" resultType="Breed">
-		select * from <include refid="table"/>
+		select <include refid="columnsAPI"/> from <include refid="table"/>
 	</select>
 
 	<select id="selectBreed_PkCheck" 

@@ -15,7 +15,7 @@
 				<c:forEach var="list" items="${animal}">
 			<div class="col">
 				<div class="card shadow-sm">
-					<img alt="Thumbnail" src="${list.abPic}" height="300">
+					<img alt="Thumbnail" src="${list.abPic}" height="300" lang="${list.abanimalCode}" style="cursor: pointer;">
 					<!-- 
 					<svg class="bd-placeholder-img card-img-top" width="100%"
 						height="225" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -29,7 +29,6 @@
 							<text x="50%" y="50%" fill="#eceeef" dy=".3em">	Thumbnail </text> 
 					</svg>
 					-->
-
 					<div id="_card" class="card-body">
 						<p class="card-text">
 						<div>

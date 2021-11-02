@@ -15,7 +15,7 @@ public class BoardDao extends SqlSessionDaoSupport {
 	
 	@Resource(name="sqlSessionTemplate")
 	protected void initDao(SqlSessionTemplate sessionTemplate) throws Exception {
-		System.out.println("initDao() : SqlSessionTemplate");
+		System.out.println("initDao() : BoardDao");
 		this.setSqlSessionTemplate(sessionTemplate);
 	}
 	
