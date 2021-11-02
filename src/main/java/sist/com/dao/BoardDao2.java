@@ -33,7 +33,7 @@ public class BoardDao2 extends SqlSessionDaoSupport {
 		return this.getSqlSession().selectOne("getSequence");
 	}
 	
-	@RequestMapping(value = "/community_900_mainBoard")
+	/*@RequestMapping(value = "/community_900_mainBoard")
 	public String boardListAction(int boardcode, String boardtitle, int membercode, Date boarddate, int boardhit ) {
 		// dao.boardInfo(no);
 		model.addAttribute("info", dao2.selectInfoBoard(no));
@@ -44,5 +44,5 @@ public class BoardDao2 extends SqlSessionDaoSupport {
 		} else {
 			return "boardMVC/modify";
 		}
-	}
+	}*/
 }
