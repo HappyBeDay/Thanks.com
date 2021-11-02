@@ -27,9 +27,11 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- resources/underfolder -->
-	<resources location="/resources/_module/" mapping="/_module/**" />
-	<resources location="/resources/content/" mapping="/content/**" />
-	
+	<resources location="/resources/_module/"
+		mapping="/_module/**" />
+	<resources location="/resources/content/"
+		mapping="/content/**" />
+
 	<resources location="/resources/assets/" mapping="/assets/**" />
 	<resources location="/resources/css/" mapping="/css/**" />
 	<resources location="/resources/img/" mapping="/img/**" />
@@ -56,6 +58,13 @@
 		<beans:property name="username" value="c##thanksdotcom" />
 		<beans:property name="password" value="1234" />
 	</beans:bean>
+
+	<!-- DBMS : Oracle Cloud database info -->
+	<!-- <beans:bean id="database" class="org.apache.commons.dbcp.BasicDataSource"> 
+		<beans:property name="driverClassName" value="oracle.jdbc.OracleDriver" /> 
+		<beans:property name="url" value="jdbc:oracle:thin:@terradb_high?TNS_ADMIN=C:\\Wallet_terradb\\" 
+		/> <beans:property name="username" value="admin"></beans:property> <beans:property 
+		name="password" value="Thanksdotcom1!"></beans:property> </beans:bean> -->
 
 	<!-- BasicDataSource를 대신해서 가지는 객체. 형태:logds(database) -->
 	<beans:bean id="logds"
@@ -127,10 +136,14 @@
 	</beans:bean>
 
 	<!-- 해당 위치의 어노테이션을 읽어들여서 bean으로 등록! -->
-	<context:component-scan base-package="sist.com.controller" />
-	<context:component-scan base-package="sist.com.dao" /> 
-	<context:component-scan base-package="sist.com.api" />
-	<context:component-scan base-package="sist.com.api.abAnimal" />
+	<context:component-scan
+		base-package="sist.com.controller" />
+	<context:component-scan
+		base-package="sist.com.dao" />
+	<context:component-scan
+		base-package="sist.com.api" />
+	<context:component-scan
+		base-package="sist.com.api.abAnimal" />
 	<!-- Aop -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 

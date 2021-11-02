@@ -82,7 +82,7 @@ $(function() {
 					</thead>
 						<tbody style="background-color: #fff;">
 					<c:forEach items="${board}" var="list" >
-					 <a href="/community_900_mainBoard?no=${list.boardCode}">${list.boardTitle}</a>
+					 <a href="/community_900_mainBoard?no=${list.boardCode}"></a>
 							<tr>
 								<td id="boardCode;" style="text-align: center;">${list.boardCode}</td>
 								<td style="text-align: left;">${list.boardTitle}</td>

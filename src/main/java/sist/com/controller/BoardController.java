@@ -69,48 +69,5 @@ public class BoardController {
 		dao.updateBoard(vo);
 		return "redirect:/boardMVC/boardInfo.do?no=" + vo.getNo() + "&job=info";
 	}*/
-	@PostMapping(value = "community/community_9113_mainWrite")
-	public String boardInsert(BoardVO bean, @RequestParam(value = "file", required = false) MultipartFile file) {
-		/*String location = "D:\\eclipseFile\\Thanks.Project\\Thanks.com.spring\\src\\main\\webapp\\resources\\assets\\boardimg\\";*/
-		String location = "C:\\Users\\USER\\javalessonProject\\project\\Thanks.com.spring\\src\\main\\webapp\\resources\\assets\\boardimg\\";
-		FileOutputStream fos = null;
-		System.out.println("여기까지 돌아간다.");
-		System.out.println("file : " + file);
-		String fileName = file.getOriginalFilename();
-		if (fileName.length() > 0) {
-			try {
-				fos = new FileOutputStream(location.concat(fileName));
-				fos.write(file.getBytes());
-				bean.setBoardPic(fileName);
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if (fos != null)
-						fos.close();
-				} catch (Exception e2) {
-				}
-			}
-		}
-		/*bean.setBoardCode(dao.getSequence());
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("boardCode", bean.getBoardCode());
-		map.put("memberCode", bean.getMemberCode());
-		map.put("ref", bean.getRef());
-		map.put("step", bean.getStep());
-		dao.updateReply(map);
-		dao.updateStep(map);
-		bean.setStep(bean.getStep() + 1);
-		bean.setLev(bean.getLev() + 1);
-			bean.getBoardTitle().equals("new");
-		bean.setBoardContent(bean.getBoardNum());
-		bean.setBoardCode(bean.getBoardNum());	
-		
-		System.out.println("durlsms?");*/
-		System.out.println(bean);
-		dao.boardInsert(bean);
-		
-		return "redirect:community/community_900_mainBoard";
-
-	}
+	
 }
