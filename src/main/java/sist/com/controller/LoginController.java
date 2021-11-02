@@ -22,7 +22,7 @@ public class LoginController {
 	public String logCheck(HttpSession session, String id, String pw) {
 		System.out.println("logCheck() : " + id + ", " + pw + "\n");
 		if (dao.loginCheck(id, pw)) {
-			Common.getInstance().login(session, id);
+			Common.getInstance().login(session, id, dao.selectMemberCodeFromID(id));
 			return "redirect:" + SiteURL.main.url;
 		} else {
 			return "redirect:" + SiteURL.login.url;

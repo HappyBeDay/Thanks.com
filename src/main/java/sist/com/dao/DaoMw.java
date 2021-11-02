@@ -1,12 +1,9 @@
-package sist.com.controller;
+package sist.com.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import lombok.Getter;
-import sist.com.dao.AbAnimalDao;
-import sist.com.dao.BreedDao;
-import sist.com.dao.SidoDao;
 
 @Getter
 @Repository
@@ -16,12 +13,16 @@ public class DaoMw {
 	private AbAnimalDao abAnimalDao;
 	private SidoDao sidoDao;
 	private BreedDao breedDao;
+	private MemberInfoDao memberDao;
+	private AbShelterDao abShelterDao;
 
 	// 생성자.
 	@Autowired
-	public DaoMw(AbAnimalDao abAnimalDao, SidoDao sidoDao, BreedDao breedDao) {
+	public DaoMw(AbAnimalDao abAnimalDao, SidoDao sidoDao, BreedDao breedDao, MemberInfoDao memberDao, AbShelterDao abShelterDao) {
 		this.abAnimalDao = abAnimalDao;
 		this.sidoDao = sidoDao;
 		this.breedDao = breedDao;
+		this.memberDao = memberDao;
+		this.abShelterDao = abShelterDao;
 	}
 }

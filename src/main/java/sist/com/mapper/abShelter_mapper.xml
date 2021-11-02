@@ -8,7 +8,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<sql id="columnsAPI">abShelterCode, abShelterName, sidoCode, sigunguCode</sql>
 	<sql id="inputColumnsAPI">#{abShelterCode}, #{abShelterName}, #{sidoCode}, #{sigunguCode}</sql>
-
+	
+	<sql id="columnsAll">
+		ABSHELTERCODE,
+		SIDOCODE,
+		SIGUNGUCODE,
+		ABSHELTERTEL,
+		ABSHELTERADDRESS,
+		ORGANIZE,
+		MANAGERNAME,
+		MANAGERTEL,
+		ABSHELTERNAME
+	</sql>
+	
 	<sql id="columnsUpdateAPI">
 		abShelterName
 		,abShelterTel                                               
@@ -39,7 +51,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- select -->
 	<select id="selectAbShelterAll" resultType="abShelter">
-		select * from
+		select 
+		<include refid="columnsAll" />
+		from
 		<include refid="table" />
 	</select>
 

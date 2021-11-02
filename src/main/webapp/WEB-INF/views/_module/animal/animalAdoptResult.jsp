@@ -12,8 +12,8 @@
 <div class="album py-5 bg-light">
 	<div class="container">
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-			<div class="col">
 				<c:forEach var="list" items="${animal}">
+			<div class="col">
 				<div class="card shadow-sm">
 					<img alt="Thumbnail" src="${list.abPic}" height="300">
 					<!-- 
@@ -30,16 +30,19 @@
 					</svg>
 					-->
 
-					<div class="card-body">
+					<div id="_card" class="card-body">
 						<p class="card-text">
 						<div>
-							<i class="fa fa-paw" aria-hidden="true"></i>품종 : animal[0].co
+							<i class="fa fa-paw" aria-hidden="true"></i>
+							<span class="data">품종 : ${list.breedCode}</span>
 						</div>
-						<div>
-							<i class="fa fa-venus-mars" aria-hidden="true"></i>성별
+						<div class="data">
+							<i class="fa fa-venus-mars" aria-hidden="true"></i>
+							<span class="data">성별 : ${list.sex}</span>
 						</div>
-						<div>
-							<i class="fa fa-map-marker" aria-hidden="true"></i>위치
+						<div class="data">
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+							<span class="data">위치 : ${list.abShelterCode}</span>
 						</div>
 						</p>
 						<div class="d-flex justify-content-between align-items-center">
@@ -53,9 +56,9 @@
 						</div>
 					</div>
 				</div>
-				</c:forEach>
 					
 			</div>
+				</c:forEach>
 		</div>	
 	</div>
 </div>

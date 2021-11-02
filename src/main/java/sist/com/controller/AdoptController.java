@@ -3,7 +3,6 @@ package sist.com.controller;
 import java.util.List;
 
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import sist.com.controller._module.Common;
+import sist.com.dao.DaoMw;
 import sist.com.vo.AbandonedAnimalVO;
 
 @Controller
@@ -50,7 +52,15 @@ public class AdoptController {
 		JSONArray animalJson = (JSONArray) new JSONParser().parse(animal);
 		//System.out.println(animalJson); // 정상적으로 바뀌는 것을 확인
 		System.out.println(animalJson.getClass().getName());
+		System.out.println(Common.getInstance().getMemberCode());
 		model.addAttribute("animal", animalJson);
+	}
+	
+	@RequestMapping(value = "abShelter")
+	public @ResponseBody JSONArray AbShelter() throws IllegalArgumentException, IllegalAccessException, JsonProcessingException, ParseException {
+		System.out.println("adoptAbShelter");
+		//Map<String, Object> map = XmlParser.getInstance().convertToMap(daoMw.getAbShelterDao().selectDataAll());
+		return (JSONArray) new JSONParser().parse(new ObjectMapper().writeValueAsString(daoMw.getAbShelterDao().selectDataAll()));
 	}
 	
 	// 화면 확인 용 
@@ -69,6 +79,12 @@ public class AdoptController {
 	// Exception Handler
 	@ExceptionHandler(JsonProcessingException.class)
 	public String exceptionHandler(JsonProcessingException e, Model model) {
+		model.addAttribute("msg", e.getClass().getName());
+		model.addAttribute("exception", e);
+		return path + "exceptionHandler";
+	}
+	@ExceptionHandler(IllegalArgumentException.class)
+	public String exceptionHandler(IllegalArgumentException e, Model model) {
 		model.addAttribute("msg", e.getClass().getName());
 		model.addAttribute("exception", e);
 		return path + "exceptionHandler";

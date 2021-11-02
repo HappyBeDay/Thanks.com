@@ -103,3 +103,4 @@ create sequence Breed_seq
     minValue -9999999
     cycle;
 
+alter table breed modify breedName null;

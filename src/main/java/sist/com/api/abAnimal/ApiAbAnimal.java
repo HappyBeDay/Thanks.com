@@ -122,12 +122,15 @@ public class ApiAbAnimal extends AbAnimalAPI {
 	private List<String> addKeys() {
 		List<String> repeat = new ArrayList<String>();
 		// 보호소 Key
+		boolean flag = true;
 		this.abShelterKeys = new ArrayList<Long>(abShelterDao.selectPKColumnReturnSet());
 		for (Long key : abShelterKeys) {
 			// "numOfRows", "care_reg_no"
 			String required = "";
 			String[] insertKey = { "999999", String.valueOf(key) };
 			String[] items = apiEnum.getRequiredItems();
+			
+			
 			for (int i = 0; i < items.length; i++) {
 				required = "&" + items[i] + "=" + insertKey[i];
 			}

@@ -54,7 +54,7 @@ public abstract class AbAnimalAPI implements API {
 
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-type", "application/json");
-			conn.setReadTimeout(1000 * 60 * 10); // read time out 에러 방지... (for AbShelter)
+			conn.setReadTimeout(1000 * 60 * 100); // read time out 에러 방지... (for AbShelter)
 
 			//System.out.println("Response code: " + conn.getResponseCode());
 

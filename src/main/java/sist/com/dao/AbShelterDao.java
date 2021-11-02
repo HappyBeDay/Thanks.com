@@ -11,8 +11,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import sist.com.vo.AbShelterVO;
+
 @Repository
-public class AbShelterDao extends SqlSessionDaoSupport implements ApiDao {
+public class AbShelterDao extends SqlSessionDaoSupport implements ApiDao, Dao {
 
 	@Resource(name = "sqlSessionTemplate")
 	protected void initDao(SqlSessionTemplate sessionTemplate) throws Exception {
@@ -41,12 +43,17 @@ public class AbShelterDao extends SqlSessionDaoSupport implements ApiDao {
 	}
 
 	public void updateApiDate(List<Map<String, String>> list) {
-		for(Map<String, String> map : list) {
+		for (Map<String, String> map : list) {
 			Object pk = this.getSqlSession().selectOne("selectAbShelter_PKCheck", map.get("abShelterCode"));
-			if(pk != null)
+			if (pk != null)
 				this.getSqlSession().update("updateAbShelterFromApi", map);
 		}
-		
 	}
 
+	@Override
+	public List<AbShelterVO> selectDataAll() {
+		return this.getSqlSession().selectList("selectAbShelterAll");
+	}
+	
+	
 }

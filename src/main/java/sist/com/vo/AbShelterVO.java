@@ -16,11 +16,11 @@ public class AbShelterVO {
 	private String abShelterName;
 	private int sidoCode;
 	private int sigunguCode;
-	private int abShelterTel;
+	private long abShelterTel;
 	private String abShelterAddress;
 	private String organize;
 	private String managerName;
-	private int managerTel;
+	private long managerTel;
 }                                     
 /*
 

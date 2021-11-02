@@ -36,4 +36,8 @@ public class MemberInfoDao extends SqlSessionDaoSupport {
 		int cnt = this.getSqlSession().insert("insertMemberSignUp", vo);
 		return cnt > 0 ? true : false;
 	}
+	
+	public int selectMemberCodeFromID(String id) {
+		return this.getSqlSession().selectOne("selectMemberCodeFromID", id);
+	}
 }
