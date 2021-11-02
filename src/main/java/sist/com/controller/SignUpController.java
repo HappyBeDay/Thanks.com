@@ -54,7 +54,7 @@ public class SignUpController {
 		boolean bool = memberDao.insertMemberSignUp(vo);
 		
 		if(bool) {
-			Common.getInstance().login(session, vo.getId());
+			Common.getInstance().login(session, vo.getId(), memberDao.selectMemberCodeFromID(vo.getId()));
 			return "redirect:/";			
 		}
 		
