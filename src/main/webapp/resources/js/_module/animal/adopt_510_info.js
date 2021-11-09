@@ -28,6 +28,6 @@ window.addEventListener('load', function(){
 	
 	$("a.btn.btn-secondary").click(function(){
 		let form = createForm([this.lang], this.href);
-		form.submit();		
+		form.submit();
 	});
 });

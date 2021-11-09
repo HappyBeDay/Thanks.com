@@ -27,6 +27,7 @@ window.addEventListener('load', function() {
 	_image.click(function(){
 		let form = createForm([this.lang], "adopt_510_info");
 		form.submit();
+		//window.location.href = "adopt_510_info?no=" + this.lang;
 	});
 	
 	console.log(_image);

@@ -145,11 +145,13 @@
 			<div class="d-flex justify-content-around"
 				style="display: flex; padding-top: 2rem !important;">
 				<div>
-					<a class="btn btn-secondary" lang="${no}" href="adopt_511_adoptReg" target="_blank"
+					<!-- target="_blank" -->
+					<a class="btn btn-secondary" lang="${no}" href="adopt_511_adoptReg" 
 						style="width: 170px;">입양 예약</a>
 				</div>
 				<div>
-					<a class="btn btn-secondary" href="adopt_512_careReg" target="_blank"
+					<!-- target="_blank" -->
+					<a class="btn btn-secondary" href="adopt_512_careReg"
 						style="width: 170px;">양육 신청</a>
 				</div>
 			</div>
