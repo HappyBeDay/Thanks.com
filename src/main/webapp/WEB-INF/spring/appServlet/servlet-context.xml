@@ -27,10 +27,8 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- resources/underfolder -->
-	<resources location="/resources/_module/"
-		mapping="/_module/**" />
-	<resources location="/resources/content/"
-		mapping="/content/**" />
+	<resources location="/resources/_module/" mapping="/_module/**" />
+	<resources location="/resources/content/" mapping="/content/**" />
 
 	<resources location="/resources/assets/" mapping="/assets/**" />
 	<resources location="/resources/css/" mapping="/css/**" />
@@ -47,24 +45,14 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-
-	<!-- DBMS : Oracle database info -->
-	<beans:bean id="database"
-		class="org.apache.commons.dbcp.BasicDataSource">
-		<beans:property name="driverClassName"
-			value="oracle.jdbc.OracleDriver" />
-		<beans:property name="url"
-			value="jdbc:oracle:thin:@localhost:1521:orcl" />
-		<beans:property name="username" value="c##thanksdotcom" />
-		<beans:property name="password" value="1234" />
-	</beans:bean>
-
 	<!-- DBMS : Oracle Cloud database info -->
-	<!-- <beans:bean id="database" class="org.apache.commons.dbcp.BasicDataSource"> 
-		<beans:property name="driverClassName" value="oracle.jdbc.OracleDriver" /> 
-		<beans:property name="url" value="jdbc:oracle:thin:@terradb_high?TNS_ADMIN=C:\\Wallet_terradb\\" 
-		/> <beans:property name="username" value="admin"></beans:property> <beans:property 
-		name="password" value="Thanksdotcom1!"></beans:property> </beans:bean> -->
+	<beans:bean id="database" class="org.apache.commons.dbcp.BasicDataSource">
+		<beans:property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<beans:property name="url" value="jdbc:oracle:thin:@happybeday_high?
+		TNS_ADMIN=C:/Wallet_HappyBeDay" />
+		<beans:property name="username" value="ADMIN" />
+		<beans:property name="password" value="HappyBeDay@9394" />
+	</beans:bean>
 
 	<!-- BasicDataSource를 대신해서 가지는 객체. 형태:logds(database) -->
 	<beans:bean id="logds"
@@ -115,8 +103,7 @@
 		<beans:property name="dataSource" ref="logds" />
 		<!-- <property name="mapperLocations" value="classpath*:sample/config/mappers/**/*.xml" 
 			/> Internet에서 찾은 value와 아래의 value와는 무슨 차이가 있는가? -->
-		<beans:property name="configLocation"
-			value="/WEB-INF/Config.xml" />
+		<beans:property name="configLocation" value="/WEB-INF/Config.xml" />
 	</beans:bean>
 
 	<!-- DBMS : mybatis instance : di of factory pattern -->
